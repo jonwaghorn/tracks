@@ -1,0 +1,27 @@
+<%= error_messages_for 'state' %>
+
+<!--[form:state]-->
+<p><label for="state_name">Name</label><br/>
+<%= text_field 'state', 'name'  %></p>
+
+<p><label for="state_nation_id">Nation</label><br/>
+<% if params[:action] == 'new' %>
+  <%= text_field 'track', 'nation_id', :value => params[:nation_name], :disabled => true %>
+<% else %>
+  <%= select 'state', 'nation_id', Nation.find(:all).collect {|c| [c.name, c.id] } %>
+<% end %>
+</p>
+
+<p><label for="state_description">Description</label><br/>
+<%= text_area 'state', 'description', "cols" => 70, "rows" => 10 %></p>
+
+<p><label for="state_rain_readings">Rain readings</label><br/>
+<%= text_field 'state', 'rain_readings', "size" => 8 %></p>
+
+<p><label>Map</label>
+<div id="map" style="width: 500px; height: 400px"></div></p>
+<p><label>Latitude </label><%= text_field 'state', 'latitude', :id => "state_latitude", :size => 15 %>
+<label>Longitude </label><%= text_field 'state', 'longitude', :id => "state_longitude", :size => 15 %>
+<label>Zoom </label><%= text_field 'state', 'zoom', :id => "state_zoom", :size => 4 %></p>
+<!--[eoform:state]-->
+

@@ -1,0 +1,22 @@
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAcf2swa3N5AjR_VfjObM4WRTo5PkCymPKYbD5njA8s_yTDiHDqRTz9YTaVQ-_dNND_7AmaE37ko61FQ"
+        type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function load(lt,ln,zm) {
+  if (GBrowserIsCompatible()) {
+    if (!zm) {lt = -41.284514; ln = 174.774627; zm = 11;}
+    var map = new GMap2(document.getElementById("map"));
+    GEvent.addListener(map, "moveend", function() {
+      var center = map.getCenter();
+      document.getElementById("state_latitude").value = center.lat();
+      document.getElementById("state_longitude").value = center.lng();
+      document.getElementById("state_zoom").value = map.getZoom();
+    });
+		map.addControl(new GSmallMapControl());
+		map.addControl(new GMapTypeControl());
+		map.addControl(new GScaleControl());
+    map.setCenter(new GLatLng(lt, ln), zm, G_SATELLITE_MAP);
+  } else { document.getElementById("map").innerHTML="This website uses Google Maps, which appear not to work with your browser. See the FAQ."; }
+}
+//]]>
+</script>

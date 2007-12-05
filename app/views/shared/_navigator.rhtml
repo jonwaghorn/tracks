@@ -1,0 +1,56 @@
+<div id="nav_outer"><div id="nav"><h1>Navigator</h1>
+<ul>
+<% current_title = params[:action] == 'edit' ? ' (edit)' : '' %>
+
+<% if params[:controller] == 'index' %>
+<%= render :partial => 'shared/nav_current', :locals => { :id => 'main', :current => 'Home' + current_title } %>
+<% else %>
+<%= render :partial => 'shared/nav_home' %>
+<% end %>
+
+<% if params[:controller] =~ /(index|state|area|track|track_aka)/ %>
+<%= render :partial => 'nav_tracks' %>
+<% end %>
+
+<!--<li><%= link_to 'Classic Routes', { :controller => 'classic' }, :id => 'main' %></li>-->
+
+<% if params[:controller] == 'faq' %>
+<%= render :partial => 'shared/nav_current', :locals => { :id => 'main', :current => 'FAQ' + current_title } %>
+<% else %>
+<li><%= link_to 'FAQ', { :controller => 'faq' }, :id => 'main' %></li>
+<% end %>
+
+<% if params[:controller] == 'about' %>
+<%= render :partial => 'shared/nav_current', :locals => { :id => 'main', :current => 'About' + current_title } %>
+<% else %>
+<li><%= link_to 'About', { :controller => 'about' }, :id => 'main' %></li>
+<% end %>
+
+<% if params[:controller] == 'policy' %>
+<%= render :partial => 'shared/nav_current', :locals => { :id => 'main', :current => 'Terms/Privacy' + current_title } %>
+<% else %>
+<li><%= link_to 'Terms/Privacy', { :controller => 'policy' }, :id => 'main' %></li>
+<% end %>
+
+<% if params[:controller] == 'contact' %>
+<%= render :partial => 'shared/nav_current', :locals => { :id => 'main', :current => 'Contact' + current_title } %>
+<% else %>
+<li><%= link_to 'Contact', { :controller => 'contact' }, :id => 'main' %></li>
+<% end %>
+
+</ul>
+
+<% if params[:controller] == 'track' %>
+<!-- connecting tracks goes here -->
+<!-- nearby tracks goes here -->
+<% end %>
+
+</div></div>
+
+<% if params[:controller] =~ /\b(index|area|track)\b/ %>
+<%= render :partial => 'nav_extra' %>
+<% end %>
+
+<% if params[:controller] == 'state' %>
+<!-- weather thingy goes here -->
+<% end %>

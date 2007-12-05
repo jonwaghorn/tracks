@@ -1,0 +1,7 @@
+<h1>New report for <%= params[:track_name] %></h1>
+<% form_tag :action => 'create', :track_id => params[:track_id] do %>
+  <%= render :partial => 'form' %>
+  <p><%= submit_tag "Add" %></p>
+<% end %>
+<hr size=1 color=#ccc>
+<p><%= link_to 'Back', :controller => 'track', :action => 'show', :id => params[:track_id] %></p>

@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<title>Tracks: <%= @area.name %></title>
+<%= stylesheet_link_tag 'tracks' %>
+<link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+<%= render :partial => 'shared/ie' %>
+<% if params[:action] == 'show' %>
+<%= render :partial => 'map_show' %>
+<% else %>
+<%= render :partial => 'map_edit' %>
+<% end %>
+</head>
+<body onload="load(<%= @area.latitude %>,<%= @area.longitude %>,<%= @area.zoom %>)" onunload="GUnload()">
+<table id="bg" cellspacing=0>
+<tr>
+<td id="bg_left"></td>
+<td id="container" valign="top">
+<%= render :partial => 'shared/header' %>
+<%= render :partial => 'shared/body' %>
+<%= render :partial => 'shared/footer' %>
+</td>
+<td id="bg_right"></td>
+</tr>
+</table>
+</body>
+</html>

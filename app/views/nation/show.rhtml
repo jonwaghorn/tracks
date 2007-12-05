@@ -1,0 +1,9 @@
+<h1><%= @nation.name %></h1>
+<% if :notice %><p class="notice"><%= flash[:notice] %></p><% end %>
+
+<p><%= replace_for_view(h(@nation.description)) %></p>
+
+<% if admin? %>
+<hr size=1 color=#ccc>
+<p id="edit"><%= link_to 'Edit', :action => 'edit', :id => @nation %>
+<% end %>
