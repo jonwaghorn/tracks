@@ -1,10 +1,8 @@
 Tracks on Rails
 ---------------
-statuses => track_access
-grades => track_grades
 Finish rain readings
 Add CAPTCHAs
 Add validations
 Convert existing data
 Publish!
-
+Add track paths, including upload path file

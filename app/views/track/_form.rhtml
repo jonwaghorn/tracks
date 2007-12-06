@@ -46,11 +46,11 @@
 
 <table cellspacing=0 cellpadding=0>
 <tr>
-  <td><label for="track_grade_id">Grade</label></td>
+  <td><label for="track_track_grade_id">Grade</label></td>
   <td><label for="track_grade_note">Grade note</label></td>
 </tr>
 <tr>
-  <td><%= select 'track', 'grade_id', Grade.find(:all).collect {|c| [c.name, c.id] } %>&nbsp;</td>
+  <td><%= select 'track', 'track_grade_id', TrackGrade.find(:all).collect {|c| [c.name, c.id] } %>&nbsp;</td>
   <td><%= text_field 'track', 'grade_note', "size" => 40 %></td>
 </tr>
 </table>

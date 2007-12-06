@@ -18,11 +18,6 @@ ActiveRecord::Schema.define(:version => 12) do
     t.column "name", :string
   end
 
-  create_table "grades", :force => true do |t|
-    t.column "name",        :string
-    t.column "description", :string
-  end
-
   create_table "nations", :force => true do |t|
     t.column "name",        :string,   :limit => 40, :default => "", :null => false
     t.column "description", :string,                 :default => ""
@@ -57,6 +52,11 @@ ActiveRecord::Schema.define(:version => 12) do
     t.column "name",     :string
   end
 
+  create_table "track_grades", :force => true do |t|
+    t.column "name",        :string
+    t.column "description", :string
+  end
+
   create_table "track_reports", :force => true do |t|
     t.column "track_id",    :integer
     t.column "user_id",     :integer
@@ -82,10 +82,10 @@ ActiveRecord::Schema.define(:version => 12) do
     t.column "date",            :datetime
     t.column "author",          :integer
     t.column "zoom",            :integer,                                              :default => 0,   :null => false
-    t.column "grade_id",        :integer
     t.column "length",          :decimal,                :precision => 5, :scale => 2, :default => 0.0
     t.column "latitude",        :decimal,                :precision => 9, :scale => 6, :default => 0.0
     t.column "longitude",       :decimal,                :precision => 9, :scale => 6, :default => 0.0
+    t.column "track_grade_id",  :integer
     t.column "track_access_id", :integer
     t.column "condition_id",    :integer
   end
