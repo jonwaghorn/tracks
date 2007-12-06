@@ -35,12 +35,12 @@
 
 <table cellspacing=0 cellpadding=0>
 <tr>
-  <td><label for="track_status_id">Access</label></td>
-  <td><label for="track_status_note">Access note</label></td>
+  <td><label for="track_track_access_id">Access</label></td>
+  <td><label for="track_access_note">Access note</label></td>
 </tr>
 <tr>
-  <td><%= select 'track', 'status_id', Status.find(:all).collect {|c| [c.name, c.id] } %>&nbsp;</td>
-  <td><%= text_field 'track', 'status_note', "size" => 40 %></td>
+  <td><%= select 'track', 'track_access_id', TrackAccess.find(:all).collect {|c| [c.name, c.id] } %>&nbsp;</td>
+  <td><%= text_field 'track', 'access_note', "size" => 40 %></td>
 </tr>
 </table>
 

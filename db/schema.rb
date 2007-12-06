@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(:version => 12) do
     t.column "longitude",     :decimal,                :precision => 9, :scale => 6, :default => 0.0
   end
 
-  create_table "statuses", :force => true do |t|
+  create_table "track_accesses", :force => true do |t|
     t.column "name",        :string
     t.column "description", :string
   end
@@ -66,28 +66,28 @@ ActiveRecord::Schema.define(:version => 12) do
   end
 
   create_table "tracks", :force => true do |t|
-    t.column "name",         :string,   :limit => 80,                               :default => "",  :null => false
-    t.column "area_id",      :integer
-    t.column "status_note",  :string
-    t.column "desc_brief",   :string
-    t.column "desc_full",    :string
-    t.column "desc_where",   :string
-    t.column "desc_note",    :string
-    t.column "alt_gain",     :integer,                                              :default => 0
-    t.column "alt_loss",     :integer,                                              :default => 0
-    t.column "alt_begin",    :integer,                                              :default => 0
-    t.column "alt_end",      :integer,                                              :default => 0
-    t.column "alt_note",     :string
-    t.column "grade_note",   :string
-    t.column "date",         :datetime
-    t.column "author",       :integer
-    t.column "zoom",         :integer,                                              :default => 0,   :null => false
-    t.column "status_id",    :integer
-    t.column "grade_id",     :integer
-    t.column "length",       :decimal,                :precision => 5, :scale => 2, :default => 0.0
-    t.column "latitude",     :decimal,                :precision => 9, :scale => 6, :default => 0.0
-    t.column "longitude",    :decimal,                :precision => 9, :scale => 6, :default => 0.0
-    t.column "condition_id", :integer
+    t.column "name",            :string,   :limit => 80,                               :default => "",  :null => false
+    t.column "area_id",         :integer
+    t.column "access_note",     :string
+    t.column "desc_brief",      :string
+    t.column "desc_full",       :string
+    t.column "desc_where",      :string
+    t.column "desc_note",       :string
+    t.column "alt_gain",        :integer,                                              :default => 0
+    t.column "alt_loss",        :integer,                                              :default => 0
+    t.column "alt_begin",       :integer,                                              :default => 0
+    t.column "alt_end",         :integer,                                              :default => 0
+    t.column "alt_note",        :string
+    t.column "grade_note",      :string
+    t.column "date",            :datetime
+    t.column "author",          :integer
+    t.column "zoom",            :integer,                                              :default => 0,   :null => false
+    t.column "grade_id",        :integer
+    t.column "length",          :decimal,                :precision => 5, :scale => 2, :default => 0.0
+    t.column "latitude",        :decimal,                :precision => 9, :scale => 6, :default => 0.0
+    t.column "longitude",       :decimal,                :precision => 9, :scale => 6, :default => 0.0
+    t.column "track_access_id", :integer
+    t.column "condition_id",    :integer
   end
 
   create_table "users", :force => true do |t|

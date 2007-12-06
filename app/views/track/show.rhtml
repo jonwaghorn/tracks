@@ -23,11 +23,11 @@
 <p id="left">Brief</p><p id="right"><%= replace_for_view(h(@track.desc_brief)) %></p>
 <% end %>
 
-<p id="left">Access</p><p id="right"><%= @track.status.name + h(@track.status_note) %></p>
-
 <% if @track.grade %>
 <p id="left">Grade</p><p id="right"><%= @track.grade.name + h(@track.grade_note) %></p>
 <% end %>
+
+<p id="left">Access</p><p id="right"><%= @track.track_access.name + h(@track.access_note) %></p>
 
 <% if ! @track.desc_full.empty? %>
 <p id="left">Description</p><p id="right"><%= replace_for_view(h(@track.desc_full)) %></p>

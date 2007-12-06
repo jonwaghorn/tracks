@@ -2,7 +2,7 @@ class Track < ActiveRecord::Base
   belongs_to :area
   has_many :track_aka
   belongs_to :grade
-  belongs_to :status
+  belongs_to :track_access
   belongs_to :condition
 
   RECENT_TRACK_COUNT = 3
