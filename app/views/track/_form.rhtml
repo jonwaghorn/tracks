@@ -64,6 +64,19 @@
 <p><label for="track_desc_note">Other notes</label><br/>
 <%= text_area 'track', 'desc_note', "cols" =>70, "rows" => 5 %></p>
 
+<% if params[:action] != 'new' %>
+<table cellspacing=0 cellpadding=0>
+<tr><td colspan=2><label for="track_connection">Connecting tracks</label></td></tr>
+<% if @track.track_connections.size > 0 %>
+<% for connect in @track.track_connections do %>
+<tr><td><%= Track.find(connect.connect_track_id, :select => "name").name %></td>
+<td>&nbsp;(<%= link_to 'Delete', { :controller => 'track_connection', :action => 'destroy', :id => connect, :track_id => @track.id }, :confirm => 'Are you sure?', :method => :post %>)</td></tr>
+<% end %>
+<% end %>
+<tr><td>(<%= link_to 'New', :controller => 'track_connection', :action => 'new', :track_id => @track.id, :track_name => @track.name %>)</td></tr>
+</table>
+<% end %>
+
 <p><label for="track_length">Length (km)</label><br/>
 <%= text_field 'track', 'length', "size" => 8 %></p>
 

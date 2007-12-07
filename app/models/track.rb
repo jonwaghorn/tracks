@@ -1,9 +1,10 @@
 class Track < ActiveRecord::Base
   belongs_to :area
-  has_many :track_aka
+  has_many :track_akas
   belongs_to :track_grade
   belongs_to :track_access
   belongs_to :condition
+  has_many :track_connections
 
   RECENT_TRACK_COUNT = 3
   RECENT_HISTORY_OFFSET = 60 * 60 * 24 * 7 # one week
