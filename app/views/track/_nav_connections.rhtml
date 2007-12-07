@@ -1,0 +1,8 @@
+<% if @track.track_connections.length > 0 %>
+<h2>Connecting Tracks</h2><h3>&nbsp;</h3>
+<ul>
+<% for connect in @track.track_connections do %>
+<li><%= link_to Track.find(connect.connect_track_id, :select => "name").name, :controller => 'track', :action => 'show', :id => connect.connect_track_id %></li>
+<% end %>
+</ul>
+<% end %>
