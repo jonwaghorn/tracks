@@ -1,7 +1,7 @@
 class CreateStates < ActiveRecord::Migration
   def self.up
     create_table :states do |t|
-      t.column :name, :string, :limit => 40, :default => "", :null => false
+      t.column :name, :string, :limit => 30, :default => "", :null => false
       t.column :nation_id, :integer
       t.column :date, :datetime
       t.column :description, :string

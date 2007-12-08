@@ -6,6 +6,12 @@ class Track < ActiveRecord::Base
   belongs_to :condition
   has_many :track_connections
 
+  validates_presence_of   :name
+  validates_format_of     :name, :with => /^\w+$/i, :message => 'can only contain letters and numbers.'
+  validates_length_of     :name, :maximum => 40, :message => 'Track name too long, maximum is 40 characters.'
+  validates_uniqueness_of :name
+  validates_presence_of   :desc_brief
+
   RECENT_TRACK_COUNT = 3
   RECENT_HISTORY_OFFSET = 60 * 60 * 24 * 7 # one week
 

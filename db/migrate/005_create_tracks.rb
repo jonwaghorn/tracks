@@ -1,7 +1,7 @@
 class CreateTracks < ActiveRecord::Migration
   def self.up
     create_table :tracks do |t|
-      t.column :name, :string, :limit => 80, :default => "", :null => false
+      t.column :name, :string, :limit => 40, :default => "", :null => false
       t.column :area_id, :integer
       t.column :status, :string
       t.column :status_note, :string

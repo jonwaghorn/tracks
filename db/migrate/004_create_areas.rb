@@ -1,7 +1,7 @@
 class CreateAreas < ActiveRecord::Migration
   def self.up
     create_table :areas do |t|
-      t.column :name, :string, :limit => 40, :default => "", :null => false
+      t.column :name, :string, :limit => 30, :default => "", :null => false
       t.column :state_id, :integer
       t.column :date, :datetime
       t.column :description, :string

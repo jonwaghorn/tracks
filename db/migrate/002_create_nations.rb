@@ -1,7 +1,7 @@
 class CreateNations < ActiveRecord::Migration
   def self.up
     create_table :nations do |t|
-      t.column :name, :string, :limit => 40, :default => "", :null => false
+      t.column :name, :string, :limit => 30, :default => "", :null => false
       t.column :description, :string, :default => ""
       t.column :date, :datetime
     end
