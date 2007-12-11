@@ -362,6 +362,16 @@ h1 {
   color: #999;
 }
 
+#content #simple_captcha {
+  margin: 10px 0;
+  padding: 0 9px;
+}
+
+#content #simple_captcha p {
+  margin: 5px 0;
+  padding: 0;
+}
+
 #content #right {
   color: black;
   margin: 0 0 0 90px;
