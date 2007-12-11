@@ -1,7 +1,7 @@
 <h1>Sign up</h1>
-<%= error_messages_for :user %>
+<%= error_messages_for :user, :header_tag => 'h4' %>
 <% form_for :user do |f| -%>
-<p><label for="login">Username</label><br/>
+<p><label for="login">Login (username)</label><br/>
 <%= f.text_field :login %></p>
 
 <p><label for="email">Email</label><br/>
@@ -12,6 +12,8 @@
 
 <p><label for="password_confirmation">Confirm Password</label><br/>
 <%= f.password_field :password_confirmation %></p>
+
+<%= show_simple_captcha %>
 
 <p><%= submit_tag 'Sign up' %></p>
 <% end -%>

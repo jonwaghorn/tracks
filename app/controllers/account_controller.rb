@@ -1,6 +1,6 @@
 class AccountController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
+  #include AuthenticatedSystem
   # If you want "remember me" functionality, add this before_filter to Application Controller
   before_filter :login_from_cookie
 
@@ -25,6 +25,11 @@ class AccountController < ApplicationController
   def signup
     @user = User.new(params[:user])
     return unless request.post?
+    if simple_captcha_valid?
+      puts "VALID"
+    else
+      puts "INVALID"
+    end
     @user.save!
     self.current_user = @user
     redirect_back_or_default(:controller => '/index', :action => 'index')
