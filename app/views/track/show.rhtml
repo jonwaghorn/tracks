@@ -27,7 +27,9 @@
 <p id="left">Grade</p><p id="right"><%= @track.track_grade.name + h(@track.grade_note) %></p>
 <% end %>
 
+<% if @track.track_access %>
 <p id="left">Access</p><p id="right"><%= @track.track_access.name + h(@track.access_note) %></p>
+<% end %>
 
 <% if ! @track.desc_full.empty? %>
 <p id="left">Description</p><p id="right"><%= replace_for_view(h(@track.desc_full)) %></p>
