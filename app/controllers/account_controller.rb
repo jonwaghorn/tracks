@@ -25,15 +25,14 @@ class AccountController < ApplicationController
   def signup
     @user = User.new(params[:user])
     return unless request.post?
-    if simple_captcha_valid?
-      puts "VALID"
+    if @user.valid_with_captcha?
+      @user.save!
+      self.current_user = @user
+      flash[:notice] = "Thanks for signing up!"
+      redirect_back_or_default(:controller => '/index', :action => 'index')
     else
-      puts "INVALID"
+      return
     end
-    @user.save!
-    self.current_user = @user
-    redirect_back_or_default(:controller => '/index', :action => 'index')
-    flash[:notice] = "Thanks for signing up!"
   rescue ActiveRecord::RecordInvalid
     render :action => 'signup'
   end

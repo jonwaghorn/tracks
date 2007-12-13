@@ -8,8 +8,8 @@
 <p> &nbsp;<%= current_user.login %> 
 &nbsp;| <%= link_to 'Log out', :controller => '/account', :action => 'logout' %></p>
 <% else %>
-<p><%= link_to 'Sign up', :controller => '/account', :action => 'signup' %> | 
-<%= link_to 'Log in', :controller => '/account', :action => 'login' %></p>
+<p><% if params[:action] == 'signup' %>Sign up<% else %><%= link_to 'Sign up', :controller => '/account', :action => 'signup' %><% end %> | 
+<% if params[:action] == 'login' %>Log in<% else %><%= link_to 'Log in', :controller => '/account', :action => 'login' %><% end %></p>
 <% end %>
 </div>
 </div>

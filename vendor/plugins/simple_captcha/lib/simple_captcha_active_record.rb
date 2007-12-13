@@ -55,7 +55,7 @@ module SimpleCaptcha #:nodoc
             ret = ret and true
           else
             ret = false
-            self.errors.add(:captcha, "#{@captcha_invalid_message}")
+            self.errors.add_to_base("#{@captcha_invalid_message}")
           end
           simple_captcha_passed!(captcha_code) if ret
           return ret
