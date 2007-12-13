@@ -1,13 +1,13 @@
 class CreateAreas < ActiveRecord::Migration
   def self.up
     create_table :areas do |t|
-      t.column :name, :string, :limit => 30, :default => "", :null => false
-      t.column :state_id, :integer
-      t.column :date, :datetime
-      t.column :description, :string
-      t.column :latitude, :decimal, :precision =>9, :scale => 6, :default => 0
-      t.column :longitude, :decimal, :precision =>9, :scale => 6, :default => 0
-      t.column :zoom, :integer, :default => 0
+      t.string   :name, :limit => 30, :default => "", :null => false
+      t.integer  :state_id
+      t.datetime :date
+      t.text     :description
+      t.decimal  :latitude, :precision =>9, :scale => 6, :default => 0
+      t.decimal  :longitude, :precision =>9, :scale => 6, :default => 0
+      t.integer  :zoom, :default => 0
     end
   end
 

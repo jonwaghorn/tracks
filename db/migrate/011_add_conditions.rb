@@ -1,7 +1,7 @@
 class AddConditions < ActiveRecord::Migration
   def self.up
     create_table :conditions do |t|
-      t.column :name, :string
+      t.string :name
     end
     
     Condition.create :name => 'Single track'

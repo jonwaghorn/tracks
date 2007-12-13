@@ -1,8 +1,8 @@
 class CreateTrackGrades < ActiveRecord::Migration
   def self.up
     create_table :track_grades do |t|
-      t.column :name, :string
-      t.column :description, :string
+      t.string :name
+      t.text   :description
     end
     
     TrackGrade.create :name => 'Beginner', :description => 'Fairly flat, wide and smooth track or gravel road. Suitable for all first-time riders.'

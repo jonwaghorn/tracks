@@ -1,11 +1,11 @@
 class CreateTrackReports < ActiveRecord::Migration
   def self.up
     create_table :track_reports do |t|
-      t.column :track_id, :integer
-      t.column :user_id, :integer
-      t.column :status, :string, :default => 'Green'
-      t.column :description, :string
-      t.column :date, :datetime
+      t.integer  :track_id
+      t.integer  :user_id
+      t.string   :status, :default => 'Green'
+      t.text     :description
+      t.datetime :date
     end
     
     # status settings

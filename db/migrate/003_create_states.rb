@@ -1,14 +1,14 @@
 class CreateStates < ActiveRecord::Migration
   def self.up
     create_table :states do |t|
-      t.column :name, :string, :limit => 30, :default => "", :null => false
-      t.column :nation_id, :integer
-      t.column :date, :datetime
-      t.column :description, :string
-      t.column :rain_readings, :integer
-      t.column :latitude, :decimal, :precision =>9, :scale => 6, :default => 0
-      t.column :longitude, :decimal, :precision =>9, :scale => 6, :default => 0
-      t.column :zoom, :integer, :default => 0
+      t.string   :name, :limit => 30, :default => "", :null => false
+      t.integer  :nation_id
+      t.datetime :date
+      t.text     :description
+      t.integer  :rain_readings
+      t.decimal  :latitude, :precision =>9, :scale => 6, :default => 0
+      t.decimal  :longitude, :precision =>9, :scale => 6, :default => 0
+      t.integer  :zoom, :default => 0
     end
   end
 

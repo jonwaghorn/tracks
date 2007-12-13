@@ -1,8 +1,8 @@
 class CreateTrackConnections < ActiveRecord::Migration
   def self.up
     create_table :track_connections do |t|
-      t.column :track_id, :integer
-      t.column :connect_track_id, :integer
+      t.integer :track_id
+      t.integer :connect_track_id
     end
   end
 

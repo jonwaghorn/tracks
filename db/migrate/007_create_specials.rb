@@ -1,8 +1,8 @@
 class CreateSpecials < ActiveRecord::Migration
   def self.up
     create_table :specials do |t|
-      t.column :name, :string
-      t.column :content, :string
+      t.string :name
+      t.text   :content
     end
     
     Special.create :name => 'Index', :content => 'home fixme'

@@ -1,8 +1,8 @@
 class CreateTrackAccesses < ActiveRecord::Migration
   def self.up
     create_table :track_accesses do |t|
-      t.column :name, :string
-      t.column :description, :string
+      t.string :name
+      t.text   :description
     end
     
     TrackAccess.create :name => 'Bike and Foot', :description => 'Track is open for shared use.'

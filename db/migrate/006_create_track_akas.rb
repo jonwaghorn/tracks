@@ -1,8 +1,8 @@
 class CreateTrackAkas < ActiveRecord::Migration
   def self.up
     create_table :track_akas do |t|
-      t.column :track_id, :integer
-      t.column :name, :string
+      t.integer :track_id
+      t.string  :name, :limit => 40, :default => "", :null => false
     end
   end
 
