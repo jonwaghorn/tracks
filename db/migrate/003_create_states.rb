@@ -5,7 +5,7 @@ class CreateStates < ActiveRecord::Migration
       t.integer  :nation_id
       t.datetime :date
       t.text     :description
-      t.integer  :rain_readings
+      t.integer  :rain_readings, :default => 0
       t.decimal  :latitude, :precision =>9, :scale => 6, :default => 0
       t.decimal  :longitude, :precision =>9, :scale => 6, :default => 0
       t.integer  :zoom, :default => 0
