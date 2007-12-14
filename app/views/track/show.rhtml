@@ -43,19 +43,19 @@
 <p id="left">Note</p><p id="right"><%= replace_for_view(h(@track.desc_note)) %></p>
 <% end %>
 
-<% if @track.alt_gain != 0 %>
+<% if ! @track.alt_gain.nil? %>
 <p id="left">Altitude gain</p><p id="right"><%= @track.alt_gain %></p>
 <% end %>
 
-<% if @track.alt_loss != 0 %>
+<% if ! @track.alt_loss.nil? %>
 <p id="left">Altitude loss</p><p id="right"><%= @track.alt_loss %></p>
 <% end %>
 
-<% if @track.alt_begin != 0 %>
+<% if ! @track.alt_begin.nil? %>
 <p id="left">Altitude begin</p><p id="right"><%= @track.alt_begin %></p>
 <% end %>
 
-<% if @track.alt_end != 0 %>
+<% if ! @track.alt_end.nil? %>
 <p id="left">Altitude end</p><p id="right"><%= @track.alt_end %></p>
 <% end %>
 

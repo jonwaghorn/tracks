@@ -10,10 +10,10 @@ class CreateTracks < ActiveRecord::Migration
       t.text     :desc_where
       t.text     :desc_note
       t.decimal  :length, :precision =>5, :scale => 2, :default => 0.0
-      t.integer  :alt_gain, :default => 0
-      t.integer  :alt_loss, :default => 0
-      t.integer  :alt_begin, :default => 0
-      t.integer  :alt_end, :default => 0
+      t.integer  :alt_gain
+      t.integer  :alt_loss
+      t.integer  :alt_begin
+      t.integer  :alt_end
       t.string   :alt_note
       t.integer  :grade
       t.string   :grade_note
