@@ -1,5 +1,4 @@
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAcf2swa3N5AjR_VfjObM4WRTo5PkCymPKYbD5njA8s_yTDiHDqRTz9YTaVQ-_dNND_7AmaE37ko61FQ"
-        type="text/javascript"></script>
+<%= render :partial => 'shared/map_head' %>
 <script type="text/javascript">
 //<![CDATA[
 function load(lt,ln,zm) {
@@ -7,8 +6,8 @@ function load(lt,ln,zm) {
     if (!zm) {lt = -41.284514; ln = 174.774627; zm = 11;}
     var map = new GMap2(document.getElementById("map"));
     var icon = new GIcon();
-    icon.image = "http://202.180.64.61/~jon.waghorn/tracks/images/mm_20_orange.png";
-    icon.shadow = "http://202.180.64.61/~jon.waghorn/tracks/images/mm_20_shadow.png";
+    icon.image = "http://www.cheekymonkey.co.nz/images/mm_20_orange.png";
+    icon.shadow = "http://www.cheekymonkey.co.nz/images/mm_20_shadow.png";
     icon.iconSize = new GSize(12, 20);
     icon.shadowSize = new GSize(22, 20);
     icon.iconAnchor = new GPoint(6, 20);
