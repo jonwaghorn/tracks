@@ -1,6 +1,6 @@
 class Area < ActiveRecord::Base
   belongs_to :state
-  has_many :tracks
+  has_many :tracks, :order => 'name'
 
   validates_presence_of   :name
   validates_format_of     :name, :with => /^\w+$/i, :message => 'can only contain letters and numbers.'

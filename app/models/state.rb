@@ -1,5 +1,5 @@
 class State < ActiveRecord::Base
-  has_many :areas
+  has_many :areas, :order => 'name'
   belongs_to :nation
 
   validates_presence_of     :name

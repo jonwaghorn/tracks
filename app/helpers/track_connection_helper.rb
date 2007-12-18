@@ -1,2 +1,2 @@
-module TrackConnectionsHelper
+module TrackConnectionHelper
 end
