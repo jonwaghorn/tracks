@@ -7,7 +7,7 @@ class Track < ActiveRecord::Base
   has_many :track_connections
 
   validates_presence_of   :name
-  validates_format_of     :name, :with => /^\w+$/i, :message => 'can only contain letters and numbers.'
+  validates_format_of     :name, :with => /^[\w ]+$/i, :message => 'can only contain letters and numbers (and spaces).'
   validates_length_of     :name, :maximum => 40, :message => 'Track name too long, maximum is 40 characters.'
   validates_uniqueness_of :name
   validates_presence_of   :desc_brief
