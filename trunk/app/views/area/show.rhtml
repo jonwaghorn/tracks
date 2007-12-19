@@ -1,0 +1,23 @@
+<h1><%= @area.name %></h1>
+<% if :notice %><p class="notice"><%= flash[:notice] %></p><% end %>
+<p><%= replace_for_view(h(@area.description)) %></p>
+
+<h2>Track type/distance summary</h2><h3>&nbsp;</h3>
+<% total_len = 0 %>
+<p><% track_length_summary(@area.id).collect do |id, length| %>
+<%= Condition.find(:first, :select => 'name', :conditions => ["id = ?", id]).name %>: <%= length %>km<br/>
+<% total_len += length %>
+<% end %></p>
+<p>Total: <%= total_len %>km</p>
+
+<% if @area.zoom != 0 %>
+<h2>Tracks</h2><h3>&nbsp;</h3>
+<div id="map" style="width: 500px; height: 400px"></div>
+<% end %>
+
+<hr size=1 color=#ccc>
+<p id="edit"><%= link_to 'Edit', :action => 'edit', :id => @area %>
+<% if logged_in? && creator? %>
+ | <%= link_to 'Add track', :controller => 'track', :action => 'new', :area_id => @area.id, :area_name => @area.name %>
+<% end %>
+<% if ! logged_in? %> (requires login)<% end %></p>

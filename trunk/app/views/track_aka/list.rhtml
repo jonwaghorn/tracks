@@ -1,0 +1,20 @@
+<h1>'Also known as' list for <%= params[:track_name] %></h1>
+
+<table>
+  <tr>
+    <th>Also known as</th>
+  </tr>
+  
+<% for track_aka in TrackAka.find(:all, :conditions => ["track_id = ?", params[:track_id]]) %>
+  <tr>
+    <td><%=h track_aka.name %></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => track_aka, :track_name => params[:track_name], :track_id => params[:track_id] %> |
+    <%= link_to 'Delete', { :action => 'destroy', :id => track_aka, :track_id => params[:track_id] }, :confirm => 'Are you sure?', :method => :post %></td>
+  </tr>
+<% end %>
+</table>
+
+<p><%= link_to 'New', :controller => 'track_aka', :action => 'new', :track_name => params[:track_name], :track_id => params[:track_id] %> 'also known as' for <%= params[:track_name] %></p>
+
+<hr size=1 color=#ccc>
+<p><%= link_to 'Back', :controller => 'track', :action => 'edit', :id => params[:track_id] %></p>

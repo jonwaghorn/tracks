@@ -1,0 +1,9 @@
+<div id="nav_outer"><div id="nav"><h1>Track Reports</h1>
+<p id='edit'><%= link_to 'Add report', { :controller => 'track_report', :action => 'new', :track_name => @track.name, :track_id => @track.id } %><% if ! logged_in? %> (requires login)<% end %></p>
+<% for track_report in TrackReport.find_recent(@track.id) do %>
+<% login = User.find(track_report.user_id, :select => 'login').login %>
+<p id="date"><%= login %>, <%= track_report.date.strftime("%d %b %Y").gsub(/^0/, '') %></p>
+<p><%= replace_for_view(h(track_report.description)) %>
+<% if logged_in? && (creator? || current_user.login == login) %> (<%= link_to 'Edit', { :controller => 'track_report', :action => 'edit', :id => track_report.id, :track_id => @track.id } %><% if creator? %>|<%= link_to 'Delete', { :controller => 'track_report', :action => 'destroy', :id => track_report.id }, :confirm => 'Are you sure?', :method => :post %><% end %>)<% end %></p>
+<% end %>
+</div></div>

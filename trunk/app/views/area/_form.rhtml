@@ -1,0 +1,23 @@
+<%= error_messages_for 'area', :header_tag => 'h4' %>
+
+<!--[form:area]-->
+<p><label for="area_name">Name</label><br/>
+<%= text_field 'area', 'name'  %></p>
+
+<p><label for="area_state_id">State</label><br/>
+<% if params[:action] == 'new' %>
+  <%= text_field 'area', 'state_id', :value => params[:state_name], :disabled => true %>
+<% else %>
+  <%= select 'area', 'state_id', State.find(:all).collect {|c| [c.name, c.id] } %>
+<% end %>
+</p>
+
+<p><label for="area_description">Description</label><br/>
+<%= text_area 'area', 'description', "cols" => 70, "rows" => 10 %></p>
+
+<p><label>Map</label>
+<div id="map" style="width: 500px; height: 400px"></div></p>
+<p><label>Latitude </label><%= text_field 'area', 'latitude', :id => "area_latitude", :size => 15 %>
+<label>Longitude </label><%= text_field 'area', 'longitude', :id => "area_longitude", :size => 15 %>
+<label>Zoom </label><%= text_field 'area', 'zoom', :id => "area_zoom", :size => 4 %></p>
+<!--[eoform:area]-->

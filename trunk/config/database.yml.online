@@ -1,0 +1,6 @@
+production:
+  adapter: mysql
+  database: cheekym_tracks
+  username: cheekym_root
+  password: vgy76TFC
+  socket: /tmp/mysql.sock

@@ -1,0 +1,47 @@
+/* Alternative CSS for IE 5, 5.5, and 6. This is basically work-arounds for IE non-compilance... */
+
+#foot_c {
+	padding-bottom: 8px;
+}
+
+#column_one {
+	display: inline;
+}
+
+#column_two #left {
+	display: inline;
+}
+
+#nav li #current_c {
+	background: url('../images/current_ie_c.png') repeat-y;
+	margin: 0 0 0 1px;
+}
+
+#nav li #current_t {
+	background: url('../images/current_ie_t.png') no-repeat left top;
+	height: 0;
+	margin-top: 0;
+	padding-top: 0;
+}
+
+#nav li #current_b {
+	background: url('../images/current_ie_b.png') no-repeat left bottom;
+	height: 0;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+#nav h2 {
+	display: inline;
+	height: 20px;
+}
+
+#content h1 {
+	margin-left: -3px;
+}
+
+#content h2 {
+	display: inline;
+	height: 20px;
+	margin-right: -3px;
+}

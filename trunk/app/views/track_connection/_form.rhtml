@@ -1,0 +1,4 @@
+<%= error_messages_for 'track_connection', :header_tag => 'h4' %>
+<!--[form:track_connection]-->
+<p><%= select 'track_connection', 'connect_track_id', Track.find(:all, :select => 'name, id').collect {|c| [c.name, c.id] } %></p>
+<!--[eoform:track_connection]-->

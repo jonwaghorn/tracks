@@ -1,0 +1,14 @@
+<% if params[:action] == 'new' %>
+<% state = State.find(:first, :conditions => ["id = ?", params[:state_id]]) %>
+<% area_name = 'New area (edit)' %>
+<% else %>
+<% mode = params[:action] == 'edit' ? ' (edit)' : '' %>
+<% state = @area.state %>
+<% area_name = @area.name + mode %>
+<% end %>
+
+<li><%= link_to state.name, { :controller => 'state', :action => 'show', :id => state.id }, :id => 'state' %></li>
+<%= render :partial => 'shared/nav_current', :locals => { :id => 'area', :current => area_name } %>
+<% for track in @area.tracks %>
+<li><%= link_to track.name, { :controller => 'track', :action => 'show', :id => track.id }, :id => 'track' %></li>
+<% end %>
