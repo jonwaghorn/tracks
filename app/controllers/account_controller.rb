@@ -17,6 +17,8 @@ class AccountController < ApplicationController
       end
       redirect_back_or_default(:controller => '/index', :action => 'index')
       flash[:notice] = "Logged in successfully"
+    else
+      flash[:notice] = "Problem with log in, re-enter your username and password"
     end
   end
 
