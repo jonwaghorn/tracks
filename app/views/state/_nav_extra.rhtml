@@ -1,5 +1,23 @@
+<div id="nav_outer"><div id="nav"><h1>Latest Updated Tracks</h1>
+<% for track in Track.find_recent do %>
+<p><%= link_to track.name, { :controller => 'track', :action => 'show', :id => track.id} %><span id="date"> (<%= track.date.to_s(:tracks).gsub(/^0/, '') %>)</span></p>
+<% end %>
+</div></div>
 <% if @state.rain_readings > 0 %>
 <div id="nav_outer"><div id="nav"><h1>Recent Rainfall</h1>
-<p>Coming soon.</p>
+<% rain_readings = StateRainReading.find(:all, :conditions => ["state_id = ?", @state.id], :select => 'mm, date', :limit => @state.rain_readings, :order => 'date DESC') %>
+<p>Rainfall in mm for previous <%= @state.rain_readings %> days, most recent last. Current to 9am <%= rain_readings[0].date.to_s(:tracks).gsub(/^0/, '') %>.</p>
+<table id="rainfall" border="0" cellpadding="0" cellspacing="0"><tbody>
+<tr><td class="c1"><b>mm</b></td><td id="ruler">&nbsp;</td><td class="c1">&nbsp;</td></tr>
+  <% for rain_reading in rain_readings.reverse do %>
+    <tr><td class="c1"><%= rain_reading.mm %></td><td>
+      <% if rain_reading.mm > 15.1 %>
+        <img style="width: 151px; height: 7px;" alt="" src="/images/1x1black.png"></td><td class="c1">&nbsp;+
+      <% else %>
+        <img style="width: <%= rain_reading.mm * 10 %>px; height: 7px;" alt="" src="/images/1x1black.png">
+      <% end %>
+    </td></tr>
+  <% end %>
+</tbody></table>
 </div></div>
 <% end %>

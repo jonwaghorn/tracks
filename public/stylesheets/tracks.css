@@ -33,12 +33,12 @@ a:link img, a:visited img { border-style: none } /* no border on img links */
 }
 
 #bg_left {
-  background: #999 url('../images/bg_left.png') repeat-y right;
+  background: #999 url('/images/bg_left.png') repeat-y right;
   width: 5%;
 }
 
 #bg_right {
-  background: #999 url('../images/bg_right.png') repeat-y left;
+  background: #999 url('/images/bg_right.png') repeat-y left;
   width: 5%;
 }
 
@@ -50,16 +50,16 @@ a:link img, a:visited img { border-style: none } /* no border on img links */
 
 #head_l {
   margin-bottom: 10px;
-  background: url('../images/title_l.png') no-repeat left;
+  background: url('/images/title_l.png') no-repeat left;
 }
 
 #head_r {
-  background: url('../images/title_r.png') no-repeat right;
+  background: url('/images/title_r.png') no-repeat right;
   height: 90px;
 }
 
 #head {
-  background: url('../images/title_c.png') repeat-x;
+  background: url('/images/title_c.png') repeat-x;
   margin: 0 8px 0 8px;
   font: bolder 46px 'Lucida Grande', Geneva, Arial, Verdana, sans-serif;
   color: white;
@@ -78,7 +78,7 @@ a:link img, a:visited img { border-style: none } /* no border on img links */
 }
 
 #foot_l {
-  background: url('../images/copy_l.png') no-repeat left;
+  background: url('/images/copy_l.png') no-repeat left;
 }
 
 #title {
@@ -86,7 +86,7 @@ a:link img, a:visited img { border-style: none } /* no border on img links */
 }
 
 #head #auth {
-  background: url('../images/title_link_l.png') center left no-repeat;
+  background: url('/images/title_link_l.png') center left no-repeat;
   font-size: 12px;
   color: #999;
   float: right;
@@ -96,7 +96,7 @@ a:link img, a:visited img { border-style: none } /* no border on img links */
 }
 
 #head #auth p {
-  background: url('../images/title_link_r.png') center right no-repeat;
+  background: url('/images/title_link_r.png') center right no-repeat;
   padding-top: 2px;
   padding-right: 10px;
   padding-bottom: 3px;
@@ -124,12 +124,12 @@ a:link img, a:visited img { border-style: none } /* no border on img links */
 }
 
 #foot_r {
-  background: url('../images/copy_r.png') no-repeat right;
+  background: url('/images/copy_r.png') no-repeat right;
   height: 30px;
 }
 
 #foot_c {
-  background: url('../images/copy_c.png') repeat-x;
+  background: url('/images/copy_c.png') repeat-x;
   margin: 0 8px 0 8px;
   font: 13px 'Lucida Grande', Geneva, Arial, Verdana, sans-serif;
   color: #ddd;
@@ -141,6 +141,7 @@ a:link img, a:visited img { border-style: none } /* no border on img links */
   text-align: right;
   font-size: 9px;
   font-style: italic;
+  color: #666;
 }
 
 #column_one {
@@ -186,18 +187,18 @@ a:link img, a:visited img { border-style: none } /* no border on img links */
 }
 
 #nav li #current_t {
-  background: url('../images/current_t.png') no-repeat top right;
+  background: url('/images/current_t.png') no-repeat top right;
   margin-top: -4px;
   padding-top: 4px;
 }
 
 #nav li #current_c {
-  background: url('../images/current_c.png') no-repeat right;
+  background: url('/images/current_c.png') no-repeat right;
   margin-right: -13px;
 }
 
 #nav li #current_b {
-  background: url('../images/current_b.png') no-repeat bottom right;
+  background: url('/images/current_b.png') no-repeat bottom right;
   margin-bottom: -4px;
   padding-bottom: 4px;
 }
@@ -209,7 +210,7 @@ a:link img, a:visited img { border-style: none } /* no border on img links */
 }
 
 #nav li a:hover {
-  background: #ccc url('../images/arrow.png') no-repeat right;
+  background: #ccc url('/images/arrow.png') no-repeat right;
 }
 
 #nav #date {
@@ -239,7 +240,7 @@ a:link img, a:visited img { border-style: none } /* no border on img links */
 
 #nav h2 {
   float: left;
-  background: #777 url('../images/nav_div.png') no-repeat right top;
+  background: #777 url('/images/nav_div.png') no-repeat right top;
   font: bold 12px 'Lucida Grande', Geneva, Arial, Verdana, sans-serif;
   color: white;
   height: 18px;
@@ -273,7 +274,7 @@ a:link img, a:visited img { border-style: none } /* no border on img links */
 }
 
 h1 {
-  background: url('../images/h1_bar.png') repeat-x top;
+  background: url('/images/h1_bar.png') repeat-x top;
   font: bold 13px 'Lucida Grande', Geneva, Arial, Verdana, sans-serif;
   color: white;
   height: 25px;
@@ -319,7 +320,7 @@ h1 {
 #content h2 {
   float: left;
   font: bold 12px 'Lucida Grande', Geneva, Arial, Verdana, sans-serif;
-  background: #999 url('../images/content_div.png') no-repeat right top;
+  background: #999 url('/images/content_div.png') no-repeat right top;
   color: white;
   height: 18px;
   margin: 0;

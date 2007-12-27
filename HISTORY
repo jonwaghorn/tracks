@@ -1,2 +1,11 @@
+0.2.0 2007-12-28
+	- Tidied up front page and added Track Updates to state
+	- Removed status from track_reports
+	- Added new datetime formatter, and use of it
+  - Fixed timezone to be local to NZ
+	- Alphabetise various track lists
+	- Display rainfall graph
+	- Better feedback when login fails
+
 0.1.0 2007-12-19
- - Initial release
+	- Initial release

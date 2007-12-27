@@ -14,19 +14,10 @@
 
 <% if params[:action] != 'new' %>
 <p><label for="track_area_id">Also known as</label><br/>
-<% akas = TrackAka.find(:all, :conditions => ["track_id = ?", @track.id]) %>
-<% if akas.size > 0 %>
-<% aka_formatted = '' %>
-<% if akas.size > 1 %>
-<% akas[0...akas.size-1].collect do |a| aka_formatted += a.name + ', ' %><% end %>
-<% end %>
-<% aka_formatted += akas[-1].name %>
-<%= aka_formatted %>
-(<%= link_to 'Edit', :controller => 'track_aka', :action => 'list', :track_id => @track.id, :track_name => @track.name %> |
-<%= link_to 'New', :controller => 'track_aka', :action => 'new', :track_id => @track.id, :track_name => @track.name %>)
-<% else %>
-(<%= link_to 'New', :controller => 'track_aka', :action => 'new', :track_id => @track.id, :track_name => @track.name %>)
-<% end %>
+<% aka_names = TrackAka.find(:all, :conditions => ["track_id = ?", @track.id], :select => 'name').collect {|a| a.name} %>
+<% if ! aka_names.empty? %>
+<%= aka_names.to_sentence %>
+(<%= link_to 'Edit', :controller => 'track_aka', :action => 'list', :track_id => @track.id, :track_name => @track.name %>|<% else %>(<% end %><%= link_to 'New', :controller => 'track_aka', :action => 'new', :track_id => @track.id, :track_name => @track.name %>)
 </p>
 <% end %>
 
@@ -109,4 +100,3 @@
 <label>Longitude </label><%= text_field 'track', 'longitude', :id => "track_longitude", :size => 15 %>
 <label>Zoom </label><%= text_field 'track', 'zoom', :id => "track_zoom", :size => 4 %></p>
 <!--[eoform:track]-->
-
