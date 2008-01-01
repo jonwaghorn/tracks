@@ -77,10 +77,6 @@ a:link img, a:visited img { border-style: none } /* no border on img links */
   color: white;
 }
 
-#foot_l {
-  background: url('/images/copy_l.png') no-repeat left;
-}
-
 #title {
   float: left;
 }
@@ -123,6 +119,10 @@ a:link img, a:visited img { border-style: none } /* no border on img links */
   margin-right: 10px;
 }
 
+#foot_l {
+  background: url('/images/copy_l.png') no-repeat left;
+}
+
 #foot_r {
   background: url('/images/copy_r.png') no-repeat right;
   height: 30px;
@@ -130,11 +130,17 @@ a:link img, a:visited img { border-style: none } /* no border on img links */
 
 #foot_c {
   background: url('/images/copy_c.png') repeat-x;
-  margin: 0 8px 0 8px;
+  margin: 0 8px;
   font: 13px 'Lucida Grande', Geneva, Arial, Verdana, sans-serif;
   color: #ddd;
   padding-top: 6px;
   height: 30px;
+}
+
+#foot_c a {
+  background: transparent;
+  color: #ccc;
+  font-weight: bold;
 }
 
 #date {

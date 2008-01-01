@@ -10,6 +10,7 @@ module ApplicationHelper
 #    puts 'LINE = ' + line
     # general replacements
     line = line.gsub(/\[\[br\]\]/, '<br/>') # [[br]] => html break
+    line = line.gsub(/\[\[para\]\]/, '<br/><br/>') # [[para]] => html break * 2
     line = line.gsub(/\[\[h1:(.*?)\]\]/, '</p><h2>\1</h2><h3>&nbsp;</h3><p>') # [[h1:Heading]] => heading 1
     line = line.gsub(/\[\[h2:(.*?)\]\]/, '</p><p><b>\1</b></p><p>') # [[h2:Heading]] => heading 2
 

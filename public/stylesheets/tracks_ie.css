@@ -1,7 +1,19 @@
 /* Alternative CSS for IE 5, 5.5, and 6. This is basically work-arounds for IE non-compilance... */
 
+#head {
+  height: 74px;
+}
+
+#head #auth {
+  margin-top: 42px;
+}
+
+#foot_l {
+  margin-top: -10px;
+}
+
 #foot_c {
-	padding-bottom: 8px;
+  height: 24px;
 }
 
 #column_one {
@@ -33,15 +45,17 @@
 
 #nav h2 {
 	display: inline;
-	height: 20px;
+}
+
+#nav #rainfall {
+  padding-bottom: 1px;
 }
 
 #content h1 {
-	margin-left: -3px;
+  margin-left: -3px;
 }
 
 #content h2 {
 	display: inline;
-	height: 20px;
 	margin-right: -3px;
 }
