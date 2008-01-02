@@ -1,3 +1,6 @@
+0.3.1 2008-1-2
+	- Another tweak for IE view
+
 0.3.0 2008-1-1
 	- Tweaked IE css to make it look better. Why does IE suck so much?
 	- Add discreet link to this history page

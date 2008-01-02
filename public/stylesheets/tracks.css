@@ -302,8 +302,7 @@ h1 {
   background: white;
   border: 1px solid #999;
   padding: 1px;
-  max-width: 800px;
-  min-width: 600px;
+  width: 600px;
   min-height: 129px;
   margin-bottom: 10px;
 }
