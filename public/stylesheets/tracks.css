@@ -240,6 +240,10 @@ a:link img, a:visited img { border-style: none } /* no border on img links */
   padding-left: 39px;
 }
 
+#nav #sub_track {
+  padding-left: 49px;
+}
+
 #nav #connect {
   padding-left: 24px;
 }
@@ -316,6 +320,14 @@ h1 {
 #content table {
   margin: 5px 0;
   padding: 0 9px;
+}
+
+#content th {
+  text-align: left;
+}
+
+#content tr {
+  vertical-align: top;
 }
 
 #content p#edit {

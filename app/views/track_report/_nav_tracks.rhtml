@@ -1,4 +1,7 @@
 <% track = Track.find(:first, :conditions => ["id = ?", params[:track_id]]) %>
 <li><%= link_to track.area.state.name, { :controller => 'state', :action => 'show', :id => track.area.state.id }, :id => 'state' %></li>
 <li><%= link_to track.area.name, { :controller => 'area', :action => 'show', :id => track.area.id }, :id => 'area' %></li>
-<%= render :partial => 'shared/nav_current', :locals => { :id => 'track', :current => track.name + ' (edit)' } %>
+<li><%= link_to track.name, { :controller => 'track', :action => 'show', :id => track.id }, :id => 'track' %></li>
+<% edit = '' %>
+<% if params[:action] == 'new' %><% edit = ' (edit)' %><% end %>
+<%= render :partial => 'shared/nav_current', :locals => { :id => 'sub_track', :current => 'Reports' + edit } %>

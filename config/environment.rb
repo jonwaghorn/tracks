@@ -60,5 +60,6 @@ Rails::Initializer.run do |config|
 end
 
 ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(
-  :tracks => "%d %b %Y"
+  :tracks => "%d %b %Y",
+  :concise => "%y-%m-%d"
 )

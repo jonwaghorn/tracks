@@ -1,12 +1,17 @@
-0.3.1 2008-1-2
+0.4.0	2008-1-6
+	- General tidy up around Track Reports
+	- Added browse back for old track reports
+	- Added "What's new" to index
+
+0.3.1	2008-1-2
 	- Another tweak for IE view
 
-0.3.0 2008-1-1
+0.3.0	2008-1-1
 	- Tweaked IE css to make it look better. Why does IE suck so much?
 	- Add discreet link to this history page
 	- Allow for [[para]] in text bodies
 
-0.2.0 2007-12-28
+0.2.0	2007-12-28
 	- Tidied up front page and added Track Updates to state
 	- Removed status from track_reports
 	- Added new datetime formatter, and use of it
@@ -15,5 +20,5 @@
 	- Display rainfall graph
 	- Better feedback when login fails
 
-0.1.0 2007-12-19
+0.1.0	2007-12-19
 	- Initial release. A lot of this came from a previous incarnation but this is my first version using ruby on rails.
