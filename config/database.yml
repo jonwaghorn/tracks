@@ -30,7 +30,7 @@ test:
   encoding: utf8
   database: tracks_test
   username: root
-  password:
+  password: zaq12WSX
   socket: /tmp/mysql.sock
 
 production:
