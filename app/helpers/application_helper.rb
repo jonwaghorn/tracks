@@ -13,6 +13,7 @@ module ApplicationHelper
     line = line.gsub(/\[\[para\]\]/, '<br/><br/>') # [[para]] => html break * 2
     line = line.gsub(/\[\[h1:(.*?)\]\]/, '</p><h2>\1</h2><h3>&nbsp;</h3><p>') # [[h1:Heading]] => heading 1
     line = line.gsub(/\[\[h2:(.*?)\]\]/, '</p><p><b>\1</b></p><p>') # [[h2:Heading]] => heading 2
+    line = line.gsub(/\[\[link:(.*?):(.*?)\]\]/, '<a href="/\2">\1</a>') # [[link:Name:local_link]] => local href
 
     # special id => name replacements
     items = find_id_replacements(line)

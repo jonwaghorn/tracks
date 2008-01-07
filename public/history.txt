@@ -1,3 +1,6 @@
+0.4.1 2008-1-7
+	- Tweak linking thingy
+
 0.4.0	2008-1-6
 	- General tidy up around Track Reports
 	- Added browse back for old track reports
