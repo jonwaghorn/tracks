@@ -6,4 +6,5 @@
 <% track_name = Track.find(:first, :conditions => ["id = ?", track_report.track_id], :select => 'name').name %>
 <p><%= link_to track_name, :controller => 'track', :action => 'show', :id => track_report.track_id %>: <%= track_report.description[0..80] %><% if track_report.description.length > 80 %>...<% end %></p>
 <% end %>
+<p><a href="/index/rss" title="Subscribe to recent track reports" rel="alternate" type="application/rss+xml"><img align="absbottom" src="/images/feed.png" alt=""/> RSS Feed</a></p>
 <%= render :partial => 'shared/edit_admin' %>

@@ -26,4 +26,10 @@ class IndexController < ApplicationController
       render :action => 'edit'
     end
   end
+
+  def rss
+    @track_reports = TrackReport.find_recent(limit = 5)
+    render  :layout =>  false
+  end
+
 end

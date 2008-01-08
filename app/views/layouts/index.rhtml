@@ -7,6 +7,7 @@
 <title>Tracks: Home</title>
 <%= stylesheet_link_tag 'tracks' %>
 <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+<%= auto_discovery_link_tag(:rss, :action => 'rss') %>
 <%= render :partial => 'shared/ie' %>
 </head>
 <body>

@@ -1,3 +1,6 @@
+0.5.0 2008-1-8
+	- RSS feed of recent track changes
+
 0.4.1 2008-1-7
 	- Tweak linking thingy
 
