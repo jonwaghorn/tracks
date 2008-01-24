@@ -1,0 +1,5 @@
+page.replace_html("rain_#{@state_rain_reading.id}", :partial => "row")
+
+page["rain_#{@state_rain_reading.id}"].visual_effect :highlight,
+                                                   :startcolor => "#ffffaa",
+                                                   :endcolor => "#999999"

@@ -1,0 +1,1 @@
+page.replace_html("rain_#{@state_rain_reading.id}", :partial => "edit")

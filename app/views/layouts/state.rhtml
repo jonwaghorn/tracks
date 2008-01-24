@@ -13,6 +13,7 @@
 <% else %>
 <%= render :partial => 'map_edit' %>
 <% end %>
+<%= javascript_include_tag :defaults %>
 </head>
 <body onload="load(<%= @state.latitude %>,<%= @state.longitude %>,<%= @state.zoom %>)" onunload="GUnload()">
 <table id="bg" cellspacing=0>

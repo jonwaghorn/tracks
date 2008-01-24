@@ -1,0 +1,2 @@
+module StateRainReadingsHelper
+end
