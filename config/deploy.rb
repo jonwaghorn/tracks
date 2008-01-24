@@ -10,9 +10,9 @@ set :repository,  "/Users/Jonny/svnroot"
 # your SCM below:
 # set :scm, :subversion
 
-role :app, "www.cheekymonkey.co.nz"
-role :web, "www.cheekymonkey.co.nz"
-role :db,  "www.cheekymonkey.co.nz", :primary => true
+role :app, "www.tracks.org.nz"
+role :web, "www.tracks.org.nz"
+role :db,  "www.tracks.org.nz", :primary => true
 
 task :restart_web_server, :roles => :web do
   # restart your web server here
