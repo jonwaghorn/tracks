@@ -77,8 +77,9 @@ a:link img, a:visited img { border-style: none } /* no border on img links */
   color: white;
 }
 
-#title {
+#logo {
   float: left;
+  padding-top: 8px;
 }
 
 #head #auth {
@@ -281,6 +282,22 @@ a:link img, a:visited img { border-style: none } /* no border on img links */
 #nav #rainfall #ruler {
   background: url("../images/ruler.png") repeat-x;
   height: 8px;
+}
+
+#nav #rainfall a {
+  font-weight: normal;
+  color: #ccc;
+}
+
+#nav #rainfall a:hover {
+  font-weight: normal;
+  background: #ccc;
+  color: #f48a00;
+}
+
+#nav #rainfall form {
+  border: solid 1px;
+  padding: 4px;
 }
 
 h1 {

@@ -4,3 +4,6 @@ Finish validations
 Add track paths, including upload path file
 Finish email registration
 Modify "add connector" to add from sidebar, more natural
+Search: tracks, track_akas, areas, states (area_akas?)
+Add area_akas?
+Fix the whole page centering thing, go wide, maybe 1000 pixels...

@@ -1,7 +1,13 @@
-0.5.0 2008-1-8
+0.6.0	2008-1-24
+	- Migrated from cheekymoneky.co.nz to tracks.org.nz
+	- Added some javascripty goodness to admins, as an exploration into js
+	- Fixed rss track links
+	- Fix rainfal on state when no reading available
+
+0.5.0	2008-1-8
 	- RSS feed of recent track changes
 
-0.4.1 2008-1-7
+0.4.1	2008-1-7
 	- Tweak linking thingy
 
 0.4.0	2008-1-6
