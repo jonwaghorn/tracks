@@ -22,6 +22,7 @@ class StateController < ApplicationController
   def create
     @state = State.new(params[:state])
     @state.date = Time.now
+    update_user_edit_stats(current_user.id)
     if @state.save
       flash[:notice] = @state.name + ' was successfully created.'
       redirect_to :action => 'list'
@@ -39,6 +40,7 @@ class StateController < ApplicationController
     @state = State.find(params[:id])
     params[:state][:description] = replace_for_update(params[:state][:description])
     @state.date = Time.now
+    update_user_edit_stats(current_user.id)
     if @state.update_attributes(params[:state])
       flash[:notice] = @state.name + ' was successfully updated.'
       redirect_to :action => 'show', :id => @state

@@ -12,7 +12,6 @@ class StateRainReadingsController < ApplicationController
   end
 
   def update_rain
-    puts 'UPDATE: GOT ID = ' + params[:id].to_s
     @state_rain_reading = StateRainReading.find(params[:id])
     if !@state_rain_reading.update_attributes(params[:state_rain_reading])
       render :action => 'edit'

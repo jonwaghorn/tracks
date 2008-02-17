@@ -24,6 +24,7 @@ class TrackController < ApplicationController
     @track.area_id = params[:area_id]
     @track.author = current_user.id
     @track.date = Time.now
+    update_user_edit_stats(current_user.id)
     if @track.save
       flash[:notice] = @track.name + ' was successfully created.'
       redirect_to :action => 'show', :id => @track
@@ -47,6 +48,7 @@ class TrackController < ApplicationController
     params[:track][:desc_where] = replace_for_update(params[:track][:desc_where])
     params[:track][:desc_note] = replace_for_update(params[:track][:desc_note])
     @track.author = current_user.id
+    update_user_edit_stats(current_user.id)
     @track.date = Time.now
     if @track.update_attributes(params[:track])
       flash[:notice] = @track.name + ' was successfully updated.'
@@ -54,6 +56,18 @@ class TrackController < ApplicationController
     else
       render :action => 'edit'
     end
+  end
+
+  def upload
+    @track = Track.find(params[:id])
+  end
+
+  def save_path
+    @track = Track.find(params[:id])
+    File.open(@track.full_filename, "wb") do |f|
+      f.write(params[:path_file].read)
+    end
+    redirect_to :action => 'show', :id => @track.id
   end
 
   def destroy

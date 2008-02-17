@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class TrackTest < Test::Unit::TestCase
-  fixtures :tracks
+class TrackTest < ActiveSupport::TestCase
+  #fixtures :tracks
 
   # Replace this with your real tests.
   def test_truth

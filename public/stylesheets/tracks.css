@@ -34,12 +34,12 @@ a:link img, a:visited img { border-style: none } /* no border on img links */
 
 #bg_left {
   background: #999 url('/images/bg_left.png') repeat-y right;
-  width: 5%;
+  width: 50%;
 }
 
 #bg_right {
   background: #999 url('/images/bg_right.png') repeat-y left;
-  width: 5%;
+  width: 50%;
 }
 
 #container {

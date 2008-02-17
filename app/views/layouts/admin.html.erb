@@ -4,18 +4,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-<title>Tracks: <%= @track.name %></title>
+<title>Tracks: ADMIN</title>
 <%= stylesheet_link_tag 'tracks' %>
 <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
 <%= render :partial => 'shared/ie' %>
-<% if params[:action] == 'show' %>
-<%= render :partial => 'map_show' %>
-<% else %>
-<%= render :partial => 'map_edit' %>
-<% end %>
-<%= javascript_include_tag :defaults %>
 </head>
-<body onload="load(<%= @track.latitude %>,<%= @track.longitude %>,<%= @track.zoom %>)" onunload="GUnload()">
+<body>
 <table id="bg" cellspacing=0>
 <tr>
 <td id="bg_left"></td>

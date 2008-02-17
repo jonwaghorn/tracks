@@ -19,6 +19,7 @@ class IndexController < ApplicationController
   def update
     @special = Special.find(params[:id])
     params[:special][:content] = replace_for_update(params[:special][:content])
+    update_user_edit_stats(current_user.id)
     if @special.update_attributes(params[:special])
       flash[:notice] = 'Home was successfully updated.'
       redirect_to :action => 'index'

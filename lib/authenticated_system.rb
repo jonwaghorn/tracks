@@ -64,6 +64,10 @@ module AuthenticatedSystem
       self.current_user ||= User.authenticate(username, passwd) || :false if username && passwd
       logged_in? && authorized? ? true : access_denied
     end
+
+    def admin_required
+      admin? && authorized? ? true : (redirect_to :controller => 'index')
+    end
     
     # Redirect as appropriate when an access request fails.
     #

@@ -1,0 +1,1 @@
+page.replace_html("upload_path_file", :partial => "upload")

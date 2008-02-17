@@ -132,4 +132,11 @@ module ApplicationHelper
     return items
   end
 
+  def update_user_edit_stats(user_id)
+    @user = User.find(user_id)
+    @user.edits += 1
+    @user.last_track_edit_at = Time.now
+    @user.save
+  end
+
 end

@@ -1,3 +1,8 @@
+0.7.0	2008-2-16
+	- Added GPS track paths upload, now need to get adding some actual GPS data...
+	- Tweaked the css, centred the whole page thingy
+	- Added some behind-the-scenes admin stuff
+
 0.6.0	2008-1-24
 	- Migrated from cheekymoneky.co.nz to tracks.org.nz
 	- Added some javascripty goodness to admins, as an exploration into js

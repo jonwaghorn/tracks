@@ -24,4 +24,16 @@ class Track < ActiveRecord::Base
     previous_by_time = find(:all, :order => 'date DESC', :conditions => ["area_id = ? AND date > ?", area_id, RECENT_HISTORY_OFFSET])
     previous_by_time.length > RECENT_TRACK_COUNT ? previous_by_time : find(:all, :limit => RECENT_TRACK_COUNT, :order => 'date DESC', :conditions => ["area_id = ?", area_id])
   end
+  
+  def file_path_exists?
+    FileTest.exist?(full_filename)
+  end
+  
+  def filename
+    "#{self.area.state.nation.id}_#{self.area.state.id}_#{self.area.id}_#{self.id}.kml"
+  end
+  
+  def full_filename
+    "#{RAILS_ROOT}/public/paths/" + filename
+  end
 end

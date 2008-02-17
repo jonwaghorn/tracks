@@ -1,0 +1,6 @@
+<%= form_tag({:action => 'save_path', :id => @track}, :multipart => true) %>
+  <p>
+  <input type="file" name="path_file" /><br/>
+  <input type="submit" name="Upload" /> or <%= link_to_remote 'Cancel', :url => {:action => 'cancel_upload'} %>
+  </p>
+</form>

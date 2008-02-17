@@ -22,6 +22,7 @@ class TrackReportController < ApplicationController
     @track_report.description = replace_for_update(@track_report.description)
     @track_report.user_id = current_user.id
     @track_report.date = Time.now
+    update_track_edit_stats
     if @track_report.save
       flash[:notice] = 'Track report was successfully added.'
       redirect_to :controller => 'track', :action => 'show', :id => params[:track_id]
@@ -40,6 +41,7 @@ class TrackReportController < ApplicationController
     params[:track_report][:description] = replace_for_update(params[:track_report][:description])
     @track_report.user_id = current_user.id
     @track_report.date = Time.now
+    update_track_edit_stats
     if @track_report.update_attributes(params[:track_report])
       flash[:notice] = 'Track report was successfully updated.'
       redirect_to :controller => 'track', :action => 'show', :id => @track_report.track_id
@@ -52,4 +54,12 @@ class TrackReportController < ApplicationController
     track_report = TrackReport.find(params[:id]).destroy
     redirect_to :controller => 'track', :action => 'show', :id => track_report.track_id
   end
+
+  def update_track_edit_stats
+    @user = User.find(current_user.id)
+    @user.reports += 1
+    @user.last_track_edit_at = Time.now
+    @user.save
+  end
+
 end

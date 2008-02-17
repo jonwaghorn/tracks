@@ -38,6 +38,12 @@
 <li><%= link_to 'Contact', { :controller => 'contact' }, :id => 'main' %></li>
 <% end %>
 
+<% if params[:controller] == 'admin' %>
+<%= render :partial => 'shared/nav_current', :locals => { :id => 'main', :current => 'Admin' } %>
+<% elsif admin? %>
+<li><%= link_to 'Admin', { :controller => 'admin' } %></li>
+<% end %>
+
 </ul>
 
 <% if params[:controller] == 'track' %>
@@ -48,8 +54,4 @@
 
 <% if params[:controller] =~ /\b(state|area|track|track_report)\b/ %>
 <%= render :partial => 'nav_extra' %>
-<% end %>
-
-<% if params[:controller] == 'state' %>
-<!-- weather thingy goes here -->
 <% end %>
