@@ -66,6 +66,9 @@
 <% if @track.zoom != 0 %>
 <h2>Google goodness</h2><h3>&nbsp;</h3>
 <div id="map"></div><p><input type="button" value="Reset map view" onClick="locateTrack(<%=@track.latitude%>,<%=@track.longitude%>,<%=@track.zoom%>);"/></p>
+<% if File.exists?('paths/' + @track.filename) %>
+<p><%= link_to 'Download GPS path', '/paths/' + @track.filename %> - download existing kml file.</p>
+<% end %>
 <% if creator? %><p><%= link_to_remote 'Upload GPS path', :url => {:action => 'upload', :id => @track} %> - load a new kml file to display.</p><div id="upload_path_file"></div><% end %>
 <% end %>
 

@@ -1,3 +1,6 @@
+0.7.1	2008-5-5
+	- Added GPS track path download, still need more data...
+
 0.7.0	2008-2-16
 	- Added GPS track paths upload, now need to get adding some actual GPS data...
 	- Tweaked the css, centred the whole page thingy
