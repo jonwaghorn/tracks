@@ -1,7 +1,0 @@
-<h1><%= @nation.name %> (edit)</h1>
-<% form_tag :action => 'update', :id => @nation do %>
-  <%= render :partial => 'form' %>
-  <p><%= submit_tag 'Save changes' %></p>
-<% end %>
-<hr size=1 color=#ccc>
-<p><%= link_to 'Back', :action => 'show', :id => @nation %></p>

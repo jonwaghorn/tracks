@@ -1,5 +1,0 @@
-<% current_title = params[:action] =~ /(edit|update)/ ? ' (edit)' : '' %>
-<%= render :partial => 'shared/nav_current', :locals => { :id => 'state', :current => @state.name + current_title } %>
-<% for area in @state.areas %>
-<li><%= link_to area.name, { :controller => 'area', :action => 'show', :id => area.id }, :id => 'area' %></li>
-<% end %>

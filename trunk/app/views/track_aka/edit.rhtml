@@ -1,7 +1,0 @@
-<h1>Editing 'also known as' for <%= params[:track_name] %></h1>
-<% form_tag :action => 'update', :id => @track_aka do %>
-  <%= render :partial => 'form' %>
-  <p><%= submit_tag 'Save changes' %></p>
-<% end %>
-<hr size=1 color=#ccc>
-<p><%= link_to 'Back', :controller => 'track', :action => 'edit', :id => params[:track_id] %></p>

@@ -1,7 +1,0 @@
-<h1>New track (edit)</h1>
-<% form_tag :action => 'create', :area_id => params[:area_id] do %>
-  <%= render :partial => 'form' %>
-  <p><%= submit_tag "Create" %></p>
-<% end %>
-<hr size=1 color=#ccc>
-<p><%= link_to 'Back', :controller => 'area', :action => 'show', :id => params[:area_id] %></p>
