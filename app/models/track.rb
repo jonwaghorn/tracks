@@ -8,6 +8,7 @@ class Track < ActiveRecord::Base
 
   validates_presence_of   :name
   validates_format_of     :name, :with => /^[\w ]+$/i, :message => 'can only contain letters and numbers (and spaces).'
+  validate                :ensure_name_not_numeric
   validates_length_of     :name, :maximum => 40, :message => 'Track name too long, maximum is 40 characters.'
   validates_uniqueness_of :name
   validates_presence_of   :desc_brief
@@ -35,5 +36,11 @@ class Track < ActiveRecord::Base
   
   def full_filename
     "#{RAILS_ROOT}/public/paths/" + filename
+  end
+
+private
+
+  def ensure_name_not_numeric
+    errors.add(:name, "cannot be all numbers") if /^[0-9]*$/.match(name)
   end
 end
