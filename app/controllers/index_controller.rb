@@ -30,7 +30,7 @@ class IndexController < ApplicationController
 
   def rss
     @track_reports = TrackReport.find_recent(limit = 5)
-    render  :layout =>  false
+    render :layout => false
   end
 
 end

@@ -2,7 +2,7 @@
 <% nation = Nation.find(:first) %>
 <% state = State.find(:first, :conditions => ["nation_id = ?", nation.id]) %>
 <li><%= link_to state.name, { :controller => 'state', :action => 'show', :id => state.id }, :id => 'state' %></li>
-<% areas = Area.find(:all, :conditions => ["state_id = ?", state.id]) %>
+<% areas = Area.find(:all, :conditions => ["state_id = ?", state.id], :order => 'name') %>
 <% for area in areas %>
 <li><%= link_to area.name, { :controller => 'area', :action => 'show', :id => area.id }, :id => 'area' %></li>
 <% end %>

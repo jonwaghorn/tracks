@@ -17,11 +17,16 @@
 }
 
 #column_one {
-	display: inline;
+  display: inline;
+}
+
+#column_two {
+  float:left;
+  display: inline;
 }
 
 #column_two #left {
-	display: inline;
+  display: inline;
 }
 
 #nav li #current_c {

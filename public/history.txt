@@ -1,44 +1,49 @@
-0.7.1	2008-5-5
-	- Added GPS track path download, still need more data...
+11 2008
+  - Update to Rails 2.1.2
+  - Tweaks for IE7
+  - Fix sort order of areas in navigation
 
-0.7.0	2008-2-16
-	- Added GPS track paths upload, now need to get adding some actual GPS data...
-	- Tweaked the css, centred the whole page thingy
-	- Added some behind-the-scenes admin stuff
+10 2008-5-5
+  - Added GPS track path download, still need more data...
 
-0.6.0	2008-1-24
-	- Migrated from cheekymoneky.co.nz to tracks.org.nz
-	- Added some javascripty goodness to admins, as an exploration into js
-	- Fixed rss track links
-	- Fix rainfal on state when no reading available
+9 2008-2-16
+  - Added GPS track paths upload, now need to get adding some actual GPS data...
+  - Tweaked the css, centred the whole page thingy
+  - Added some behind-the-scenes admin stuff
 
-0.5.0	2008-1-8
-	- RSS feed of recent track changes
+8 2008-1-24
+  - Migrated from cheekymoneky.co.nz to tracks.org.nz
+  - Added some javascripty goodness to admins, as an exploration into js
+  - Fixed rss track links
+  - Fix rainfal on state when no reading available
 
-0.4.1	2008-1-7
-	- Tweak linking thingy
+7 2008-1-8
+  - RSS feed of recent track changes
 
-0.4.0	2008-1-6
-	- General tidy up around Track Reports
-	- Added browse back for old track reports
-	- Added "What's new" to index
+6 2008-1-7
+  - Tweak linking thingy
 
-0.3.1	2008-1-2
-	- Another tweak for IE view
+5 2008-1-6
+  - General tidy up around Track Reports
+  - Added browse back for old track reports
+  - Added "What's new" to index
 
-0.3.0	2008-1-1
-	- Tweaked IE css to make it look better. Why does IE suck so much?
-	- Add discreet link to this history page
-	- Allow for [[para]] in text bodies
+4 2008-1-2
+  - Another tweak for IE view
 
-0.2.0	2007-12-28
-	- Tidied up front page and added Track Updates to state
-	- Removed status from track_reports
-	- Added new datetime formatter, and use of it
-	- Fixed timezone to be local to NZ
-	- Alphabetise various track lists
-	- Display rainfall graph
-	- Better feedback when login fails
+3 2008-1-1
+  - Tweaked IE css to make it look better. Why does IE suck so much?
+  - Add discreet link to this history page
+  - Allow for [[para]] in text bodies
 
-0.1.0	2007-12-19
-	- Initial release. A lot of this came from a previous incarnation but this is my first version using ruby on rails.
+2 2007-12-28
+  - Tidied up front page and added Track Updates to state
+  - Removed status from track_reports
+  - Added new datetime formatter, and use of it
+  - Fixed timezone to be local to NZ
+  - Alphabetise various track lists
+  - Display rainfall graph
+  - Better feedback when login fails
+
+1 2007-12-19
+  - Initial release. A lot of this came from a previous incarnation but this is the first version using ruby on rails.

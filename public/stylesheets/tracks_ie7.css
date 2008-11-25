@@ -1,0 +1,16 @@
+#nav li span { /* unlinked menu item */
+  display: inline;
+}
+
+#nav li #current_t {
+  padding-top: 6px;
+  z-index: 100;
+  position: relative;
+  overflow: hidden;
+}
+
+#nav li #current_b {
+  margin: 0px 0px -4px 0px;
+  margin-bottom: 0px;
+  padding-bottom: 6px;
+}
