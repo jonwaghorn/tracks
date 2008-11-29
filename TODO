@@ -1,5 +1,18 @@
 Tracks on Rails
 ---------------
+From Ian 1-12 below: Todo: 2,3,5,6,7,8,9,10,11,12 | Done: 1,4
+From Ian email below:
+
+  I've been toying with potential track information features.  As a test, I've created a random collection of ideas at www.i-nth.com/trackbits/index.html
+  In particular, the Google map contains two new map types which would be trivial to add to the Tracks website -- they require just a single line of javascript each. That is, somewhere after creating and centering the map, add:
+    map.addMapType(G_PHYSICAL_MAP);       // Terrain map type
+    map.addMapType(G_SATELLITE_3D_MAP);   // Earth map type
+  The "Earth" map type is particularly interesting, as it displays a 3D Google Earth view within the browser window.  Note that, the first time you select the "Earth" map type, you'll be asked to download and install the Google Earth plugin.
+  The track's altitude profile chart would also be useful information, especially since hills are a prominant feature of most Wellington tracks.
+  There are a few bugs in these examples.  For example the enlarged chart and slideshow images don't play nice with the Earth map type if they overlap (ie. the 3D map is always in front of the images) - but I suspect there isn't much I can do about that.
+  The features on this page are just at the conceptual stage and require a bit more work.  Nonetheless, I think that at least some of them have potential.
+  Thoughts?
+
 Finish validations
 Finish add track paths, including upload path file
 Finish email registration
@@ -7,3 +20,84 @@ Modify "add connector" to add from sidebar, more natural
 Search: tracks, track_akas, areas, states (area_akas?)
 Add area_akas?
 Fix the whole page centering thing, go wide, maybe 1000 pixels...
+User feature: favourite track(s)
+User feature: preferred gmap display type
+
+
+
+
+
+2. Consistency of labels for editing and display
+ 
+When editing track descriptions I noticed that some of the field names are different to the labels displayed on the site.  For example, “Overview” becomes “Brief”.  The order of sections is also changed in a couple of places.  Editing the track descriptions would be simpler if the field names and order were consistent with what is actually displayed.
+ 
+ 
+3. Links to external pages
+ 
+There are a few references to external web pages scattered around the Tracks site.  It would be good to make these live hyperlinks rather than just text.
+ 
+I guess it would require a tag to be processed by Ruby?  Perhaps something like [[link:www.whatever.co.nz]]?  Better yet, pass two parameters – specifically, the link and the display text?  For example, something like:
+[[link:http://www.feelinggreat.co.nz/uploads/images/199_vn_mtb_map_original.gif,`Feeling Great`]]
+ 
+ 
+5. Editing connecting tracks
+ 
+When editing a track description, changes to the text are discarded if a change is also made to a connecting track.  This has caught me out a couple of times – though I suppose I should just remember to change the connecting tracks and text fields seperately.
+ 
+ 
+6. Altitude profile
+ 
+Since hills are such a prominent feature of Wellington tracks, an altitude profile graph would be a great addition to each track’s description.  I’ve briefly toyed with an expandable image, but haven’t thought much beyond that about how the profile could be presented.
+ 
+I have created a rough spreadsheet that extracts coordinate and altitude data from a gpx file.  It then calculates distances between the coordinate pairs, which creates the data needed for an altitude profile chart.  The spreadsheet also provides an option to smooth the altitude profile, taking out the inevitable glitches recorded by the GPS.
+ 
+ 
+7. Problem with apostrophes
+ 
+I broke the “Big Tom’s Wheelie” track when I edited it.  The database objected to the apostrophe, so I had to change the name to not have an apostrophe.  I assume that Zac’s Track and Varley’s would have the same problem if edited.
+ 
+A related issue is referring to tracks that have an apostrophe in their name.  For example, [[track:Zac’s Track]] doesn’t work, so it has to be written as [[track:12]].
+ 
+I know that databases have trouble dealing with apostrophes (from experience, since I have one in my name), but is it possible to include handling of apostrophes?
+ 
+ 
+8. Numeric track names
+ 
+You may recall that I broke something when I tried to create a track called ‘491’ in the Wainuiomata Trail Project.  The problem was, I assume, that the database refers to tracks by number which didn't work because track 491 doesn't exist.  You renamed the track ‘T491’, which fixed the problem but it isn’t quite right. 
+ 
+Is there any way of allowing numeric track names?
+
+9. Track count and length
+ 
+Each Area includes a summary of the track length by type.  Would it be possible to add a couple of fields to the State page to show the same summary information in total?
+ 
+A count of the number of tracks in the State might be interesting too.
+ 
+ 
+10. Show kml line when editing
+ 
+When editing a track, the kml line isn’t shown.  It would be easier to position the map  correctly if the kml line was visible in the editing window.
+ 
+ 
+11. Map types
+ 
+In addition to the current map types, there are a couple of others that might be worthwhile:  Terrain and Earth.
+ 
+The Terrain map type shows a shaded relief map with contours.
+ 
+The Earth map type is actually Google Earth embedded in the browser.  It requires the user to download a plugin the first time they use it, but thereafter it works just like every other map type.  Since it provides a 3D view of the track, it is a great way to assess and explore a track.
+ 
+The Terrain map type requires just one line of JavaScript, as does the Earth type  unless you want to set options etc (in which case there are a few more lines are required).
+ 
+I’ve add a play with the various map types, so I can supply the appropriate JavaScript if you want.
+ 
+ 
+12. Display multiple tracks on a map
+ 
+It would be very helpful if we could display multiple tracks on a map.  Currently, it can be difficult to see how one track relates to others nearby.  If we could display the track of interest and nearby tracks on the same map, then it would be easier to understand how the tracks fit together.
+ 
+One approach might be to rename the “Connecting Tracks” list to be a “Nearby Tracks”  list (since the tracks don’t necessarily connect, they might just be nearby) and use that list as a basis for adding their kml files to the currently displayed track map too.  The current and nearby tracks could be distinguished by using different colours, so that the focus is still on the current track.  Or something like that.
+ 
+I have been playing with some offline examples of displaying multiple tracks on a map.  This works OK, provided there isn’t too much data – either long tracks with lots of points, or more than a few tracks – otherwise the browser complains about the time taken to run the JavaScript, or the map simply locks up.  There seems to be ways to deal with these issues, but I haven’t reached a conclusion yet.
+ 
+As an aside, I updated the Car Parts Extension map to show actual and planned track using different colours.  This uses a single kml file to show multiple tracks, giving each its own style.  This approach works for that specific purpose, but wouldn’t work well for showing multiple tracks on a map – in that case, I think it is better to keep each track’s data in a separate file and just display them together when needed.

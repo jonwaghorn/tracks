@@ -15,8 +15,9 @@ function load(lt,ln,zm) {
       document.getElementById("track_zoom").value = map.getZoom();
     });
 		map.addControl(new GSmallMapControl());
-		map.addControl(new GMapTypeControl());
+		map.addControl(new GHierarchicalMapTypeControl());
 		map.addControl(new GScaleControl());
+		map.addMapType(G_PHYSICAL_MAP);
     map.setCenter(new GLatLng(lt, ln), zm, G_SATELLITE_MAP);
   } else { document.getElementById("map").innerHTML="This website uses Google Maps, which appear not to work with your browser. See the FAQ."; }
 }

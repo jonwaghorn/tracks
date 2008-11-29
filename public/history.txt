@@ -1,7 +1,13 @@
-11 2008
+13 2008-11-28
+  - Made map view bigger (good idea, thanks Ian)
+
+12 2008-11-27: little steps
+  - Add terrain and 3d view options to maps (thanks Ian)
+
+11 2008-11-25: back into it
   - Update to Rails 2.1.2
-  - Tweaks for IE7
-  - Fix sort order of areas in navigation
+  - Tweaks for IE7 (thanks Ian)
+  - Fix sort order of areas in navigation (thanks Ian)
 
 10 2008-5-5
   - Added GPS track path download, still need more data...

@@ -12,12 +12,14 @@ function load(lt,ln,zm) {
     icon.shadowSize = new GSize(22, 20);
     icon.iconAnchor = new GPoint(6, 20);
     icon.infoWindowAnchor = new GPoint(5, 1);
-		map.addControl(new GSmallMapControl());
-		map.addControl(new GMapTypeControl());
-		map.addControl(new GScaleControl());
+    map.addControl(new GSmallMapControl());
+    map.addControl(new GHierarchicalMapTypeControl());
+    map.addControl(new GScaleControl());
     ovMap = new GOverviewMapControl(new GSize(100,80));
     map.addControl(ovMap);
     ovMap.hide(true);
+    map.addMapType(G_PHYSICAL_MAP);
+    map.addMapType(G_SATELLITE_3D_MAP);
     function createMarker(point,opts,url) {
       var marker = new GMarker(point,opts);
       GEvent.addListener(marker,"click",function(){window.open(url, "_top");});

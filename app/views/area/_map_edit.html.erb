@@ -14,10 +14,11 @@ function load(lt,ln,zm) {
       document.getElementById("area_longitude").value = center.lng();
       document.getElementById("area_zoom").value = map.getZoom();
     });
-		map.addControl(new GSmallMapControl());
-		map.addControl(new GMapTypeControl());
-		map.addControl(new GScaleControl());
+    map.addControl(new GSmallMapControl());
+    map.addControl(new GHierarchicalMapTypeControl());
+    map.addControl(new GScaleControl());
     map.setCenter(new GLatLng(lt, ln), zm, G_SATELLITE_MAP);
+    map.addMapType(G_PHYSICAL_MAP);
   } else { document.getElementById("map").innerHTML="This website uses Google Maps, which appear not to work with your browser. See the FAQ."; }
 }
 //]]>
