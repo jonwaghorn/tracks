@@ -35,7 +35,7 @@ class TrackController < ApplicationController
 
   def edit
     @track = Track.find(params[:id])
-    @track.desc_brief = replace_for_edit(@track.desc_brief)
+    @track.desc_overview = replace_for_edit(@track.desc_overview)
     @track.desc_full = replace_for_edit(@track.desc_full)
     @track.desc_where = replace_for_edit(@track.desc_where)
     @track.desc_note = replace_for_edit(@track.desc_note)
@@ -43,7 +43,7 @@ class TrackController < ApplicationController
 
   def update
     @track = Track.find(params[:id])
-    params[:track][:desc_brief] = replace_for_update(params[:track][:desc_brief])
+    params[:track][:desc_overview] = replace_for_update(params[:track][:desc_overview])
     params[:track][:desc_full] = replace_for_update(params[:track][:desc_full])
     params[:track][:desc_where] = replace_for_update(params[:track][:desc_where])
     params[:track][:desc_note] = replace_for_update(params[:track][:desc_note])

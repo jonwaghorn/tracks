@@ -13,6 +13,7 @@
 <% else %>
 <%= render :partial => 'map_edit' %>
 <% end %>
+<%= render :partial => 'shared/analytics' %>
 </head>
 <body onload="load(<%= @area.latitude %>,<%= @area.longitude %>,<%= @area.zoom %>)" onunload="GUnload()">
 <table id="bg" cellspacing=0>

@@ -14,7 +14,7 @@ From Ian email below:
   Thoughts?
 
 Finish validations
-Finish add track paths, including upload path file
+Finish add track paths, including upload path file, GPX and KML
 Finish email registration
 Modify "add connector" to add from sidebar, more natural
 Search: tracks, track_akas, areas, states (area_akas?)
@@ -22,14 +22,18 @@ Add area_akas?
 Fix the whole page centering thing, go wide, maybe 1000 pixels...
 User feature: favourite track(s)
 User feature: preferred gmap display type
-
+Front page image:
+  1. plain pic
+  2. "map" with clickable site features as destinations (home|random track|about|random pic|ride choosa|faq|terms|contact|...)
+In track/show the track_aka code should be moved out of view
+Fix connecting tracks editing, move to Nav?
 
 
 
 
 2. Consistency of labels for editing and display
  
-When editing track descriptions I noticed that some of the field names are different to the labels displayed on the site.  For example, “Overview” becomes “Brief”.  The order of sections is also changed in a couple of places.  Editing the track descriptions would be simpler if the field names and order were consistent with what is actually displayed.
+The order of sections is also changed in a couple of places.  Editing the track descriptions would be simpler if the field names and order were consistent with what is actually displayed.
  
  
 3. Links to external pages

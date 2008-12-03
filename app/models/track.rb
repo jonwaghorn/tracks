@@ -11,7 +11,7 @@ class Track < ActiveRecord::Base
   validate                :ensure_name_not_numeric
   validates_length_of     :name, :maximum => 40, :message => 'Track name too long, maximum is 40 characters.'
   validates_uniqueness_of :name
-  validates_presence_of   :desc_brief
+  validates_presence_of   :desc_overview
 
   RECENT_TRACK_COUNT = 3
   RECENT_HISTORY_OFFSET = Time.now - 1.week

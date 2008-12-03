@@ -1,3 +1,8 @@
+14 2008-12-03
+  - Goog analytics
+  - Fix brief/overview naming inconsistency (thanks Ian)
+  - Made display of fields consistent when viewing or editing track info. The track aka needs to be made better tho...
+
 13 2008-11-28
   - Made map view bigger (good idea, thanks Ian)
 
