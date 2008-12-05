@@ -1,7 +1,7 @@
 <% if !@existing_connections.empty? %>
 <ul>
 <% @existing_connections.each do |ct| %>
-  <li><%= link_to ct[0], :controller => 'track', :action => 'show', :id => ct[1] %></li>
+  <li><%= link_to ct[0], :controller => 'track', :action => 'show', :id => ct[2] %></li>
 <% end %>
 </ul>
 <% end %>

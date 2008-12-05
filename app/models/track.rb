@@ -42,7 +42,7 @@ class Track < ActiveRecord::Base
   def get_connections
     connections = []
     track_connections.each do |c|
-      connections << [Track.find(c.connect_track_id, :select => "name").name, c.id]
+      connections << [Track.find(c.connect_track_id, :select => "name").name, c.id, c.connect_track_id]
     end
     connections.sort
   end
