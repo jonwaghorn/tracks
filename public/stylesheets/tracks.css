@@ -169,8 +169,12 @@ a:link img, a:visited img { border-style: none } /* no border on img links */
 }
 
 #nav p {
-  margin: 5px 9px 5px 9px;
+  margin: 5px 9px;
   font-size: 12px;
+}
+
+#nav #connecting_tracks p {
+  margin: 3px 9px;
 }
 
 #nav ul {

@@ -13,6 +13,7 @@ class TrackController < ApplicationController
 
   def show
     @track = Track.find(params[:id])
+    @existing_connections = @track.get_connections
   end
 
   def new
@@ -39,6 +40,7 @@ class TrackController < ApplicationController
     @track.desc_full = replace_for_edit(@track.desc_full)
     @track.desc_where = replace_for_edit(@track.desc_where)
     @track.desc_note = replace_for_edit(@track.desc_note)
+    @existing_connections = @track.get_connections
   end
 
   def update

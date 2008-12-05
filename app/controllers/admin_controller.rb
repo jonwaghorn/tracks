@@ -8,7 +8,7 @@ class AdminController < ApplicationController
          :redirect_to => { :action => :index }
 
   def index
-    @users = User.find(:all, :order => 'last_track_edit_at DESC')
+    @users = User.find(:all, :order => 'last_track_edit_at DESC, created_at DESC')
   end
 
 end

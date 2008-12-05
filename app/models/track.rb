@@ -38,6 +38,15 @@ class Track < ActiveRecord::Base
     "#{RAILS_ROOT}/public/paths/" + filename
   end
 
+  # Track connections in array of connecting_track_name,connection_id pairs
+  def get_connections
+    connections = []
+    track_connections.each do |c|
+      connections << [Track.find(c.connect_track_id, :select => "name").name, c.id]
+    end
+    connections.sort
+  end
+
 private
 
   def ensure_name_not_numeric

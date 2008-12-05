@@ -1,12 +1,6 @@
-<% if @track.track_connections.length > 0 %>
+<% if @track.track_connections.length > 0 || creator? %>
 <h2>Connecting Tracks</h2><h3>&nbsp;</h3>
-<ul>
-<% connecting_tracks = [] %>
-<% for connect in @track.track_connections do %>
-<% connecting_tracks << [Track.find(connect.connect_track_id, :select => "name").name, connect.connect_track_id] %>
 <% end %>
-<% for track in connecting_tracks.sort do %>
-<li><%= link_to track[0], :controller => 'track', :action => 'show', :id => track[1] %></li>
-<% end %>
-</ul>
-<% end %>
+<div id="connecting_tracks">
+<%= render :partial => "/track_connection/show" %>
+</div>

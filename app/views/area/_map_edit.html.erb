@@ -8,6 +8,13 @@ function load(lt,ln,zm) {
       ln = <%= geo.zoom != 0 ? geo.longitude : 174.774627 %>;
       zm = <%= geo.zoom != 0 ? geo.zoom : 11 %>; }
     var map = new GMap2(document.getElementById("map"));
+    var icon = new GIcon();
+    icon.image = "http://www.tracks.org.nz/images/mm_20_orange.png";
+    icon.shadow = "http://www.tracks.org.nz/images/mm_20_shadow.png";
+    icon.iconSize = new GSize(12, 20);
+    icon.shadowSize = new GSize(22, 20);
+    icon.iconAnchor = new GPoint(6, 20);
+    icon.infoWindowAnchor = new GPoint(5, 1);
     GEvent.addListener(map, "moveend", function() {
       var center = map.getCenter();
       document.getElementById("area_latitude").value = center.lat();
@@ -19,6 +26,9 @@ function load(lt,ln,zm) {
     map.addControl(new GScaleControl());
     map.setCenter(new GLatLng(lt, ln), zm, G_SATELLITE_MAP);
     map.addMapType(G_PHYSICAL_MAP);
+    <% get_track_markers(@area.id).each do |track| %>
+    map.addOverlay(new GMarker(new GLatLng(<%=track[0].to_s%>,<%=track[1].to_s%>),{title:"<%=track[2]%>",icon:icon}))
+    <% end %>
   } else { document.getElementById("map").innerHTML="This website uses Google Maps, which appear not to work with your browser. See the FAQ."; }
 }
 //]]>

@@ -1,4 +1,11 @@
-<%= error_messages_for 'track_connection', :header_tag => 'h4' %>
-<!--[form:track_connection]-->
-<p><%= select 'track_connection', 'connect_track_id', Track.find(:all, :select => 'name, id', :order => 'name').collect {|c| [c.name, c.id] } %></p>
-<!--[eoform:track_connection]-->
+<% @existing_connections.each do |ct| %>
+<div id="track_connection_<%= ct[1] %>">
+  <p><%= link_to_remote image_tag("/images/del.png", :mouseover => image_path("del_over.png"), :alt => "del", :size => "10x10"), :url => {:action => 'destroy', :id => ct[1], :track_id => params[:track_id]}, :confirm => "Delete connecting track #{ct[0]}?", :method => :post %> <%= ct[0] %></p>
+  </div>
+<% end %>
+
+<%= render :partial => "form_add", :locals => {:collection => @potential_connections_all, :title => 'Add (all)'} %>
+
+<%= render :partial => "form_add", :locals => {:collection => @potential_connections_same_area, :title => 'Add (same area)'} %>
+
+<p id="edit"><%= link_to_remote 'Done', { :url => { :action => 'done', :track_id => @track.id } } %></p>

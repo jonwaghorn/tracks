@@ -36,11 +36,11 @@
 <% end %>
 
 <% if ! @track.desc_where.empty? %>
-<p id="left">Where</p><p id="right"><%= replace_for_view(h(@track.desc_where)) %></p>
+<p id="left">Getting there</p><p id="right"><%= replace_for_view(h(@track.desc_where)) %></p>
 <% end %>
 
 <% if ! @track.desc_note.empty? %>
-<p id="left">Note</p><p id="right"><%= replace_for_view(h(@track.desc_note)) %></p>
+<p id="left">Other notes</p><p id="right"><%= replace_for_view(h(@track.desc_note)) %></p>
 <% end %>
 
 <% if @track.length != 0 %>

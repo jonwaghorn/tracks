@@ -1,0 +1,1 @@
+page.replace_html("connecting_tracks", :partial => "track_connection/form")

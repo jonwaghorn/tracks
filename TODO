@@ -1,18 +1,15 @@
 Tracks on Rails
 ---------------
-From Ian 1-12 below: Todo: 2,3,5,6,7,8,9,10,11,12 | Done: 1,4
+From Ian 1-12 below: Todo: 3,6,7,8,9,10,11,12 | Done: 1,2,4,5
 From Ian email below:
 
   I've been toying with potential track information features.  As a test, I've created a random collection of ideas at www.i-nth.com/trackbits/index.html
-  In particular, the Google map contains two new map types which would be trivial to add to the Tracks website -- they require just a single line of javascript each. That is, somewhere after creating and centering the map, add:
-    map.addMapType(G_PHYSICAL_MAP);       // Terrain map type
-    map.addMapType(G_SATELLITE_3D_MAP);   // Earth map type
-  The "Earth" map type is particularly interesting, as it displays a 3D Google Earth view within the browser window.  Note that, the first time you select the "Earth" map type, you'll be asked to download and install the Google Earth plugin.
   The track's altitude profile chart would also be useful information, especially since hills are a prominant feature of most Wellington tracks.
   There are a few bugs in these examples.  For example the enlarged chart and slideshow images don't play nice with the Earth map type if they overlap (ie. the 3D map is always in front of the images) - but I suspect there isn't much I can do about that.
   The features on this page are just at the conceptual stage and require a bit more work.  Nonetheless, I think that at least some of them have potential.
   Thoughts?
 
+Investigate migrations on prod side
 Finish validations
 Finish add track paths, including upload path file, GPX and KML
 Finish email registration
@@ -26,14 +23,8 @@ Front page image:
   1. plain pic
   2. "map" with clickable site features as destinations (home|random track|about|random pic|ride choosa|faq|terms|contact|...)
 In track/show the track_aka code should be moved out of view
-Fix connecting tracks editing, move to Nav?
 
 
-
-
-2. Consistency of labels for editing and display
- 
-The order of sections is also changed in a couple of places.  Editing the track descriptions would be simpler if the field names and order were consistent with what is actually displayed.
  
  
 3. Links to external pages
@@ -43,11 +34,11 @@ There are a few references to external web pages scattered around the Tracks sit
 I guess it would require a tag to be processed by Ruby?  Perhaps something like [[link:www.whatever.co.nz]]?  Better yet, pass two parameters – specifically, the link and the display text?  For example, something like:
 [[link:http://www.feelinggreat.co.nz/uploads/images/199_vn_mtb_map_original.gif,`Feeling Great`]]
  
- 
-5. Editing connecting tracks
- 
-When editing a track description, changes to the text are discarded if a change is also made to a connecting track.  This has caught me out a couple of times – though I suppose I should just remember to change the connecting tracks and text fields seperately.
- 
+ From wikipedia:
+    *[http://tracks.org.nz/area/show/1 Makara Peak at Tracks.org.nz]
+ gets converted to:
+    <a href="http://tracks.org.nz/area/show/1" class="external text" title="http://tracks.org.nz/area/show/1" rel="nofollow">Makara Peak at Tracks.org.nz</a>
+
  
 6. Altitude profile
  

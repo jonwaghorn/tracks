@@ -1,3 +1,9 @@
+15 2008-12-5
+  - Rework of track connection edit, do it all in the nav bar now
+  - Show Area balloons on map when editing State
+  - Show Track balloons on map when editing Area
+  - Tweaks to admin page
+
 14 2008-12-03
   - Goog analytics
   - Fix brief/overview naming inconsistency (thanks Ian)

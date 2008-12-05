@@ -5,26 +5,35 @@ class TrackConnectionController < ApplicationController
   verify :method => :post, :only => [ :destroy, :create ],
          :redirect_to => { :action => :list }
 
-  def new
-    @track_connection = TrackConnection.new
-    @track_connection.track_id = params[:track_id]
-  end
-
   def create
     @track_connection = TrackConnection.new(params[:track_connection])
     @track_connection.track_id = params[:track_id]
-    if @track_connection.save
-      flash[:notice] = 'Successfully added connecting track ' + Track.find(@track_connection.connect_track_id, :select => "name").name + '.'
-      redirect_to :controller => 'track', :action => 'edit', :id => params[:track_id]
-    else
-      render :action => 'new'
-    end
+    @track_connection.save
+    get_connections
+    logger.info "Add track connection: #{Track.find(@track_connection.connect_track_id).name} (id:#{@track_connection.connect_track_id}) added to #{@track.name} (id:#{@track.id})"
+  end
+
+  def edit
+    get_connections
+  end
+
+  def done
+    get_connections
   end
 
   def destroy
-    tc = TrackConnection.find(params[:id])
-    flash[:notice] = 'Removed connecting track ' + Track.find(tc.connect_track_id, :select => "name").name + '.'
-    tc.destroy
-    redirect_to :controller => 'track', :action => 'edit', :id => params[:track_id]
+    @track_connection = TrackConnection.find(params[:id])
+    @track_connection.destroy
+    get_connections
+    logger.info "Delete track connection: #{Track.find(@track_connection.connect_track_id).name} (id:#{@track_connection.connect_track_id}) removed from #{@track.name} (id:#{@track.id})"
+  end
+  
+private
+
+  def get_connections
+    @track = Track.find(params[:track_id])
+    @existing_connections = @track.get_connections
+    @potential_connections_all = Track.find(:all, :select => 'name, id', :order => 'name', :conditions => ["id not in (?)", @track.track_connections.collect(&:connect_track_id) << @track.id])
+    @potential_connections_same_area = Track.find(:all, :select => 'name, id', :order => 'name', :conditions => ["id not in (?) AND area_id = ?", @track.track_connections.collect(&:connect_track_id) << @track.id, @track.area_id])
   end
 end
