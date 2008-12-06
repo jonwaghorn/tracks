@@ -52,6 +52,6 @@
 
 </div></div>
 
-<% if params[:controller] =~ /\b(state|area|track|track_report)\b/ %>
+<% if params[:controller] =~ /\b(state|area|track|track_report)\b/ && params[:action] != 'new' %>
 <%= render :partial => 'nav_extra' %>
 <% end %>
