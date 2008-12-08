@@ -1,0 +1,11 @@
+<% @existing_connections.each do |ct| %>
+<div id="track_connection_<%= ct[1] %>">
+<p><%= link_to_remote image_tag(image_path("del.png"), :mouseover => image_path("del_over.png"), :alt => "del", :size => "10x10"), :url => {:controller => 'track_connection', :action => 'destroy', :id => ct[1], :track_id => params[:track_id]}, :success => visual_effect(:fade, "track_connection_#{ct[1]}"), :before => visual_effect(:highlight, "track_connection_#{ct[1]}", :startcolor => "#f48a00", :endcolor => "#f48a00"), :confirm => "Delete connecting track #{ct[0]}?" %> <%= ct[0] %></p>
+</div>
+<% end %>
+
+<%= render :partial => "form_add", :locals => {:collection => @potential_connections_all, :title => 'Add (all)'} %>
+
+<%= render :partial => "form_add", :locals => {:collection => @potential_connections_same_area, :title => 'Add (same area)'} %>
+
+<p id="edit"><%= link_to_remote 'Done', { :url => { :action => 'done', :track_id => @track.id } } %></p>

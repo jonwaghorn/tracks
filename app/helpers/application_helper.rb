@@ -13,7 +13,12 @@ module ApplicationHelper
     line = line.gsub(/\[\[para\]\]/, '<br/><br/>') # [[para]] => html break * 2
     line = line.gsub(/\[\[h1:(.*?)\]\]/, '</p><h2>\1</h2><h3>&nbsp;</h3><p>') # [[h1:Heading]] => heading 1
     line = line.gsub(/\[\[h2:(.*?)\]\]/, '</p><p><b>\1</b></p><p>') # [[h2:Heading]] => heading 2
-    line = line.gsub(/\[\[link:(.*?):(.*?)\]\]/, '<a href="/\2">\1</a>') # [[link:Name:local_link]] => local href
+    line = line.gsub(/\[\[bold:(.*?)\]\]/, '<b>\1</b>') # [[bold:text]] => bold text
+    line = line.gsub(/\[\[link:tracks.org.nz(.*?)\]\]/, '[[link:http://tracks.org.nz\1]]')
+    line = line.gsub(/\[\[link:www.tracks.org.nz(.*?)\]\]/, '[[link:http://tracks.org.nz\1]]')
+    line = line.gsub(/\[\[link:http:\/\/www.tracks.org.nz(.*?)\]\]/, '[[link:http://tracks.org.nz\1]]')
+    line = line.gsub(/\[\[link:(http:\/\/tracks.org.nz.*?) (.*?)\]\]/, '<a href="\1" title="\1" rel="nofollow">\2</a>') # [[link:ref Name]] => href
+    line = line.gsub(/\[\[link:(.*?) (.*?)\]\]/, '<a href="\1" class="external" title="\1" rel="nofollow">\2</a>') # [[link:ref Name]] => href
 
     # special id => name replacements
     items = find_id_replacements(line)
@@ -40,8 +45,9 @@ module ApplicationHelper
         end
       end
     end
-    
-    return line
+      
+    line = line.gsub('\[', '[')
+    line = line.gsub('\]', ']')
   end
 
   def find_id_replacements(line)

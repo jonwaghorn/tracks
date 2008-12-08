@@ -1,0 +1,2 @@
+page.replace_html('nav_track_reports', :partial => 'list')
+page["track_report_#{@new_track_id}"].visual_effect :highlight, :startcolor => "#f48a00", :endcolor => "#999999"

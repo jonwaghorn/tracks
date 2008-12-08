@@ -11,7 +11,7 @@
   
 <% for track_report in track_reports %>
   <tr>
-    <td><%= track_report.date.to_s(:concise) %></td>
+    <td nowrap><%= track_report.date.to_s(:concise) %></td>
     <td><%= replace_for_view(h(track_report.description)) %></td>
   </tr>
 <% end %>

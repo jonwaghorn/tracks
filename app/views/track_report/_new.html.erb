@@ -1,0 +1,7 @@
+<p id='edit'>
+<% if !logged_in? %>
+  <%= link_to 'Add report', :controller => 'track_report', :action => 'login', :track_id => @track.id %> (requires login)
+<% else %>
+  <%= link_to_remote 'Add report', :url => { :controller => 'track_report', :action => 'new', :track_id => @track.id } %>
+<% end %>
+</p>

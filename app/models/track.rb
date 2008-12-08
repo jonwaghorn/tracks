@@ -38,7 +38,7 @@ class Track < ActiveRecord::Base
     "#{RAILS_ROOT}/public/paths/" + filename
   end
 
-  # Track connections in array of connecting_track_name,connection_id pairs
+  # Track connections in array of [connecting_track_name,connection_id,track_id]
   def get_connections
     connections = []
     track_connections.each do |c|

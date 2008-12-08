@@ -1,1 +1,1 @@
-page.replace_html("connecting_tracks", :partial => "form")
+page.replace_html("connecting_tracks", :partial => "edit")

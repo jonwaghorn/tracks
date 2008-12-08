@@ -1,7 +1,7 @@
 class TrackReportController < ApplicationController
   include ApplicationHelper
 
-  before_filter :login_required, :only => [ :edit, :update, :new ]
+  before_filter :login_required, :only => [ :edit, :update, :new, :login ]
 
   def index
     list
@@ -14,26 +14,33 @@ class TrackReportController < ApplicationController
 
   def new
     @track_report = TrackReport.new
+    @track = Track.find(params[:track_id])
+  end
+
+  def login
+    redirect_to :controller => 'track', :action => 'show', :id => params[:track_id]
   end
 
   def create
     @track_report = TrackReport.new(params[:track_report])
-    @track_report.track_id = params[:track_id]
-    @track_report.description = replace_for_update(@track_report.description)
-    @track_report.user_id = current_user.id
-    @track_report.date = Time.now
-    update_track_edit_stats
-    if @track_report.save
-      flash[:notice] = 'Track report was successfully added.'
-      redirect_to :controller => 'track', :action => 'show', :id => params[:track_id]
+    if @track_report.description.length > 0
+      @track_report.track_id = params[:track_id]
+      @track_report.description = replace_for_update(@track_report.description)
+      @track_report.user_id = current_user.id
+      @track_report.date = Time.now
+      update_track_edit_stats
+      @track_report.save
+      @new_track_id = @track_report.id # my rjs doesn't get the proper id...
+      @track = Track.find(params[:track_id])
     else
-      render :action => 'new'
+      redirect_to :action => 'cancel', :track_id => params[:track_id]
     end
   end
 
   def edit
     @track_report = TrackReport.find(params[:id])
     @track_report.description = replace_for_edit(@track_report.description)
+    @track = Track.find(@track_report.track_id)
   end
 
   def update
@@ -41,18 +48,23 @@ class TrackReportController < ApplicationController
     params[:track_report][:description] = replace_for_update(params[:track_report][:description])
     @track_report.user_id = current_user.id
     @track_report.date = Time.now
-    update_track_edit_stats
-    if @track_report.update_attributes(params[:track_report])
-      flash[:notice] = 'Track report was successfully updated.'
-      redirect_to :controller => 'track', :action => 'show', :id => @track_report.track_id
-    else
-      render :action => 'edit'
+    if params[:track_report][:description].length > 0
+      @track_report.update_attributes(params[:track_report])
+      update_track_edit_stats
     end
   end
 
   def destroy
     track_report = TrackReport.find(params[:id]).destroy
-    redirect_to :controller => 'track', :action => 'show', :id => track_report.track_id
+  end
+
+  def cancel
+    @track = Track.find(params[:track_id])
+  end
+
+  def cancel_edit
+    @track_report = TrackReport.find(params[:id])
+    @track = Track.find(@track_report.track_id)
   end
 
   def update_track_edit_stats

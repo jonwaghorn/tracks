@@ -1,0 +1,2 @@
+page.replace_html(dom_id(@track_report), :partial => 'show')
+page["track_report_#{@track_report.id}"].visual_effect :highlight, :startcolor => "#f48a00", :endcolor => "#999999"

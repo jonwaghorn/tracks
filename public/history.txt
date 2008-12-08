@@ -1,3 +1,9 @@
+16 2008-12-7
+  - Tidy track connection thing, use a bit of scriptaculous fun
+  - Rework of track reports entry/edit
+  - Track reports can only be edited/deleted by their creator (or Admin) if less than 1 week old
+  - Added [[link:ref name]] link (hopefully I also remembered to update the FAQ to show the usage)
+
 15 2008-12-5
   - Rework of track connection edit, do it all in the nav bar now
   - Show Area balloons on map when editing State

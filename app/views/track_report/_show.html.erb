@@ -1,0 +1,8 @@
+<% @report_creator = User.find(@track_report.user_id) %>
+<div id=<%= "track_report_#{@track_report.id}" %>>
+<p><%= replace_for_view(h(@track_report.description)) %>
+<% if @track_report.date > Time.now - 1.weeks %>
+<% if logged_in? && (creator? || current_user.login == @report_creator.login) %> (<%= link_to_remote 'Edit', :url => { :controller => 'track_report', :action => 'edit', :id => @track_report.id } %><% if creator? %>|<%= link_to_remote 'Delete', :url => { :controller => 'track_report', :action => 'destroy', :id => @track_report.id }, :success => visual_effect(:fade, dom_id(@track_report)), :before => visual_effect(:highlight, dom_id(@track_report), :startcolor => "#f48a00", :endcolor => "#f48a00"), :confirm => 'Really delete track report?' %><% end %>)<% end %></p>
+<% end %>
+<p style="margin:-5px 9px 9px 9px;" id="date"><%= @report_creator.login %>, <%= @track_report.date.to_s(:tracks).gsub(/^0/, '') %></p>
+</div>

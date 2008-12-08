@@ -1,0 +1,1 @@
+page.replace_html("track_report_new", :partial => 'new')

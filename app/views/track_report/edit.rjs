@@ -1,0 +1,2 @@
+page.replace_html(dom_id(@track_report), :partial => 'edit')
+page['track_report_description'].focus

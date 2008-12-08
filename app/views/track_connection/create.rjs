@@ -1,2 +1,2 @@
-page.replace_html("connecting_tracks", :partial => "track_connection/form")
+page.replace_html("connecting_tracks", :partial => "track_connection/edit")
 # page.visual_effect :highlight, "track_connection_#{}"

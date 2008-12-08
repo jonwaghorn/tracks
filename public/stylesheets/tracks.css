@@ -27,6 +27,18 @@ a:hover {
 
 a:link img, a:visited img { border-style: none } /* no border on img links */
 
+
+
+a.external:hover {
+  background: #ccc url('/images/external.png') no-repeat scroll right center;
+}
+a.external {
+  background: transparent url('/images/external.png') no-repeat scroll right center;
+  padding-right: 13px;
+}
+
+
+
 #bg {
   background: #ccc;
   height: 100%;
@@ -301,6 +313,12 @@ a:link img, a:visited img { border-style: none } /* no border on img links */
 
 #nav #rainfall form {
   border: solid 1px;
+  padding: 4px;
+}
+
+#nav .edit_report {
+  border: solid 1px #777777;
+  margin: 5px;
   padding: 4px;
 }
 

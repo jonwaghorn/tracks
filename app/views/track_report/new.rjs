@@ -1,0 +1,2 @@
+page.replace_html('track_report_new', :partial => 'create')
+page['track_report_description'].focus

@@ -1,0 +1,8 @@
+<div class="edit_report">
+<% form_remote_tag :url => {:controller => 'track_report', :action => 'create', :track_id => @track.id} do %>
+
+<div><%= text_area 'track_report', 'description', "cols" => 20, "rows" => 10 %></div>
+
+<div style="margin-top: 5px;"><%= submit_tag "Save" %> | <%= link_to_remote 'Cancel', :url => {:action => 'cancel', :track_id => @track.id} %></div>
+<% end %>
+</div>
