@@ -4,8 +4,11 @@
 </div>
 <% end %>
 
+<div id="connection_selectors_all">
 <%= render :partial => "form_add", :locals => {:collection => @potential_connections_all, :title => 'Add (all)'} %>
-
+</div>
+<div id="connection_selectors_area">
 <%= render :partial => "form_add", :locals => {:collection => @potential_connections_same_area, :title => 'Add (same area)'} %>
+</div>
 
 <p id="edit"><%= link_to_remote 'Done', { :url => { :action => 'done', :track_id => @track.id } } %></p>

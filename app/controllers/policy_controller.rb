@@ -21,6 +21,7 @@ class PolicyController < ApplicationController
     params[:special][:content] = replace_for_update(params[:special][:content])
     if @special.update_attributes(params[:special])
       flash[:notice] = 'Privacy Policy was successfully updated.'
+      update_user_edit_stats
       redirect_to :action => 'index'
     else
       render :action => 'edit'

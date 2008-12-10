@@ -1,3 +1,9 @@
+17 2008-12-9
+  - Tidy edit stats
+  - Fix minor track connection delete bug
+  - Allow viewing of full track report on front page (click the 'more')
+  - Fixed the recently broken RSS feed
+
 16 2008-12-7
   - Tidy track connection thing, use a bit of scriptaculous fun
   - Rework of track reports entry/edit
@@ -10,7 +16,7 @@
   - Show Track balloons on map when editing Area
   - Tweaks to admin page
 
-14 2008-12-03
+14 2008-12-3
   - Goog analytics
   - Fix brief/overview naming inconsistency (thanks Ian)
   - Made display of fields consistent when viewing or editing track info. The track aka needs to be made better tho...

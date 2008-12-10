@@ -1,0 +1,2 @@
+page.replace_html('connection_selectors_all', :partial => "form_add", :locals => {:collection => @potential_connections_all, :title => 'Add (all)'})
+page.replace_html('connection_selectors_area', :partial => "form_add", :locals => {:collection => @potential_connections_same_area, :title => 'Add (same area)'})

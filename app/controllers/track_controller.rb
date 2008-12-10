@@ -25,7 +25,7 @@ class TrackController < ApplicationController
     @track.area_id = params[:area_id]
     @track.author = current_user.id
     @track.date = Time.now
-    update_user_edit_stats(current_user.id)
+    update_user_edit_stats
     if @track.save
       flash[:notice] = @track.name + ' was successfully created.'
       redirect_to :action => 'show', :id => @track
@@ -50,7 +50,7 @@ class TrackController < ApplicationController
     params[:track][:desc_where] = replace_for_update(params[:track][:desc_where])
     params[:track][:desc_note] = replace_for_update(params[:track][:desc_note])
     @track.author = current_user.id
-    update_user_edit_stats(current_user.id)
+    update_user_edit_stats
     @track.date = Time.now
     if @track.update_attributes(params[:track])
       flash[:notice] = @track.name + ' was successfully updated.'

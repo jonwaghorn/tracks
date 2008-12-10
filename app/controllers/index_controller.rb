@@ -2,9 +2,11 @@ class IndexController < ApplicationController
   include ApplicationHelper
 
   before_filter :login_required, :only => [ :edit, :update ]
+  layout 'index', :except => [:rss]
 
   def index
     @special = Special.find(:first, :conditions => ["name = ?", 'index'])
+    @recent_track_reports = TrackReport.find_recent(limit = 5)
   end
 
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
@@ -19,7 +21,7 @@ class IndexController < ApplicationController
   def update
     @special = Special.find(params[:id])
     params[:special][:content] = replace_for_update(params[:special][:content])
-    update_user_edit_stats(current_user.id)
+    update_user_edit_stats
     if @special.update_attributes(params[:special])
       flash[:notice] = 'Home was successfully updated.'
       redirect_to :action => 'index'

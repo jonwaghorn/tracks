@@ -1,10 +1,9 @@
 <h1>Home</h1>
 <% if :notice %><p class="notice"><%= flash[:notice] %></p><% end %>
 <p><%= replace_for_view(h(@special.content)) %></p>
-<h2>Recent Track Reports</h2><h3>&nbsp;</h3>
-<% for track_report in TrackReport.find_recent(limit = 5) do %>
-<% track_name = Track.find(:first, :conditions => ["id = ?", track_report.track_id], :select => 'name').name %>
-<p><%= link_to track_name, :controller => 'track', :action => 'show', :id => track_report.track_id %>: <%= replace_for_view(h(track_report.description[0..80])) %><% if track_report.description.length > 80 %>...<% end %></p>
-<% end %>
+
+<%= render :partial => 'track_report/summary' %>
+
 <p style="text-align:right"><a href="/index/rss" title="Subscribe to recent track reports" rel="alternate" type="application/rss+xml">RSS feed of recent reports <img align="absbottom" src="/images/feed.png" alt=""/></a></p>
+
 <%= render :partial => 'shared/edit_admin' %>

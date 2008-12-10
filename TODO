@@ -1,6 +1,18 @@
 Tracks on Rails
----------------
-From Ian 1-12 below: Todo: 3,6,7,8,9,10,11,12 | Done: 1,2,4,5
+===============
+
+Bugs
+----
+done 1. Select box on track connection delete does not refresh
+done 2. XML feed seems broken?
+3. Investigate migrations on prod side
+4. Code in X_helpers should go into models
+5. 
+
+Ideas
+-----
+
+From Ian 1-12 below: Todo: 6,7,8,9,10,12 | Done: 1,2,3,4,5,11
 From Ian email below:
 
   I've been toying with potential track information features.  As a test, I've created a random collection of ideas at www.i-nth.com/trackbits/index.html
@@ -9,7 +21,6 @@ From Ian email below:
   The features on this page are just at the conceptual stage and require a bit more work.  Nonetheless, I think that at least some of them have potential.
   Thoughts?
 
-Investigate migrations on prod side
 Finish validations
 Finish add track paths, including upload path file, GPX and KML
 Finish email registration
@@ -23,20 +34,6 @@ Front page image:
   2. "map" with clickable site features as destinations (home|random track|about|random pic|ride choosa|faq|terms|contact|...)
 In track/show the track_aka code should be moved out of view
 
-
- 
- 
-3. Links to external pages
- 
-There are a few references to external web pages scattered around the Tracks site.  It would be good to make these live hyperlinks rather than just text.
- 
-I guess it would require a tag to be processed by Ruby?  Perhaps something like [[link:www.whatever.co.nz]]?  Better yet, pass two parameters – specifically, the link and the display text?  For example, something like:
-[[link:http://www.feelinggreat.co.nz/uploads/images/199_vn_mtb_map_original.gif,`Feeling Great`]]
- 
- From wikipedia:
-    *[http://tracks.org.nz/area/show/1 Makara Peak at Tracks.org.nz]
- gets converted to:
-    <a href="http://tracks.org.nz/area/show/1" class="external text" title="http://tracks.org.nz/area/show/1" rel="nofollow">Makara Peak at Tracks.org.nz</a>
 
  
 6. Altitude profile
@@ -72,18 +69,6 @@ A count of the number of tracks in the State might be interesting too.
  
 When editing a track, the kml line isn’t shown.  It would be easier to position the map  correctly if the kml line was visible in the editing window.
  
- 
-11. Map types
- 
-In addition to the current map types, there are a couple of others that might be worthwhile:  Terrain and Earth.
- 
-The Terrain map type shows a shaded relief map with contours.
- 
-The Earth map type is actually Google Earth embedded in the browser.  It requires the user to download a plugin the first time they use it, but thereafter it works just like every other map type.  Since it provides a 3D view of the track, it is a great way to assess and explore a track.
- 
-The Terrain map type requires just one line of JavaScript, as does the Earth type  unless you want to set options etc (in which case there are a few more lines are required).
- 
-I’ve add a play with the various map types, so I can supply the appropriate JavaScript if you want.
  
  
 12. Display multiple tracks on a map

@@ -1,0 +1,7 @@
+<h2>Recent Track Reports</h2><h3>&nbsp;</h3>
+
+<% for track_report in @recent_track_reports do %>
+<div id="<%= dom_id(track_report) %>">
+<p><%= link_to track_report.track.name, :controller => 'track', :action => 'show', :id => track_report.track_id %>: <%= replace_for_view(h(track_report.description[0..70])) %><% if track_report.description.length > 70 %>... <%= link_to_remote 'more', :url => {:controller => 'track_report', :action => 'show_report', :id => track_report} %><% end %></p>
+</div>
+<% end %>

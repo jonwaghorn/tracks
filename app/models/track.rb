@@ -5,6 +5,7 @@ class Track < ActiveRecord::Base
   belongs_to :track_access
   belongs_to :condition
   has_many :track_connections
+  has_many :track_reports
 
   validates_presence_of   :name
   validates_format_of     :name, :with => /^[\w ]+$/i, :message => 'can only contain letters and numbers (and spaces).'

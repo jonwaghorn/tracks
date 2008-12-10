@@ -1,5 +1,7 @@
 class TrackReport < ActiveRecord::Base
 
+  belongs_to :track
+
   RECENT_TRACK_COUNT = 3
   RECENT_HISTORY_OFFSET = Time.now - 1.week
 

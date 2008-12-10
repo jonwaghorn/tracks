@@ -9,6 +9,7 @@ class TrackConnectionController < ApplicationController
     @track_connection = TrackConnection.new(params[:track_connection])
     @track_connection.track_id = params[:track_id]
     @track_connection.save
+    update_user_edit_stats
     get_connections
     logger.info "Add track connection: #{Track.find(@track_connection.connect_track_id).name} (id:#{@track_connection.connect_track_id}) added to #{@track.name} (id:#{@track.id})"
   end
@@ -24,6 +25,7 @@ class TrackConnectionController < ApplicationController
   def destroy
     @track_connection = TrackConnection.find(params[:id])
     @track_connection.destroy
+    update_user_edit_stats
     get_connections
     logger.info "Delete track connection: #{Track.find(@track_connection.connect_track_id).name} (id:#{@track_connection.connect_track_id}) removed from #{@track.name} (id:#{@track.id})"
   end

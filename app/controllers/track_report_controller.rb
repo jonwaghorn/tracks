@@ -28,8 +28,8 @@ class TrackReportController < ApplicationController
       @track_report.description = replace_for_update(@track_report.description)
       @track_report.user_id = current_user.id
       @track_report.date = Time.now
-      update_track_edit_stats
       @track_report.save
+      update_user_edit_stats(true)
       @new_track_id = @track_report.id # my rjs doesn't get the proper id...
       @track = Track.find(params[:track_id])
     else
@@ -50,12 +50,13 @@ class TrackReportController < ApplicationController
     @track_report.date = Time.now
     if params[:track_report][:description].length > 0
       @track_report.update_attributes(params[:track_report])
-      update_track_edit_stats
+      update_user_edit_stats(true)
     end
   end
 
   def destroy
     track_report = TrackReport.find(params[:id]).destroy
+    update_user_edit_stats(true)
   end
 
   def cancel
@@ -67,11 +68,8 @@ class TrackReportController < ApplicationController
     @track = Track.find(@track_report.track_id)
   end
 
-  def update_track_edit_stats
-    @user = User.find(current_user.id)
-    @user.reports += 1
-    @user.last_track_edit_at = Time.now
-    @user.save
+  def show_report
+    @track_report = TrackReport.find(params[:id])
   end
 
 end

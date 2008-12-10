@@ -1,6 +1,8 @@
 <h1>Admin</h1>
 <% if :notice %><p class="notice"><%= flash[:notice] %></p><% end %>
 
+<p>System time: <%= Time.now.to_s(:full) %></p>
+
 <table>
 
   <tr>
