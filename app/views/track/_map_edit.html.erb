@@ -1,6 +1,7 @@
 <%= render :partial => 'shared/map_head' %>
 <script type="text/javascript">
 //<![CDATA[
+var geoXml = new GGeoXml("http://www.tracks.org.nz/paths/<%= @track.filename %>?a=<%= Time.now.strftime('%j%H%M%S') %>");
 function load(lt,ln,zm) {
   if (GBrowserIsCompatible()) {
     if (!zm) { <% geo = Area.find(:first, params[:area_id], :select => 'latitude, longitude, zoom') %>
@@ -14,11 +15,12 @@ function load(lt,ln,zm) {
       document.getElementById("track_longitude").value = center.lng();
       document.getElementById("track_zoom").value = map.getZoom();
     });
-		map.addControl(new GSmallMapControl());
-		map.addControl(new GHierarchicalMapTypeControl());
-		map.addControl(new GScaleControl());
-		map.addMapType(G_PHYSICAL_MAP);
+    map.addControl(new GSmallMapControl());
+    map.addControl(new GHierarchicalMapTypeControl());
+    map.addControl(new GScaleControl());
+    map.addMapType(G_PHYSICAL_MAP);
     map.setCenter(new GLatLng(lt, ln), zm, G_SATELLITE_MAP);
+    map.addOverlay(geoXml);
   } else { document.getElementById("map").innerHTML="This website uses Google Maps, which appear not to work with your browser. See the FAQ."; }
 }
 //]]>

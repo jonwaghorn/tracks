@@ -1,7 +1,7 @@
 <%= render :partial => 'shared/map_head' %>
 <script type="text/javascript">
 //<![CDATA[
-var geoXml = new GGeoXml("http://www.tracks.org.nz/paths/<%= @track.filename %>");
+var geoXml = new GGeoXml("http://www.tracks.org.nz/paths/<%= @track.filename %>?a=<%= Time.now.strftime('%j%H%M%S') %>");
 var map;
 function locateTrack(lt,ln,zm) {
   map.setCenter(new GLatLng(lt, ln), zm, G_SATELLITE_MAP);

@@ -1,3 +1,8 @@
+18 2008-12-10
+  - Stop google map path cacheing (thanks Ian)
+  - Show google map path in edit mode (thanks Ian)
+  - Initial tidy of css
+
 17 2008-12-9
   - Tidy edit stats
   - Fix minor track connection delete bug

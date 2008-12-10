@@ -7,12 +7,13 @@ done 1. Select box on track connection delete does not refresh
 done 2. XML feed seems broken?
 3. Investigate migrations on prod side
 4. Code in X_helpers should go into models
-5. 
+done 5. Google agressively caches the map paths
+6.
 
 Ideas
 -----
 
-From Ian 1-12 below: Todo: 6,7,8,9,10,12 | Done: 1,2,3,4,5,11
+From Ian 1-12 below: Todo: 6,7,8,9,12 | Done: 1,2,3,4,5,10,11
 From Ian email below:
 
   I've been toying with potential track information features.  As a test, I've created a random collection of ideas at www.i-nth.com/trackbits/index.html
@@ -64,13 +65,7 @@ Each Area includes a summary of the track length by type.  Would it be possible 
  
 A count of the number of tracks in the State might be interesting too.
  
- 
-10. Show kml line when editing
- 
-When editing a track, the kml line isn’t shown.  It would be easier to position the map  correctly if the kml line was visible in the editing window.
- 
- 
- 
+  
 12. Display multiple tracks on a map
  
 It would be very helpful if we could display multiple tracks on a map.  Currently, it can be difficult to see how one track relates to others nearby.  If we could display the track of interest and nearby tracks on the same map, then it would be easier to understand how the tracks fit together.

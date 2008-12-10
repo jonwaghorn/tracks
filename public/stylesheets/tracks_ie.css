@@ -1,18 +1,18 @@
 /* Alternative CSS for IE 5, 5.5, and 6. This is basically work-arounds for IE non-compilance... */
 
-#head {
+.head {
   height: 74px;
 }
 
-#head #auth {
+.head .auth {
   margin-top: 42px;
 }
 
-#foot_l {
+.foot_l {
   margin-top: -10px;
 }
 
-#foot_c {
+.foot_c {
   height: 24px;
 }
 
