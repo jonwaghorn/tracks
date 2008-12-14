@@ -1,0 +1,9 @@
+<h1>New FAQ</h1>
+
+<% form_tag :action => 'create' do %>
+  <%= render :partial => 'form' %>
+  <p><%= submit_tag "Create" %></p>
+<% end %>
+
+<hr size=1 color="#ccc">
+<p><%= link_to 'Back', :action => 'index' %></p>

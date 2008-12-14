@@ -1,5 +1,12 @@
-<%= error_messages_for 'special', :header_tag => 'h4' %>
-<!--[form:special]-->
-<p><%= text_area 'special', 'content', "cols" =>70 %></p>
-<!--[eoform:special]-->
+<%= error_messages_for 'faq', :header_tag => 'h4' %>
 
+<p><label for="faq_question">Question</label><br/>
+<%= text_field 'faq', 'question', "size" => 40 %></p>
+
+<p><label for="faq_answer">Answer</label><br/>
+<%= text_area 'faq', 'answer', "cols" =>70 %></p>
+
+<p><label for="faq_category">Category</label><br/>
+<%= text_field 'faq', 'category', "size" => 40 %><br/>
+Existing categories:<%= @categories.collect(&:category).join(', ') %><br/>
+(note: will change into a select box in future when actual categories become useful)</p>

@@ -1,0 +1,22 @@
+<h1>FAQ</h1>
+<% if :notice %><p class="notice"><%= flash[:notice] %></p><% end %>
+
+<p>Got a question not answered here? Try <b>info at tracks dot org dot nz</b>.</p>
+
+<h2>Questions</h2><h3></h3>
+<% @faqs.each_with_index do |@faq, i| %>
+<p><%= i+1 %>. <a href="#faq_<%= @faq.id %>"><%= @faq.question %></a></p>
+<% end %>
+
+<h2>Answers</h2><h3></h3>
+
+<% @faqs.each do |@faq| %>
+<div id="faq_<%= @faq.id %>">
+  <%= render :partial => 'show' %>
+</div>
+<% end %>
+
+<% if creator? %>
+<hr size=1 color="#ccc">
+<p><%= link_to 'New', :action => 'new' %></p>
+<% end %>

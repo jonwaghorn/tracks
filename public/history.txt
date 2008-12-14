@@ -1,3 +1,6 @@
+20 2008-12-14
+  - Tweaked up the FAQ page, can now edit etc.
+
 19 2008-12-13
   - Allow apostrophes in track/area/etc names
   - Made track ref naming (and other edit labels) more robust. Less crashes but still not totally happy with it.

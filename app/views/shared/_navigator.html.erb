@@ -1,6 +1,6 @@
 <div id="nav_outer"><div id="nav"><h1>Navigator</h1>
 <ul>
-<% current_title = params[:action] == 'edit' ? ' (edit)' : '' %>
+<% current_title = %w(edit new).member?(params[:action]) ? ' (edit)' : '' %>
 
 <% if params[:controller] == 'index' %>
 <%= render :partial => 'shared/nav_current', :locals => { :id => 'main', :current => 'Home' + current_title } %>
