@@ -2,8 +2,8 @@
 <h2>Connecting Tracks</h2><h3>&nbsp;</h3>
 <% end %>
 <div id="connecting_tracks">
-<% if @existing_connections.nil? %>
-<p style="margin:8px 9px;"><em>Note: add connecting tracks after you have saved your new track</em></p>
+<% if @existing_connections.nil? && params[:action] == 'new' %>
+<p style="margin:8px 9px;"><em>Note: add connecting tracks after you have saved your new track.</em></p>
 <% else %>
 <%= render :partial => "/track_connection/show" %>
 <% end %>

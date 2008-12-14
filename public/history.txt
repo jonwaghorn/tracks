@@ -1,3 +1,9 @@
+19 2008-12-13
+  - Allow apostrophes in track/area/etc names
+  - Made track ref naming (and other edit labels) more robust. Less crashes but still not totally happy with it.
+  - Added Twitter functions. Newly created track reports are automatically twittered to http://twitter.com/tracks_org_nz
+  - Moved lots of code around to the "correct" rails places - mostly fixing noob issues
+
 18 2008-12-10
   - Stop google map path cacheing (thanks Ian)
   - Show google map path in edit mode (thanks Ian)

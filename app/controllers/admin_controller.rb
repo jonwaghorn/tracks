@@ -1,5 +1,4 @@
 class AdminController < ApplicationController
-  include ApplicationHelper
 
   before_filter :admin_required
 

@@ -8,11 +8,11 @@ class Track < ActiveRecord::Base
   has_many :track_reports
 
   validates_presence_of   :name
-  validates_format_of     :name, :with => /^[\w ]+$/i, :message => 'can only contain letters and numbers (and spaces).'
+  validates_format_of     :name, :with => /^[\w ']+$/i, :message => 'can only contain letters and numbers (and spaces).'
   validate                :ensure_name_not_numeric
   validates_length_of     :name, :maximum => 40, :message => 'Track name too long, maximum is 40 characters.'
   validates_uniqueness_of :name
-  validates_presence_of   :desc_overview
+  validate                :overview_is_not_empty
 
   RECENT_TRACK_COUNT = 3
   RECENT_HISTORY_OFFSET = Time.now - 1.week
@@ -52,5 +52,9 @@ private
 
   def ensure_name_not_numeric
     errors.add(:name, "cannot be all numbers") if /^[0-9]*$/.match(name)
+  end
+  
+  def overview_is_not_empty
+    errors.add(nil, "Overview cannot be empty.") if desc_overview.empty?
   end
 end

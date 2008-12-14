@@ -14,4 +14,8 @@ class TrackReport < ActiveRecord::Base
     previous_by_time = find(:all, :order => 'date DESC', :conditions => ["track_id = ? AND date > ?", track_id, RECENT_HISTORY_OFFSET])
     previous_by_time.length > RECENT_TRACK_COUNT ? previous_by_time : find(:all, :limit => RECENT_TRACK_COUNT, :order => 'date DESC', :conditions => ["track_id = ?", track_id])
   end
+
+  def format_for_twitter
+    
+  end
 end

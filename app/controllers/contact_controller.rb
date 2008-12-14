@@ -1,5 +1,4 @@
 class ContactController < ApplicationController
-  include ApplicationHelper
 
   before_filter :login_required, :only => [ :edit, :update ]
 

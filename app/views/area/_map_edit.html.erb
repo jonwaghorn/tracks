@@ -9,8 +9,8 @@ function load(lt,ln,zm) {
       zm = <%= geo.zoom != 0 ? geo.zoom : 11 %>; }
     var map = new GMap2(document.getElementById("map"));
     var icon = new GIcon();
-    icon.image = "http://www.tracks.org.nz/images/mm_20_orange.png";
-    icon.shadow = "http://www.tracks.org.nz/images/mm_20_shadow.png";
+    icon.image = "http://<%= URL_BASE %>/images/mm_20_orange.png";
+    icon.shadow = "http://<%= URL_BASE %>/images/mm_20_shadow.png";
     icon.iconSize = new GSize(12, 20);
     icon.shadowSize = new GSize(22, 20);
     icon.iconAnchor = new GPoint(6, 20);

@@ -1,12 +1,4 @@
 module TrackHelper
-  
-  def get_track_name(id)
-    Track.find(id, :select => 'name').name
-  end
-
-  def get_track_id(name)
-    Track.find(:first, :conditions => ["name = ?", name], :select => 'id').id
-  end
 
   def track_length_summary(area_id)
     summary = {}
