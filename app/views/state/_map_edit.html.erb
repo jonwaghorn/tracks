@@ -19,13 +19,14 @@ function load(lt,ln,zm) {
       document.getElementById("state_zoom").value = map.getZoom();
     });
     map.addControl(new GSmallMapControl());
-    map.addControl(new GHierarchicalMapTypeControl());
+    map.addControl(new GMapTypeControl());
     map.addControl(new GScaleControl());
     map.addMapType(G_PHYSICAL_MAP);
     map.setCenter(new GLatLng(lt, ln), zm, G_SATELLITE_MAP);
     <% get_area_markers(@state.id).each do |area| %>
     map.addOverlay(new GMarker(new GLatLng(<%=area[0].to_s%>,<%=area[1].to_s%>),{title:"<%=area[2]%>",icon:icon}))
     <% end %>
+    map.setMapType(<%= user_map_style %>);
     } else { document.getElementById("map").innerHTML="This website uses Google Maps, which appear not to work with your browser. See the FAQ."; }
 }
 //]]>

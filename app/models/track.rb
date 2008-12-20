@@ -1,4 +1,6 @@
 class Track < ActiveRecord::Base
+  include TextHelper
+
   belongs_to :area
   has_many :track_akas, :order => 'name'
   belongs_to :track_grade
@@ -7,6 +9,7 @@ class Track < ActiveRecord::Base
   has_many :track_connections
   has_many :track_reports
 
+  before_validation       :fix_name
   validates_presence_of   :name
   validates_format_of     :name, :with => /^[\w ']+$/i, :message => 'can only contain letters and numbers (and spaces).'
   validate                :ensure_name_not_numeric
@@ -48,7 +51,7 @@ class Track < ActiveRecord::Base
     connections.sort
   end
 
-private
+  private
 
   def ensure_name_not_numeric
     errors.add(:name, "cannot be all numbers") if /^[0-9]*$/.match(name)
@@ -56,5 +59,9 @@ private
   
   def overview_is_not_empty
     errors.add(nil, "Overview cannot be empty.") if desc_overview.empty?
+  end
+
+  def fix_name
+    fix_stupid_quotes!(name)
   end
 end

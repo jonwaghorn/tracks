@@ -1,0 +1,14 @@
+<h1>Settings (edit)</h1>
+
+<% form_tag :action => 'update' do %>
+<%= error_messages_for 'setting', :header_tag => 'h4' %>
+
+<p><label for="setting_map_type_id">Map style</label>
+<%= select :setting, :map_type_id, map_type_options %></p>
+
+  <p><%= submit_tag 'Save' %></p>
+<% end %>
+
+<hr size=1 color='#ccc'>
+
+<p><%= link_to 'Back', :action => 'index' %></p>

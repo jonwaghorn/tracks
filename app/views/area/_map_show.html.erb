@@ -13,7 +13,7 @@ function load(lt,ln,zm) {
     icon.iconAnchor = new GPoint(6, 20);
     icon.infoWindowAnchor = new GPoint(5, 1);
     map.addControl(new GSmallMapControl());
-    map.addControl(new GHierarchicalMapTypeControl());
+    map.addControl(new GMapTypeControl());
     map.addControl(new GScaleControl());
     ovMap = new GOverviewMapControl(new GSize(100,80));
     map.addControl(ovMap);
@@ -29,6 +29,7 @@ function load(lt,ln,zm) {
     <% get_track_markers(@area.id).each do |track| %>
     map.addOverlay(createMarker(new GLatLng(<%=track[0].to_s%>,<%=track[1].to_s%>),{title:"<%=track[2]%>",icon:icon},"/track/show/<%=track[3].to_s%>"))
     <% end %>
+    map.setMapType(<%= user_map_style %>);
   } else { document.getElementById("map").innerHTML="This website uses Google Maps, which appear not to work with your browser. See the FAQ."; }
 }
 //]]>

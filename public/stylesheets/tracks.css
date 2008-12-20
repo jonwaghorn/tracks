@@ -217,21 +217,33 @@ div.clearboth {clear: both;}
   min-height: 16px;
 }
 
-#nav li #current_t {
+#nav li .current_t {
   background: url('/images/current_t.png') no-repeat top right;
   margin-top: -4px;
   padding-top: 4px;
 }
 
-#nav li #current_c {
+#nav li .current_c {
   background: url('/images/current_c.png') no-repeat right;
   margin-right: -13px;
 }
 
-#nav li #current_b {
+#nav li .current_b {
   background: url('/images/current_b.png') no-repeat bottom right;
   margin-bottom: -4px;
   padding-bottom: 4px;
+}
+
+#nav li.current a {
+  padding: 0;
+  text-decoration: none;
+  color: #f48a00;
+  font-weight: normal;
+}
+
+#nav li.current a:hover {
+  background: none;
+  font-weight: normal;
 }
 
 #nav li a {
@@ -354,7 +366,7 @@ h1 {
   border: 1px solid #999;
   padding: 1px;
   width: 600px;
-  min-height: 129px;
+  min-height: 165px;
   margin-bottom: 10px;
 }
 

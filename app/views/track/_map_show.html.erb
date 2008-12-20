@@ -4,7 +4,7 @@
 var geoXml = new GGeoXml("http://<%= URL_BASE %>/paths/<%= @track.filename %>?a=<%= Time.now.strftime('%j%H%M%S') %>");
 var map;
 function locateTrack(lt,ln,zm) {
-  map.setCenter(new GLatLng(lt, ln), zm, G_SATELLITE_MAP);
+  map.setCenter(new GLatLng(lt, ln), zm, <%= user_map_style %>);
 }
 function load(lt,ln,zm) {
   if (GBrowserIsCompatible()) {
@@ -12,7 +12,7 @@ function load(lt,ln,zm) {
     map = new GMap2(document.getElementById("map"));
     map.addControl(new GSmallZoomControl());
     map.addControl(new GScaleControl());
-    map.addControl(new GHierarchicalMapTypeControl());
+    map.addControl(new GMapTypeControl());
     ovMap = new GOverviewMapControl(new GSize(100,80));
     map.addControl(ovMap);
     ovMap.hide(true);
@@ -20,6 +20,7 @@ function load(lt,ln,zm) {
     map.addMapType(G_SATELLITE_3D_MAP);
     locateTrack(lt,ln,zm);
     map.addOverlay(geoXml);
+    map.setMapType(<%= user_map_style %>);
   } else { document.getElementById("map").innerHTML="This website uses Google Maps, which appear not to work with your browser. See the FAQ."; }
 }
 //]]>

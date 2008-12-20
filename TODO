@@ -13,7 +13,7 @@ done 5. Google agressively caches the map paths
 Ideas
 -----
 
-From Ian 1-12 below: Todo: 6,7,8,9,12 | Done: 1,2,3,4,5,10,11
+From Ian 1-12 below: Todo: 6,8,9,12 | Done: 1,2,3,4,5,7,10,11
 From Ian email below:
 
   I've been toying with potential track information features.  As a test, I've created a random collection of ideas at www.i-nth.com/trackbits/index.html
@@ -42,15 +42,6 @@ In track/show the track_aka code should be moved out of view
 Since hills are such a prominent feature of Wellington tracks, an altitude profile graph would be a great addition to each track’s description.  I’ve briefly toyed with an expandable image, but haven’t thought much beyond that about how the profile could be presented.
  
 I have created a rough spreadsheet that extracts coordinate and altitude data from a gpx file.  It then calculates distances between the coordinate pairs, which creates the data needed for an altitude profile chart.  The spreadsheet also provides an option to smooth the altitude profile, taking out the inevitable glitches recorded by the GPS.
- 
- 
-7. Problem with apostrophes
- 
-I broke the “Big Tom’s Wheelie” track when I edited it.  The database objected to the apostrophe, so I had to change the name to not have an apostrophe.  I assume that Zac’s Track and Varley’s would have the same problem if edited.
- 
-A related issue is referring to tracks that have an apostrophe in their name.  For example, [[track:Zac’s Track]] doesn’t work, so it has to be written as [[track:12]].
- 
-I know that databases have trouble dealing with apostrophes (from experience, since I have one in my name), but is it possible to include handling of apostrophes?
  
  
 8. Numeric track names

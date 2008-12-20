@@ -1,0 +1,20 @@
+<h1>Editing map_type</h1>
+
+<% form_for(@map_type) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :type %><br />
+    <%= f.text_field :type %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @map_type %> |
+<%= link_to 'Back', map_types_path %>

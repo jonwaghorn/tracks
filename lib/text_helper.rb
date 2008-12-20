@@ -87,6 +87,7 @@ module TextHelper
   def replace_for_update(line)
     #    puts '### replace_for_update'
     #    puts 'LINE = ' + line
+    fix_stupid_quotes!(line)
     items = find_name_replacements(line)
     #    puts 'ITEMS = ' + items.to_s
     items.each do
@@ -115,6 +116,13 @@ module TextHelper
     end
 
     return line
+  end
+
+  def fix_stupid_quotes!(s)
+    s.gsub! "\342\200\230", "'"
+    s.gsub! "\342\200\231", "'"
+    s.gsub! "\342\200\234", '"'
+    s.gsub! "\342\200\235", '"'
   end
 
   private

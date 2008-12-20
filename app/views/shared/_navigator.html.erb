@@ -17,31 +17,37 @@
 <% if params[:controller] == 'faq' %>
 <%= render :partial => 'shared/nav_current', :locals => { :id => 'main', :current => 'FAQ' + current_title } %>
 <% else %>
-<li><%= link_to 'FAQ', { :controller => 'faq' }, :id => 'main' %></li>
+<li><%= link_to 'FAQ', { :controller => '/faq' }, :id => 'main' %></li>
 <% end %>
 
 <% if params[:controller] == 'about' %>
 <%= render :partial => 'shared/nav_current', :locals => { :id => 'main', :current => 'About' + current_title } %>
 <% else %>
-<li><%= link_to 'About', { :controller => 'about' }, :id => 'main' %></li>
+<li><%= link_to 'About', { :controller => '/about' }, :id => 'main' %></li>
 <% end %>
 
 <% if params[:controller] == 'policy' %>
 <%= render :partial => 'shared/nav_current', :locals => { :id => 'main', :current => 'Terms/Privacy' + current_title } %>
 <% else %>
-<li><%= link_to 'Terms/Privacy', { :controller => 'policy' }, :id => 'main' %></li>
+<li><%= link_to 'Terms/Privacy', { :controller => '/policy' }, :id => 'main' %></li>
 <% end %>
 
 <% if params[:controller] == 'contact' %>
 <%= render :partial => 'shared/nav_current', :locals => { :id => 'main', :current => 'Contact' + current_title } %>
 <% else %>
-<li><%= link_to 'Contact', { :controller => 'contact' }, :id => 'main' %></li>
+<li><%= link_to 'Contact', { :controller => '/contact' }, :id => 'main' %></li>
 <% end %>
 
-<% if params[:controller] == 'admin' %>
-<%= render :partial => 'shared/nav_current', :locals => { :id => 'main', :current => 'Admin' } %>
+<% if params[:controller] == 'settings' %>
+<%= render :partial => 'shared/nav_current', :locals => { :id => 'main', :current => 'Settings' + current_title } %>
+<% elsif logged_in? %>
+<li><%= link_to 'Settings', { :controller => '/settings' } %></li>
+<% end %>
+
+<% if !(params[:controller] =~ /^admin/).nil? %>
+<%= render :partial => 'shared/nav_current', :locals => { :id => 'main', :current => 'Admin', :link => '/admin' } %>
 <% elsif admin? %>
-<li><%= link_to 'Admin', { :controller => 'admin' } %></li>
+<li><%= link_to 'Admin', { :controller => '/admin' } %></li>
 <% end %>
 
 </ul>

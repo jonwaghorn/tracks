@@ -66,7 +66,7 @@ module AuthenticatedSystem
     end
 
     def admin_required
-      admin? && authorized? ? true : (redirect_to :controller => 'index')
+      admin? && authorized? ? true : (redirect_to :controller => '/index')
     end
     
     # Redirect as appropriate when an access request fails.

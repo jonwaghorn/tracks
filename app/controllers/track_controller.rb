@@ -51,6 +51,7 @@ class TrackController < ApplicationController
     @track.author = current_user.id
     update_user_edit_stats
     @track.date = Time.now
+    @existing_connections = @track.get_connections
     if @track.update_attributes(params[:track])
       flash[:notice] = @track.name + ' was successfully updated.'
       redirect_to :action => 'show', :id => @track

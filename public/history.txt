@@ -1,92 +1,99 @@
+21 2008-12-20
+  - [feature] New user settings options page, first stage of more user customisation (when logged in)
+  - [feature] User can set their preferred map type now
+  - [feature] New admin link to send 'site update' notification message (currently via Twitter)
+  - [bug fix] Error when validation fails on saving a track
+  - [bug fix] Correct funky smart quotes and backticks before saving
+
 20 2008-12-14
-  - Tweaked up the FAQ page, can now edit etc.
+  - [feature] Tweaked up the FAQ page, can now edit etc.
 
 19 2008-12-13
-  - Allow apostrophes in track/area/etc names
-  - Made track ref naming (and other edit labels) more robust. Less crashes but still not totally happy with it.
-  - Added Twitter functions. Newly created track reports are automatically twittered to http://twitter.com/tracks_org_nz
-  - Moved lots of code around to the "correct" rails places - mostly fixing noob issues
+  - [feature] Allow apostrophes in track/area/etc names
+  - [feature] Added Twitter functions. Newly created track reports are automatically twittered to http://twitter.com/tracks_org_nz
+  - [bug fix] Made track ref naming (and other edit labels) more robust. Less crashes but still not totally happy with it.
+  - [bug fix] Moved lots of code around to the "correct" rails places - mostly fixing noob issues
 
 18 2008-12-10
-  - Stop google map path cacheing (thanks Ian)
-  - Show google map path in edit mode (thanks Ian)
-  - Initial tidy of css
+  - [feature] Show google map path in edit mode (thanks Ian)
+  - [bug fix] Stop google map path cacheing (thanks Ian)
+  - [bug fix] Initial tidy of css
 
 17 2008-12-9
-  - Tidy edit stats
-  - Fix minor track connection delete bug
-  - Allow viewing of full track report on front page (click the 'more')
-  - Fixed the recently broken RSS feed
+  - [feature] Allow viewing of full track report on front page (click the 'more')
+  - [bug fix] Tidy edit stats
+  - [bug fix] Fix minor track connection delete bug
+  - [bug fix] Fixed the recently broken RSS feed
 
 16 2008-12-7
-  - Tidy track connection thing, use a bit of scriptaculous fun
-  - Rework of track reports entry/edit
-  - Track reports can only be edited/deleted by their creator (or Admin) if less than 1 week old
-  - Added [[link:ref name]] link (hopefully I also remembered to update the FAQ to show the usage)
+  - [feature] Tidy track connection thing, use a bit of scriptaculous fun
+  - [feature] Rework of track reports entry/edit
+  - [feature] Track reports can only be edited/deleted by their creator (or Admin) if less than 1 week old
+  - [feature] Added [[link:ref name]] link (hopefully I also remembered to update the FAQ to show the usage)
 
 15 2008-12-5
-  - Rework of track connection edit, do it all in the nav bar now
-  - Show Area balloons on map when editing State
-  - Show Track balloons on map when editing Area
-  - Tweaks to admin page
+  - [feature] Rework of track connection edit, do it all in the nav bar now
+  - [feature] Show Area balloons on map when editing State
+  - [feature] Show Track balloons on map when editing Area
+  - [bug fix] Tweaks to admin page
 
 14 2008-12-3
-  - Goog analytics
-  - Fix brief/overview naming inconsistency (thanks Ian)
-  - Made display of fields consistent when viewing or editing track info. The track aka needs to be made better tho...
+  - [feature] Goog analytics
+  - [bug fix] Fix brief/overview naming inconsistency (thanks Ian)
+  - [bug fix] Made display of fields consistent when viewing or editing track info. The track aka needs to be made better tho...
 
 13 2008-11-28
-  - Made map view bigger (good idea, thanks Ian)
+  - [feature] Made map view bigger (good idea, thanks Ian)
 
 12 2008-11-27: little steps
-  - Add terrain and 3d view options to maps (thanks Ian)
+  - [feature] Add terrain and 3d view options to maps (thanks Ian)
 
 11 2008-11-25: back into it
-  - Update to Rails 2.1.2
-  - Tweaks for IE7 (thanks Ian)
-  - Fix sort order of areas in navigation (thanks Ian)
+  - [feature] Update to Rails 2.1.2
+  - [bug fix] Tweaks for IE7 (thanks Ian)
+  - [bug fix] Fix sort order of areas in navigation (thanks Ian)
 
 10 2008-5-5
-  - Added GPS track path download, still need more data...
+  - [feature] Added GPS track path download, still need more data...
 
 9 2008-2-16
-  - Added GPS track paths upload, now need to get adding some actual GPS data...
-  - Tweaked the css, centred the whole page thingy
-  - Added some behind-the-scenes admin stuff
+  - [feature] Added GPS track paths upload, now need to get adding some actual GPS data...
+  - [bug fix] Tweaked the css, centred the whole page thingy
+  - [bug fix] Added some behind-the-scenes admin stuff
 
 8 2008-1-24
-  - Migrated from cheekymoneky.co.nz to tracks.org.nz
-  - Added some javascripty goodness to admins, as an exploration into js
-  - Fixed rss track links
-  - Fix rainfal on state when no reading available
+  - [feature] Migrated from cheekymoneky.co.nz to tracks.org.nz
+  - [feature] Added some javascripty goodness to admins, as an exploration into js
+  - [bug fix] Fixed rss track links
+  - [bug fix] Fix rainfal on state when no reading available
 
 7 2008-1-8
-  - RSS feed of recent track changes
+  - [feature] RSS feed of recent track changes
 
 6 2008-1-7
-  - Tweak linking thingy
+  - [bug fix] Tweak linking thingy
 
 5 2008-1-6
-  - General tidy up around Track Reports
-  - Added browse back for old track reports
-  - Added "What's new" to index
+  - [feature] Added browse back for old track reports
+  - [feature] Added "What's new" to index
+  - [bug fix] General tidy up around Track Reports
 
 4 2008-1-2
-  - Another tweak for IE view
+  - [bug fix] Another tweak for IE view
 
 3 2008-1-1
-  - Tweaked IE css to make it look better. Why does IE suck so much?
-  - Add discreet link to this history page
-  - Allow for [[para]] in text bodies
+  - [feature] Add discreet link to this history page
+  - [feature] Allow for [[para]] in text bodies
+  - [bug fix] Tweaked IE css to make it look better. Why does IE suck so much?
 
 2 2007-12-28
-  - Tidied up front page and added Track Updates to state
-  - Removed status from track_reports
-  - Added new datetime formatter, and use of it
-  - Fixed timezone to be local to NZ
-  - Alphabetise various track lists
-  - Display rainfall graph
-  - Better feedback when login fails
+  - [feature] Tidied up front page and added Track Updates to state
+  - [feature] Added new datetime formatter, and use of it
+  - [feature] Display rainfall graph
+  - [bug fix] Removed status from track_reports
+  - [bug fix] Fixed timezone to be local to NZ
+  - [bug fix] Alphabetise various track lists
+  - [bug fix] Better feedback when login fails
 
 1 2007-12-19
-  - Initial release. A lot of this came from a previous incarnation but this is the first version using ruby on rails.
+  - [feature] Initial release. A lot of this came from a previous incarnation but this is the first version using ruby on rails.

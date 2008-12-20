@@ -3,26 +3,5 @@
 
 <p>System time: <%= Time.now.to_s(:full) %></p>
 
-<table>
-
-  <tr>
-    <th>Name</th>
-    <th>Edits</th>
-    <th>Reports</th>
-    <th>Last edit</th>
-    <th>Signup</th>
-    <!-- <th>Email</th> -->
-  </tr>
-
-  <% @users.each do |user| %>
-  <tr>
-    <td><%= h user.login %></td>
-    <td><%= user.edits if user.edits > 0 %></td>
-    <td><%= user.reports if user.reports > 0 %></td>
-    <td><%= user.last_track_edit_at.to_s(:full) if !user.last_track_edit_at.nil? %></td>
-    <td><%= user.created_at.to_s(:full) %></td>
-    <!-- <td><%= user.email %></td> -->
-  </tr>
-  <% end %>
-
-</table>
+<p><%= link_to 'Map Types', :controller => '/admin/map_types' %></p>
+<p><%= link_to 'Users', :controller => '/admin/users' %></p>

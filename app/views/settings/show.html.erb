@@ -1,0 +1,9 @@
+<h1>Settings</h1>
+
+<% if :notice %><p class="notice"><%= flash[:notice] %></p><% end %>
+
+<p>Map style is <b><%=h @setting.map_type.name.downcase %></b></p>
+
+<hr size=1 color='#ccc'>
+
+<p><%= link_to 'Edit', :action => 'edit' %></p>
