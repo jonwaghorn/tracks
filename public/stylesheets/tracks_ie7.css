@@ -2,15 +2,18 @@
   display: inline;
 }
 
-#nav li #current_t {
-  padding-top: 6px;
+#nav li .current_t {
+  padding-top: 5px;
   z-index: 100;
   position: relative;
   overflow: hidden;
 }
 
-#nav li #current_b {
-  margin: 0px 0px -4px 0px;
-  margin-bottom: 0px;
-  padding-bottom: 6px;
+#nav li .current_b {
+  margin: 0 0 -2px 0;
+  padding-bottom: 7px;
+}
+
+#nav li.current a {
+  display: inline;
 }

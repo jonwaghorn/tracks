@@ -1,3 +1,10 @@
+22 2008-12-21 squashing little bugs
+  - [bug fix] New/edit track report entry box was too wide in several browsers - thanks Ian
+  - [bug fix] Made map buttons consistent between view and edit modes - thanks Ian
+  - [bug fix] Re-fix broken IE7 menu (broke when currently selected item bcame click-able) - thanks Ian
+  - [bug fix] Fixed Google's copyright notice extending outside the map in certain situations. Thanks Ian for spotting this and Kyle for the "proper" fix (http://tinyurl.com/a2f3p9)
+  - [bug fix] More refactoring - mostly fixing noob issues
+
 21 2008-12-20
   - [feature] New user settings options page, first stage of more user customisation (when logged in)
   - [feature] User can set their preferred map type now

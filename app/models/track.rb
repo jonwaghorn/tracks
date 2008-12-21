@@ -51,6 +51,22 @@ class Track < ActiveRecord::Base
     connections.sort
   end
 
+  def self.get_markers(area_id)
+    find(:all, :conditions => ["area_id = ? AND zoom != 0", area_id], :select => 'latitude, longitude, name, id').collect { |t| [t.latitude, t.longitude, t.name, t.id] }
+  end
+
+  def self.length_summary(area_ids)
+    summary = {}
+    area_ids.each do |area_id|
+      find(:all, :conditions => ["area_id = ?", area_id], :select => 'condition_id, length').each do |track|
+        if track.length > 0 and track.condition_id != nil
+          summary[track.condition_id] = summary.has_key?(track.condition_id) ? summary[track.condition_id] + track.length : track.length
+        end
+      end
+    end
+    summary
+  end
+
   private
 
   def ensure_name_not_numeric

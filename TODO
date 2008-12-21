@@ -5,15 +5,15 @@ Bugs
 ----
 done 1. Select box on track connection delete does not refresh
 done 2. XML feed seems broken?
-3. Investigate migrations on prod side
-4. Code in X_helpers should go into models
+done 3. Investigate migrations on prod side
+done 4. Code in X_helpers should go into models
 done 5. Google agressively caches the map paths
 6.
 
 Ideas
 -----
 
-From Ian 1-12 below: Todo: 6,8,9,12 | Done: 1,2,3,4,5,7,10,11
+From Ian 1-16 below: Todo: 6,8,9,12,15 | Done: 1,2,3,4,5,7,10,11,13,14,16
 From Ian email below:
 
   I've been toying with potential track information features.  As a test, I've created a random collection of ideas at www.i-nth.com/trackbits/index.html
@@ -49,12 +49,6 @@ I have created a rough spreadsheet that extracts coordinate and altitude data fr
 You may recall that I broke something when I tried to create a track called ‘491’ in the Wainuiomata Trail Project.  The problem was, I assume, that the database refers to tracks by number which didn't work because track 491 doesn't exist.  You renamed the track ‘T491’, which fixed the problem but it isn’t quite right. 
  
 Is there any way of allowing numeric track names?
-
-9. Track count and length
- 
-Each Area includes a summary of the track length by type.  Would it be possible to add a couple of fields to the State page to show the same summary information in total?
- 
-A count of the number of tracks in the State might be interesting too.
  
   
 12. Display multiple tracks on a map
@@ -66,3 +60,8 @@ One approach might be to rename the “Connecting Tracks” list to be a “Near
 I have been playing with some offline examples of displaying multiple tracks on a map.  This works OK, provided there isn’t too much data – either long tracks with lots of points, or more than a few tracks – otherwise the browser complains about the time taken to run the JavaScript, or the map simply locks up.  There seems to be ways to deal with these issues, but I haven’t reached a conclusion yet.
  
 As an aside, I updated the Car Parts Extension map to show actual and planned track using different colours.  This uses a single kml file to show multiple tracks, giving each its own style.  This approach works for that specific purpose, but wouldn’t work well for showing multiple tracks on a map – in that case, I think it is better to keep each track’s data in a separate file and just display them together when needed.
+
+
+
+
+15. Bold formatting looks the same as a hyperlink - is there a way to avoid confusion between bold and links?

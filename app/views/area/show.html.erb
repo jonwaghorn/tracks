@@ -4,11 +4,12 @@
 
 <h2>Track type/distance summary</h2><h3>&nbsp;</h3>
 <% total_len = 0 %>
-<p><% track_length_summary(@area.id).collect do |id, length| %>
-<%= Condition.find(:first, :select => 'name', :conditions => ["id = ?", id]).name %>: <%= length %>km<br/>
+<p><% Track.length_summary([@area.id]).collect do |id, length| %>
+<%= Condition.find(:first, :select => 'name', :conditions => ["id = ?", id]).name %>: <%= distance(length) %><br/>
 <% total_len += length %>
 <% end %></p>
-<p>Total: <%= total_len %>km</p>
+<p>Total distance: <%= distance(total_len) %></p>
+<p>Total number tracks for <%= @area.name %>: <%= @area.tracks.size %></p>
 
 <% if @area.zoom != 0 %>
 <h2>Tracks</h2><h3>&nbsp;</h3>

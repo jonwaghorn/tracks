@@ -13,11 +13,11 @@ function load(lt,ln,zm) {
     map.addControl(new GSmallZoomControl());
     map.addControl(new GScaleControl());
     map.addControl(new GMapTypeControl());
+    map.addMapType(G_PHYSICAL_MAP);
+    map.addMapType(G_SATELLITE_3D_MAP);
     ovMap = new GOverviewMapControl(new GSize(100,80));
     map.addControl(ovMap);
     ovMap.hide(true);
-    map.addMapType(G_PHYSICAL_MAP);
-    map.addMapType(G_SATELLITE_3D_MAP);
     locateTrack(lt,ln,zm);
     map.addOverlay(geoXml);
     map.setMapType(<%= user_map_style %>);

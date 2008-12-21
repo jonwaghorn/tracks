@@ -29,19 +29,19 @@
   display: inline;
 }
 
-#nav li #current_c {
+#nav li .current_c {
 	background: url('/images/current_ie_c.png') repeat-y;
 	margin: 0 0 0 1px;
 }
 
-#nav li #current_t {
+#nav li .current_t {
 	background: url('/images/current_ie_t.png') no-repeat left top;
 	height: 0;
 	margin-top: 0;
 	padding-top: 0;
 }
 
-#nav li #current_b {
+#nav li .current_b {
 	background: url('/images/current_ie_b.png') no-repeat left bottom;
 	height: 0;
 	margin-bottom: 0;

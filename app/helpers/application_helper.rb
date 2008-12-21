@@ -10,5 +10,9 @@ module ApplicationHelper
     logged_in? ? current_user.setting.map_type.google_map_type : MapType.find(:first, :conditions => ['name = ?', 'Satellite']).google_map_type
   end
 
+  def distance(u)
+    u.to_s + 'km'
+  end
+
 end
 

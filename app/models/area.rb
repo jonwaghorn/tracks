@@ -12,6 +12,11 @@ class Area < ActiveRecord::Base
   validates_uniqueness_of :name
   validates_presence_of   :description
 
+
+  def self.get_markers(state_id)
+    find(:all, :conditions => ["state_id = ? AND zoom != 0", state_id], :select => 'latitude, longitude, name, id').collect { |a| [a.latitude, a.longitude, a.name, a.id] }
+  end
+
   private
 
   def fix_name

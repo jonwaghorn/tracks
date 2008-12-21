@@ -463,6 +463,14 @@ h1 {
   border: 1px solid black;
 }
 
+#map div {
+     max-width: 582px;
+}
+
+#map div span {
+     white-space: normal;
+}
+
 #blog_track {
   padding: 0 10px 10px 20px;
   font-size: 12px;
