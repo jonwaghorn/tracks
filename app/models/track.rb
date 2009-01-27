@@ -39,7 +39,7 @@ class Track < ActiveRecord::Base
   end
   
   def full_filename
-    "#{RAILS_ROOT}/public/paths/" + filename
+    "paths/" + filename
   end
 
   def gps_file_exists?
@@ -47,7 +47,7 @@ class Track < ActiveRecord::Base
   end
 
   def gpx_file_exists?
-    File.exists?("paths/#{filename}.gpx")
+    File.exists?("#{full_filename}.gpx")
   end
 
   def kml_file_exists?
