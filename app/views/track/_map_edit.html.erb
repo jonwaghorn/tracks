@@ -1,7 +1,7 @@
 <%= render :partial => 'shared/map_head' %>
 <script type="text/javascript">
 //<![CDATA[
-<% if params[:action] == 'edit' %>var geoXml = new GGeoXml("http://<%= URL_BASE %>/paths/<%= @track.filename %>?a=<%= Time.now.strftime('%j%H%M%S') %>");<% end %>
+<% if params[:action] == 'edit' %>var geoXml = new GGeoXml("http://<%= URL_BASE %>/paths/<%= @track.filename %>.kml?a=<%= Time.now.strftime('%j%H%M%S') %>");<% end %>
 function load(lt,ln,zm) {
   if (GBrowserIsCompatible()) {
     if (!zm) { <% geo = Area.find(:first, params[:area_id], :select => 'latitude, longitude, zoom') %>

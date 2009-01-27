@@ -370,6 +370,14 @@ h1 {
   margin-bottom: 10px;
 }
 
+#content a {
+  color: #ba6900;
+}
+
+#content a:visited {
+  color: #ba6900;
+}
+
 #content p {
   font: 12px 'Lucida Grande', Geneva, Arial, Verdana, sans-serif;
   margin: 5px 0;
@@ -464,11 +472,11 @@ h1 {
 }
 
 #map div {
-     max-width: 582px;
+  max-width: 582px;
 }
 
 #map div span {
-     white-space: normal;
+  white-space: normal;
 }
 
 #blog_track {

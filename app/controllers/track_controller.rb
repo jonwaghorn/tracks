@@ -66,7 +66,7 @@ class TrackController < ApplicationController
 
   def save_path
     @track = Track.find(params[:id])
-    File.open(@track.full_filename, "wb") do |f|
+    File.open("#{@track.full_filename}.kml", "wb") do |f|
       f.write(params[:path_file].read)
     end
     redirect_to :action => 'show', :id => @track.id

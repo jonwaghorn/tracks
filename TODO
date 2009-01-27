@@ -13,6 +13,7 @@ done 5. Google agressively caches the map paths
 Ideas
 -----
 
+From Don below: Todo: 17
 From Ian 1-16 below: Todo: 6,8,9,12,15 | Done: 1,2,3,4,5,7,10,11,13,14,16
 From Ian email below:
 
@@ -65,3 +66,67 @@ As an aside, I updated the Car Parts Extension map to show actual and planned tr
 
 
 15. Bold formatting looks the same as a hyperlink - is there a way to avoid confusion between bold and links?
+
+
+
+16. From Don below ----------------------- vvv --------------------------
+Hi Don
+
+Thanks for the great feedback.
+
+Tracks is and has been a one-person (me!) development. And a slight difficulty is that I relocated to silicon valley about 4 months ago. Dev and maintenance has not stopped though. I have lots of discussions/ideas with Ian O'donoghue, he adds lots of write-ups and status updates.
+
+I have a long list of ideas and tweaks to add as time allows.
+
+I like your big kml file. I played around with lots of tracks per map some time ago but was getting some timeout issues. I have a TODO to look at showing the current tracks and the connecting tracks only, maybe this will work better? Currently each kml data set is simply stored as a file per track. I am in the process making this better. I have linked to your file from the Tracks front page. Will the tracks.kml file always be at that address?
+
+Some answers to your ideas:
+
+1. I used to have something like this and it's on the list to redo. I had what I called "classic routes" which was a loop that was made up from other tracks. Mt vic is tricky as there are heaps of tracks official and otherwise without names.
+
+2. Good idea. Maybe a track could be rated by 'fun-ness', 'effort required', 'challenge' or something. Ratings can be quite subjective, but still useful if you have not ridden a track.
+
+3. I kind of put this in the things for the future category. As for mailing list you can subscribe to rss and twitter for the 'recent reports'.
+
+4. It's currently Welly only because that was where I lived. I have actually set it up so that it can be easily expanded to add other areas, or countries even. It would be fun to try expanding it within NZ. If you know someone who would be keen to add some track info for another NZ area we could try opening it up? Let me know!
+
+Cheers
+Jon
+
+On 18/01/2009, at 5:55 pm, Don Jones wrote:
+
+Hi tracks people
+
+First I would like to say thanks for the great website, its incredibly useful and myself and a lot of guys I know are using it a lot.
+
+The one thing that I find tho is that looking at the tracks on the site in the google maps view doesnt really give a good overview of how the tracks relate to each other. I am a big fan of google earth and thought it would be really useful if I could see all the tracks at once displayed in google earth. As I have done some work with KML perviously I decided to have a crack at producting a single kml file with all the tracks in it.
+
+I have included the content so you can click on the icon to get the info, I have also color coded the tracks so different grades have different colors. I have made the kml and the script I use to produce it avalible online:
+
+http://github.com/donovan/tracks/
+
+if you just want the kml its here:
+
+http://github.com/donovan/tracks/raw/af977e52b5112bd999bd7ec0bd6e27eb660f2c16/tracks.kml
+
+the script i use is perl using the LWP and LibXML libraries. The kml is useful and usable but I do have quite a few TODO items for the script so expect some improvemnts.
+
+The people Ive shown it to find it pretty useful and I use it a lot so I thought I would let you guys know about it in case you want to use it/make it avalible. If not thats cool, I'll just keep doing my own thing :) 
+
+If you did want to use it then I would try to update it fairly often. Another possibilty would be for you to provide me with a database dump and I could modify my code to build the kml from the database rather than the screen scraping/parsing html and kml approach used now, or perhaps you are already planning a feature like this?
+
+A couple of other suggestions:
+
+1. add a new category called 'events' at the same level as 'tracks' and put things like NI XC Cup 2009, Wild Wellington Relay 2008, Karapoti etc etc. under there rather than putting the whole event loop under tracks which doesnt always seem appropriate.
+
+2. add a 5 star rating widget for each track, red rocks is sure to get rated higher than ribs for example, this would let you know which tracks are probablly going to be the most fun when heading to a new area
+
+3. ever thought about a forum or mailing list for tracks.org.nz?
+
+4. add some new regions (state), would love to see some of the Rotorua tracks. Do you want to keep it Wellington only or is it just that nonoe has submitted anything for anywhere else? I would be interested in submitting tracks for Wanganui ...
+
+Anyway, thanks again, great, useful site
+
+Donovan
+
+From Don above ----------------------- ^^^ --------------------------

@@ -1,4 +1,13 @@
+23 2009-01-27
+  - [feature] *REALLY* basic images in content areas, see http://tracks.org.nz/faq for usage
+  - [feature] italic text in content areas
+  - [feature] content now covered under Creative Commons Attribution Share Alike license
+  - [bug fix] Tidied up the GPS file upload thing, still only does KML files, for now...
+  - [bug fix] tweaked the colour of hyperlinks - good idea thanks Ian
+  - [bug fix] fixed Policy page when in edit mode
+
 22 2008-12-21 squashing little bugs
+  - [feature] State-level (i.e Wellington) summary of track distances/type
   - [bug fix] New/edit track report entry box was too wide in several browsers - thanks Ian
   - [bug fix] Made map buttons consistent between view and edit modes - thanks Ian
   - [bug fix] Re-fix broken IE7 menu (broke when currently selected item bcame click-able) - thanks Ian

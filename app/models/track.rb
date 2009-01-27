@@ -35,11 +35,23 @@ class Track < ActiveRecord::Base
   end
   
   def filename
-    "#{self.area.state.nation.id}_#{self.area.state.id}_#{self.area.id}_#{self.id}.kml"
+    "#{self.area.state.nation.id}_#{self.area.state.id}_#{self.area.id}_#{self.id}"
   end
   
   def full_filename
     "#{RAILS_ROOT}/public/paths/" + filename
+  end
+
+  def gps_file_exists?
+    gpx_file_exists? || kml_file_exists?
+  end
+
+  def gpx_file_exists?
+    File.exists?("paths/#{filename}.gpx")
+  end
+
+  def kml_file_exists?
+    File.exists?("#{full_filename}.kml")
   end
 
   # Track connections in array of [connecting_track_name,connection_id,track_id]

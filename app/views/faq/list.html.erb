@@ -14,9 +14,9 @@
 <div id="faq_<%= @faq.id %>">
   <%= render :partial => 'show' %>
 </div>
+<hr size=1 color="#ccc">
 <% end %>
 
 <% if creator? %>
-<hr size=1 color="#ccc">
 <p><%= link_to 'New', :action => 'new' %></p>
 <% end %>
