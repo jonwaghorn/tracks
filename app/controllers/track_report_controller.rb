@@ -29,7 +29,7 @@ class TrackReportController < ApplicationController
       @track_report.date = Time.now
       @track_report.save
       update_user_edit_stats(true)
-      tweet("(report) #{@track_report.track.name} (" + shorten_url("http://#{URL_BASE}/track/show/#{@track_report.track_id}") + ") " + replace_for_view(@track_report.description, unlinked = true))
+      tweet @track_report.format_for_twitter
       @new_track_id = @track_report.id # my rjs doesn't get the proper id...
       @track = Track.find(params[:track_id])
     else

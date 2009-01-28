@@ -1,3 +1,7 @@
+24 2009-01-28
+  - [bug fix] Fix the *REALLY* basic images to work with full http ref
+  - [bug fix] tweak the twitter message to have the link at the end
+
 23 2009-01-27
   - [feature] *REALLY* basic images in content areas, see http://tracks.org.nz/faq for usage
   - [feature] italic text in content areas

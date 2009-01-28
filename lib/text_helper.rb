@@ -10,7 +10,7 @@ module TextHelper
     line = line.gsub(/\[\[h2:(.*?)\]\]/, '</p><p><b>\1</b></p><p>') # [[h2:Heading]] => heading 2
     line = line.gsub(/\[\[bold:(.*?)\]\]/, '<b>\1</b>') # [[bold:text]] => bold text
     line = line.gsub(/\[\[italic:(.*?)\]\]/, '<em>\1</em>') # [[italic:text]] => italic text
-    line = line.gsub(/\[\[image:(.*?):(.*?):(.*?):(.*?)\]\]/, '<img src="\1" alt="\2" width="\3" height="\4"/>') # [[img:ref:width:height]]
+    line = line.gsub(/\[\[image:(http):(.*?):(.*?):(.*?):(.*?)\]\]/, '<img src="\1:\2" alt="\3" width="\4" height="\5"/>') # [[img:ref:width:height]]
     line = line.gsub(/\[\[link:tracks.org.nz(.*?)\]\]/, '[[link:http://tracks.org.nz\1]]')
     line = line.gsub(/\[\[link:www.tracks.org.nz(.*?)\]\]/, '[[link:http://tracks.org.nz\1]]')
     line = line.gsub(/\[\[link:http:\/\/www.tracks.org.nz(.*?)\]\]/, '[[link:http://tracks.org.nz\1]]')
