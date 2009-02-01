@@ -16,7 +16,8 @@
 <p>Total distance: <%= distance(total_len) %></p>
 <p>Total number tracks for <%= @area.name %>: <%= @area.tracks.size %></p>
 
-<hr size=1 color=#ccc>
+<hr size="1" color="#ccc">
+
 <p id="edit"><%= link_to 'Edit', :action => 'edit', :id => @area %>
 <% if logged_in? && creator? %>
  | <%= link_to 'Add track', :controller => 'track', :action => 'new', :area_id => @area.id, :area_name => @area.name %>

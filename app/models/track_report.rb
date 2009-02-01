@@ -18,9 +18,9 @@ class TrackReport < ActiveRecord::Base
     previous_by_time.length > RECENT_TRACK_COUNT ? previous_by_time : find(:all, :limit => RECENT_TRACK_COUNT, :order => 'date DESC', :conditions => ["track_id = ?", track_id])
   end
 
-  def self.find_recent_by_state(state_id)
+  def self.find_recent_by_region(region_id)
     track_ids = []
-    State.find(state_id).areas.each do |a|
+    Region.find(region_id).areas.each do |a|
       track_ids << a.tracks.collect(&:id)
     end
     previous_by_time = find(:all, :order => 'date DESC', :conditions => ["track_id in (?) AND date > ?", track_ids.flatten, RECENT_HISTORY_OFFSET])

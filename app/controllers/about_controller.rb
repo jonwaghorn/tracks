@@ -28,7 +28,7 @@ class AboutController < ApplicationController
   end
 
   def issue_site_update
-    tweet("site update, more info at http://#{URL_BASE}/about")
+    tweet("site updated, more info at http://#{URL_BASE}/about")
     flash[:notice] = 'Site update notification sent (via Twitter).'
     redirect_to :action => 'index'
   end

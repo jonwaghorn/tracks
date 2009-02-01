@@ -8,7 +8,7 @@
 <%= render :partial => 'shared/nav_home' %>
 <% end %>
 
-<% if params[:controller] =~ /(index|state|area|track|track_aka)/ %>
+<% if params[:controller] =~ /(index|region|area|track|track_aka)/ %>
 <%= render :partial => 'nav_tracks' %>
 <% end %>
 
@@ -58,6 +58,6 @@
 
 </div></div>
 
-<% if params[:controller] =~ /\b(state|area|track|track_report)\b/ && params[:action] != 'new' %>
+<% if params[:controller] =~ /\b(region|area|track|track_report)\b/ && params[:action] != 'new' %>
 <%= render :partial => 'nav_extra' %>
 <% end %>

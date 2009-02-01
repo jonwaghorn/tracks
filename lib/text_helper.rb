@@ -30,8 +30,8 @@ module TextHelper
             name = Track.find(value, :select => 'name').name
           when 'area'
             name = Area.find(value, :select => 'name').name
-          when 'state'
-            name = State.find(value, :select => 'name').name
+          when 'region'
+            name = Region.find(value, :select => 'name').name
           when 'nation'
             name = Nation.find(value, :select => 'name').name
           end
@@ -64,12 +64,12 @@ module TextHelper
           case key
           when 'track'
             track = Track.find(value)
-            name = track.area.state.name + ':' + (track.name.to_i == 0 ? '' : '#') + track.name
+            name = track.area.region.name + ':' + (track.name.to_i == 0 ? '' : '#') + track.name
             # name = Track.find(value, :select => 'name').name
           when 'area'
             name = Area.find(value, :select => 'name').name
-          when 'state'
-            name = State.find(value, :select => 'name').name
+          when 'region'
+            name = Region.find(value, :select => 'name').name
           when 'nation'
             name = Nation.find(value, :select => 'name').name
           end
@@ -98,17 +98,17 @@ module TextHelper
           case key
           when 'track'
             if name =~ /:/
-              state_name, track_name = name.split(':')
+              region_name, track_name = name.split(':')
               track_name = track_name[1..-1] if track_name[0,1] == '#'
-              state = State.find(:first, :conditions => ["name = ?", state_name])
-              id = Track.find(:first, :conditions => ["name = ? AND area_id in (?)", track_name, state.areas.collect(&:id)], :select => 'id')
+              region = Region.find(:first, :conditions => ["name = ?", region_name])
+              id = Track.find(:first, :conditions => ["name = ? AND area_id in (?)", track_name, region.areas.collect(&:id)], :select => 'id')
             else
               id = Track.find(:first, :conditions => ["name = ?", name], :select => 'id')
             end
           when 'area'
             id = Area.find(:first, :conditions => ["name = ?", name], :select => 'id')
-          when 'state'
-            id = State.find(:first, :conditions => ["name = ?", name], :select => 'id')
+          when 'region'
+            id = Region.find(:first, :conditions => ["name = ?", name], :select => 'id')
           when 'nation'
             id = Nation.find(:first, :conditions => ["name = ?", name], :select => 'id')
           end
@@ -134,11 +134,11 @@ module TextHelper
   private
 
   def find_id_replacements(line)
-    find_replacements(line, /\[\[(nation|state|area|track):[0-9].*?\]\]/)
+    find_replacements(line, /\[\[(nation|region|area|track):[0-9].*?\]\]/)
   end
 
   def find_name_replacements(line)
-    find_replacements(line, /\[\[(nation|state|area|track):([a-zA-Z][a-z'#A-Z0-9 _]*?|[a-zA-Z][a-z:#'A-Z0-9 _]*?)\]\]/)
+    find_replacements(line, /\[\[(nation|region|area|track):([a-zA-Z][a-z'#A-Z0-9 _]*?|[a-zA-Z][a-z:#'A-Z0-9 _]*?)\]\]/)
   end
 
   def find_replacements(line, re)

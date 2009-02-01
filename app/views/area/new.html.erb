@@ -1,10 +1,10 @@
 <h1>New area (edit)</h1>
 
-<% form_tag :action => 'create', :state_id => params[:state_id] do %>
+<% form_tag :action => 'create', :region_id => params[:region_id] do %>
   <%= render :partial => 'form' %>
   <p><%= submit_tag "Create" %></p>
 <% end %>
 
 <hr size="1" color="#ccc">
 
-<p><%= link_to 'Back', :controller => 'state', :action => 'show', :id => params[:state_id] %></p>
+<p><%= link_to 'Back', :controller => 'region', :action => 'show', :id => params[:region_id] %></p>

@@ -15,7 +15,7 @@ class Track < ActiveRecord::Base
   validates_presence_of   :name
   validates_format_of     :name, :with => /^[\w ']+$/i, :message => 'can only contain letters and numbers (and spaces).'
   validates_length_of     :name, :maximum => 40, :message => 'Track name too long, maximum is 40 characters.'
-  validate                :name_is_unique_for_state
+  validate                :name_is_unique_for_region
   validate                :overview_is_not_empty
 
   RECENT_TRACK_COUNT = 5
@@ -31,9 +31,9 @@ class Track < ActiveRecord::Base
     previous_by_time.length > RECENT_TRACK_COUNT ? previous_by_time : find(:all, :limit => RECENT_TRACK_COUNT, :order => 'date DESC', :conditions => ["area_id = ?", area_id])
   end
 
-  def self.find_recent_by_state(state_id)
+  def self.find_recent_by_region(region_id)
     track_ids = []
-    State.find(state_id).areas.each do |a|
+    Region.find(region_id).areas.each do |a|
       track_ids << a.tracks.collect(&:id)
     end
 
@@ -49,7 +49,7 @@ class Track < ActiveRecord::Base
   end
   
   def filename
-    "#{self.area.state.nation.id}_#{self.area.state.id}_#{self.area.id}_#{self.id}"
+    "#{self.area.region.nation.id}_#{self.area.region.id}_#{self.area.id}_#{self.id}"
   end
   
   def full_filename
@@ -94,7 +94,7 @@ class Track < ActiveRecord::Base
   end
 
   def tweet_new
-    tweet format_for_twitter("new track #{name} added to #{area.name}, #{area.state.name}.")
+    tweet format_for_twitter("new track #{name} added to #{area.name}, #{area.region.name}.")
   end
 
   # Shoe-horn twitter message (some of), and track url
@@ -113,12 +113,12 @@ class Track < ActiveRecord::Base
     fix_stupid_quotes!(name)
   end
 
-  def name_is_unique_for_state
+  def name_is_unique_for_region
     if id.nil?
-      existing = Track.find(:all, :conditions => ["name = ? AND area_id in (?)", name, area.state.areas.collect(&:id)], :select => 'name').size
+      existing = Track.find(:all, :conditions => ["name = ? AND area_id in (?)", name, area.region.areas.collect(&:id)], :select => 'name').size
     else
-      existing = Track.find(:all, :conditions => ["id != ? AND name = ? AND area_id in (?)", id, name, area.state.areas.collect(&:id)], :select => 'name').size
+      existing = Track.find(:all, :conditions => ["id != ? AND name = ? AND area_id in (?)", id, name, area.region.areas.collect(&:id)], :select => 'name').size
     end
-    errors.add(:name, "must be unique within #{area.state.name}") if existing != 0
+    errors.add(:name, "must be unique within #{area.region.name}") if existing != 0
   end
 end

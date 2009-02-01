@@ -4,9 +4,9 @@
 function load(lt,ln,zm) {
   if (GBrowserIsCompatible()) {
     if (!zm) {
-      lt = <%= @area.state.zoom != 0 ? @area.state.latitude : -40.913512 %>;
-      ln = <%= @area.state.zoom != 0 ? @area.state.longitude : 172.705078 %>;
-      zm = <%= @area.state.zoom != 0 ? @area.state.zoom : 5 %>; }
+      lt = <%= @area.region.zoom != 0 ? @area.region.latitude : -40.913512 %>;
+      ln = <%= @area.region.zoom != 0 ? @area.region.longitude : 172.705078 %>;
+      zm = <%= @area.region.zoom != 0 ? @area.region.zoom : 5 %>; }
     var map = new GMap2(document.getElementById("map"));
     var icon = new GIcon();
     icon.image = "http://<%= URL_BASE %>/images/mm_20_orange.png";

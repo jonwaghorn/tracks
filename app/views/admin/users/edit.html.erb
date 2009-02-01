@@ -1,0 +1,9 @@
+<h1><%= @user.login %> (edit)</h1>
+<% form_tag :action => 'update', :id => @user do %>
+  <%= render :partial => 'form' %>
+  <p><br/><%= submit_tag 'Save changes' %></p>
+<% end %>
+
+<hr size="1" color="#ccc">
+
+<p><%= link_to 'Back', :action => 'show', :id => @user %></p>

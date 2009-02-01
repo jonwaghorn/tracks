@@ -1,0 +1,9 @@
+<h1><%= @region.name %> (edit)</h1>
+<% form_tag :action => 'update', :id => @region do %>
+  <%= render :partial => 'form' %>
+  <p><%= submit_tag 'Save changes' %></p>
+<% end %>
+
+<hr size="1" color="#ccc">
+
+<p><%= link_to 'Back', :action => 'show', :id => @region %></p>

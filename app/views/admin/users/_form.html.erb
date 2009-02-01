@@ -1,0 +1,10 @@
+<%= error_messages_for 'user', :header_tag => 'h4' %>
+
+<p><label for="user_login">Login/Screen Name</label><br/>
+<%= text_field 'user', 'login' %></p>
+
+<p><label for="user_email">Email</label><br/>
+<%= text_field 'user', 'email' %></p>
+
+<p><label for="user_privilege">Access</label>
+<%= select 'user', 'privilege', ["admin", "viewer", "creator"] %></p>

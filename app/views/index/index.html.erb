@@ -13,9 +13,9 @@
 </p>
 
 <% if admin? %>
-<hr size=1 color=#ccc>
+<hr size="1" color="#ccc">
 <p id="edit"><%= link_to 'Edit', :action => 'edit', :id => @special %>
 |
-<%= link_to 'Add state', :controller => 'state', :action => 'new', :nation_id => @nation.id %>
+<%= link_to 'Add region', :controller => 'region', :action => 'new', :nation_id => @nation.id %>
 </p>
 <% end %>

@@ -1,4 +1,4 @@
-<h1>Listing map_types</h1>
+<h1>Map Types</h1>
 
 <table>
   <tr>
@@ -10,13 +10,12 @@
   <tr>
     <td><%=h map_type.name %></td>
     <td><%=h map_type.google_map_type %></td>
-    <td><%= link_to 'Show', :action => 'show', :id => map_type %></td>
     <td><%= link_to 'Edit', :action => 'edit', :id => map_type %></td>
     <td><%= link_to 'Destroy', :id => map_type, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
+<hr size="1" color="#ccc">
 
-<%= link_to 'New map_type', :action => 'new' %>
+<p><%= link_to 'New', :action => 'new' %></p>

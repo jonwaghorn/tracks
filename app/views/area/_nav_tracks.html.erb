@@ -4,7 +4,7 @@
 <% area_title = @area.name + (params[:action] =~ /edit|update/ ? ' (edit)' : '') %>
 <% end %>
 
-<li><%= link_to @area.state.name, { :controller => 'state', :action => 'show', :id => @area.state.id }, :id => 'state' %></li>
+<li><%= link_to @area.region.name, { :controller => 'region', :action => 'show', :id => @area.region.id }, :id => 'region' %></li>
 
 <%= render :partial => 'shared/nav_current', :locals => { :id => 'area', :current => area_title } %>
 
@@ -13,7 +13,7 @@
 <% end %>
 
 <% if params[:action] =~ /new|create/ %>
-<% for area in @area.state.areas %>
+<% for area in @area.region.areas %>
   <li><%= link_to area.name, { :controller => 'area', :action => 'show', :id => area.id }, :id => 'area' %></li>
 <% end %>
 <% end %>

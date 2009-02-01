@@ -5,7 +5,7 @@
 <% track_name = @track.name + mode %>
 <% end %>
 
-<li><%= link_to @track.area.state.name, { :controller => 'state', :action => 'show', :id => @track.area.state.id }, :id => 'state' %></li>
+<li><%= link_to @track.area.region.name, { :controller => 'region', :action => 'show', :id => @track.area.region.id }, :id => 'region' %></li>
 
 <li><%= link_to @track.area.name, { :controller => 'area', :action => 'show', :id => @track.area.id }, :id => 'area' %></li>
 

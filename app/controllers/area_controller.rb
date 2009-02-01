@@ -16,12 +16,12 @@ class AreaController < ApplicationController
 
   def new
     @area = Area.new
-    @area.state_id = params[:state_id]
+    @area.region_id = params[:region_id]
   end
 
   def create
     @area = Area.new(params[:area])
-    @area.state_id = params[:state_id]
+    @area.region_id = params[:region_id]
     @area.date = Time.now
     if @area.save
       update_user_edit_stats

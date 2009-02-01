@@ -1,0 +1,2 @@
+module RainReadingsHelper
+end

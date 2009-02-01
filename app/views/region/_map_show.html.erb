@@ -26,7 +26,7 @@ function load(lt,ln,zm) {
       return marker;
     }
     map.setCenter(new GLatLng(lt, ln), zm, G_SATELLITE_MAP);
-    <% Area.get_markers(@state.id).each do |area| %>
+    <% Area.get_markers(@region.id).each do |area| %>
     map.addOverlay(createMarker(new GLatLng(<%=area[0].to_s%>,<%=area[1].to_s%>),{title:"<%=area[2]%>",icon:icon},"/area/show/<%=area[3].to_s%>"))
     <% end %>
     map.setMapType(<%= user_map_style %>);

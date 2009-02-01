@@ -1,4 +1,4 @@
-<h1>Editing map_type</h1>
+<h1>Map Type (edit)</h1>
 
 <% form_for(@map_type) do |f| %>
   <%= f.error_messages %>
@@ -16,5 +16,6 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @map_type %> |
-<%= link_to 'Back', map_types_path %>
+<hr size="1" color="#ccc">
+
+<p><%= link_to 'Back', :action => 'index' %></p>

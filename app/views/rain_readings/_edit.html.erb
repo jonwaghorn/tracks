@@ -1,0 +1,7 @@
+<td></td>
+<td>
+<% form_remote_tag :url => {:action => "update_rain", :id=>@rain_reading} do %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag 'Save' %> or <%= link_to_remote 'Cancel', :url => {:action=>"cancel_edit", :id => @rain_reading.id } %>			  
+<% end %>
+</td>

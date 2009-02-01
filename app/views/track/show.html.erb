@@ -3,7 +3,7 @@
 
 <p id="left">Name</p><p id="right"><%= @track.name %></p>
 
-<p id="left">Location</p><p id="right"><%= @track.area.name %>, <%= @track.area.state.name %>, <%= @track.area.state.nation.name %></p>
+<p id="left">Location</p><p id="right"><%= @track.area.name %>, <%= @track.area.region.name %>, <%= @track.area.region.nation.name %></p>
 
 <% akas = TrackAka.find(:all, :conditions => ["track_id = ?", @track.id]) %>
 <% if akas.size > 0 %>
@@ -74,6 +74,7 @@
 <% if creator? %><p><%= link_to_remote 'Upload GPS path file', :url => {:action => 'upload', :id => @track} %> - load a new kml file to display.</p><div id="upload_path_file"></div><% end %>
 <% end %>
 
-<hr size=1 color=#ccc>
+<hr size="1" color="#ccc">
+
 <p id="edit"><%= link_to 'Edit', :action => 'edit', :id => @track %>
 <% if ! logged_in? %> (requires login)<% end %></p>
