@@ -16,14 +16,16 @@ class AreaController < ApplicationController
 
   def new
     @area = Area.new
+    @area.state_id = params[:state_id]
   end
 
   def create
     @area = Area.new(params[:area])
     @area.state_id = params[:state_id]
     @area.date = Time.now
-    update_user_edit_stats
     if @area.save
+      update_user_edit_stats
+      @area.tweet_new
       flash[:notice] = @area.name + ' was successfully created.'
       redirect_to :controller => 'area', :action => 'show', :id => @area
     else
@@ -40,8 +42,8 @@ class AreaController < ApplicationController
     @area = Area.find(params[:id])
     @area.date = Time.now
     params[:area][:description] = replace_for_update(params[:area][:description])
-    update_user_edit_stats
     if @area.update_attributes(params[:area])
+      update_user_edit_stats
       flash[:notice] = @area.name + ' was successfully updated.'
       redirect_to :action => 'show', :id => @area
     else

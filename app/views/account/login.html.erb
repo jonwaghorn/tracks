@@ -7,10 +7,7 @@
 <p><label for="password">Password</label><br/>
 <%= password_field_tag 'password' %></p>
 
-<!-- Uncomment this if you want this functionality
-<p><label for="remember_me">Remember me:</label>
-<%= check_box_tag 'remember_me' %></p>
--->
+<p><%= check_box_tag 'remember_me', 1, true %><label for="remember_me">remember me</label></p>
 
 <p><%= submit_tag 'Log in' %></p>
 <% end -%>

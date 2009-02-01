@@ -6,7 +6,7 @@
 
 <p><label for="area_state_id">State</label><br/>
 <% if params[:action] == 'new' %>
-  <%= text_field 'area', 'state_id', :value => params[:state_name], :disabled => true %>
+  <%= text_field 'area', 'state_id', :value => @area.state.name, :disabled => true %>
 <% else %>
   <%= select 'area', 'state_id', State.find(:all).collect {|c| [c.name, c.id] } %>
 <% end %>

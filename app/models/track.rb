@@ -1,4 +1,6 @@
 class Track < ActiveRecord::Base
+
+  include TwitterHelper
   include TextHelper
 
   belongs_to :area
@@ -12,24 +14,36 @@ class Track < ActiveRecord::Base
   before_validation       :fix_name
   validates_presence_of   :name
   validates_format_of     :name, :with => /^[\w ']+$/i, :message => 'can only contain letters and numbers (and spaces).'
-  validate                :ensure_name_not_numeric
   validates_length_of     :name, :maximum => 40, :message => 'Track name too long, maximum is 40 characters.'
-  validates_uniqueness_of :name
+  validate                :name_is_unique_for_state
   validate                :overview_is_not_empty
 
-  RECENT_TRACK_COUNT = 3
+  RECENT_TRACK_COUNT = 5
   RECENT_HISTORY_OFFSET = Time.now - 1.week
 
-  def self.find_recent(limit = RECENT_TRACK_COUNT, offset = RECENT_HISTORY_OFFSET)
+  def self.find_recent(offset = RECENT_HISTORY_OFFSET)
     previous_by_time = find(:all, :order => 'date DESC', :conditions => ["date > ?", offset])
-    previous_by_time.length > limit ? previous_by_time : find(:all, :limit => limit, :order => 'date DESC')
+    previous_by_time.length > RECENT_TRACK_COUNT ? previous_by_time : find(:all, :limit => RECENT_TRACK_COUNT, :order => 'date DESC')
   end
 
-  def self.find_recent_by(area_id)
+  def self.find_recent_by_area(area_id)
     previous_by_time = find(:all, :order => 'date DESC', :conditions => ["area_id = ? AND date > ?", area_id, RECENT_HISTORY_OFFSET])
     previous_by_time.length > RECENT_TRACK_COUNT ? previous_by_time : find(:all, :limit => RECENT_TRACK_COUNT, :order => 'date DESC', :conditions => ["area_id = ?", area_id])
   end
-  
+
+  def self.find_recent_by_state(state_id)
+    track_ids = []
+    State.find(state_id).areas.each do |a|
+      track_ids << a.tracks.collect(&:id)
+    end
+
+    previous_by_time = find(:all, :order => 'date DESC', :conditions => ["id in (?) AND date > ?", track_ids.flatten, RECENT_HISTORY_OFFSET])
+    previous_by_time.length > RECENT_TRACK_COUNT ? previous_by_time : find(:all, :limit => RECENT_TRACK_COUNT, :order => 'date DESC', :conditions => ["id in (?)", track_ids.flatten])
+
+    # previous_by_time = find(:all, :order => 'date DESC', :conditions => ["area_id = ? AND date > ?", area_id, RECENT_HISTORY_OFFSET])
+    # previous_by_time.length > RECENT_TRACK_COUNT ? previous_by_time : find(:all, :limit => RECENT_TRACK_COUNT, :order => 'date DESC', :conditions => ["area_id = ?", area_id])
+  end
+
   def file_path_exists?
     FileTest.exist?(full_filename)
   end
@@ -79,17 +93,32 @@ class Track < ActiveRecord::Base
     summary
   end
 
+  def tweet_new
+    tweet format_for_twitter("new track #{name} added to #{area.name}, #{area.state.name}.")
+  end
+
+  # Shoe-horn twitter message (some of), and track url
+  def format_for_twitter(message)
+    url = shorten_url "http://#{URL_BASE}/track/show/#{id}"
+    message[0, 140 - 1 + url.length] + ' ' + url
+  end
+
   private
 
-  def ensure_name_not_numeric
-    errors.add(:name, "cannot be all numbers") if /^[0-9]*$/.match(name)
-  end
-  
   def overview_is_not_empty
     errors.add(nil, "Overview cannot be empty.") if desc_overview.empty?
   end
 
   def fix_name
     fix_stupid_quotes!(name)
+  end
+
+  def name_is_unique_for_state
+    if id.nil?
+      existing = Track.find(:all, :conditions => ["name = ? AND area_id in (?)", name, area.state.areas.collect(&:id)], :select => 'name').size
+    else
+      existing = Track.find(:all, :conditions => ["id != ? AND name = ? AND area_id in (?)", id, name, area.state.areas.collect(&:id)], :select => 'name').size
+    end
+    errors.add(:name, "must be unique within #{area.state.name}") if existing != 0
   end
 end

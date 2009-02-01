@@ -1,5 +1,5 @@
 class Nation < ActiveRecord::Base
-  has_many :states
+  has_many :states, :order => 'name'
 
   validates_presence_of   :name
   validates_format_of     :name, :with => /^[\w ]+$/i, :message => 'can only contain letters and numbers (and spaces).'

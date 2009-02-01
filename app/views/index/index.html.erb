@@ -2,12 +2,20 @@
 <% if :notice %><p class="notice"><%= flash[:notice] %></p><% end %>
 <p><%= replace_for_view(h(@special.content)) %></p>
 
-<%= render :partial => 'track_report/summary' %>
+<%= render :partial => 'track_report/summary', :locals => {:title => 'All Recent Track Reports'} %>
 
-<p style="text-align:right">
-  <a href="/index/rss" title="Subscribe to recent track reports" rel="alternate" type="application/rss+xml">RSS feed of recent reports <img align="absbottom" src="/images/feed.png" alt=""/></a>
-  |
-  <a href="http://twitter.com/tracks_org_nz" title="Follow updates on Twitter">Follow updates on Twitter <img align="absbottom" src="/images/twitter.png" alt=""/></a>
+<h2>Stay connected</h2><h3></h3>
+<p>
+  <a href="/index/rss" title="Subscribe to all track reports" rel="alternate" type="application/rss+xml"><img align="absbottom" src="/images/feed.png" alt=""/> RSS feed of all reports</a> (RSS feeds are also available per-region on each region page)
+</p>
+<p>
+  <a href="http://twitter.com/tracks_org_nz" title="Follow updates on Twitter"><img align="absbottom" src="/images/twitter.png" alt=""/> Follow all updates on Twitter</a>
 </p>
 
-<%= render :partial => 'shared/edit_admin' %>
+<% if admin? %>
+<hr size=1 color=#ccc>
+<p id="edit"><%= link_to 'Edit', :action => 'edit', :id => @special %>
+|
+<%= link_to 'Add state', :controller => 'state', :action => 'new', :nation_id => @nation.id %>
+</p>
+<% end %>

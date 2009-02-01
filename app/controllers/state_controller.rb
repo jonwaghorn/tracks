@@ -1,6 +1,7 @@
 class StateController < ApplicationController
 
   before_filter :login_required, :only => [ :edit, :update, :new ]
+  layout 'state', :except => [:rss]
 
   def index
     redirect_to :action => 'show', :id => State.find(:first)
@@ -12,19 +13,23 @@ class StateController < ApplicationController
 
   def show
     @state = State.find(params[:id])
+    @recent_track_reports = TrackReport.find_recent_by_state(params[:id])
   end
 
   def new
     @state = State.new
+    @state.nation_id = params[:nation_id]
   end
 
   def create
     @state = State.new(params[:state])
     @state.date = Time.now
-    update_user_edit_stats
+    @state.nation_id = params[:nation_id]
     if @state.save
+      update_user_edit_stats
+      @state.tweet_new
       flash[:notice] = @state.name + ' was successfully created.'
-      redirect_to :action => 'list'
+      redirect_to :controller => 'index'
     else
       render :action => 'new'
     end
@@ -39,8 +44,8 @@ class StateController < ApplicationController
     @state = State.find(params[:id])
     params[:state][:description] = replace_for_update(params[:state][:description])
     @state.date = Time.now
-    update_user_edit_stats
     if @state.update_attributes(params[:state])
+      update_user_edit_stats
       flash[:notice] = @state.name + ' was successfully updated.'
       redirect_to :action => 'show', :id => @state
     else
@@ -48,8 +53,12 @@ class StateController < ApplicationController
     end
   end
 
-  def destroy
-    State.find(params[:id]).destroy
-    redirect_to :action => 'list'
+  def rss
+    @state = State.find(params[:id])
+    @track_reports = TrackReport.find_recent_by_state(@state.id)
+    respond_to do |format|
+      format.html
+      format.rss  { render :layout => false }
+    end
   end
 end

@@ -1,6 +1,7 @@
 class Setting < ActiveRecord::Base
   belongs_to :user
   belongs_to :map_type
+  belongs_to :state
   
   before_validation_on_create :set_default_map_type
   

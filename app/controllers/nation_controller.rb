@@ -21,8 +21,8 @@ class NationController < ApplicationController
   def create
     @nation = Nation.new(params[:nation])
     @nation.date = Time.now
-    update_user_edit_stats
     if @nation.save
+      update_user_edit_stats
       flash[:notice] = @nation.name + ' was successfully created.'
       redirect_to :action => 'list'
     else
@@ -39,8 +39,8 @@ class NationController < ApplicationController
     @nation = Nation.find(params[:id])
     params[:nation][:description] = replace_for_update(params[:nation][:description])
     @nation.date = Time.now
-    update_user_edit_stats
     if @nation.update_attributes(params[:nation])
+      update_user_edit_stats
       flash[:notice] = @nation.name + '  was successfully updated.'
       redirect_to :action => 'show', :id => @nation
     else

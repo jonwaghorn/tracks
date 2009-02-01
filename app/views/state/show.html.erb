@@ -3,6 +3,13 @@
 
 <p><%= replace_for_view(h(@state.description)) %></p>
 
+<% if @state.zoom != 0 %>
+<h2>Areas</h2><h3>&nbsp;</h3>
+<div id="map"></div>
+<% end %>
+
+<%= render :partial => 'track_report/summary', :locals => {:title => 'Recent Track Reports'} %>
+
 <h2>Track type/distance summary</h2><h3>&nbsp;</h3>
 <% total_len = 0 %>
 <p><% Track.length_summary(Area.find(:all, :conditions => ["state_id = ?", @state.id]).collect(&:id)).collect do |id, length| %>
@@ -12,14 +19,14 @@
 <p>Total distance: <%= distance(total_len) %></p>
 <p>Total number tracks for <%= @state.name %>: <%= x = 0; @state.areas.each {|area| x += area.tracks.size }; x %></p>
 
-<% if @state.zoom != 0 %>
-<h2>Areas</h2><h3>&nbsp;</h3>
-<div id="map"></div>
-<% end %>
+<h2>Stay connected</h2><h3></h3>
+<p>
+  <a href="/state/rss/<%= @state.id %>" title="Subscribe to track reports for <%= @state.name %>" rel="alternate" type="application/rss+xml"><img align="absbottom" src="/images/feed.png" alt=""/> RSS feed of <%= @state.name %> reports</a>
+</p>
 
 <hr size=1 color=#ccc>
 <p id="edit"><%= link_to 'Edit', :action => 'edit', :id => @state %>
-<% if logged_in? && creator? %>
- | <%= link_to 'Add area', :controller => 'area', :action => 'new', :state_id => @state.id, :state_name => @state.name %>
+<% if creator? %>
+ | <%= link_to 'Add area', :controller => 'area', :action => 'new', :state_id => @state.id %>
 <% end %>
 <% if ! logged_in? %> (requires login)<% end %></p>

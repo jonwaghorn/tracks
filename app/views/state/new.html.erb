@@ -1,8 +1,10 @@
-<h1>New state</h1>
+<h1>New state (edit)</h1>
 
-<% form_tag :action => 'create' do %>
+<% form_tag :action => 'create', :nation_id => params[:nation_id] do %>
   <%= render :partial => 'form' %>
-  <%= submit_tag "Create" %>
+  <p><%= submit_tag "Create" %></p>
 <% end %>
 
-<%= link_to 'Back', :action => 'list' %>
+<hr size="1" color="#ccc">
+
+<p><%= link_to 'Back', :controller => 'index' %></p>

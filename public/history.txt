@@ -1,3 +1,18 @@
+25 2009-01-31 Tracks outgrows Wellington!
+  - [feature] Multiple States.
+  - [feature] Home State user setting
+  - [feature] At home page show Areas for home State when logged in, else just list States
+  - [feature] Modified nav to show more relevant States/Areas/Tracks during add/edit/update
+  - [feature] Enabled "remember me" login functionality
+  - [feature] Broke down the recent track updates and recent track reports to be per-State
+  - [feature] New RSS feeds on a per-State level. Probably more useful than all for most people.
+  - [feature] Tweet on new Track/Area/State added
+  - [feature] Now that track names are not unique between States the [[track:name]] ref has been changed to [[track:state:name]] - see FAQ for more
+  - [feature] New 'pick from same state' list for editing track connections
+  - [bug fix] Allow track names that are all numbers (Ian!) - see the FAQ on how to use the new track refs
+  - [bug fix] Ensure track names are unique withing an State ONLY
+  - [bug fix] Use parent map as the default map when adding a new track, area, or state
+
 24 2009-01-28
   - [bug fix] Fix the *REALLY* basic images to work with full http ref
   - [bug fix] tweak the twitter message to have the link at the end

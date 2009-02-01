@@ -6,7 +6,7 @@
 
 <p><label for="state_nation_id">Nation</label><br/>
 <% if params[:action] == 'new' %>
-  <%= text_field 'track', 'nation_id', :value => params[:nation_name], :disabled => true %>
+  <%= text_field 'track', 'nation_id', :value => @state.nation.name, :disabled => true %>
 <% else %>
   <%= select 'state', 'nation_id', Nation.find(:all).collect {|c| [c.name, c.id] } %>
 <% end %>
@@ -16,7 +16,7 @@
 <%= text_area 'state', 'description', "cols" => 70, "rows" => 10 %></p>
 
 <p><label for="state_rain_readings">Rain readings</label><br/>
-<%= text_field 'state', 'rain_readings', "size" => 4 %> (days 0..21, where 0 is none)</p>
+<%= text_field 'state', 'rain_readings', "size" => 4 %> (days 0..21, use 0 for no rainfall graph)</p>
 
 <p><label>Map</label>
 <div id="map"></div></p>

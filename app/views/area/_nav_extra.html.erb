@@ -1,5 +1,5 @@
 <div id="nav_outer"><div id="nav"><h1>Latest  Updated Tracks</h1>
-<% for track in Track.find_recent_by(@area.id) do %>
+<% for track in Track.find_recent_by_area(@area.id) do %>
 <p><%= link_to track.name, { :controller => 'track', :action => 'show', :id => track.id} %><span id="date"> (<%= track.date.to_s(:tracks).gsub(/^0/, '') %>)</span></p>
 <% end %>
 </div></div>

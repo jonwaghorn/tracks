@@ -16,7 +16,7 @@
 
   <% @users.each do |user| %>
   <tr>
-    <td><%= h user.login %></td>
+    <td><%= link_to user.login, :action => 'show', :id => user %></td>
     <td><%= user.edits if user.edits > 0 %></td>
     <td><%= user.reports if user.reports > 0 %></td>
     <td><%= user.last_track_edit_at.to_s(:full) if !user.last_track_edit_at.nil? %></td>

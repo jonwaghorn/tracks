@@ -12,7 +12,7 @@
 <% end %>
 </p>
 
-<% if params[:action] != 'new' %>
+<% if params[:action] !~ /new|create/ %>
 <p><label for="track_area_id">Also known as</label><br/>
 <% aka_names = TrackAka.find(:all, :conditions => ["track_id = ?", @track.id], :select => 'name').collect {|a| a.name} %>
 <% if ! aka_names.empty? %>

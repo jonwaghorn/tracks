@@ -1,8 +1,8 @@
 module TextHelper
 
   def replace_for_view(line, unlinked = false)
-    #    puts '### replace_for_view'
-    #    puts 'LINE = ' + line
+    # puts '### replace_for_view'
+    # puts 'LINE = ' + line
     # general replacements
     line = line.gsub(/\[\[br\]\]/, '<br/>') # [[br]] => html break
     line = line.gsub(/\[\[para\]\]/, '<br/><br/>') # [[para]] => html break * 2
@@ -19,12 +19,10 @@ module TextHelper
 
     # special id => name replacements
     items = find_id_replacements(line)
-    #    puts 'ITEMS = ' + items.to_s
-    items.each do
-      |key, values|
+    # puts 'ITEMS = ' + items.inspect
+    items.each do |key, values|
       values.uniq!
-      values.each do
-        |value|
+      values.each do |value|
         name = nil
         begin
           case key
@@ -54,20 +52,20 @@ module TextHelper
   end
 
   def replace_for_edit(line)
-    #    puts '### replace_for_edit'
-    #    puts 'LINE = ' + line
+    # puts '### replace_for_edit'
+    # puts 'LINE = ' + line
     items = find_id_replacements(line)
-    #    puts 'ITEMS = ' + items.to_s
-    items.each do
-      |key, values|
+    # puts 'ITEMS = ' + items.inspect
+    items.each do |key, values|
       values.uniq!
-      values.each do
-        |value|
+      values.each do |value|
         name = nil
         begin
           case key
           when 'track'
-            name = Track.find(value, :select => 'name').name
+            track = Track.find(value)
+            name = track.area.state.name + ':' + (track.name.to_i == 0 ? '' : '#') + track.name
+            # name = Track.find(value, :select => 'name').name
           when 'area'
             name = Area.find(value, :select => 'name').name
           when 'state'
@@ -87,21 +85,26 @@ module TextHelper
   end
 
   def replace_for_update(line)
-    #    puts '### replace_for_update'
-    #    puts 'LINE = ' + line
+    # puts '### replace_for_update'
+    # puts 'LINE = ' + line
     fix_stupid_quotes!(line)
     items = find_name_replacements(line)
-    #    puts 'ITEMS = ' + items.to_s
-    items.each do
-      |key, names|
+    # puts 'ITEMS = ' + items.inspect
+    items.each do |key, names|
       names.uniq!
-      names.each do
-        |name|
+      names.each do |name|
         id = nil
         begin
           case key
           when 'track'
-            id = Track.find(:first, :conditions => ["name = ?", name], :select => 'id')
+            if name =~ /:/
+              state_name, track_name = name.split(':')
+              track_name = track_name[1..-1] if track_name[0,1] == '#'
+              state = State.find(:first, :conditions => ["name = ?", state_name])
+              id = Track.find(:first, :conditions => ["name = ? AND area_id in (?)", track_name, state.areas.collect(&:id)], :select => 'id')
+            else
+              id = Track.find(:first, :conditions => ["name = ?", name], :select => 'id')
+            end
           when 'area'
             id = Area.find(:first, :conditions => ["name = ?", name], :select => 'id')
           when 'state'
@@ -120,6 +123,7 @@ module TextHelper
     return line
   end
 
+  # Change funky "smart" quotes into regular jobbies
   def fix_stupid_quotes!(s)
     s.gsub! "\342\200\230", "'"
     s.gsub! "\342\200\231", "'"
@@ -134,7 +138,7 @@ module TextHelper
   end
 
   def find_name_replacements(line)
-    find_replacements(line, /\[\[(nation|state|area|track):[a-zA-Z][a-z'A-Z0-9 _]*?\]\]/)
+    find_replacements(line, /\[\[(nation|state|area|track):([a-zA-Z][a-z'#A-Z0-9 _]*?|[a-zA-Z][a-z:#'A-Z0-9 _]*?)\]\]/)
   end
 
   def find_replacements(line, re)

@@ -1,17 +1,21 @@
 <div id="nav_outer"><div id="nav"><h1>Latest Updated Tracks</h1>
-<% for track in Track.find_recent do %>
+<% for track in Track.find_recent_by_state(@state.id) do %>
 <p><%= link_to track.name, { :controller => 'track', :action => 'show', :id => track.id} %><span id="date"> (<%= track.date.to_s(:tracks).gsub(/^0/, '') %>)</span></p>
 <% end %>
 </div></div>
+
 <% if @state.rain_readings > 0 %>
+<% rr = StateRainReading.find(:all, :conditions => ["state_id = ?", @state.id], :limit => @state.rain_readings, :order => 'date DESC') %>
+<%= puts rr.inspect %>
+<% if rr.size > 0 %>
 <div id="nav_outer"><div id="nav"><h1>Recent Rainfall</h1>
-<% rain_readings = StateRainReading.find(:all, :conditions => ["state_id = ?", @state.id], :limit => @state.rain_readings, :order => 'date DESC') %>
-<p>Rainfall in mm for previous <%= @state.rain_readings %> days, most recent last. Current to 9am <%= rain_readings[0].date.to_s(:tracks).gsub(/^0/, '') %>.</p>
+<p>Rainfall in mm for previous <%= @state.rain_readings %> days, most recent last. Current to 9am <%= rr[0].date.to_s(:tracks).gsub(/^0/, '') %>.</p>
 <table id="rainfall" border="0" cellpadding="0" cellspacing="0"><tbody>
 <tr><td class="c1"><b>mm</b></td><td id="ruler">&nbsp;</td><td class="c1">&nbsp;</td></tr>
-<% for @state_rain_reading in rain_readings.reverse do %>
+<% for @state_rain_reading in rr.reverse do %>
   <%= render(:partial => 'state_rain_readings/show')%>
 <% end %>
 </tbody></table>
 </div></div>
+<% end %>
 <% end %>

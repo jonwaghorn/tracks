@@ -2,8 +2,16 @@
 module ApplicationHelper
   include TextHelper
 
-  def map_type_options
-    MapType.find(:all).collect { |mt| [mt.name, mt.id] }
+  SILLY_SALUTATION = [
+    'sweet', 'sweet as', 'sweet as bro',
+    'choice', 'choice bro', 'choice as',
+    'nice', 'nice one', 'nice one bro', 'nice one Stu',
+    'yeah', 'yeah baby', 'ooh yeah',
+    'spot on'
+    ]
+
+  def silly_salutation
+    SILLY_SALUTATION[rand(SILLY_SALUTATION.size)]
   end
 
   def user_map_style

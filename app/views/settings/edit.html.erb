@@ -4,7 +4,10 @@
 <%= error_messages_for 'setting', :header_tag => 'h4' %>
 
 <p><label for="setting_map_type_id">Map style</label>
-<%= select :setting, :map_type_id, map_type_options %></p>
+<%= select :setting, :map_type_id, MapType.find(:all, :order => 'name').collect { |mt| [mt.name, mt.id] } %></p>
+
+<p><label for="setting_map_type_id">Home region</label>
+<%= select :setting, :state_id, State.find(:all, :order => 'name').collect {|s| [s.name, s.id] } %></p>
 
   <p><%= submit_tag 'Save' %></p>
 <% end %>

@@ -5,12 +5,12 @@ class TrackReport < ActiveRecord::Base
 
   belongs_to :track
 
-  RECENT_TRACK_COUNT = 3
+  RECENT_TRACK_COUNT = 5
   RECENT_HISTORY_OFFSET = Time.now - 1.week
 
-  def self.find_recent(limit = RECENT_TRACK_COUNT, offset = RECENT_HISTORY_OFFSET)
+  def self.find_recent(offset = RECENT_HISTORY_OFFSET)
     previous_by_time = find(:all, :order => 'date DESC', :conditions => ["date > ?", offset])
-    previous_by_time.length > limit ? previous_by_time : find(:all, :limit => limit, :order => 'date DESC')
+    previous_by_time.length > RECENT_TRACK_COUNT ? previous_by_time : find(:all, :limit => RECENT_TRACK_COUNT, :order => 'date DESC')
   end
 
   def self.find_recent_by_track(track_id)
@@ -18,6 +18,16 @@ class TrackReport < ActiveRecord::Base
     previous_by_time.length > RECENT_TRACK_COUNT ? previous_by_time : find(:all, :limit => RECENT_TRACK_COUNT, :order => 'date DESC', :conditions => ["track_id = ?", track_id])
   end
 
+  def self.find_recent_by_state(state_id)
+    track_ids = []
+    State.find(state_id).areas.each do |a|
+      track_ids << a.tracks.collect(&:id)
+    end
+    previous_by_time = find(:all, :order => 'date DESC', :conditions => ["track_id in (?) AND date > ?", track_ids.flatten, RECENT_HISTORY_OFFSET])
+    previous_by_time.length > RECENT_TRACK_COUNT ? previous_by_time : find(:all, :limit => RECENT_TRACK_COUNT, :order => 'date DESC', :conditions => ["track_id in (?)", track_ids.flatten])
+  end
+
+  # Shoe-horn track name, report (some of), and url to track
   def format_for_twitter
     url = shorten_url "http://#{URL_BASE}/track/show/#{track.id}"
     non_message_len = track.name.length + 2 + 1 + url.length

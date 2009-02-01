@@ -1,0 +1,9 @@
+<h1>Admin: user</h1>
+<% if :notice %><p class="notice"><%= flash[:notice] %></p><% end %>
+
+<p>Login: <%= @user.login %></p>
+<p>Email: <%= @user.email %></p>
+<p>Signup: <%= @user.created_at.to_s(:full) %></p>
+<p>Edits: <%= @user.edits %></p>
+<p>Reports: <%= @user.reports %></p>
+<p>Last edit: <%= @user.last_track_edit_at.to_s(:full) if !@user.last_track_edit_at.nil? %></p>

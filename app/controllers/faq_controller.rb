@@ -27,8 +27,8 @@ class FaqController < ApplicationController
   def create
     @faq = Faq.new(params[:faq])
     @faq.user_id = current_user.id
-    update_user_edit_stats
     if @faq.save
+      update_user_edit_stats
       flash[:notice] = 'FAQ was successfully created.'
       redirect_to :action => 'index'
     else
@@ -45,8 +45,8 @@ class FaqController < ApplicationController
   def update
     @faq = Faq.find(params[:id])
     params[:faq][:answer] = replace_for_update(params[:faq][:answer])
-    update_user_edit_stats
     if @faq.update_attributes(params[:faq])
+      update_user_edit_stats
       flash[:notice] = 'FAQ was successfully updated.'
       redirect_to :action => 'index'
     else

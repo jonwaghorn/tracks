@@ -1,4 +1,6 @@
 class Area < ActiveRecord::Base
+
+  include TwitterHelper
   include TextHelper
 
   belongs_to :state
@@ -15,6 +17,16 @@ class Area < ActiveRecord::Base
 
   def self.get_markers(state_id)
     find(:all, :conditions => ["state_id = ? AND zoom != 0", state_id], :select => 'latitude, longitude, name, id').collect { |a| [a.latitude, a.longitude, a.name, a.id] }
+  end
+
+  def tweet_new
+    tweet format_for_twitter("new area #{name} added to #{state.name}.")
+  end
+
+  # Shoe-horn twitter message (some of), and area url
+  def format_for_twitter(message)
+    url = shorten_url "http://#{URL_BASE}/area/show/#{id}"
+    message[0, 140 - 1 + url.length] + ' ' + url
   end
 
   private

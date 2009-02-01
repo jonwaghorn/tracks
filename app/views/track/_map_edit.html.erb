@@ -4,10 +4,10 @@
 <% if params[:action] == 'edit' %>var geoXml = new GGeoXml("http://<%= URL_BASE %>/paths/<%= @track.filename %>.kml?a=<%= Time.now.strftime('%j%H%M%S') %>");<% end %>
 function load(lt,ln,zm) {
   if (GBrowserIsCompatible()) {
-    if (!zm) { <% geo = Area.find(:first, params[:area_id], :select => 'latitude, longitude, zoom') %>
-      lt = <%= geo.zoom != 0 ? geo.latitude : -41.284514 %>;
-      ln = <%= geo.zoom != 0 ? geo.longitude : 174.774627 %>;
-      zm = <%= geo.zoom != 0 ? geo.zoom : 11 %>; }
+    if (!zm) {
+      lt = <%= @track.area.zoom != 0 ? @track.area.latitude : -40.913512 %>;
+      ln = <%= @track.area.zoom != 0 ? @track.area.longitude : 172.705078 %>;
+      zm = <%= @track.area.zoom != 0 ? @track.area.zoom : 5 %>; }
     var map = new GMap2(document.getElementById("map"));
     map.addControl(new GSmallMapControl());
     map.addControl(new GMapTypeControl());

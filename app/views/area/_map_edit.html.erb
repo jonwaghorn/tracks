@@ -3,10 +3,10 @@
 //<![CDATA[
 function load(lt,ln,zm) {
   if (GBrowserIsCompatible()) {
-    if (!zm) { <% geo = State.find(:first, params[:state_id], :select => 'latitude, longitude, zoom') %>
-      lt = <%= geo.zoom != 0 ? geo.latitude : -41.284514 %>;
-      ln = <%= geo.zoom != 0 ? geo.longitude : 174.774627 %>;
-      zm = <%= geo.zoom != 0 ? geo.zoom : 11 %>; }
+    if (!zm) {
+      lt = <%= @area.state.zoom != 0 ? @area.state.latitude : -40.913512 %>;
+      ln = <%= @area.state.zoom != 0 ? @area.state.longitude : 172.705078 %>;
+      zm = <%= @area.state.zoom != 0 ? @area.state.zoom : 5 %>; }
     var map = new GMap2(document.getElementById("map"));
     var icon = new GIcon();
     icon.image = "http://<%= URL_BASE %>/images/mm_20_orange.png";

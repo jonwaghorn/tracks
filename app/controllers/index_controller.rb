@@ -5,7 +5,8 @@ class IndexController < ApplicationController
 
   def index
     @special = Special.find(:first, :conditions => ["name = ?", 'index'])
-    @recent_track_reports = TrackReport.find_recent(limit = 5)
+    @recent_track_reports = TrackReport.find_recent[0,10]
+    set_nation
   end
 
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
@@ -15,13 +16,14 @@ class IndexController < ApplicationController
   def edit
     @special = Special.find(params[:id])
     @special.content = replace_for_edit(@special.content)
+    set_nation
   end
 
   def update
     @special = Special.find(params[:id])
     params[:special][:content] = replace_for_update(params[:special][:content])
-    update_user_edit_stats
     if @special.update_attributes(params[:special])
+      update_user_edit_stats
       flash[:notice] = 'Home was successfully updated.'
       redirect_to :action => 'index'
     else
@@ -30,13 +32,16 @@ class IndexController < ApplicationController
   end
 
   def rss
-    @track_reports = TrackReport.find_recent(limit = 5)
-    # render :layout => false
-
+    @track_reports = TrackReport.find_recent
     respond_to do |format|
       format.html
       format.rss  { render :layout => false }
     end
   end
 
+  private
+  
+  def set_nation
+    @nation = Nation.find(:first) # Note: currently assumes only *one*... New Zealand
+  end
 end

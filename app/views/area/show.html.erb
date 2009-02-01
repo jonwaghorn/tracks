@@ -2,6 +2,11 @@
 <% if :notice %><p class="notice"><%= flash[:notice] %></p><% end %>
 <p><%= replace_for_view(h(@area.description)) %></p>
 
+<% if @area.zoom != 0 %>
+<h2>Tracks</h2><h3>&nbsp;</h3>
+<div id="map"></div>
+<% end %>
+
 <h2>Track type/distance summary</h2><h3>&nbsp;</h3>
 <% total_len = 0 %>
 <p><% Track.length_summary([@area.id]).collect do |id, length| %>
@@ -10,11 +15,6 @@
 <% end %></p>
 <p>Total distance: <%= distance(total_len) %></p>
 <p>Total number tracks for <%= @area.name %>: <%= @area.tracks.size %></p>
-
-<% if @area.zoom != 0 %>
-<h2>Tracks</h2><h3>&nbsp;</h3>
-<div id="map"></div>
-<% end %>
 
 <hr size=1 color=#ccc>
 <p id="edit"><%= link_to 'Edit', :action => 'edit', :id => @area %>
