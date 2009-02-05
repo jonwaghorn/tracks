@@ -94,16 +94,16 @@ class Track < ActiveRecord::Base
   end
 
   def tweet_new
-    tweet format_for_twitter("new track #{name} added to #{area.name}, #{area.region.name}.")
+    tweet format_for_twitter("New track #{name} added to #{area.name}, #{area.region.name}.")
   end
+
+  protected
 
   # Shoe-horn twitter message (some of), and track url
   def format_for_twitter(message)
     url = shorten_url "http://#{URL_BASE}/track/show/#{id}"
     message[0, 140 - 1 + url.length] + ' ' + url
   end
-
-  private
 
   def overview_is_not_empty
     errors.add(nil, "Overview cannot be empty.") if desc_overview.empty?

@@ -1,11 +1,9 @@
 <h1>Settings</h1>
 
-<% if :notice %><p class="notice"><%= flash[:notice] %></p><% end %>
+<div id="user_settings">
+  <%= render :partial => 'show_user_settings' %>
+</div>
 
-<p>Map style is <b><%=h @setting.map_type.name.downcase %></b></p>
-
-<p>Home region is <b><%=h @setting.region.name %></b></p>
-
-<hr size=1 color='#ccc'>
-
-<p><%= link_to 'Edit', :action => 'edit' %></p>
+<div id="preferences">
+  <%= render :partial => 'show_prefs' %>
+</div>

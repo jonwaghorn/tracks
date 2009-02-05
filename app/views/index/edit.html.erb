@@ -1,9 +1,8 @@
 <h1>Home (edit)</h1>
 <% form_tag :action => 'update', :id => @special do %>
-  <%= render :partial => 'form' %>
-  <p><%= submit_tag 'Save changes' %></p>
+  <%= error_messages_for 'special', :header_tag => 'h4' %>
+
+  <p><%= text_area 'special', 'content', "cols" =>70 %></p>
+
+  <p class="form_buttons"><%= submit_tag 'Save changes' %> or <%= link_to 'Cancel', :action => 'index' %></p>
 <% end %>
-
-<hr size="1" color="#ccc">
-
-<p><%= link_to 'Back', :action => 'index' %></p>

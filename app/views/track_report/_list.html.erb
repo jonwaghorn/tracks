@@ -10,5 +10,5 @@
 <% end %>
 
 <% if track_reports.length > 0 %>
-<p id='edit'><%= link_to 'View all reports', { :controller => 'track_report', :action => 'list', :track_name => @track.name, :track_id => @track.id, :year => Time.now.strftime('%Y') } %></p>
+<p id='edit'><%= link_to 'View all reports', { :controller => 'track_report', :action => 'list', :track_id => @track.id, :year => Time.now.strftime('%Y') } %></p>
 <% end %>

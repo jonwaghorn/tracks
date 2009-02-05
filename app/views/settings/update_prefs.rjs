@@ -1,0 +1,2 @@
+page.replace_html('preferences', :partial => 'show_prefs')
+page['preferences_body'].visual_effect :highlight, :startcolor => "#ffffaa", :endcolor => "#ffffff"

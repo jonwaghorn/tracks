@@ -2,9 +2,5 @@
 <% if :notice %><p class="notice"><%= flash[:notice] %></p><% end %>
 <% form_tag :action => 'update', :id => @track do %>
   <%= render :partial => 'form' %>
-  <p><%= submit_tag 'Save changes' %></p>
+  <p class="form_buttons"><%= submit_tag 'Save changes' %> or <%= link_to 'Cancel', :action => 'show', :id => @track %></p>
 <% end %>
-
-<hr size="1" color="#ccc">
-
-<p><%= link_to 'Back', :action => 'show', :id => @track %></p>

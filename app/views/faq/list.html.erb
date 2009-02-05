@@ -1,7 +1,7 @@
 <h1>FAQ</h1>
 <% if :notice %><p class="notice"><%= flash[:notice] %></p><% end %>
 
-<p>Got a question not answered here? Try <b>info at tracks dot org dot nz</b>.</p>
+<p>Got a question not answered here? Try <b>info@<%= URL_BASE %></b></p>
 
 <h2>Questions</h2><h3></h3>
 <% @faqs.each_with_index do |@faq, i| %>
@@ -18,5 +18,5 @@
 <% end %>
 
 <% if creator? %>
-<p><%= link_to 'New', :action => 'new' %></p>
+<p><%= link_to 'New FAQ', :action => 'new' %></p>
 <% end %>

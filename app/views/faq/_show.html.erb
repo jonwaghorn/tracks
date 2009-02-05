@@ -1,6 +1,7 @@
 <h4><%= h @faq.question %></h4>
 <p><%= replace_for_view(h(@faq.answer)) %>
 <% if creator? %>
-<p>(<%= link_to 'Edit', :action => 'edit', :id => @faq %>|<%= link_to 'Delete', {:action => 'destroy', :id => @faq}, :confirm => 'Really delete FAQ?', :method => :post %>)</p>
+<hr size=1 color="#eeeeee" style="margin-left: 10px;margin-right: 10px;">
+<p><%= link_to 'Edit', :action => 'edit', :id => @faq %> | <%= link_to 'Delete', {:action => 'destroy', :id => @faq}, :confirm => 'Really delete FAQ?', :method => :post %></p>
 <% end %>
 </p>

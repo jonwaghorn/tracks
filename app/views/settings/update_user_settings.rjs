@@ -1,0 +1,3 @@
+page.replace_html('user_settings', :partial => 'show_user_settings')
+page.replace_html('header_auth', :partial => 'shared/header_auth')
+page['user_settings_body'].visual_effect :highlight, :startcolor => "#ffffaa", :endcolor => "#ffffff"

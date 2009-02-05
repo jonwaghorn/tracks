@@ -1,0 +1,16 @@
+<h2>Preferences</h2><h3></h3>
+
+<div class="two_cols">
+
+<div id='preferences_body'>
+  <div class="col_one">Map style</div>
+  <div class="col_two"><%= @setting.map_type.name.titlecase %></div>
+
+  <div class="col_one">Home region</div>
+  <div class="col_two"><%= @setting.region.name %></div>
+</div>
+
+  <hr size=1 color='#ccc'>
+  <%= link_to_remote 'Edit', :url => {:action => 'edit_prefs'} %>
+
+</div>

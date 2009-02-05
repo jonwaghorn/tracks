@@ -20,16 +20,16 @@ class Area < ActiveRecord::Base
   end
 
   def tweet_new
-    tweet format_for_twitter("new area #{name} added to #{region.name}.")
+    tweet format_for_twitter("New area #{name} added to #{region.name}.")
   end
+
+  protected
 
   # Shoe-horn twitter message (some of), and area url
   def format_for_twitter(message)
     url = shorten_url "http://#{URL_BASE}/area/show/#{id}"
     message[0, 140 - 1 + url.length] + ' ' + url
   end
-
-  private
 
   def fix_name
     fix_stupid_quotes!(name)

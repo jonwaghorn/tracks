@@ -2,14 +2,19 @@ class TrackReportController < ApplicationController
 
   before_filter :login_required, :only => [ :edit, :update, :new, :login ]
 
-  def index
-    list
-    render :action => 'list'
-  end
-
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
   verify :method => :post, :only => [ :destroy, :create, :update ],
          :redirect_to => { :action => :list }
+
+  def index
+   list
+   render :action => 'list'
+  end
+
+  def list
+    @track_reports = TrackReport.find(:all, :order => 'date DESC', :conditions => ["track_id = ? and date > ? and date < ?", params[:track_id], params[:year] + '-01-01 00:00:00', params[:year] + '-12-31 23:59:59'])
+    @oldest_report = TrackReport.find(:first, :conditions => ['track_id = ?', params[:track_id]], :order => 'date ASC')
+  end
 
   def new
     @track_report = TrackReport.new

@@ -1,13 +1,28 @@
 <h1>Admin: user</h1>
 <% if :notice %><p class="notice"><%= flash[:notice] %></p><% end %>
 
-<p>Login/Screen name: <%= @user.login %></p>
-<p>Email: <%= @user.email %></p>
-<p>Signup: <%= @user.created_at.to_s(:full) %></p>
-<p>Edits: <%= @user.edits %></p>
-<p>Reports: <%= @user.reports %></p>
-<p>Last edit: <%= @user.last_track_edit_at.to_s(:full) if !@user.last_track_edit_at.nil? %></p>
-<p>Access: <%= @user.privilege %></p>
+<div class="two_cols">
+  <div class="col_one">Screen name</div>
+  <div class="col_two"><%= @user.screen_name %></div>
+
+  <div class="col_one">Email (login)</div>
+  <div class="col_two"><%= @user.login %></div>
+
+  <div class="col_one">Signup</div>
+  <div class="col_two"><%= @user.created_at.to_s(:full) %></div>
+
+  <div class="col_one">Edits</div>
+  <div class="col_two"><%= @user.edits %></div>
+
+  <div class="col_one">Reports</div>
+  <div class="col_two"><%= @user.reports %></div>
+
+  <div class="col_one">Last edit</div>
+  <div class="col_two"><%= @user.last_track_edit_at.to_s(:full) if !@user.last_track_edit_at.nil? %></div>
+
+  <div class="col_one">Access</div>
+  <div class="col_two"><%= @user.privilege %></div>
+</div>
 
 <hr size="1" color="#ccc">
 

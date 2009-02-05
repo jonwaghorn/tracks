@@ -2,8 +2,5 @@
 
 <% form_tag :action => 'create' do %>
   <%= render :partial => 'form' %>
-  <p><%= submit_tag "Create" %></p>
+  <p class="form_buttons"><%= submit_tag "Create" %> or <%= link_to 'Cancel', :action => 'index' %></p>
 <% end %>
-
-<hr size=1 color="#ccc">
-<p><%= link_to 'Back', :action => 'index' %></p>

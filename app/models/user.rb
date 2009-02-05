@@ -6,14 +6,14 @@ class User < ActiveRecord::Base
   has_one :setting
   after_create :create_default_settings
 
-  validates_presence_of     :login, :email
+  validates_presence_of     :login, :screen_name
   validates_presence_of     :password,                   :if => :password_required?
   validates_presence_of     :password_confirmation,      :if => :password_required?
   validates_length_of       :password, :within => 4..40, :if => :password_required?
   validates_confirmation_of :password,                   :if => :password_required?
-  validates_length_of       :login,    :within => 3..40
-  validates_length_of       :email,    :within => 3..100
-  validates_uniqueness_of   :login, :case_sensitive => false
+  validates_length_of       :login,    :within => 3..100
+  validates_length_of       :screen_name, :within => 3..40
+  validates_uniqueness_of   :login, :screen_name, :case_sensitive => false
   apply_simple_captcha      :message => 'Text from image does not match'
   before_save :encrypt_password
 
@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
   # These create and unset the fields required for remembering users between browser closes
   def remember_me
     self.remember_token_expires_at = 2.weeks.from_now.utc
-    self.remember_token            = encrypt("#{email}--#{remember_token_expires_at}")
+    self.remember_token            = encrypt("#{login}--#{remember_token_expires_at}")
     save(false)
   end
 

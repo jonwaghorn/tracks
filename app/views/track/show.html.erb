@@ -61,7 +61,7 @@
 </p>
 <% end %>
 
-<p id="left">Last modified</p><p id="right"><%= @track.date.to_s(:tracks).gsub(/^0/, '') %> by <%= User.find(@track.author).login %></p>
+<p id="left">Last modified</p><p id="right"><%= @track.date.to_s(:tracks).gsub(/^0/, '') %> by <%= User.find(@track.author).screen_name %></p>
 
 <% if @track.zoom != 0 %>
 <h2>Google goodness</h2><h3>&nbsp;</h3>

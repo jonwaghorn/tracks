@@ -2,9 +2,5 @@
 
 <% form_tag :action => 'create', :region_id => params[:region_id] do %>
   <%= render :partial => 'form' %>
-  <p><%= submit_tag "Create" %></p>
+  <p class="form_buttons"><%= submit_tag "Create" %> or <%= link_to 'Cancel', :controller => 'region', :action => 'show', :id => params[:region_id] %></p>
 <% end %>
-
-<hr size="1" color="#ccc">
-
-<p><%= link_to 'Back', :controller => 'region', :action => 'show', :id => params[:region_id] %></p>

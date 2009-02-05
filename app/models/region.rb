@@ -18,8 +18,10 @@ class Region < ActiveRecord::Base
   validates_inclusion_of    :rain_readings, :in => 0..21, :message => 'must be in the range 0-21 (inclusive).'
 
   def tweet_new
-    tweet format_for_twitter("new region #{name} added.")
+    tweet format_for_twitter("New region #{name} added.")
   end
+
+  protected
 
   # Shoe-horn twitter message (some of), and region url
   def format_for_twitter(message)
@@ -27,9 +29,7 @@ class Region < ActiveRecord::Base
     message[0, 140 - 1 + url.length] + ' ' + url
   end
 
-  private
-
-    def fix_name
-      fix_stupid_quotes!(name)
-    end
+  def fix_name
+    fix_stupid_quotes!(name)
+  end
 end

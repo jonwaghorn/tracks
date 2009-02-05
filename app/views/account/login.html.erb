@@ -1,7 +1,8 @@
 <h1>Log in</h1>
 <% if :notice %><p class="notice"><%= flash[:notice] %></p><% end %>
+<p class="notice">Note: Log in has changed slightly. Please use your email as your login name. If you cannot remember the email you signed up with, please contact <b>info at tracks dot org dot nz</b></p>
 <% form_tag do -%>
-<p><label for="login">Username</label><br/>
+<p><label for="login">Email</label><br/>
 <%= text_field_tag 'login' %></p>
 
 <p><label for="password">Password</label><br/>

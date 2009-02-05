@@ -17,7 +17,7 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      flash[:notice] = @user.login + ' was successfully updated.'
+      flash[:notice] = @user.screen_name + ' was successfully updated.'
       redirect_to :action => 'show', :id => @user
     else
       render :action => 'edit'

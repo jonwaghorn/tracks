@@ -39,22 +39,22 @@ a.external {
 
 
 
-#bg {
+.bg {
   background: #ccc;
   height: 100%;
 }
 
-#bg_left {
+.bg_left {
   background: #999 url('/images/bg_left.png') repeat-y right;
   width: 50%;
 }
 
-#bg_right {
+.bg_right {
   background: #999 url('/images/bg_right.png') repeat-y left;
   width: 50%;
 }
 
-#container {
+.container {
   font: 13px 'Lucida Grande', Geneva, Arial, Verdana, sans-serif;
   color: black;
   padding: 10px;
@@ -171,45 +171,45 @@ div.clearboth {clear: both;}
   color: #666;
 }
 
-#column_one {
+.column_one {
   width: 200px;
   float: left;
 }
 
-#nav_outer {
+.nav_outer {
   background: #999;
   padding: 1px;
   margin-bottom: 10px;
 }
 
-#nav {
+.nav {
   border: 1px solid white;
   background: #999;
   margin: 0;
 }
 
-#nav p {
+.nav p {
   margin: 5px 9px;
   font-size: 12px;
 }
 
-#nav #connecting_tracks p {
+.nav #connecting_tracks p {
   margin: 3px 9px;
 }
 
-#nav ul {
+.nav ul {
   margin: 3px 0 0 0;
   padding: 0 0 5px 0;
   list-style: none;
 }
 
-#nav li {
+.nav li {
   display: inline;
   padding: 0;
   margin: 0;
 }
 
-#nav li span { /* unlinked menu item */
+.nav li span { /* unlinked menu item */
   display: block;
   padding: 1px 23px 3px 0;
   margin-right: -13px;
@@ -217,75 +217,75 @@ div.clearboth {clear: both;}
   min-height: 16px;
 }
 
-#nav li .current_t {
+.nav li .current_t {
   background: url('/images/current_t.png') no-repeat top right;
   margin-top: -4px;
   padding-top: 4px;
 }
 
-#nav li .current_c {
+.nav li .current_c {
   background: url('/images/current_c.png') no-repeat right;
   margin-right: -13px;
 }
 
-#nav li .current_b {
+.nav li .current_b {
   background: url('/images/current_b.png') no-repeat bottom right;
   margin-bottom: -4px;
   padding-bottom: 4px;
 }
 
-#nav li.current a {
+.nav li.current a {
   padding: 0;
   text-decoration: none;
   color: #f48a00;
   font-weight: normal;
 }
 
-#nav li.current a:hover {
+.nav li.current a:hover {
   background: none;
   font-weight: normal;
 }
 
-#nav li a {
+.nav li a {
   display: block;
   padding: 0 5px 2px 9px;
   text-decoration: none;
 }
 
-#nav li a:hover {
+.nav li a:hover {
   background: #ccc url('/images/arrow.png') no-repeat right;
 }
 
-#nav #date {
+.nav #date {
   font-size: 9px;
   color: #666;
 }
 
-#nav #main {
+.nav #main {
   padding-left: 9px;
 }
 
-#nav #region {
+.nav #region {
   padding-left: 19px;
 }
 
-#nav #area {
+.nav #area {
   padding-left: 29px;
 }
 
-#nav #track {
+.nav #track {
   padding-left: 39px;
 }
 
-#nav #sub_track {
+.nav #sub_track {
   padding-left: 49px;
 }
 
-#nav #connect {
+.nav #connect {
   padding-left: 24px;
 }
 
-#nav h2 {
+.nav h2 {
   float: left;
   background: #777 url('/images/nav_div.png') no-repeat right top;
   font: bold 12px 'Lucida Grande', Geneva, Arial, Verdana, sans-serif;
@@ -295,48 +295,49 @@ div.clearboth {clear: both;}
   padding: 2px 32px 0 8px;
 }
 
-#nav h3 {
+.nav h3 {
   border-top: #777 1px solid;
   font-size: 12px;
   margin: 7px 1px 0 1px;
   padding-top: 2px;
 }
 
-#nav #rainfall {
+.nav .rainfall {
   padding-bottom: 5px;
   margin-left: 5px;
-  width: 100px;
+  min-width: 100px;
   font: 9px 'Lucida Grande', Geneva, Arial, Verdana, sans-serif;
   color: #ccc;
 }
 
-#nav #rainfall .c1 {
+.nav .rainfall .c1 {
   text-align: right;
   padding-right: 2px;
 }
 
-#nav #rainfall #ruler {
+.nav .rainfall .ruler {
   background: url("../images/ruler.png") repeat-x;
   height: 8px;
+  min-width: 151px;
 }
 
-#nav #rainfall a {
+.nav .rainfall a {
   font-weight: normal;
   color: #ccc;
 }
 
-#nav #rainfall a:hover {
+.nav .rainfall a:hover {
   font-weight: normal;
   background: #ccc;
   color: #f48a00;
 }
 
-#nav #rainfall form {
+.nav .rainfall form {
   border: solid 1px;
   padding: 4px;
 }
 
-#nav .edit_report {
+.nav .edit_report {
   border: solid 1px #777777;
   margin: 5px;
   padding: 4px;
@@ -351,16 +352,12 @@ h1 {
   padding: 4px 0 0 8px;
 }
 
-#column_two {
+.column_two {
   margin-left: 210px;
   padding: 0;
 }
 
-#end_columns {
-  clear: both;
-}
-
-#content {
+.content {
   font: 12px 'Lucida Grande', Geneva, Arial, Verdana, sans-serif;
   background: white;
   border: 1px solid #999;
@@ -370,38 +367,38 @@ h1 {
   margin-bottom: 10px;
 }
 
-#content a {
+.content a {
   color: #ba6900;
 }
 
-#content a:visited {
+.content a:visited {
   color: #ba6900;
 }
 
-#content p {
+.content p {
   font: 12px 'Lucida Grande', Geneva, Arial, Verdana, sans-serif;
   margin: 5px 0;
   padding: 0 9px;
 }
 
-#content table {
+.content table {
   margin: 5px 0;
   padding: 0 9px;
 }
 
-#content th {
+.content th {
   text-align: left;
 }
 
-#content tr {
+.content tr {
   vertical-align: top;
 }
 
-#content p#edit {
+.content p#edit {
   color: #999;
 }
 
-#content h2 {
+.content h2 {
   float: left;
   font: bold 12px 'Lucida Grande', Geneva, Arial, Verdana, sans-serif;
   background: #999 url('/images/content_div.png') no-repeat right top;
@@ -411,7 +408,7 @@ h1 {
   padding: 2px 32px 0 8px;
 }
 
-#content h3 {
+.content h3 {
   border-top: #999 1px solid;
   font: italic 10px 'Lucida Grande', Geneva, Arial, Verdana, sans-serif;
   height: 18px;
@@ -421,19 +418,19 @@ h1 {
   color: #aaa;
 }
 
-#content h4 {
+.content h4 {
   font: bold italic 12px 'Lucida Grande', Geneva, Arial, Verdana, sans-serif;
   margin: 5px 0;
   padding: 0 9px;
   color: #f48a00;
 }
 
-#content .fieldWithErrors {
+.content .fieldWithErrors {
   margin: -5px 0 5px 0;
   padding: 0 9px;
 }
 
-#content #left {
+.content #left {
   float: left;
   color: #aaa;
   width: 90px;
@@ -443,25 +440,40 @@ h1 {
   border: 0;
 }
 
-#content label {
+.content label {
   color: #999;
 }
 
-#content #simple_captcha {
+.content #simple_captcha {
   margin: 10px 0;
   padding: 0 9px;
 }
 
-#content #simple_captcha p {
+.content #simple_captcha p {
   margin: 5px 0;
   padding: 0;
 }
 
-#content #right {
+.content #right {
   color: black;
   margin: 0 0 0 90px;
   padding: 4px 10px;
   border: 0;
+}
+
+.content .two_cols {
+  margin: 10px;
+}
+
+.content .two_cols .col_one {
+  padding: 2px 0 3px 0;
+  float: left;
+  width: 180px;
+}
+
+.content .two_cols .col_two {
+  padding: 2px 0 3px 0;
+  font-weight: bold;
 }
 
 #map {
@@ -479,12 +491,11 @@ h1 {
   white-space: normal;
 }
 
-#blog_track {
-  padding: 0 10px 10px 20px;
-  font-size: 12px;
-}
-
 p.notice {
   font-style: italic;
   color: #f48a00;
+}
+
+p.form_buttons {
+  margin: 15px 0 10px 0;
 }

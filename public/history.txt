@@ -1,3 +1,10 @@
+27 2009-02-04
+  - [feature] Changed login to use email instead of separate login, screen name is now the old login
+  - [feature] Allow user to change their screen name
+  - [bug fix] Make "save or cancel" form buttons consistent across all pages
+  - [bug fix] Make rainfall graph full width
+  - [bug fix] Stylesheet fixes including many css noob fixes
+
 26 2009-02-01
   - [feature] Renamed States to Regions
   - [feature] More admin backroom stuff

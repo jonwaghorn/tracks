@@ -1,9 +1,18 @@
-<h1><%= @user.login %> (edit)</h1>
+<h1>Admin: user (edit)</h1>
 <% form_tag :action => 'update', :id => @user do %>
-  <%= render :partial => 'form' %>
-  <p><br/><%= submit_tag 'Save changes' %></p>
+
+<%= error_messages_for 'user', :header_tag => 'h4' %>
+
+<div class="two_cols">
+  <div class="col_one">Screen name</div>
+  <div class="col_two"><%= text_field 'user', 'screen_name' %></div>
+
+  <div class="col_one">Email (login)</div>
+  <div class="col_two"><%= text_field 'user', 'login' %></div>
+
+  <div class="col_one">Access</div>
+  <div class="col_two"><%= select 'user', 'privilege', ["admin", "viewer", "creator"] %></div>
+</div>
+
+  <p class="form_buttons"><%= submit_tag 'Save changes' %> or <%= link_to 'Cancel', :action => 'show', :id => @user %></p>
 <% end %>
-
-<hr size="1" color="#ccc">
-
-<p><%= link_to 'Back', :action => 'show', :id => @user %></p>

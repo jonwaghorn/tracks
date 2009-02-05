@@ -1,0 +1,19 @@
+<h2>Preferences (edit)</h2><h3></h3>
+
+<%= error_messages_for 'setting', :header_tag => 'h4' %>
+
+<% form_remote_tag :url => {:action => "update_prefs"} do %>
+
+<div class="two_cols">
+
+  <div class="col_one"><label for="setting_map_type_id">Map style</label></div>
+  <div class="col_two"><%= select :setting, :map_type_id, MapType.find(:all, :order => 'name').collect { |mt| [mt.name, mt.id] } %></div>
+
+  <div class="col_one"><label for="setting_region_id">Home region</label></div>
+  <div class="col_two"><%= select :setting, :region_id, Region.find(:all, :order => 'name').collect {|s| [s.name, s.id] } %></div>
+
+</div>
+
+<p class="form_buttons"><%= submit_tag 'Save preferences' %> or <%= link_to_remote 'Cancel', :url => {:action => 'cancel_edit_prefs'} %></p>
+
+<% end %>

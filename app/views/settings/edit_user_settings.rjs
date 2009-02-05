@@ -1,0 +1,1 @@
+page.replace_html('user_settings', :partial => 'edit_user_settings')
