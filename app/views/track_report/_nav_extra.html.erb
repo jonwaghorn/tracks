@@ -1,6 +1,6 @@
 <div class="nav_outer"><div class="nav"><h1>Recent Reports</h1>
 <% for track_report in TrackReport.find_recent_by_track(params[:track_id]) do %>
 <p><%= replace_for_view(h(track_report.description)) %>
-<p id="date"><%= User.find(track_report.user_id, :select => 'screen_name').screen_name %>, <%= track_report.date.to_s(:tracks).gsub(/^0/, '') %></p>
+<p class="date"><%= User.find(track_report.user_id, :select => 'screen_name').screen_name %>, <%= track_report.date.to_s(:tracks).gsub(/^0/, '') %></p>
 <% end %>
 </div></div>

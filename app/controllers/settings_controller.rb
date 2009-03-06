@@ -42,6 +42,7 @@ class SettingsController < ApplicationController
 
   def update_user_settings
     @user = User.find(current_user.id)
+    @current_user = @user # hack
     # @user.login = params[:user][:login]
     @user.screen_name = params[:user][:screen_name]
 

@@ -2,11 +2,17 @@
 
 <div class="head">
 
-<div class="logo"><a href="/"><img src="/images/tracks_logo.png"/></a></div>
+  <div class="logo"><a href="/"><img src="/images/tracks_logo.png" alt="Tracks.org.nz"/></a></div>
 
-<div id="header_auth" class="auth">
-<%= render :partial => "shared/header_auth" %>
-</div>
+  <div class="buttons">
+    <div class="search">
+      <%= render :partial => "search/form" %>
+    </div>
+
+    <div id="header_auth" class="auth">
+      <%= render :partial => "shared/header_auth" %>
+    </div>
+  </div>
 
 </div>
 

@@ -5,18 +5,18 @@
 <% track_name = @track.name + mode %>
 <% end %>
 
-<li><%= link_to @track.area.region.name, { :controller => 'region', :action => 'show', :id => @track.area.region.id }, :id => 'region' %></li>
+<li><%= link_to @track.area.region.name, { :controller => 'region', :action => 'show', :id => @track.area.region.id }, :class => 'region' %></li>
 
-<li><%= link_to @track.area.name, { :controller => 'area', :action => 'show', :id => @track.area.id }, :id => 'area' %></li>
+<li><%= link_to @track.area.name, { :controller => 'area', :action => 'show', :id => @track.area.id }, :class => 'area' %></li>
 
 <% if params[:action] =~ /new|create/ %>
-<%= render :partial => 'shared/nav_current', :locals => { :id => 'track', :current => track_name } %>
+<%= render :partial => 'shared/nav_current', :locals => { :nav_level => 'track', :current => track_name } %>
 <% end %>
 <% for track in @track.area.tracks %>
 <% if track == @track %>
-  <%= render :partial => 'shared/nav_current', :locals => { :id => 'track', :current => track_name } %>
+  <%= render :partial => 'shared/nav_current', :locals => { :nav_level => 'track', :current => track_name } %>
 <% else %>
-  <li><%= link_to track.name, { :controller => 'track', :action => 'show', :id => track.id }, :id => 'track' %></li>
+  <li><%= link_to track.name, { :controller => 'track', :action => 'show', :id => track.id }, :class => 'track' %></li>
 <% end %>
 
 <% end %>

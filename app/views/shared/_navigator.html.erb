@@ -3,7 +3,7 @@
 <% current_title = %w(edit new).member?(params[:action]) ? ' (edit)' : '' %>
 
 <% if params[:controller] == 'index' %>
-<%= render :partial => 'shared/nav_current', :locals => { :id => 'main', :current => 'Home' + current_title } %>
+<%= render :partial => 'shared/nav_current', :locals => { :nav_level => 'main', :current => 'Home' + current_title } %>
 <% else %>
 <%= render :partial => 'shared/nav_home' %>
 <% end %>
@@ -12,40 +12,40 @@
 <%= render :partial => 'nav_tracks' %>
 <% end %>
 
-<!--<li><%= link_to 'Classic Routes', { :controller => 'classic' }, :id => 'main' %></li>-->
+<!--<li><%= link_to 'Classic Routes', { :controller => 'classic' } %></li>-->
 
 <% if params[:controller] == 'faq' %>
-<%= render :partial => 'shared/nav_current', :locals => { :id => 'main', :current => 'FAQ' + current_title } %>
+<%= render :partial => 'shared/nav_current', :locals => { :nav_level => 'main', :current => 'FAQ' + current_title } %>
 <% else %>
-<li><%= link_to 'FAQ', { :controller => '/faq' }, :id => 'main' %></li>
+<li><%= link_to 'FAQ', { :controller => '/faq' } %></li>
 <% end %>
 
 <% if params[:controller] == 'about' %>
-<%= render :partial => 'shared/nav_current', :locals => { :id => 'main', :current => 'About' + current_title } %>
+<%= render :partial => 'shared/nav_current', :locals => { :nav_level => 'main', :current => 'About' + current_title } %>
 <% else %>
-<li><%= link_to 'About', { :controller => '/about' }, :id => 'main' %></li>
+<li><%= link_to 'About', { :controller => '/about' } %></li>
 <% end %>
 
 <% if params[:controller] == 'policy' %>
-<%= render :partial => 'shared/nav_current', :locals => { :id => 'main', :current => 'Terms/Privacy' + current_title } %>
+<%= render :partial => 'shared/nav_current', :locals => { :nav_level => 'main', :current => 'Terms/Privacy' + current_title } %>
 <% else %>
-<li><%= link_to 'Terms/Privacy', { :controller => '/policy' }, :id => 'main' %></li>
+<li><%= link_to 'Terms/Privacy', { :controller => '/policy' } %></li>
 <% end %>
 
 <% if params[:controller] == 'contact' %>
-<%= render :partial => 'shared/nav_current', :locals => { :id => 'main', :current => 'Contact' + current_title } %>
+<%= render :partial => 'shared/nav_current', :locals => { :nav_level => 'main', :current => 'Contact' + current_title } %>
 <% else %>
-<li><%= link_to 'Contact', { :controller => '/contact' }, :id => 'main' %></li>
+<li><%= link_to 'Contact', { :controller => '/contact' } %></li>
 <% end %>
 
 <% if params[:controller] == 'settings' %>
-<%= render :partial => 'shared/nav_current', :locals => { :id => 'main', :current => 'Settings' + current_title } %>
+<%= render :partial => 'shared/nav_current', :locals => { :nav_level => 'main', :current => 'Settings' + current_title } %>
 <% elsif logged_in? %>
 <li><%= link_to 'Settings', { :controller => '/settings' } %></li>
 <% end %>
 
 <% if !(params[:controller] =~ /^admin/).nil? %>
-<%= render :partial => 'shared/nav_current', :locals => { :id => 'main', :current => 'Admin', :link => '/admin' } %>
+<%= render :partial => 'shared/nav_current', :locals => { :nav_level => 'main', :current => 'Admin', :link => '/admin' } %>
 <% elsif admin? %>
 <li><%= link_to 'Admin', { :controller => '/admin' } %></li>
 <% end %>

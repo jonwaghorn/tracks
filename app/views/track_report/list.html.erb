@@ -21,7 +21,7 @@
 
 <% end %>
 
-<hr size="1" color="#ccc">
+<hr/>
 
 <p>
 <% if params[:year].to_i > @oldest_report.date.year %><%= link_to 'Older', { :controller => 'track_report', :action => 'list', :track_id => params[:track_id], :year => params[:year].to_i - 1 } %> |<% end %>

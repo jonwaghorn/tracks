@@ -1,0 +1,3 @@
+<% form_tag :controller => 'search' do %>
+  <p><%= text_field 'search', 'term', :class => 'search_box', :size => '16', :maxlength => '40', :value => 'Search', :onfocus => "clearSearchText(this);", :onblur => "reshowSearchText(this);" %><%= image_submit_tag "/images/search.png", :alt => 'go', :class => 'search_button' %></p>
+<% end %>

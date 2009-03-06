@@ -4,14 +4,14 @@
 <% region_title = @region.name + (params[:action] =~ /edit|update/ ? ' (edit)' : '') %>
 <% end %>
 
-<%= render :partial => 'shared/nav_current', :locals => { :id => 'region', :current => region_title } %>
+<%= render :partial => 'shared/nav_current', :locals => { :nav_level => 'region', :current => region_title } %>
 
 <% for area in @region.areas %>
-<li><%= link_to area.name, { :controller => 'area', :action => 'show', :id => area.id }, :id => 'area' %></li>
+<li><%= link_to area.name, { :controller => 'area', :action => 'show', :id => area.id }, :class => 'area' %></li>
 <% end %>
 
 <% if params[:action] =~ /new|create/ %>
 <% for region in @region.nation.regions %>
-  <li><%= link_to region.name, { :controller => 'region', :action => 'show', :id => region.id }, :id => 'region' %></li>
+  <li><%= link_to region.name, { :controller => 'region', :action => 'show', :id => region.id }, :class => 'region' %></li>
 <% end %>
 <% end %>

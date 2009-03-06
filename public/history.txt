@@ -1,3 +1,9 @@
+28 2009-03-06
+  - [feature] search! well kind of, uses the Goog
+  - [bug fix] minor tweaks for more valid markup
+  - [bug fix] allow /state/rss/id to work as /region/rss/id, was showing error in logs (old refs?)
+  - [bug fix] fix user display when editing screen name
+
 27 2009-02-04
   - [feature] Changed login to use email instead of separate login, screen name is now the old login
   - [feature] Allow user to change their screen name

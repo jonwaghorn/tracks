@@ -1,4 +1,4 @@
-<p id='edit'>
+<p class='edit'>
 <% if !logged_in? %>
   <%= link_to 'Add report', :controller => 'track_report', :action => 'login', :track_id => @track.id %> (requires login)
 <% else %>

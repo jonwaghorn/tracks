@@ -1,13 +1,13 @@
 <h1><%= @track.name %></h1>
 <% if :notice %><p class="notice"><%= flash[:notice] %></p><% end %>
 
-<p id="left">Name</p><p id="right"><%= @track.name %></p>
+<p class="left">Name</p><p class="right"><%= @track.name %></p>
 
-<p id="left">Location</p><p id="right"><%= @track.area.name %>, <%= @track.area.region.name %>, <%= @track.area.region.nation.name %></p>
+<p class="left">Location</p><p class="right"><%= @track.area.name %>, <%= @track.area.region.name %>, <%= @track.area.region.nation.name %></p>
 
 <% akas = TrackAka.find(:all, :conditions => ["track_id = ?", @track.id]) %>
 <% if akas.size > 0 %>
-<p id="left">Also known as</p><p id="right">
+<p class="left">Also known as</p><p class="right">
 <% if akas.size > 0 %>
 <% aka_formatted = '' %>
 <% if akas.size > 1 %>
@@ -20,52 +20,52 @@
 <% end %>
 
 <% if ! @track.desc_overview.empty? %>
-<p id="left">Overview</p><p id="right"><%= replace_for_view(h(@track.desc_overview)) %></p>
+<p class="left">Overview</p><p class="right"><%= replace_for_view(h(@track.desc_overview)) %></p>
 <% end %>
 
 <% if @track.track_grade %>
-<p id="left">Grade</p><p id="right"><%= @track.track_grade.name + h(@track.grade_note) %></p>
+<p class="left">Grade</p><p class="right"><%= @track.track_grade.name + h(@track.grade_note) %></p>
 <% end %>
 
 <% if @track.track_access %>
-<p id="left">Access</p><p id="right"><%= @track.track_access.name + h(@track.access_note) %></p>
+<p class="left">Access</p><p class="right"><%= @track.track_access.name + h(@track.access_note) %></p>
 <% end %>
 
 <% if ! @track.desc_full.empty? %>
-<p id="left">Description</p><p id="right"><%= replace_for_view(h(@track.desc_full)) %></p>
+<p class="left">Description</p><p class="right"><%= replace_for_view(h(@track.desc_full)) %></p>
 <% end %>
 
 <% if ! @track.desc_where.empty? %>
-<p id="left">Getting there</p><p id="right"><%= replace_for_view(h(@track.desc_where)) %></p>
+<p class="left">Getting there</p><p class="right"><%= replace_for_view(h(@track.desc_where)) %></p>
 <% end %>
 
 <% if ! @track.desc_note.empty? %>
-<p id="left">Other notes</p><p id="right"><%= replace_for_view(h(@track.desc_note)) %></p>
+<p class="left">Other notes</p><p class="right"><%= replace_for_view(h(@track.desc_note)) %></p>
 <% end %>
 
 <% if @track.length != 0 %>
-<p id="left">Length</p><p id="right"><%= @track.length %>km</p>
+<p class="left">Length</p><p class="right"><%= @track.length %>km</p>
 <% end %>
 
 <% if @track.condition_id != nil %>
-<p id="left">Conditions</p><p id="right"><%= @track.condition.name %></p>
+<p class="left">Conditions</p><p class="right"><%= @track.condition.name %></p>
 <% end %>
 
 <% if ! @track.alt_gain.nil? || ! @track.alt_loss.nil? || ! @track.alt_begin.nil? || ! @track.alt_end.nil? %>
-<p id="left">Altitude</p><p id="right">
-<% if ! @track.alt_gain.nil? %><img src="/images/alt_gain.png" alt="gain" title="Altitude gain"><%= @track.alt_gain %>m<% end %>
-<% if ! @track.alt_loss.nil? %><img src="/images/alt_loss.png" alt="loss" title="Altitude loss"><%= @track.alt_loss %>m<% end %>
-<% if ! @track.alt_begin.nil? %><img src="/images/alt_begin.png" alt="begin" title="Altitude begin"><%= @track.alt_begin %>m<% end %>
-<% if ! @track.alt_end.nil? %><img src="/images/alt_end.png" alt="end" title="Altitude end"><%= @track.alt_end %>m<% end %>
+<p class="left">Altitude</p><p class="right">
+<% if ! @track.alt_gain.nil? %><img src="/images/alt_gain.png" alt="gain" title="Altitude gain"/><%= @track.alt_gain %>m<% end %>
+<% if ! @track.alt_loss.nil? %><img src="/images/alt_loss.png" alt="loss" title="Altitude loss"/><%= @track.alt_loss %>m<% end %>
+<% if ! @track.alt_begin.nil? %><img src="/images/alt_begin.png" alt="begin" title="Altitude begin"/><%= @track.alt_begin %>m<% end %>
+<% if ! @track.alt_end.nil? %><img src="/images/alt_end.png" alt="end" title="Altitude end"/><%= @track.alt_end %>m<% end %>
 <% if ! @track.alt_note.empty? %><%= h @track.alt_note %><% end %>
 </p>
 <% end %>
 
-<p id="left">Last modified</p><p id="right"><%= @track.date.to_s(:tracks).gsub(/^0/, '') %> by <%= User.find(@track.author).screen_name %></p>
+<p class="left">Last modified</p><p class="right"><%= @track.date.to_s(:tracks).gsub(/^0/, '') %> by <%= User.find(@track.author).screen_name %></p>
 
 <% if @track.zoom != 0 %>
 <h2>Google goodness</h2><h3>&nbsp;</h3>
-<div id="map"></div><p><input type="button" value="Reset map view" onClick="locateTrack(<%=@track.latitude%>,<%=@track.longitude%>,<%=@track.zoom%>);"/></p>
+<div id="map"></div><p><input type="button" value="Reset map view" onclick="locateTrack(<%=@track.latitude%>,<%=@track.longitude%>,<%=@track.zoom%>);"/></p>
 
 <% if @track.gps_file_exists? %>
 <p>Download GPS path: <%= link_to 'gpx', "/paths/#{@track.filename}.gpx" if @track.gpx_file_exists? %> <%= link_to 'kml', "/paths/#{@track.filename}.kml" if @track.kml_file_exists? %></p>
@@ -74,7 +74,7 @@
 <% if creator? %><p><%= link_to_remote 'Upload GPS path file', :url => {:action => 'upload', :id => @track} %> - load a new kml file to display.</p><div id="upload_path_file"></div><% end %>
 <% end %>
 
-<hr size="1" color="#ccc">
+<hr/>
 
-<p id="edit"><%= link_to 'Edit', :action => 'edit', :id => @track %>
+<p class="edit"><%= link_to 'Edit', :action => 'edit', :id => @track %>
 <% if ! logged_in? %> (requires login)<% end %></p>

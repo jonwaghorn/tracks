@@ -14,4 +14,4 @@
 <%= render :partial => "form_add", :locals => {:collection => @potential_connections_all, :title => 'Add (all)'} %>
 </div>
 
-<p id="edit"><%= link_to_remote 'Done', { :url => { :action => 'done', :track_id => @track.id } } %></p>
+<p class="edit"><%= link_to_remote 'Done', { :url => { :action => 'done', :track_id => @track.id } } %></p>

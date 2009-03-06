@@ -24,7 +24,7 @@
 <p><label for="track_desc_overview">Overview</label><br/>
 <%= text_area 'track', 'desc_overview', "cols" =>70, "rows" => 5 %></p>
 
-<table cellspacing=0 cellpadding=0>
+<table cellspacing="0" cellpadding="0">
 <tr>
   <td><label for="track_track_grade_id">Grade</label></td>
   <td><label for="track_grade_note">Grade note</label></td>
@@ -35,7 +35,7 @@
 </tr>
 </table>
 
-<table cellspacing=0 cellpadding=0>
+<table cellspacing="0" cellpadding="0">
 <tr>
   <td><label for="track_track_access_id">Access</label></td>
   <td><label for="track_access_note">Access note</label></td>
@@ -61,7 +61,7 @@
 <p><label for="track_condition_id">Conditions</label><br/>
 <%= select 'track', 'condition_id', Condition.find(:all).collect {|c| [c.name, c.id] } %></p>
 
-<table cellspacing=0 cellpadding=0>
+<table cellspacing="0" cellpadding="0">
 <tr><td><label>Altitude (m)</label></td></tr>
 <tr>
   <td><label for="track_alt_gain">Gain</label></td>

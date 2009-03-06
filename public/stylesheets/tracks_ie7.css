@@ -1,19 +1,46 @@
-#nav li span { /* unlinked menu item */
+.nav li span { /* unlinked menu item */
   display: inline;
 }
 
-#nav li .current_t {
+.nav li .current_t {
   padding-top: 5px;
   z-index: 100;
   position: relative;
   overflow: hidden;
 }
 
-#nav li .current_b {
+.nav li .current_b {
   margin: 0 0 -2px 0;
   padding-bottom: 7px;
 }
 
-#nav li.current a {
+.nav li.current a {
   display: inline;
+}
+
+.head .buttons {
+  margin-top: 58px;
+}
+
+.head .buttons .search {
+  padding-top: 3px;
+  height: 17px;
+}
+
+.head .buttons .search p {
+  padding: 0 10px 3px 0;
+  margin-top: -3px;
+  height: 17px;
+}
+
+.head .buttons .search .search_box {
+  padding: 0 0 2px 0;
+  margin: 0 4px 0 10px;
+  border: 0;
+  height: 14px;
+}
+
+.head .buttons .search .search_button {
+  margin-top: 3px;
+  height: 14px;
 }

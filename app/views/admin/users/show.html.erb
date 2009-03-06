@@ -18,12 +18,12 @@
   <div class="col_two"><%= @user.reports %></div>
 
   <div class="col_one">Last edit</div>
-  <div class="col_two"><%= @user.last_track_edit_at.to_s(:full) if !@user.last_track_edit_at.nil? %></div>
+  <div class="col_two"><%= @user.last_track_edit_at.nil? ? '(none)' : @user.last_track_edit_at.to_s(:full) %></div>
 
   <div class="col_one">Access</div>
   <div class="col_two"><%= @user.privilege %></div>
 </div>
 
-<hr size="1" color="#ccc">
+<hr/>
 
 <p><%= link_to 'Back', :action => 'index' %> | <%= link_to 'Edit', :action => 'edit', :id => @user %></p>

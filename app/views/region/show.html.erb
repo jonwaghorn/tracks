@@ -24,9 +24,9 @@
   <a href="/region/rss/<%= @region.id %>" title="Subscribe to track reports for <%= @region.name %>" rel="alternate" type="application/rss+xml"><img align="absbottom" src="/images/feed.png" alt=""/> RSS feed of <%= @region.name %> reports</a>
 </p>
 
-<hr size="1" color="#ccc">
+<hr/>
 
-<p id="edit"><%= link_to 'Edit', :action => 'edit', :id => @region %>
+<p class="edit"><%= link_to 'Edit', :action => 'edit', :id => @region %>
 <% if creator? %>
  | <%= link_to 'Add area', :controller => 'area', :action => 'new', :region_id => @region.id %>
 <% end %>

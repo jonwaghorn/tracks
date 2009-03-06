@@ -1,5 +1,5 @@
 <% if logged_in? %>
-<p> &nbsp;<%= link_to !@user.nil? ? @user.screen_name : current_user.screen_name, :controller => '/settings' %> 
+<p> &nbsp;<%= link_to @current_user.nil? ? current_user.screen_name : @current_user.screen_name, :controller => '/settings' %>
 | <%= link_to 'Log out', :controller => '/account', :action => 'logout' %></p>
 <% else %>
 <p>

@@ -7,5 +7,5 @@
 <% end %>
 
 <% if logged_in? %>
-<p id="edit"><%= link_to_remote @existing_connections.empty? ? 'Add' : 'Edit', { :url => { :controller => 'track_connection', :action => 'edit', :track_id => @track.id } } %></p>
+<p class="edit"><%= link_to_remote @existing_connections.empty? ? 'Add' : 'Edit', { :url => { :controller => 'track_connection', :action => 'edit', :track_id => @track.id } } %></p>
 <% end %>
