@@ -146,6 +146,8 @@ hr {
   color: #f48a00;
   margin: 0 8px 0 10px;
   border-style: none;
+  height: 13px;
+  font-size: 11px;
 }
 
 .head .buttons .search .search_button {
