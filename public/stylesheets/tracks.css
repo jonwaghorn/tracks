@@ -113,12 +113,13 @@ hr {
   background: url('/images/title_link_l.png') center left no-repeat;
   color: #999;
   float: left;
-  margin-right: 8px;
+  margin-right: 18px;
   margin-left: 8px;
 }
 
 .head .buttons .auth p {
   background: url('/images/title_link_r.png') center right no-repeat;
+  margin-right: -10px;
   padding: 2px 10px 3px 10px;
 }
 
@@ -134,11 +135,13 @@ hr {
 
 .head .buttons .search {
   background: url('/images/title_link_l.png') center left no-repeat;
+  margin-right: 18px;
   float: left;
 }
 
 .head .buttons .search p {
   background: url('/images/title_link_r.png') center right no-repeat;
+  margin-right: -10px;
   padding: 2px 10px 3px 0;
 }
 
@@ -168,6 +171,13 @@ hr {
   height: 30px;
 }
 
+.foot_r {
+  float: left;
+  background: url('/images/copy_r.png') no-repeat right center;
+  width: 8px;
+  height: 30px;
+}
+
 .foot_content {
   float: left;
   font: 13px 'Lucida Grande', Geneva, Arial, Verdana, sans-serif;
@@ -182,16 +192,82 @@ hr {
 }
 
 .foot_monkey {
-  float: right;
+  float: left;
   margin-top: 3px;
+  margin-right: 10px;
 }
 
-.foot_r {
-  float: left;
-  background: url('/images/copy_r.png') no-repeat right center;
-  width: 8px;
-  height: 30px;
+.foot_button {
+  margin-top: -8px;
+  float: right;
 }
+
+.foot_button .feature {
+  background: url('/images/title_link_l.png') center left no-repeat;
+  color: #999;
+  float: left;
+  margin-right: 10px;
+  margin-left: 8px;
+}
+
+.foot_button .feature p {
+  background: url('/images/title_link_r.png') center right no-repeat;
+  margin-right: -10px;
+  padding: 1px 10px 3px 10px;
+}
+
+.foot_button .feature a {
+  color: #f48a00;
+  padding: 1px;
+  font-size: 11px;
+}
+
+.foot_button .feature a:hover {
+  color: #f48a00;
+  background: #ccc;
+}
+
+.foot_feature {
+  text-align: center;
+  font-size: 11px;
+  margin-top: -4px;
+  margin-bottom: 6px;
+  color: #999;
+}
+
+.foot_feature a {
+  color: #999;
+}
+
+.foot_feature a:hover {
+  color: #f48a00;
+  background: #ccc;
+}
+
+.features {
+  margin: 10px;
+}
+
+.features table {
+  border-collapse: collapse;
+}
+
+.features th {
+  background: #dadada;
+  padding: 8px;
+  font-size: 80%;
+  font-weight: normal;
+  color: #000000;
+}
+
+.features td {
+  border-bottom: 1px solid #dadada;
+  padding: 8px;
+  font-size: 80%;
+}
+
+tr.list-line-odd    {background-color: #f6f6f6;}
+tr.list-line-even   {background-color: #efefef;}
 
 div.clearboth {clear: both;}
 

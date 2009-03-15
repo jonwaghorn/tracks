@@ -1,0 +1,30 @@
+<h1><%= @feature.kind.humanize %> (edit)</h1>
+
+<% form_for(@feature) do |f| %>
+  <%= f.error_messages %>
+
+  <% if admin? || @feature.user == current_user %>
+    <p class="left"><%= f.label :kind %></p>
+    <p class="right"><%= f.select :kind, Feature::KINDS.collect {|k| [k.humanize, k]} %></p>
+  <% end %>
+
+  <p class="left"><%= f.label :title %></p>
+  <p class="right"><%= f.text_field :title %></p>
+
+  <p class="left"><%= f.label :description %></p>
+  <p class="right"><%= f.text_area :description %></p>
+
+  <% if admin? %>
+    <p class="left"><%= f.label :progress %></p>
+    <p class="right"><%= f.select :progress, Feature::PROGRESS.collect {|k| [k.humanize, k]} %></p>
+  <% end %>
+
+  <% if admin? || @feature.user == current_user %>
+    <p class="left"><%= f.label :status %></p>
+    <p class="right"><%= f.select :status, Feature::STATUSES.collect {|k| [k.humanize, k]} %></p>
+  <% end %>
+
+  <p class="edit">
+    <%= f.submit "Save changes" %> or <%= link_to 'Cancel', @feature %>
+  </p>
+<% end %>

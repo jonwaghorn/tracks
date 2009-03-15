@@ -1,0 +1,19 @@
+<h1>New <%= @feature.kind.humanize %></h1>
+
+<p>You can browse existing <%= @feature.kind %>s <%= link_to 'here', :controller => 'features' %>.</p>
+
+<% form_for(@feature) do |f| %>
+  <%= f.error_messages %>
+
+  <%= f.hidden_field :kind %>
+
+  <p class="left"><%= f.label :title %></p>
+  <p class="right"><%= f.text_field :title %></p>
+
+  <p class="left"><%= f.label :description %></p>
+  <p class="right"><%= f.text_area :description %></p>
+
+  <p class="edit">
+    <%= f.submit "Create", :kind => @feature.kind %> or <%= link_to 'Cancel', features_path %>
+  </p>
+<% end %>

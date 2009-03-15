@@ -20,14 +20,29 @@
 
 .head .buttons {
   margin-top: 58px;
+  height: 17px;
+}
+
+.head .buttons .auth {
+  margin-top: 1px;
+  margin-right: 18px;
+  padding-top: 3px;
+}
+
+.head .buttons .auth p {
+  margin-right: -10px;
+  margin-top: -4px;
+  padding: 3px 10px 3px 8px;
 }
 
 .head .buttons .search {
+  margin-right: 18px;
   padding-top: 3px;
   height: 17px;
 }
 
 .head .buttons .search p {
+  margin-right: -10px;
   padding: 0 10px 3px 0;
   margin-top: -3px;
   height: 17px;
@@ -41,6 +56,19 @@
 }
 
 .head .buttons .search .search_button {
+  margin-right: 10px;
   margin-top: 3px;
   height: 14px;
+}
+
+
+
+
+.foot_button {
+  margin-top: 3px;
+}
+
+.foot_button .feature p {
+  padding-top: 3px;
+  height: 17px;
 }

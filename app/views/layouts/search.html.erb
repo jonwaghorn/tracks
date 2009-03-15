@@ -7,7 +7,6 @@
 <title>Search | Tracks.org.nz</title>
 <%= stylesheet_link_tag 'tracks' %>
 <link href="/favicon.png" rel="shortcut icon" type="image/x-icon"/>
-<%= auto_discovery_link_tag(:rss, :action => 'rss') %>
 <%= javascript_include_tag :defaults %>
 <%= render :partial => 'shared/ie' %>
 <%= render :partial => 'shared/analytics' %>
@@ -16,19 +15,16 @@
 //<![CDATA[
 google.load("search", "1");
 function OnLoad() {
-  // Create a search control
-  var searchControl = new google.search.SearchControl();
-
-  var options = new google.search.SearcherOptions();
-
   var siteSearch = new google.search.WebSearch();
   siteSearch.setUserDefinedClassSuffix("siteSearch");
   siteSearch.setSiteRestriction("tracks.org.nz");
+
+  var options = new google.search.SearcherOptions();
   options.setExpandMode(google.search.SearchControl.EXPAND_MODE_OPEN);
+
+  var searchControl = new google.search.SearchControl();
   searchControl.addSearcher(siteSearch, options);
-
   searchControl.draw(document.getElementById("searchcontrol"));
-
   searchControl.execute("<%= @term %>");
 }
 google.setOnLoadCallback(OnLoad);

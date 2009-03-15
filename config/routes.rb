@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :features
+
+  map.resources :features
+
   # map.resources :map_types
 
   # map.resources :settings

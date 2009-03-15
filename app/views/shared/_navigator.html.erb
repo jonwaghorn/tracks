@@ -22,8 +22,13 @@
 
 <% if params[:controller] == 'about' %>
 <%= render :partial => 'shared/nav_current', :locals => { :nav_level => 'main', :current => 'About' + current_title } %>
+<%= render :partial => 'about/nav_sub' %>
 <% else %>
 <li><%= link_to 'About', { :controller => '/about' } %></li>
+<% end %>
+
+<% if params[:controller] == 'features' %>
+<%= render :partial => 'shared/nav_current', :locals => { :nav_level => 'region', :current => 'Features' + current_title, :link => '/features' } %>
 <% end %>
 
 <% if params[:controller] == 'policy' %>

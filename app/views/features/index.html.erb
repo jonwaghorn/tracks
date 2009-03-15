@@ -1,0 +1,64 @@
+<h1>Features/Problems</h1>
+
+<p>The following lists are provided by users and will hopefully help focus our small (!) development team to make <b>Tracks</b> a better experience.</p>
+<p>We will add a voting system soon so we can really focus on what users want.</p>
+
+<h2>Suggested Features</h2><h3></h3>
+
+<div class="features">
+<% if @features.length > 0 %>
+<table cellspacing="0" cellpadding="2">
+  <tr>
+    <th width="100%">Feature</th>
+    <th>Reporter</th>
+    <th>Progress</th>
+    <th>Reported</th>
+    <th>Updated</th>
+  </tr>
+
+<% for feature in @features %>
+  <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+    <td><%= link_to h(feature.title), feature %></td>
+    <td><%=h User.find(feature.user_id).screen_name %></td>
+    <td nowrap="true"><%= progress feature.progress %></td>
+    <td nowrap="true"><%= fmt_datetime_tbl feature.created_at %></td>
+    <td nowrap="true"><%= fmt_datetime_tbl feature.updated_at %></td>
+  </tr>
+<% end %>
+</table>
+<% else %>
+<p>None.</p>
+<% end %>
+</div>
+
+<h2>Reported Problems</h2><h3></h3>
+
+<div class="features">
+<% if @problems.length > 0 %>
+<table cellspacing="0" cellpadding="2">
+    <tr>
+      <th width="100%">Problem</th>
+      <th>Reporter</th>
+      <th>Progress</th>
+      <th>Reported</th>
+      <th>Updated</th>
+    </tr>
+
+  <% for problem in @problems %>
+    <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+      <td><%= link_to h(problem.title), problem %></td>
+      <td><%=h problem.user.screen_name %></td>
+      <td nowrap="true"><%= progress problem.progress %></td>
+      <td nowrap="true"><%= fmt_datetime_tbl problem.created_at %></td>
+      <td nowrap="true"><%= fmt_datetime_tbl problem.updated_at %></td>
+    </tr>
+  <% end %>
+  </table>
+<% else %>
+<p>None.</p>
+<% end %>
+</div>
+
+<hr />
+
+<p class="edit"><%= link_to 'Suggest a feature', :action => 'new', :kind => 'feature' %><% if !logged_in? %>*<% end %> | <%= link_to 'Report a problem', :action => 'new', :kind => 'problem' %><% if !logged_in? %>*<% end %> | <% if params[:view] %><%= link_to "Show all open", features_path %><% else %><%= link_to "Show all closed", :action => 'index', :view => 'closed' %><% end %><% if !logged_in? %> (* requires login)<% end %></p>

@@ -1,0 +1,7 @@
+<% if params[:action] =~ /new|create/ %>
+<% page_title = 'New feature (edit)' %>
+<% else %>
+<% page_title = 'Feature' + (params[:action] =~ /edit|update/ ? ' (edit)' : '') %>
+<% end %>
+
+<li><%= link_to 'Features', { :controller => 'features' }, :class => 'region' %></li>

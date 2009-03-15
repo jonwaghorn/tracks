@@ -1,3 +1,7 @@
+29 2009-03
+  - [feature] first cut of features feature (!)
+  - [bug fix] fixed search on pages other than Home
+
 28 2009-03-06
   - [feature] search! well kind of, uses the Goog
   - [bug fix] minor tweaks for more valid markup

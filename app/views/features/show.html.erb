@@ -1,0 +1,26 @@
+<h1><%= @feature.kind.humanize %>: <%=h @feature.title[0..40] %></h1>
+
+<p class="left">Title</p>
+<p class="right"><%=h @feature.title %></p>
+
+<p class="left">Description</p>
+<p class="right"><%= replace_for_view(h(@feature.description)) %></p>
+
+<p class="left">Progress</p>
+<p class="right"><%= progress @feature.progress %></p>
+
+<p class="left">Status</p>
+<p class="right"><%=h @feature.status.humanize %></p>
+
+<p class="left"><%= @feature.kind == 'feature' ? "Requestor" : "Reporter" %></p>
+<p class="right"><%=h @feature.user.screen_name %></p>
+
+<p class="left">Created</p>
+<p class="right"><%= fmt_datetime @feature.created_at %></p>
+
+<p class="left">Updated</p>
+<p class="right"><%= fmt_datetime @feature.updated_at %></p>
+
+<hr/>
+
+<p class="edit"><%= link_to 'Show all', features_path %> | <%= link_to 'Edit', edit_feature_path(@feature) %> <% if !logged_in? %> (requires login)<% end %></p>
