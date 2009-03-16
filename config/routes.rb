@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :features
+  map.resources :votes
 
   map.resources :features
 

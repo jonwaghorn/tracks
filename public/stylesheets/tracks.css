@@ -197,36 +197,6 @@ hr {
   margin-right: 10px;
 }
 
-.foot_button {
-  margin-top: -8px;
-  float: right;
-}
-
-.foot_button .feature {
-  background: url('/images/title_link_l.png') center left no-repeat;
-  color: #999;
-  float: left;
-  margin-right: 10px;
-  margin-left: 8px;
-}
-
-.foot_button .feature p {
-  background: url('/images/title_link_r.png') center right no-repeat;
-  margin-right: -10px;
-  padding: 1px 10px 3px 10px;
-}
-
-.foot_button .feature a {
-  color: #f48a00;
-  padding: 1px;
-  font-size: 11px;
-}
-
-.foot_button .feature a:hover {
-  color: #f48a00;
-  background: #ccc;
-}
-
 .foot_feature {
   text-align: center;
   font-size: 11px;
@@ -273,6 +243,12 @@ div.clearboth {clear: both;}
 
 .date {
   text-align: right;
+  font-size: 9px;
+  font-style: italic;
+  color: #666;
+}
+
+.date_left {
   font-size: 9px;
   font-style: italic;
   color: #666;
@@ -501,7 +477,7 @@ h1 {
   vertical-align: top;
 }
 
-.content p.edit {
+.content .edit {
   color: #999;
 }
 

@@ -1,5 +1,12 @@
-29 2009-03
-  - [feature] first cut of features feature (!)
+30 2009-03-16
+  - [feature] Features/problems now have comments
+  - [feature] Users can now vote on features
+  - [bug fix] www.tracks.org.nz now goes to tracks.org.nz
+  - [bug fix] minor tweaks around features/problems display
+  - [bug fix] tidy up footer and associated unused css
+
+29 2009-03-15
+  - [feature] first cut of features/problems
   - [bug fix] fixed search on pages other than Home
 
 28 2009-03-06

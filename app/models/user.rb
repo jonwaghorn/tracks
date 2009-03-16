@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   attr_accessor :password
 
   has_one :setting
+  has_many :votes
+  has_many :feature_comments
+
   after_create :create_default_settings
 
   validates_presence_of     :login, :screen_name
@@ -52,6 +55,14 @@ class User < ActiveRecord::Base
     self.remember_token_expires_at = nil
     self.remember_token            = nil
     save(false)
+  end
+
+  def has_active_votes?
+    votes.length > 0
+  end
+
+  def has_more_votes?
+    votes.length < Vote::MAX_VOTES_PER_USER
   end
 
   protected

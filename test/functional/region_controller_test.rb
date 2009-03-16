@@ -1,18 +1,18 @@
 require File.dirname(__FILE__) + '/../test_helper'
-require 'condition_controller'
+require 'region_controller'
 
 # Re-raise errors caught by the controller.
-class ConditionController; def rescue_action(e) raise e end; end
+class RegionController; def rescue_action(e) raise e end; end
 
-class ConditionControllerTest < Test::Unit::TestCase
-  fixtures :conditions
+class RegionControllerTest < Test::Unit::TestCase
+  fixtures :regions
 
   def setup
-    @controller = ConditionController.new
+    @controller = RegionController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
 
-    @first_id = conditions(:first).id
+    @first_id = regions(:first).id
   end
 
   def test_index
@@ -27,7 +27,7 @@ class ConditionControllerTest < Test::Unit::TestCase
     assert_response :success
     assert_template 'list'
 
-    assert_not_nil assigns(:conditions)
+    assert_not_nil assigns(:regions)
   end
 
   def test_show
@@ -36,8 +36,8 @@ class ConditionControllerTest < Test::Unit::TestCase
     assert_response :success
     assert_template 'show'
 
-    assert_not_nil assigns(:condition)
-    assert assigns(:condition).valid?
+    assert_not_nil assigns(:region)
+    assert assigns(:region).valid?
   end
 
   def test_new
@@ -46,18 +46,18 @@ class ConditionControllerTest < Test::Unit::TestCase
     assert_response :success
     assert_template 'new'
 
-    assert_not_nil assigns(:condition)
+    assert_not_nil assigns(:region)
   end
 
   def test_create
-    num_conditions = Condition.count
+    num_regions = Region.count
 
-    post :create, :condition => {}
+    post :create, :region => {}
 
     assert_response :redirect
     assert_redirected_to :action => 'list'
 
-    assert_equal num_conditions + 1, Condition.count
+    assert_equal num_regions + 1, Region.count
   end
 
   def test_edit
@@ -66,8 +66,8 @@ class ConditionControllerTest < Test::Unit::TestCase
     assert_response :success
     assert_template 'edit'
 
-    assert_not_nil assigns(:condition)
-    assert assigns(:condition).valid?
+    assert_not_nil assigns(:region)
+    assert assigns(:region).valid?
   end
 
   def test_update
@@ -78,7 +78,7 @@ class ConditionControllerTest < Test::Unit::TestCase
 
   def test_destroy
     assert_nothing_raised {
-      Condition.find(@first_id)
+      Region.find(@first_id)
     }
 
     post :destroy, :id => @first_id
@@ -86,7 +86,7 @@ class ConditionControllerTest < Test::Unit::TestCase
     assert_redirected_to :action => 'list'
 
     assert_raise(ActiveRecord::RecordNotFound) {
-      Condition.find(@first_id)
+      Region.find(@first_id)
     }
   end
 end

@@ -1,0 +1,2 @@
+page.replace_html("new_comment", :partial => "new")
+page.replace_html("add_comment_button", nil)

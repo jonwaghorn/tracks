@@ -23,6 +23,7 @@ class FeaturesController < ApplicationController
   # GET /features/1.xml
   def show
     @feature = Feature.find(params[:id])
+    @comments = @feature.feature_comments
 
     respond_to do |format|
       format.html # show.html.erb
@@ -59,7 +60,7 @@ class FeaturesController < ApplicationController
     respond_to do |format|
       if @feature.save
         flash[:notice] = 'Feature was successfully created.'
-        format.html { redirect_to(@feature) }
+        format.html { update_user_edit_stats; redirect_to(@feature) }
         format.xml  { render :xml => @feature, :status => :created, :location => @feature }
       else
         format.html { render :action => "new" }
@@ -77,7 +78,10 @@ class FeaturesController < ApplicationController
     respond_to do |format|
       if @feature.update_attributes(params[:feature])
         flash[:notice] = 'Feature was successfully updated.'
-        format.html { redirect_to(@feature) }
+        if @feature.closed?
+          Vote.delete_all(["feature_id = ?", @feature.id])
+        end
+        format.html { update_user_edit_stats; redirect_to(@feature) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -86,15 +90,22 @@ class FeaturesController < ApplicationController
     end
   end
 
-  # DELETE /features/1
-  # DELETE /features/1.xml
-  def destroy
-    @feature = Feature.find(params[:id])
-    @feature.destroy
+  def delete_vote
+    @vote = Vote.find(params[:id])
+    @vote.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(features_url) }
-      format.xml  { head :ok }
-    end
+    @features = Feature.active_features
+    @problems = Feature.active_problems
   end
+
+  def create_vote
+    @vote = Vote.new()
+    @vote.feature_id = params[:feature].to_i
+    @vote.user_id = params[:user].to_i
+    @vote.save
+
+    @features = Feature.active_features
+    @problems = Feature.active_problems
+  end
+
 end

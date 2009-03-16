@@ -1,0 +1,13 @@
+<div class="left">Comments</div>
+<div class="right">
+  <% if @comments.length > 0 %>
+  <% @comments.each do |comment| %>
+  <%= h comment.comment %><% if comment == @comments.last && (admin? || comment.user == current_user) %> <%= link_to 'Delete comment', {:controller => 'feature_comments', :action => 'destroy', :id => comment}, :confirm => 'Are you sure?', :method => :post %><% end %><br/>
+  <div class="date_left"><%= h comment.user.screen_name %>, <%= fmt_datetime comment.created_at %></div>
+  <%= '<hr/>' if comment != @comments.last %>
+  <% end %>
+  <% else %>
+  None
+  <% end %>
+  <div id="new_comment"></div>
+</div>

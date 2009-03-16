@@ -8,17 +8,18 @@ module FeaturesHelper
   end
 
   def fmt_datetime(time)
-    time.strftime("%d %b %Y %H:%M:%S").gsub(/^0/, '')
+    time.strftime("%d %b %Y %H:%M").gsub(/^0/, '')
   end
 
   def progress(progress)
     title = progress.humanize
     progress_i = -1
     Feature::PROGRESS.each_with_index {|p,i| progress_i = i if p == progress}
-    progress_bar = '<img src="/images/progress_full_l.png" alt="" title="' + title + '"/>'
+    fill = progress_i > 0 ? 'full' : 'empty'
+    progress_bar = '<img src="/images/progress_' + fill + '_l.png" alt="" title="' + title + '"/>'
 
     Feature::PROGRESS.each_with_index do |p,i|
-      if i > 0 && i < Feature::PROGRESS.length - 1
+      if i > 1 && i < Feature::PROGRESS.length - 1
         fill = progress_i < i ? 'empty' : 'full'
         progress_bar += '<img src="/images/progress_' + fill + '_c.png" alt="" title="' + title + '"/>'
       end

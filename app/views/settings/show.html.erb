@@ -7,3 +7,32 @@
 <div id="preferences">
   <%= render :partial => 'show_prefs' %>
 </div>
+
+<h2>Feature Votes</h2><h3></h3>
+
+
+
+<div class="features">
+<% if @setting.user.has_active_votes? %>
+<table cellspacing="0" cellpadding="2">
+    <tr>
+      <th>Votes</th>
+      <th width="100%">Feature</th>
+    </tr>
+
+    <% @setting.user.votes.group_by(&:feature_id).each do |feature_id, votes| %>
+    <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+      <td><%= votes.length %></td>
+      <td><%= h votes.first.feature.title %></td>
+    </tr>
+  <% end %>
+  </table>
+<% else %>
+None.<hr/>
+<% end %>
+<%= link_to 'View features', :controller => 'features' %>
+</div>
+
+
+
+</div>

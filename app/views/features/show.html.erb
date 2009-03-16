@@ -1,26 +1,33 @@
 <h1><%= @feature.kind.humanize %>: <%=h @feature.title[0..40] %></h1>
 
-<p class="left">Title</p>
-<p class="right"><%=h @feature.title %></p>
+<div class="left">Title</div>
+<div class="right"><%=h @feature.title %></div>
 
-<p class="left">Description</p>
-<p class="right"><%= replace_for_view(h(@feature.description)) %></p>
+<div class="left"><%= @feature.kind == 'feature' ? "Requestor" : "Reporter" %></div>
+<div class="right"><%=h @feature.user.screen_name %></div>
 
-<p class="left">Progress</p>
-<p class="right"><%= progress @feature.progress %></p>
+<div class="left">Status</div>
+<div class="right"><%=h @feature.status.humanize %></div>
 
-<p class="left">Status</p>
-<p class="right"><%=h @feature.status.humanize %></p>
+<div class="left">Progress</div>
+<div class="right"><%= progress @feature.progress %></div>
 
-<p class="left"><%= @feature.kind == 'feature' ? "Requestor" : "Reporter" %></p>
-<p class="right"><%=h @feature.user.screen_name %></p>
+<div class="left">Description</div>
+<div class="right"><%= replace_for_view(h(@feature.description)) %></div>
 
-<p class="left">Created</p>
-<p class="right"><%= fmt_datetime @feature.created_at %></p>
+<div id="comments">
+<%= render :partial => 'feature_comments/list' %>
+</div>
 
-<p class="left">Updated</p>
-<p class="right"><%= fmt_datetime @feature.updated_at %></p>
+<div class="left">Votes</div>
+<div class="right"><%= @feature.votes.length %></div>
+
+<div class="left">Created</div>
+<div class="right"><%= fmt_datetime @feature.created_at %></div>
+
+<div class="left">Updated</div>
+<div class="right"><%= fmt_datetime @feature.updated_at %></div>
 
 <hr/>
 
-<p class="edit"><%= link_to 'Show all', features_path %> | <%= link_to 'Edit', edit_feature_path(@feature) %> <% if !logged_in? %> (requires login)<% end %></p>
+<p class="edit"><%= link_to 'Show all', features_path %><% if logged_in? && (admin? || current_user == @feature.user) %> | <%= link_to 'Edit', edit_feature_path(@feature) %><% end %><% if logged_in? && (@feature.open? || admin?) %><span id="add_comment_button"><%= render :partial => 'feature_comments/add_link' %></span><% end %></p>

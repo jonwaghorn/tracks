@@ -3,15 +3,15 @@
 <p>You can browse existing <%= @feature.kind %>s <%= link_to 'here', :controller => 'features' %>.</p>
 
 <% form_for(@feature) do |f| %>
-  <%= f.error_messages %>
+  <%= error_messages_for 'feature', :header_tag => 'h4' %>
 
   <%= f.hidden_field :kind %>
 
-  <p class="left"><%= f.label :title %></p>
-  <p class="right"><%= f.text_field :title %></p>
+  <div class="left"><%= f.label :title %></div>
+  <div class="right"><%= f.text_field :title %></div>
 
-  <p class="left"><%= f.label :description %></p>
-  <p class="right"><%= f.text_area :description %></p>
+  <div class="left"><%= f.label :description %></div>
+  <div class="right"><%= f.text_area :description %></div>
 
   <p class="edit">
     <%= f.submit "Create", :kind => @feature.kind %> or <%= link_to 'Cancel', features_path %>
