@@ -19,7 +19,7 @@ module ApplicationHelper
   end
 
   def distance(u)
-    u.to_s + 'km'
+    sprintf('%.2fkm', u)
   end
 
 end

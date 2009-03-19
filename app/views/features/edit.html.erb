@@ -3,15 +3,20 @@
 <% form_for(@feature) do |f| %>
   <%= error_messages_for 'feature', :header_tag => 'h4' %>
 
+  <% if admin? || @feature.user == current_user %>
+    <div class="left"><%= f.label :kind %></div>
+    <div class="right"><%= f.select :kind, Feature::KINDS.collect {|k| [k.humanize, k]} %></div>
+  <% end %>
+
   <div class="left"><%= f.label :title %></div>
-  <div class="right"><%= f.text_field :title %></div>
+  <div class="right"><% if @feature.open? %><%= f.text_field :title %><% else %><%= f.hidden_field :title %><%= h @feature.title %><% end %></div>
 
   <div class="left"><%= f.label :description %></div>
-  <div class="right"><%= f.text_area :description %></div>
+  <div class="right"><% if @feature.open? %><%= f.text_area :description %><% else %><%= f.hidden_field :description %><%= replace_for_view(h(@feature.description)) %><% end %></div>
 
   <% if admin? %>
     <div class="left"><%= f.label :progress %></div>
-    <div class="right"><%= f.select :progress, Feature::PROGRESS.collect {|k| [k.humanize, k]} %></div>
+    <div class="right"><% if @feature.open? %><%= f.select :progress, Feature::PROGRESS.collect {|k| [k.humanize, k]} %><% else %><%= f.hidden_field :progress %><%= progress @feature.progress %><% end %></div>
   <% end %>
 
   <% if admin? || @feature.user == current_user %>

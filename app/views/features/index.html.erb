@@ -1,41 +1,23 @@
 <h1>Features/Problems</h1>
 
+<% if params[:view] %>
+<p></p>
+<% else %>
 <p>The following lists are provided by users and will hopefully help focus our small (!) development team to make <b>Tracks</b> a better experience.</p>
 
-<p><% if logged_in? %>You get 3 votes that you can apply to a Feature. You can stack all your votes on one Feature or spread them around. Click the + to add a vote, - to remove. When a Feature gets closed your votes on that Feature will become free for other voting.<% else %>Log in to vote!<% end %></p>
+<p><% if logged_in? %>You get 3 votes that you can use. You can stack all your votes on one Feature/Problem or spread them around. Click the + to add a vote, - to remove. When a Feature/Problem gets closed your votes on it will become available for other voting.</p><p id="votes"><%= render :partial => 'votes' %><% else %>Log in to vote!<% end %></p>
+<% end %>
 
 <h2><%= params[:view] ? "Closed" : "Suggested" %> Features</h2><h3></h3>
 
 <div id="features" class="features">
-  <%= render :partial => 'features'%>
+  <%= render :partial => 'features' %>
 </div>
 
 <h2><%= params[:view] ? "Closed" : "Reported" %> Problems</h2><h3></h3>
 
-<div class="features">
-<% if @problems.length > 0 %>
-<table cellspacing="0" cellpadding="2">
-    <tr>
-      <th width="100%">Problem</th>
-      <th>Reporter</th>
-      <th>Progress</th>
-      <th>Reported</th>
-      <th>Updated</th>
-    </tr>
-
-  <% for problem in @problems %>
-    <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
-      <td><%= link_to h(problem.title), problem %></td>
-      <td><%=h problem.user.screen_name %></td>
-      <td nowrap="true"><%= progress problem.progress %></td>
-      <td nowrap="true"><%= fmt_datetime_tbl problem.created_at %></td>
-      <td nowrap="true"><%= fmt_datetime_tbl problem.updated_at %></td>
-    </tr>
-  <% end %>
-  </table>
-<% else %>
-None.
-<% end %>
+<div id="problems" class="features">
+  <%= render :partial => 'problems' %>
 </div>
 
 <hr />

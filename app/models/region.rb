@@ -4,6 +4,7 @@ class Region < ActiveRecord::Base
   include TextHelper
 
   has_many :areas, :order => 'name'
+  has_many :tracks, :through => :areas
   belongs_to :nation
   has_many :settings
 
@@ -19,6 +20,12 @@ class Region < ActiveRecord::Base
 
   def tweet_new
     tweet format_for_twitter("New region #{name} added.")
+  end
+
+  def tracks_summary
+    summary = []
+    tracks.group_by(&:condition_id).each { |a| summary << [Condition.find(a[0]).name.to_s, a[1].collect(&:length).sum] unless a[0].nil? }
+    summary.sort_by {|a| a[1]}.reverse
   end
 
   protected

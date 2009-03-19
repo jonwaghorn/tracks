@@ -1,11 +1,11 @@
+<% if logged_in? %>
+<p class="edit"><%= link_to_remote @existing_connections.empty? ? 'Add' : 'Edit', { :url => { :controller => 'track_connection', :action => 'edit', :track_id => @track.id } } %></p>
+<% end %>
+
 <% if !@existing_connections.empty? %>
 <ul>
 <% @existing_connections.each do |ct| %>
   <li><%= link_to ct[0], :controller => 'track', :action => 'show', :id => ct[2] %></li>
 <% end %>
 </ul>
-<% end %>
-
-<% if logged_in? %>
-<p class="edit"><%= link_to_remote @existing_connections.empty? ? 'Add' : 'Edit', { :url => { :controller => 'track_connection', :action => 'edit', :track_id => @track.id } } %></p>
 <% end %>

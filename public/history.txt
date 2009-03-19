@@ -1,3 +1,17 @@
+31 2009-03-19
+  - [feature] #0024 display Feature/Problem identifier
+  - [feature] #0001 Allow voting on Problems too. Makes voting process simpler at back end, less is more :)
+  - [bug fix] #0005 tidy up track distance summary
+  - [bug fix] #0013 Track links were not being parsed for new Feature/Report or Comment
+  - [bug fix] #0006 Made Track Report author font smaller
+  - [bug fix] #0003 fixed label alignment for old tracks with not-so-valid data fields
+  - [bug fix] #0018 tidied up feature comments
+  - [bug fix] #0004 add comment count to Problems list view
+  - [bug fix] #0009 made connecting tracks edit controls better and more consistent
+
+30.1 2009-03-17
+  - [bug fix] Feature/Problem comments were getting truncated to 256 chars
+
 30 2009-03-16
   - [feature] Features/problems now have comments
   - [feature] Users can now vote on features

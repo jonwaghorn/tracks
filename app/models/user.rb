@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   has_one :setting
   has_many :votes
+  has_many :features
   has_many :feature_comments
 
   after_create :create_default_settings

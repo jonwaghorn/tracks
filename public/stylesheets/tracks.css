@@ -276,10 +276,6 @@ div.clearboth {clear: both;}
   font-size: 12px;
 }
 
-.nav #connecting_tracks p {
-  margin: 3px 9px;
-}
-
 .nav ul {
   margin: 3px 0 0 0;
   padding: 0 0 5px 0;
@@ -557,6 +553,29 @@ h1 {
 .content .two_cols .col_two {
   padding: 2px 0 3px 0;
   font-weight: bold;
+}
+
+.track_summary {
+  margin: 9px;
+  width: 200px;
+}
+
+.track_summary p {
+  margin: 0;
+}
+
+.track_summary .left {
+padding: 0;
+  float: left;
+  width: 120px;
+  text-align: left;
+}
+
+.track_summary .right {
+  padding: 0;
+  text-align: right;
+  width: 80px;
+  margin-left: 120px;
 }
 
 #map {

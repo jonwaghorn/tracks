@@ -7,5 +7,5 @@
   <%= text_area 'feature_comment', 'comment', "cols" =>60, "rows" => 8 %>
 </div>
 
-<div class="edit"><%= submit_tag "Add comment" %> or <%= link_to_remote 'Cancel', :url => {:action => 'cancel_add_comment'}  %></div>
+<div class="edit"><%= submit_tag "Add comment" %> or <%= link_to_remote 'Cancel', :url => {:action => 'cancel_add_comment', :feature_id => params[:feature_id]} %></div>
 <% end %>

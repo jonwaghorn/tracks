@@ -2,7 +2,8 @@
 <table cellspacing="0" cellpadding="2">
   <tr>
     <% if !params[:view] %><th>Votes</th><% end %>
-    <th width="100%">Feature (comments)</th>
+    <th>Id</th>
+    <th width="100%">Feature (comments, last author)</th>
     <th>Reporter</th>
     <th>Progress</th>
     <th>Suggested</th>
@@ -18,8 +19,9 @@
         <%- if Vote.total_by(feature, current_user).length > 0 %><%= link_to_remote image_tag(image_path("del.png"), :mouseover => image_path("del_over.png"), :alt => "", :size => "10x10", :title => "Delete vote"), :url => {:controller => 'features', :action => 'delete_vote', :id => vote}, :method => :get %><% end -%>
       <%- end %>
     </td><% end %>
-    <td><%= link_to h(feature.title), feature %> (<%= feature.feature_comments.length.to_s %>)</td>
-    <td><%=h User.find(feature.user_id).screen_name %></td>
+    <td><%= feature.humanized_id %></td>
+    <td><%= link_to h(feature.title), feature %> (<%= feature.feature_comments.length.to_s %><%= ', ' + h(feature.feature_comments.last.user.screen_name) if feature.feature_comments.length > 0 %>)</td>
+    <td><%=h feature.user.screen_name %></td>
     <td nowrap="true"><%= progress feature.progress %></td>
     <td nowrap="true"><%= fmt_datetime_tbl feature.created_at %></td>
     <td nowrap="true"><%= fmt_datetime_tbl feature.updated_at %></td>

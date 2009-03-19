@@ -1,0 +1,33 @@
+<% if @problems.length > 0 %>
+<table cellspacing="0" cellpadding="2">
+    <tr>
+      <% if !params[:view] %><th>Votes</th><% end %>
+      <th>Id</th>
+      <th width="100%">Problem (comments, last author)</th>
+      <th>Reporter</th>
+      <th>Progress</th>
+      <th>Reported</th>
+      <th>Updated</th>
+    </tr>
+
+  <% for problem in @problems %>
+    <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+      <% if !params[:view] %><td nowrap="true"><%= problem.votes.length %>
+        <%- if logged_in? -%>
+          <%- vote = Vote.find(:first, :conditions => ["feature_id = ? AND user_id = ?", problem.id, current_user.id]) -%>
+          <%- if current_user.has_more_votes? %><%= link_to_remote image_tag(image_path("add.png"), :mouseover => image_path("add_over.png"), :alt => "", :size => "10x10", :title => "Add vote"), :url => {:controller => 'features', :action => 'create_vote', :feature => problem, :user => current_user} %><% end %>
+          <%- if Vote.total_by(problem, current_user).length > 0 %><%= link_to_remote image_tag(image_path("del.png"), :mouseover => image_path("del_over.png"), :alt => "", :size => "10x10", :title => "Delete vote"), :url => {:controller => 'features', :action => 'delete_vote', :id => vote}, :method => :get %><% end -%>
+        <%- end %>
+      </td><% end %>
+      <td><%= problem.humanized_id %></td>
+      <td><%= link_to h(problem.title), problem %> (<%= problem.feature_comments.length.to_s %><%= ', ' + h(problem.feature_comments.last.user.screen_name) if problem.feature_comments.length > 0 %>)</td>
+      <td><%=h problem.user.screen_name %></td>
+      <td nowrap="true"><%= progress problem.progress %></td>
+      <td nowrap="true"><%= fmt_datetime_tbl problem.created_at %></td>
+      <td nowrap="true"><%= fmt_datetime_tbl problem.updated_at %></td>
+    </tr>
+  <% end %>
+  </table>
+<% else %>
+None.
+<% end %>

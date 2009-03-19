@@ -8,13 +8,16 @@
 <% end %>
 
 <h2>Track type/distance summary</h2><h3>&nbsp;</h3>
-<% total_len = 0 %>
-<p><% Track.length_summary([@area.id]).collect do |id, length| %>
-<%= Condition.find(:first, :select => 'name', :conditions => ["id = ?", id]).name %>: <%= distance(length) %><br/>
-<% total_len += length %>
-<% end %></p>
-<p>Total distance: <%= distance(total_len) %></p>
-<p>Total number tracks for <%= @area.name %>: <%= @area.tracks.size %></p>
+
+<div class="track_summary">
+<% @area.tracks_summary.each do |summary| %>
+<p class="left"><%= summary[0] %></p><p class="right"><%= distance(summary[1])%><p/>
+<% end %>
+<hr/>
+<p class="left">Total distance</p><p class="right"><%= distance((@area.tracks_summary.collect {|a| a[1]}).sum) %></p>
+</div>
+
+<p>Total number of tracks for <%= @area.name %>: <%= @area.tracks.size %></p>
 
 <hr/>
 

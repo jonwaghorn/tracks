@@ -7,6 +7,7 @@ class FeatureCommentsController < ApplicationController
   def create_comment
     @feature_comment = FeatureComment.new(params[:feature_comment])
     @feature_comment.user = current_user
+    @feature_comment.comment = replace_for_update(@feature_comment.comment)
     @feature = @feature_comment.feature
     @comments = @feature.feature_comments
 

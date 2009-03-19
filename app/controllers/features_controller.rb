@@ -56,6 +56,7 @@ class FeaturesController < ApplicationController
     @feature.user = current_user
     @feature.progress = Feature::PROGRESS[0]
     @feature.status = Feature::STATUSES[0]
+    @feature.description = replace_for_update(@feature.description)
 
     respond_to do |format|
       if @feature.save

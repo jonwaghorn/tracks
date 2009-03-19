@@ -1,2 +1,4 @@
+page["delete_link"].hide
 page.replace_html("new_comment", :partial => "new")
-page.replace_html("add_comment_button", nil)
+page["add_comment_button"].hide
+page['feature_comment_comment'].focus

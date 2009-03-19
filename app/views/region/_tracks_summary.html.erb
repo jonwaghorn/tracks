@@ -1,0 +1,11 @@
+<h2>Track type/distance summary</h2><h3>&nbsp;</h3>
+
+<div class="track_summary">
+<% @region.tracks_summary.each do |summary| %>
+<p class="left"><%= summary[0] %></p><p class="right"><%= distance(summary[1])%><p/>
+<% end %>
+<hr/>
+<p class="left">Total distance</p><p class="right"><%= distance((@region.tracks_summary.collect {|a| a[1]}).sum) %></p>
+</div>
+
+<p>Total number of tracks for <%= @region.name %>: <%= x = 0; @region.areas.each {|area| x += area.tracks.size }; x %></p>

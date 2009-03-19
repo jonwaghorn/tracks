@@ -30,4 +30,4 @@
 
 <hr/>
 
-<p class="edit"><%= link_to 'Show all', features_path %><% if logged_in? && (admin? || current_user == @feature.user) %> | <%= link_to 'Edit', edit_feature_path(@feature) %><% end %><% if logged_in? && (@feature.open? || admin?) %><span id="add_comment_button"><%= render :partial => 'feature_comments/add_link' %></span><% end %></p>
+<p class="edit"><%= link_to 'Show all', features_path %><% if logged_in? && (admin? || current_user == @feature.user) %> | <%= link_to 'Edit', edit_feature_path(@feature) %><% end %><span id="add_comment_button"><% if logged_in? && @feature.open? %> | <%= link_to_remote 'Add comment', :url => {:controller => 'feature_comments', :action => 'add_comment', :feature_id => @feature} %><% end %></span></p>

@@ -6,12 +6,12 @@ class Feature < ActiveRecord::Base
 
   validates_presence_of :title, :description
 
-  KINDS = %w(feature problem)
-  STATUSES = %w(open closed)
+  KINDS = %w(feature problem) # Note: the order and position is important
+  STATUSES = %w(open closed) # Note: the order and position is important
   PROGRESS = %w(new accepted developing beta implemented)
 
   def self.active_features
-    find(:all, :conditions => ["kind = ? AND status = ?", KINDS[0], STATUSES[0]], :order => 'updated_at DESC').sort_by {|f| f.votes.length}.reverse
+    find(:all, :conditions => ["kind = ? AND status = ?", KINDS[0], STATUSES[0]], :order => 'updated_at ASC').sort_by {|f| [f.votes.length, f.updated_at]}.reverse
   end
 
   def self.completed_features
@@ -19,7 +19,7 @@ class Feature < ActiveRecord::Base
   end
 
   def self.active_problems
-    find(:all, :conditions => ["kind = ? AND status = ?", KINDS[1], STATUSES[0]], :order => 'updated_at DESC')
+    find(:all, :conditions => ["kind = ? AND status = ?", KINDS[1], STATUSES[0]], :order => 'updated_at ASC').sort_by {|f| [f.votes.length, f.updated_at]}.reverse
   end
 
   def self.completed_problems
@@ -32,5 +32,9 @@ class Feature < ActiveRecord::Base
 
   def closed?
     !open?
+  end
+  
+  def humanized_id
+    id.to_s.rjust(4,'0')
   end
 end

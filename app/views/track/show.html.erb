@@ -19,7 +19,7 @@
 </p>
 <% end %>
 
-<% if ! @track.desc_overview.empty? %>
+<% if ! @track.desc_overview.empty? && ! @track.desc_overview.blank? %>
 <p class="left">Overview</p><p class="right"><%= replace_for_view(h(@track.desc_overview)) %></p>
 <% end %>
 

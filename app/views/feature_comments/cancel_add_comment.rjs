@@ -1,2 +1,3 @@
+page["delete_link"].show
 page.replace_html("new_comment", nil)
-page.replace_html("add_comment_button", :partial => "add_link")
+page["add_comment_button"].show
