@@ -3,30 +3,30 @@
   <tr>
     <% if !params[:view] %><th>Votes</th><% end %>
     <th>Id</th>
-    <th width="100%">Feature (comments, last author)</th>
+    <th width="100%">Feature<div class="date_left">(comments, last author, date)</div></th>
     <th>Reporter</th>
     <th>Progress</th>
     <th>Suggested</th>
     <th>Updated</th>
   </tr>
 
-<% for feature in @features %>
+  <% for feature in @features %>
   <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
     <% if !params[:view] %><td nowrap="true"><%= feature.votes.length %>
       <%- if logged_in? -%>
-        <%- vote = Vote.find(:first, :conditions => ["feature_id = ? AND user_id = ?", feature.id, current_user.id]) -%>
-        <%- if current_user.has_more_votes? %><%= link_to_remote image_tag(image_path("add.png"), :mouseover => image_path("add_over.png"), :alt => "", :size => "10x10", :title => "Add vote"), :url => {:controller => 'features', :action => 'create_vote', :feature => feature, :user => current_user} %><% end %>
-        <%- if Vote.total_by(feature, current_user).length > 0 %><%= link_to_remote image_tag(image_path("del.png"), :mouseover => image_path("del_over.png"), :alt => "", :size => "10x10", :title => "Delete vote"), :url => {:controller => 'features', :action => 'delete_vote', :id => vote}, :method => :get %><% end -%>
+      <%- vote = Vote.find(:first, :conditions => ["feature_id = ? AND user_id = ?", feature.id, current_user.id]) -%>
+      <%- if current_user.has_more_votes? %><%= link_to_remote image_tag(image_path("add.png"), :mouseover => image_path("add_over.png"), :alt => "", :size => "10x10", :title => "Add vote"), :url => {:controller => 'features', :action => 'create_vote', :feature => feature, :user => current_user} %><% end %>
+      <%- if Vote.total_by(feature, current_user).length > 0 %><%= link_to_remote image_tag(image_path("del.png"), :mouseover => image_path("del_over.png"), :alt => "", :size => "10x10", :title => "Delete vote"), :url => {:controller => 'features', :action => 'delete_vote', :id => vote}, :method => :get %><% end -%>
       <%- end %>
     </td><% end %>
     <td><%= feature.humanized_id %></td>
-    <td><%= link_to h(feature.title), feature %> (<%= feature.feature_comments.length.to_s %><%= ', ' + h(feature.feature_comments.last.user.screen_name) if feature.feature_comments.length > 0 %>)</td>
+    <td><%= link_to h(feature.title), feature %><div class="date_left">(<%= feature.feature_comments.length.to_s %><%= ', ' + h(feature.feature_comments.last.user.screen_name) + ', ' + fmt_datetime_tbl(feature.feature_comments.last.updated_at, one_line = true) if feature.feature_comments.length > 0 %>)</div></td>
     <td><%=h feature.user.screen_name %></td>
     <td nowrap="true"><%= progress feature.progress %></td>
     <td nowrap="true"><%= fmt_datetime_tbl feature.created_at %></td>
     <td nowrap="true"><%= fmt_datetime_tbl feature.updated_at %></td>
   </tr>
-<% end %>
+  <% end %>
 </table>
 <% else %>
 None.

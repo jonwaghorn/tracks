@@ -1,4 +1,4 @@
-<% if logged_in? && params[:controller] != 'features' %><div class="foot_feature"><%= link_to 'Suggest a feature!', :controller => 'features', :action => 'new', :kind => 'feature' %> | <%= link_to 'Found a problem?', :controller => 'features', :action => 'new', :kind => 'problem' %></div><% end %>
+<% if params[:controller] != 'features' %><div class="foot_feature"><%= link_to 'Suggest a feature!', :controller => 'features', :action => 'new', :kind => 'feature' %> | <%= link_to 'Found a problem?', :controller => 'features', :action => 'new', :kind => 'problem' %><%= ' (Requires login)' if !logged_in? %></div><% end %>
 
 <div class="foot_l">&nbsp;</div>
 

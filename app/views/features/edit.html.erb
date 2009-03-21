@@ -5,7 +5,11 @@
 
   <% if admin? || @feature.user == current_user %>
     <div class="left"><%= f.label :kind %></div>
+    <% if @feature.open? %>
     <div class="right"><%= f.select :kind, Feature::KINDS.collect {|k| [k.humanize, k]} %></div>
+    <% else %>
+    <div class="right"><%= @feature.kind.humanize %></div>
+    <% end %>
   <% end %>
 
   <div class="left"><%= f.label :title %></div>
@@ -19,10 +23,8 @@
     <div class="right"><% if @feature.open? %><%= f.select :progress, Feature::PROGRESS.collect {|k| [k.humanize, k]} %><% else %><%= f.hidden_field :progress %><%= progress @feature.progress %><% end %></div>
   <% end %>
 
-  <% if admin? || @feature.user == current_user %>
-    <div class="left"><%= f.label :status %></div>
-    <div class="right"><%= f.select :status, Feature::STATUSES.collect {|k| [k.humanize, k]} %></div>
-  <% end %>
+  <div class="left"><%= f.label :status %></div>
+  <div class="right"><%= f.select :status, Feature::STATUSES.collect {|k| [k.humanize, k]} %></div>
 
   <p class="edit">
     <%= f.submit "Save changes" %> or <%= link_to 'Cancel', @feature %>

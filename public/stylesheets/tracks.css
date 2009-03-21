@@ -565,10 +565,11 @@ h1 {
 }
 
 .track_summary .left {
-padding: 0;
+  padding: 0;
   float: left;
   width: 120px;
   text-align: left;
+  color: black;
 }
 
 .track_summary .right {

@@ -49,7 +49,7 @@ class Track < ActiveRecord::Base
   end
   
   def filename
-    "#{self.area.region.nation.id}_#{self.area.region.id}_#{self.area.id}_#{self.id}"
+    "#{id}"
   end
   
   def full_filename

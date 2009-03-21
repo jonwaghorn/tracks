@@ -1,3 +1,11 @@
+32 2009-03-21 Little fixes
+  - [feature] #0029 put timestamp of last comment on feature/problem list view
+  - [feature] #0019 allow moving feature to problem, and vice-versa
+  - [feature] #0028 show closed date on closed feature/problem view
+  - [bug fix] #0007 simplify kml filenames, paths will not get lost now when moving a track to another area
+  - [bug fix] #0005 tweak track distance summary colours
+  - [bug fix] don't show votes on closed features as this is always 0
+
 31 2009-03-19
   - [feature] #0024 display Feature/Problem identifier
   - [feature] #0001 Allow voting on Problems too. Makes voting process simpler at back end, less is more :)

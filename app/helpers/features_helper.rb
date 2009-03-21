@@ -1,9 +1,10 @@
 module FeaturesHelper
-  def fmt_datetime_tbl(time)
+  def fmt_datetime_tbl(time, one_line = false)
     if time < Time.now - 1.week
       time.strftime("%d&nbsp;%b&nbsp;%y").gsub(/^0/, '')
     else
-      time.strftime("%d&nbsp;%b&nbsp;%y<br/>").gsub(/^0/, '') + time.strftime("%I:%M%p").gsub(/^0/, '').downcase
+      br = one_line ? ' ' : '<br/>'
+      time.strftime("%d&nbsp;%b&nbsp;%y#{br}").gsub(/^0/, '') + time.strftime("%I:%M%p").gsub(/^0/, '').downcase
     end
   end
 
