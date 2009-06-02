@@ -1,6 +1,9 @@
 class ContactController < ApplicationController
 
+  layout 'shared'
+
   before_filter :login_required, :only => [ :edit, :update ]
+  before_filter :set_title
 
   def index
     @special = Special.find(:first, :conditions => ["name = ?", 'contact'])
@@ -25,5 +28,9 @@ class ContactController < ApplicationController
     else
       render :action => 'edit'
     end
+  end
+
+  def set_title
+    @title = 'Contact'
   end
 end

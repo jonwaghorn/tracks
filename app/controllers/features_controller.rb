@@ -1,6 +1,9 @@
 class FeaturesController < ApplicationController
 
+  layout 'shared'
+
   before_filter :login_required, :only => [ :new, :edit, :update ]
+  before_filter :set_title
 
   # GET /features
   # GET /features.xml
@@ -109,4 +112,7 @@ class FeaturesController < ApplicationController
     @problems = Feature.active_problems
   end
 
+  def set_title
+    @title = 'Features'
+  end
 end

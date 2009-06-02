@@ -1,7 +1,8 @@
 class IndexController < ApplicationController
 
   before_filter :login_required, :only => [ :edit, :update ]
-  layout 'index', :except => [:rss]
+  layout 'shared', :except => [:rss]
+  before_filter :set_title
 
   def index
     @special = Special.find(:first, :conditions => ["name = ?", 'index'])
@@ -37,6 +38,10 @@ class IndexController < ApplicationController
       format.html
       format.rss  { render :layout => false }
     end
+  end
+
+  def set_title
+    @title = 'Home'
   end
 
   private

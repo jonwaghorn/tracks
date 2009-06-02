@@ -1,3 +1,14 @@
+33 2009-05-17 Mulitple tracks per map!
+  - [feature] #0011 show multiple tracks on map - by popular demand! Shows main track and connecting (adjacent) tracks.
+  - [feature] #0026 production-like testing environment (Stage)
+  - [feature] #0033 allow editing of feature comments by comment owner
+  - [bug fix] #0008 allow apostrophes in Also Known As. AKAs are clunky (but seldom used) so new bug for that #0041
+  - [feature] beginnings of "media" section, currently added so that existing youtube videos don't get lost in the move to multiple paths
+  - [feature] new style Google Map controls
+  - [feature] slightly tweaked css for iphone view
+  - [feature] tidied up the kml file upload form
+  - [bug fix] removed the map overview control as it is currently broken (temporarily?)
+
 32 2009-03-21 Little fixes
   - [feature] #0029 put timestamp of last comment on feature/problem list view
   - [feature] #0019 allow moving feature to problem, and vice-versa

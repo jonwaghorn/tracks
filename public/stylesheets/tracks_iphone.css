@@ -1,0 +1,9 @@
+html, body, container {
+  background: #ccc;
+  width: 840px;
+}
+
+.bg_left, .bg_right {
+  background: #ccc;
+  width: 1px;
+}

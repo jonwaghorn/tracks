@@ -65,13 +65,26 @@
 
 <% if @track.zoom != 0 %>
 <h2>Google goodness</h2><h3>&nbsp;</h3>
-<div id="map"></div><p><input type="button" value="Reset map view" onclick="locateTrack(<%=@track.latitude%>,<%=@track.longitude%>,<%=@track.zoom%>);"/></p>
+<div id="labelContainer">
+  <div id="currTrackSelection"></div>
+</div>
+<div id="map"></div><p><input type="button" value="Reset map view" onclick="resetMap();"/></p>
 
 <% if @track.gps_file_exists? %>
 <p>Download GPS path: <%= link_to 'gpx', "/paths/#{@track.filename}.gpx" if @track.gpx_file_exists? %> <%= link_to 'kml', "/paths/#{@track.filename}.kml" if @track.kml_file_exists? %></p>
 <% end %>
 
-<% if creator? %><p><%= link_to_remote 'Upload GPS path file', :url => {:action => 'upload', :id => @track} %> - load a new kml file to display.</p><div id="upload_path_file"></div><% end %>
+<% if creator? %><div id="upload_path_file"><%= render :partial => 'upload_link' %></div><% end %>
+<% end %>
+
+<% if admin? || @track.medias.length > 0 %>
+<%# if creator? || @track.medias.length > 0 %>
+<h2>Media</h2><h3>&nbsp;</h3>
+<% @track.medias.each do |media| %>
+<p><%= media.gimme %></p>
+<%= '<hr/>' if media != @track.medias.last %>
+<% end %>
+<% if creator? %><div id="add_media_link"><%= render :partial => 'add_media_link' %></div><% end %>
 <% end %>
 
 <hr/>

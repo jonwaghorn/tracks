@@ -1,0 +1,1 @@
+page.replace_html("add_media_link", :partial => "new_ref")

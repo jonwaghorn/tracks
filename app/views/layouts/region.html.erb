@@ -6,6 +6,8 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <title><%= @region.name %> | Tracks.org.nz</title>
 <%= stylesheet_link_tag 'tracks' %>
+<%= stylesheet_link_tag 'tracks_iphone' if iphone_user_agent? %>
+<%= stylesheet_link_tag 'ck_fu' %>
 <link href="/favicon.png" rel="shortcut icon" type="image/x-icon"/>
 <%= javascript_include_tag :defaults %>
 <%= render :partial => 'shared/ie' %>
@@ -14,10 +16,10 @@
 <% else %>
 <%= render :partial => 'map_edit' %>
 <% end %>
-<%= javascript_include_tag :defaults %>
 <%= render :partial => 'shared/analytics' %>
 </head>
 <body onload="load(<%= @region.latitude %>,<%= @region.longitude %>,<%= @region.zoom %>)" onunload="GUnload()">
+<%= ck_fu %>
 <table class="bg" cellspacing="0">
 <tr>
 <td class="bg_left"></td>

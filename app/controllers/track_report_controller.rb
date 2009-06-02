@@ -1,6 +1,9 @@
 class TrackReportController < ApplicationController
 
+  layout 'shared'
+
   before_filter :login_required, :only => [ :edit, :update, :new, :login ]
+  before_filter :set_title
 
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
   verify :method => :post, :only => [ :destroy, :create, :update ],
@@ -77,4 +80,7 @@ class TrackReportController < ApplicationController
     @track_report = TrackReport.find(params[:id])
   end
 
+  def set_title
+    @title = 'Track Reports'
+  end
 end

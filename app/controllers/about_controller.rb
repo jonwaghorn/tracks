@@ -1,6 +1,9 @@
 class AboutController < ApplicationController
 
+  layout 'shared'
+
   before_filter :login_required, :only => [ :edit, :update ]
+  before_filter :set_title
 
   def index
     @special = Special.find(:first, :conditions => ["name = ?", 'about'])
@@ -31,5 +34,9 @@ class AboutController < ApplicationController
     tweet("Site updated, more info at http://#{URL_BASE}/about")
     flash[:notice] = 'Site update notification sent (via Twitter).'
     redirect_to :action => 'index'
+  end
+
+  def set_title
+    @title = 'About'
   end
 end

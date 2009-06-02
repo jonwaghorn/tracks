@@ -1,0 +1,28 @@
+<div class='sub_form'>
+  <% form_remote_for :media, :url => {:action => 'create_ref'} do |f| %>
+
+  <p>
+  Type: <%= f.select :kind, Media.media_types %>
+  </p>
+
+  <p>
+    Reference: <%= f.text_field :reference %>
+  </p>
+
+  <p>
+    Title: <%= f.text_field :title %> <span class="date">(optional)</span>
+  </p>
+
+  <p>
+    Notes: <%= f.text_area :note %> <span class="date">(optional)</span>
+  </p>
+  
+  <%= f.hidden_field :ref_type, :value => @ref_type %>
+  <%= f.hidden_field :ref_id, :value => @ref_id %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <p>
+    <%= submit_tag "Create" %> or <%= link_to_remote 'Cancel', :url => {:action => 'cancel_new_ref', :ref_type => @ref_type, :ref_id => @ref_id} %>
+  </p>
+
+  <% end %>
+</div>

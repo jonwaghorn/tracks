@@ -19,6 +19,26 @@ class FeatureCommentsController < ApplicationController
   def cancel_add_comment
   end
 
+  def edit_comment
+    @feature_comment = FeatureComment.find(params[:id])
+    @feature_comment.comment = replace_for_edit(@feature_comment.comment)
+  end
+
+  def cancel_edit_comment
+    @feature_comment = FeatureComment.find(params[:id])
+    @comments = @feature_comment.feature.feature_comments
+  end
+
+  def update_comment
+    @feature_comment = FeatureComment.find(params[:id])
+    params[:feature_comment][:comment] = replace_for_update(params[:feature_comment][:comment])
+    @comments = @feature_comment.feature.feature_comments
+
+    if @feature_comment.update_attributes(params[:feature_comment])
+      update_user_edit_stats
+    end
+  end
+
   def destroy
     @feature_comment = FeatureComment.find(params[:id])
     @feature_comment.destroy

@@ -1,6 +1,9 @@
 class FaqController < ApplicationController
 
+  layout 'shared'
+
   before_filter :login_required, :only => [ :edit, :update, :new ]
+  before_filter :set_title
 
   def index
     list
@@ -58,5 +61,9 @@ class FaqController < ApplicationController
     Faq.find(params[:id]).destroy
     update_user_edit_stats
     redirect_to :action => 'index'
+  end
+  
+  def set_title
+    @title = 'FAQ'
   end
 end

@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  ref_type: MyString
+  ref_id: 1
+  kind: MyString
+  reference: MyString
+  user_id: 1
+  title: MyString
+  note: MyText
+
+two:
+  ref_type: MyString
+  ref_id: 1
+  kind: MyString
+  reference: MyString
+  user_id: 1
+  title: MyString
+  note: MyText

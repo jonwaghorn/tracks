@@ -1,6 +1,9 @@
 class Admin::UsersController < ApplicationController
+
+  layout 'shared'
+
   before_filter :admin_required
-  layout 'admin'
+  before_filter :set_title
 
   def index
     @users = User.find(:all, :order => 'last_track_edit_at DESC, created_at DESC')
@@ -22,5 +25,9 @@ class Admin::UsersController < ApplicationController
     else
       render :action => 'edit'
     end
+  end
+
+  def set_title
+    @title = 'ADMIN'
   end
 end

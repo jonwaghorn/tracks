@@ -1,6 +1,9 @@
 class SettingsController < ApplicationController
 
+  layout 'shared'
+
   before_filter :login_required
+  before_filter :set_title
 
   def index
     show
@@ -53,4 +56,7 @@ class SettingsController < ApplicationController
     end
   end
 
+  def set_title
+    @title = 'Settings'
+  end
 end

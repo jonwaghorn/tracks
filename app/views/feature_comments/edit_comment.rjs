@@ -1,0 +1,4 @@
+page["delete_link"].hide
+page.replace_html("feature_comment_#{@feature_comment.id}", :partial => "edit")
+page["add_comment_button"].hide
+page['feature_comment_comment'].focus

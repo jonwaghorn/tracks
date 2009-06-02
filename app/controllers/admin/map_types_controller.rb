@@ -1,6 +1,9 @@
 class Admin::MapTypesController < ApplicationController
+
+  layout 'shared'
+
   before_filter :admin_required
-  layout 'admin'
+  before_filter :set_title
 
   def index
     @map_types = MapType.find(:all)
@@ -70,5 +73,9 @@ class Admin::MapTypesController < ApplicationController
       format.html { redirect_to(admin_map_types_url) }
       format.xml  { head :ok }
     end
+  end
+
+  def set_title
+    @title = 'ADMIN'
   end
 end

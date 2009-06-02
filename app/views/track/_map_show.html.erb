@@ -1,27 +1,11 @@
 <%= render :partial => 'shared/map_head' %>
+<script type="text/javascript" src="/javascripts/trackMapMain.js"></script>
 <script type="text/javascript">
 //<![CDATA[
-var geoXml = new GGeoXml("http://<%= URL_BASE %>/paths/<%= @track.filename %>.kml?a=<%= Time.now.strftime('%j%H%M%S') %>");
-var map;
-function locateTrack(lt,ln,zm) {
-  map.setCenter(new GLatLng(lt, ln), zm, <%= user_map_style %>);
-}
-function load(lt,ln,zm) {
-  if (GBrowserIsCompatible()) {
-    if (!zm) {lt = -41.284514; ln = 174.774627; zm = 11;}
-    map = new GMap2(document.getElementById("map"));
-    map.addControl(new GSmallZoomControl());
-    map.addControl(new GScaleControl());
-    map.addControl(new GMapTypeControl());
-    map.addMapType(G_PHYSICAL_MAP);
-    map.addMapType(G_SATELLITE_3D_MAP);
-    ovMap = new GOverviewMapControl(new GSize(100,80));
-    map.addControl(ovMap);
-    ovMap.hide(true);
-    locateTrack(lt,ln,zm);
-    map.addOverlay(geoXml);
-    map.setMapType(<%= user_map_style %>);
-  } else { document.getElementById("map").innerHTML="This website uses Google Maps, which appear not to work with your browser. See the FAQ."; }
-}
+<% @track.track_connections.each do |c| -%>
+<%= get_paths(Track.find(c.connect_track_id), 'Adjacent') -%>
+<% end -%>
+<%= get_paths(@track, 'Main') -%>
 //]]>
 </script>
+<script type="text/javascript">var maplatlng = new GLatLng(<%= @track.latitude %>,<%= @track.longitude %>);var mapZoom = <%= @track.zoom %>;var mapType = <%= user_map_style %>;</script>

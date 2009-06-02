@@ -1,0 +1,10 @@
+<% form_remote_tag :url => {:action => 'update_comment', :id => @feature_comment} do %>
+
+  <%= hidden_field 'feature_comment', 'feature_id' %>
+
+<div style="margin-bottom:8px;">
+  <%= text_area 'feature_comment', 'comment', "cols" =>60, "rows" => 8 %>
+</div>
+
+<div class="edit"><%= submit_tag "Update comment" %> or <%= link_to_remote 'Cancel', :url => {:action => 'cancel_edit_comment', :id => @feature_comment} %></div>
+<% end %>

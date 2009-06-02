@@ -61,6 +61,8 @@ Rails::Initializer.run do |config|
 
   URL_BASE = 'tracks.org.nz'
 
+  GMAP_API_KEY = 'http://maps.google.com/maps?file=api&amp;v=2.x&amp;key=ABQIAAAA0tC6mFyFL-PUaeoDG2zn6RRmcl1Ev4cduiQY9DYmawR2xCP_fRRRsAeqJ3Te-KBElJdcC26vQIpk8Q'
+
 end
 
 ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(

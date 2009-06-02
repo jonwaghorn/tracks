@@ -1,6 +1,9 @@
 class PolicyController < ApplicationController
 
+  layout 'shared'
+
   before_filter :login_required, :only => [ :edit, :update ]
+  before_filter :set_title
 
   def index
     @special = Special.find(:first, :conditions => ["name = ?", 'policy'])
@@ -25,5 +28,9 @@ class PolicyController < ApplicationController
     else
       render :action => 'edit'
     end
+  end
+
+  def set_title
+    @title = 'Terms/Privacy'
   end
 end

@@ -1,0 +1,2 @@
+page.replace_html("feature_comment_#{@feature_comment.id}", :partial => 'show')
+page["add_comment_button"].show

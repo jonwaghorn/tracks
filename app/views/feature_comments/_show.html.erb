@@ -1,0 +1,4 @@
+<div id="feature_comment_<%= @feature_comment.id %>"><%= replace_for_view(h(@feature_comment.comment)) %><br/>
+<div class="date_left"><%= h @feature_comment.user.screen_name %>, <%= fmt_datetime @feature_comment.created_at %></div>
+<% if @feature_comment == @comments.last %><div class="edit"><span id="delete_link"><% if @feature_comment.feature.open? && (admin? || @comments.last.user == current_user) %><%= link_to_remote 'Edit', :url => {:controller => 'feature_comments', :action => 'edit_comment', :id => @feature_comment.id} %> | <%= link_to 'Delete', {:controller => 'feature_comments', :action => 'destroy', :id => @comments.last}, :confirm => 'Are you sure?', :method => :post %><% end %></span></div><% end %>
+</div>

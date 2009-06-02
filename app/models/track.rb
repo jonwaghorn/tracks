@@ -1,5 +1,7 @@
 class Track < ActiveRecord::Base
 
+  require 'gmap_polyline_encoder'
+  require 'hpricot'
   include TwitterHelper
   include TextHelper
 
@@ -10,6 +12,8 @@ class Track < ActiveRecord::Base
   belongs_to :condition
   has_many :track_connections
   has_many :track_reports
+  has_many :g_map_tracks, :order => 'sequence'
+  # has_many :medias, :conditions => ["ref_type = ? AND ref_id = ?", 'track', id]
 
   before_validation       :fix_name
   validates_presence_of   :name
@@ -20,6 +24,10 @@ class Track < ActiveRecord::Base
 
   RECENT_TRACK_COUNT = 5
   RECENT_HISTORY_OFFSET = Time.now - 1.week
+
+  def medias
+    Media.find(:all, :conditions => ["ref_type = ? AND ref_id = ?", 'track', id])
+  end
 
   def self.find_recent(offset = RECENT_HISTORY_OFFSET)
     previous_by_time = find(:all, :order => 'date DESC', :conditions => ["date > ?", offset])
@@ -66,6 +74,36 @@ class Track < ActiveRecord::Base
 
   def kml_file_exists?
     File.exists?("#{full_filename}.kml")
+  end
+
+  def process_kml_path(doc)
+    GMapTrack.delete(g_map_tracks)
+    main_name = doc.search('name').first
+    main_name = main_name.nil? ? name : main_name.inner_html
+
+    # Go through each 'placemark', get name and then process the coordinates
+    doc.search("placemark").each_with_index do |placemark, i|
+      sub_name = placemark.search('name')
+      sub_name = sub_name.nil? ? name : sub_name.inner_html
+      next if placemark.search('linestring').empty?
+      placemark.search('coordinates').each do |path|
+        data = []
+        path.inner_html.gsub(/\r/,'').gsub(/\n/,' ').split(" ").each do |coord|
+          coord.strip!
+          next if coord.empty?
+          lng,lat,alt = coord.split(",")
+          # puts "#{lat}, #{lng}"
+          data << [lat.to_f,lng.to_f]
+        end
+
+        encoder = GMapPolylineEncoder.new()
+        result = encoder.encode(data)
+
+        # sub_name = name if sub_name.nil?
+
+        GMapTrack.new(:track_id => id, :points => result[:points], :levels => result[:levels], :num_levels => result[:numLevels], :zoom => result[:zoomFactor], :sequence => i, :name => sub_name).save!
+      end
+    end
   end
 
   # Track connections in array of [connecting_track_name,connection_id,track_id]

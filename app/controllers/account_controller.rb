@@ -1,6 +1,9 @@
 class AccountController < ApplicationController
+  layout 'shared'
+  before_filter :set_title
+
   # If you want "remember me" functionality, add this before_filter to Application Controller
-  before_filter :login_from_cookie
+  # before_filter :login_from_cookie
 
   # say something nice, you goof!  something sweet.
   def index
@@ -42,5 +45,9 @@ class AccountController < ApplicationController
     reset_session
     flash[:notice] = "You have been logged out."
     redirect_back_or_default(:controller => '/index', :action => 'index')
+  end
+
+  def set_title
+    @title = 'Account'
   end
 end

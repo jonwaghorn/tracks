@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :votes
   has_many :features
   has_many :feature_comments
+  has_many :medias
 
   after_create :create_default_settings
 

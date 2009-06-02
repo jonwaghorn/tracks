@@ -13,6 +13,7 @@ class TrackController < ApplicationController
   def show
     @track = Track.find(params[:id])
     @existing_connections = @track.get_connections
+    @ref_id = @track.id
   end
 
   def new
@@ -66,10 +67,19 @@ class TrackController < ApplicationController
     @track = Track.find(params[:id])
   end
 
+  def cancel_upload
+    @track = Track.find(params[:id])
+  end
+
   def save_path
     @track = Track.find(params[:id])
-    File.open("#{@track.full_filename}.kml", "wb") do |f|
-      f.write(params[:path_file].read)
+    begin
+      File.open("#{@track.full_filename}.kml", "wb") do |f|
+        f.write(params[:path][:filename].read)
+      end
+      @track.process_kml_path(open("#{@track.full_filename}.kml") { |f| Hpricot(f) })
+    rescue Errno::ENOENT
+      flash[:notice] = 'Problem uploading file. Please check your file and try again.'
     end
     redirect_to :action => 'show', :id => @track.id
   end

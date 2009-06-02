@@ -1,0 +1,2 @@
+page.replace_html("comments", :partial => "list")
+page["add_comment_button"].show

@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  track_id: 1
+  sequence: 1
+  points: MyText
+  levels: MyText
+  zoom: 1
+  num_levels: 1
+
+two:
+  track_id: 1
+  sequence: 1
+  points: MyText
+  levels: MyText
+  zoom: 1
+  num_levels: 1
