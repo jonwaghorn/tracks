@@ -1,4 +1,7 @@
-33 2009-05-17 Mulitple tracks per map!
+34 2009-0605
+  - [bug fix] #0047 fixed broken track map edit. Also tidied area and region map edit, similar problems.
+
+33 2009-06-02 Mulitple tracks per map!
   - [feature] #0011 show multiple tracks on map - by popular demand! Shows main track and connecting (adjacent) tracks.
   - [feature] #0026 production-like testing environment (Stage)
   - [feature] #0033 allow editing of feature comments by comment owner

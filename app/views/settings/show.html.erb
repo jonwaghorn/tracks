@@ -23,14 +23,14 @@
     <% @setting.user.votes.group_by(&:feature_id).each do |feature_id, votes| %>
     <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
       <td><%= votes.length %></td>
-      <td><%= h votes.first.feature.title %></td>
+      <td><%= h votes.first.feature.title %><span class="edit"> (<%= link_to 'view', votes.first.feature %>)</span></td>
     </tr>
   <% end %>
   </table>
 <% else %>
 None.<hr/>
 <% end %>
-<%= link_to 'View features', :controller => 'features' %>
+<%= link_to 'View all features', :controller => 'features' %>
 </div>
 
 

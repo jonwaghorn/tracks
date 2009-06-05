@@ -1,27 +1,23 @@
 <%= render :partial => 'shared/map_head' %>
 <script type="text/javascript">
 //<![CDATA[
-<% if params[:action] == 'edit' %>var geoXml = new GGeoXml("http://<%= URL_BASE %>/paths/<%= @track.filename %>.kml?a=<%= Time.now.strftime('%j%H%M%S') %>");<% end %>
-function load(lt,ln,zm) {
+function onLoad() {
   if (GBrowserIsCompatible()) {
-    if (!zm) {
-      lt = <%= @track.area.zoom != 0 ? @track.area.latitude : -40.913512 %>;
-      ln = <%= @track.area.zoom != 0 ? @track.area.longitude : 172.705078 %>;
-      zm = <%= @track.area.zoom != 0 ? @track.area.zoom : 5 %>; }
+    lt = <%= @track.zoom != 0 ? @track.latitude : @track.area.zoom != 0 ? @track.area.latitude : -40.913512 %>;
+    ln = <%= @track.zoom != 0 ? @track.longitude : @track.area.zoom != 0 ? @track.area.longitude : 172.705078 %>;
+    zm = <%= @track.zoom != 0 ? @track.zoom : @track.area.zoom != 0 ? @track.area.zoom : 5 %>;
     var map = new GMap2(document.getElementById("map"));
-    map.addControl(new GSmallMapControl());
-    map.addControl(new GMapTypeControl());
-    map.addControl(new GScaleControl());
-    map.addMapType(G_PHYSICAL_MAP);
-    map.addMapType(G_SATELLITE_3D_MAP);
+    var uiOptions = map.getDefaultUI();
+    map.setUI(uiOptions);
     GEvent.addListener(map, "moveend", function() {
       var center = map.getCenter();
       document.getElementById("track_latitude").value = center.lat();
       document.getElementById("track_longitude").value = center.lng();
       document.getElementById("track_zoom").value = map.getZoom();
     });
-    map.setCenter(new GLatLng(lt, ln), zm, G_SATELLITE_MAP);
-    <% if params[:action] == 'edit' %>map.addOverlay(geoXml);<% end %>
+    map.setCenter(new GLatLng(lt, ln), zm);
+    map.addMapType(G_SATELLITE_3D_MAP);
+    <% if params[:action] == 'edit' %>map.addOverlay(new GGeoXml("http://<%= URL_BASE %>/paths/<%= @track.filename %>.kml?a=<%= Time.now.strftime('%j%H%M%S') %>"));<% end %>
     map.setMapType(<%= user_map_style %>);
   } else { document.getElementById("map").innerHTML="This website uses Google Maps, which appear not to work with your browser. See the FAQ."; }
 }

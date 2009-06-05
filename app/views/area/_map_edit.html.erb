@@ -3,10 +3,9 @@
 //<![CDATA[
 function load(lt,ln,zm) {
   if (GBrowserIsCompatible()) {
-    if (!zm) {
-      lt = <%= @area.region.zoom != 0 ? @area.region.latitude : -40.913512 %>;
-      ln = <%= @area.region.zoom != 0 ? @area.region.longitude : 172.705078 %>;
-      zm = <%= @area.region.zoom != 0 ? @area.region.zoom : 5 %>; }
+    lt = <%= @area.zoom != 0 ? @area.latitude : @area.region.zoom != 0 ? @area.region.latitude : -40.913512 %>;
+    ln = <%= @area.zoom != 0 ? @area.longitude : @area.region.zoom != 0 ? @area.region.longitude : 172.705078 %>;
+    zm = <%= @area.zoom != 0 ? @area.zoom : @area.region.zoom != 0 ? @area.region.zoom : 5 %>;
     var map = new GMap2(document.getElementById("map"));
     var icon = new GIcon();
     icon.image = "http://<%= URL_BASE %>/images/mm_20_orange.png";
@@ -15,18 +14,16 @@ function load(lt,ln,zm) {
     icon.shadowSize = new GSize(22, 20);
     icon.iconAnchor = new GPoint(6, 20);
     icon.infoWindowAnchor = new GPoint(5, 1);
-    map.addControl(new GSmallMapControl());
-    map.addControl(new GMapTypeControl());
-    map.addControl(new GScaleControl());
-    map.addMapType(G_PHYSICAL_MAP);
-    map.addMapType(G_SATELLITE_3D_MAP);
+    var uiOptions = map.getDefaultUI();
+    map.setUI(uiOptions);
     GEvent.addListener(map, "moveend", function() {
       var center = map.getCenter();
       document.getElementById("area_latitude").value = center.lat();
       document.getElementById("area_longitude").value = center.lng();
       document.getElementById("area_zoom").value = map.getZoom();
     });
-    map.setCenter(new GLatLng(lt, ln), zm, G_SATELLITE_MAP);
+    map.setCenter(new GLatLng(lt, ln), zm);
+    map.addMapType(G_SATELLITE_3D_MAP);
     <% Track.get_markers(@area.id).each do |track| %>
     map.addOverlay(new GMarker(new GLatLng(<%=track[0].to_s%>,<%=track[1].to_s%>),{title:"<%=track[2]%>",icon:icon}))
     <% end %>
@@ -35,3 +32,6 @@ function load(lt,ln,zm) {
 }
 //]]>
 </script>
+
+
+
