@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
   apply_simple_captcha      :message => 'Text from image does not match'
   before_save :encrypt_password
 
+  # def email
+  #   login
+  # end
+
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   def self.authenticate(login, password)
     u = find_by_login(login) # need to get the salt

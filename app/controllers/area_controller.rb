@@ -22,7 +22,6 @@ class AreaController < ApplicationController
   def create
     @area = Area.new(params[:area])
     @area.region_id = params[:region_id]
-    @area.date = Time.now
     if @area.save
       update_user_edit_stats
       @area.tweet_new
@@ -40,7 +39,6 @@ class AreaController < ApplicationController
 
   def update
     @area = Area.find(params[:id])
-    @area.date = Time.now
     params[:area][:description] = replace_for_update(params[:area][:description])
     if @area.update_attributes(params[:area])
       update_user_edit_stats

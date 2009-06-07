@@ -15,8 +15,8 @@ class TrackReportController < ApplicationController
   end
 
   def list
-    @track_reports = TrackReport.find(:all, :order => 'date DESC', :conditions => ["track_id = ? and date > ? and date < ?", params[:track_id], params[:year] + '-01-01 00:00:00', params[:year] + '-12-31 23:59:59'])
-    @oldest_report = TrackReport.find(:first, :conditions => ['track_id = ?', params[:track_id]], :order => 'date ASC')
+    @track_reports = TrackReport.find(:all, :order => 'updated_at DESC', :conditions => ["track_id = ? and updated_at > ? and updated_at < ?", params[:track_id], params[:year] + '-01-01 00:00:00', params[:year] + '-12-31 23:59:59'])
+    @oldest_report = TrackReport.find(:first, :conditions => ['track_id = ?', params[:track_id]], :order => 'updated_at ASC')
   end
 
   def new
@@ -34,7 +34,6 @@ class TrackReportController < ApplicationController
       @track_report.track_id = params[:track_id]
       @track_report.description = replace_for_update(@track_report.description)
       @track_report.user_id = current_user.id
-      @track_report.date = Time.now
       @track_report.save
       update_user_edit_stats(true)
       tweet @track_report.format_for_twitter
@@ -55,7 +54,6 @@ class TrackReportController < ApplicationController
     @track_report = TrackReport.find(params[:id])
     params[:track_report][:description] = replace_for_update(params[:track_report][:description])
     @track_report.user_id = current_user.id
-    @track_report.date = Time.now
     if params[:track_report][:description].length > 0
       @track_report.update_attributes(params[:track_report])
       update_user_edit_stats(true)

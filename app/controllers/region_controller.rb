@@ -23,7 +23,6 @@ class RegionController < ApplicationController
 
   def create
     @region = Region.new(params[:region])
-    @region.date = Time.now
     @region.nation_id = params[:nation_id]
     if @region.save
       update_user_edit_stats
@@ -43,7 +42,6 @@ class RegionController < ApplicationController
   def update
     @region = Region.find(params[:id])
     params[:region][:description] = replace_for_update(params[:region][:description])
-    @region.date = Time.now
     if @region.update_attributes(params[:region])
       update_user_edit_stats
       flash[:notice] = @region.name + ' was successfully updated.'

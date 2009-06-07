@@ -24,8 +24,8 @@ class TrackController < ApplicationController
   def create
     @track = Track.new(params[:track])
     @track.area_id = params[:area_id]
-    @track.author = current_user.id
-    @track.date = Time.now
+    @track.created_by = current_user.id
+    @track.updated_by = current_user.id
     if @track.save
       update_user_edit_stats
       @track.tweet_new
@@ -51,8 +51,7 @@ class TrackController < ApplicationController
     params[:track][:desc_full] = replace_for_update(params[:track][:desc_full])
     params[:track][:desc_where] = replace_for_update(params[:track][:desc_where])
     params[:track][:desc_note] = replace_for_update(params[:track][:desc_note])
-    @track.author = current_user.id
-    @track.date = Time.now
+    @track.updated_by = current_user.id
     @existing_connections = @track.get_connections
     if @track.update_attributes(params[:track])
       update_user_edit_stats

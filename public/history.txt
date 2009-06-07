@@ -1,4 +1,7 @@
-34 2009-0605
+35 2009-06-07
+  - [feature] Back-end database tidy to make better use of "for free" stuff in Rails.
+
+34 2009-06-05
   - [bug fix] #0047 fixed broken track map edit. Also tidied area and region map edit, similar problems.
 
 33 2009-06-02 Mulitple tracks per map!
