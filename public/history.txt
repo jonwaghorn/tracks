@@ -1,3 +1,7 @@
+36 2009-06-10
+  - [feature] #0046 User password reset.
+  - [feature] Reset a users' password via admin account (temp worak-around for no reset process).
+
 35 2009-06-07
   - [feature] Back-end database tidy to make better use of "for free" stuff in Rails.
 

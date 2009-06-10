@@ -549,6 +549,11 @@ h1 {
   width: 180px;
 }
 
+.content .two_cols .col_one .edit {
+  padding: 4px 0 0 0;
+  color: #999;
+}
+
 .content .two_cols .col_two {
   padding: 2px 0 3px 0;
   font-weight: bold;

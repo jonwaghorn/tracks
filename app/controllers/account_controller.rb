@@ -47,6 +47,41 @@ class AccountController < ApplicationController
     redirect_back_or_default(:controller => '/index', :action => 'index')
   end
 
+  def change_password
+    flash[:notice] = ""
+  end
+
+  def update_password
+    if User.authenticate(current_user.login, params[:user][:old_password])
+      if (params[:user][:password] == params[:user][:password_confirmation])
+        if (params[:user][:password].empty?)
+          flash[:notice] = "New password can't be empty"
+          @old_password = params[:user][:old_password]
+          render :action => 'change_password'
+        else
+          current_user.password_confirmation = params[:user][:password_confirmation]
+          current_user.password = params[:user][:password]
+          if current_user.save
+            flash[:notice] = "Password changed"
+          end
+          @user = current_user
+        end
+      else
+        flash[:notice] = "Password mismatch"
+        @old_password = params[:user][:old_password]
+        render :action => 'change_password'
+      end
+    else
+      flash[:notice] = "Old password wrong"
+      render :action => 'change_password'
+    end
+  end
+
+  def cancel_change_password
+    flash[:notice] = ""
+    @user = current_user
+  end
+
   def set_title
     @title = 'Account'
   end

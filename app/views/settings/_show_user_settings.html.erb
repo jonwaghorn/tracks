@@ -1,6 +1,7 @@
 <p></p>
 
-<h2>User Settings</h2><h3></h3>
+<h2>Account</h2><h3></h3>
+<% if :notice %><p class="notice"><%= flash[:notice] %></p><% end %>
 
 <div class="two_cols">
 
@@ -13,6 +14,6 @@
 </div>
 
   <hr/>
-  <%= link_to_remote 'Edit', :url => {:action => 'edit_user_settings'} %>
+  <span class="edit"><%= link_to_remote 'Edit', :url => {:controller => 'settings', :action => 'edit_user_settings'} %> | <%= link_to_remote 'Change password', :url => {:controller => 'account', :action => 'change_password'} %></span>
 
 </div>

@@ -1,6 +1,6 @@
 <p></p>
 
-<h2>User Settings (edit)</h2><h3></h3>
+<h2>Account (edit)</h2><h3></h3>
 
 <%= error_messages_for 'user', :header_tag => 'h4' %>
 
@@ -11,7 +11,7 @@
   <div class="col_one"><label for="user_login">Email (login)</label></div>
   <div class="col_two"><%=h @user.login %></div>
 
-  <div class="col_one"><label for="user_screen_name">Screen name</label></div>
+  <div class="col_one"><div class="edit">Screen name</div></div>
   <div class="col_two"><%= text_field 'user', 'screen_name' %></div>
 
 </div>

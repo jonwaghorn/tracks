@@ -27,6 +27,22 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def edit_password
+    @user = User.find(params[:id])
+  end
+
+  def update_password
+    @user = User.find(params[:id])
+    params[:user][:password_confirmation] = params[:user][:password]
+    puts params[:user].inspect
+    if @user.update_attributes(params[:user])
+      flash[:notice] = @user.screen_name + ' password set.'
+      redirect_to :action => 'show', :id => @user
+    else
+      render :action => 'edit_password'
+    end
+  end
+
   def set_title
     @title = 'ADMIN'
   end

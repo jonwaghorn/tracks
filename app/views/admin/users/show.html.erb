@@ -26,4 +26,6 @@
 
 <hr/>
 
-<p><%= link_to 'Back', :action => 'index' %> | <%= link_to 'Edit', :action => 'edit', :id => @user %></p>
+<p class="edit"><%= link_to 'Back', :action => 'index' %> |
+<%= link_to 'Edit', :action => 'edit', :id => @user %> |
+<%= link_to 'Set password', :action => 'edit_password', :id => @user %></p>

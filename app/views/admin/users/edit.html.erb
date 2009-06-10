@@ -4,13 +4,13 @@
 <%= error_messages_for 'user', :header_tag => 'h4' %>
 
 <div class="two_cols">
-  <div class="col_one">Screen name</div>
+  <div class="col_one"><div class="edit">Screen name</div></div>
   <div class="col_two"><%= text_field 'user', 'screen_name' %></div>
 
-  <div class="col_one">Email (login)</div>
+  <div class="col_one"><div class="edit">Email (login)</div></div>
   <div class="col_two"><%= text_field 'user', 'login' %></div>
 
-  <div class="col_one">Access</div>
+  <div class="col_one"><div class="edit">Access</div></div>
   <div class="col_two"><%= select 'user', 'privilege', ["admin", "viewer", "creator"] %></div>
 </div>
 
