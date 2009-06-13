@@ -559,11 +559,29 @@ h1 {
   font-weight: bold;
 }
 
+.content ul {
+  font-size: 12px;
+  list-style-type: none;
+  text-align: left;
+  text-decoration: none;
+  margin: 0;
+  padding: 0 0 0 5px;
+}
+
+.content ul li {
+  background: transparent url('/images/bullet.png') no-repeat scroll 0 0;
+  color: #555555;
+  line-height: 14px;
+  margin: 1px 10px 0 0;
+  padding-bottom: 3px;
+  padding-left: 18px;
+}
+
 .track_summary {
   margin: 9px;
   width: 200px;
 }
-
+``
 .track_summary p {
   margin: 0;
 }
@@ -596,6 +614,14 @@ h1 {
 
 #map div span {
   white-space: normal;
+}
+
+.infoDescription
+{
+   width: 300px;
+   font-size: 11px;
+   margin-bottom: 20px;
+   text-decoration: none;
 }
 
 #currTrackSelection {

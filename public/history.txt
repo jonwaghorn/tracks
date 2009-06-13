@@ -1,3 +1,7 @@
+37 2009-06-13
+  - [feature] #0014 added simple bullet list formattting option
+  - [bug fix] #0048 fixed map info window width
+
 36 2009-06-10
   - [feature] #0046 User password reset.
   - [feature] Reset a users' password via admin account (temp worak-around for no reset process).
