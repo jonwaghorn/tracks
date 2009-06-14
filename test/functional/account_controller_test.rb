@@ -5,10 +5,6 @@ require 'account_controller'
 class AccountController; def rescue_action(e) raise e end; end
 
 class AccountControllerTest < Test::Unit::TestCase
-  # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead
-  # Then, you can remove it from this and the units test.
-  include AuthenticatedTestHelper
-
   fixtures :users
 
   def setup
@@ -18,13 +14,13 @@ class AccountControllerTest < Test::Unit::TestCase
   end
 
   def test_should_login_and_redirect
-    post :login, :login => 'quentin', :password => 'test'
+    post :login, :login => 'quentin@example.com', :password => 'test'
     assert session[:user]
     assert_response :redirect
   end
 
   def test_should_fail_login_and_not_redirect
-    post :login, :login => 'quentin', :password => 'bad password'
+    post :login, :login => 'quentin@example.com', :password => 'bad password'
     assert_nil session[:user]
     assert_response :success
   end
@@ -76,12 +72,12 @@ class AccountControllerTest < Test::Unit::TestCase
   end
 
   def test_should_remember_me
-    post :login, :login => 'quentin', :password => 'test', :remember_me => "1"
+    post :login, :login => 'quentin@example.com', :password => 'test', :remember_me => "1"
     assert_not_nil @response.cookies["auth_token"]
   end
 
   def test_should_not_remember_me
-    post :login, :login => 'quentin', :password => 'test', :remember_me => "0"
+    post :login, :login => 'quentin@example.com', :password => 'test', :remember_me => "0"
     assert_nil @response.cookies["auth_token"]
   end
   
