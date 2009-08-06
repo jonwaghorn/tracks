@@ -3,13 +3,12 @@
 
 <p>Got a question not answered here? Try <b>info@<%= URL_BASE %></b></p>
 
-<h2>Questions</h2><h3></h3>
+<%= heading "Questions" %>
 <% @faqs.each_with_index do |@faq, i| %>
 <p><%= i+1 %>. <a href="#faq_<%= @faq.id %>"><%= @faq.question %></a></p>
 <% end %>
 
-<h2>Answers</h2><h3></h3>
-
+<%= heading "Answers" %>
 <% @faqs.each do |@faq| %>
 <div id="faq_<%= @faq.id %>">
   <%= render :partial => 'show' %>

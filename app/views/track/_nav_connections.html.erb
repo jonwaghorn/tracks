@@ -1,5 +1,5 @@
 <% if @track.track_connections.length > 0 || creator? %>
-<h2>Adjacent Tracks</h2><h3>&nbsp;</h3>
+<%= heading "Adjacent Tracks" %>
 <% end %>
 <div id="connecting_tracks">
 <% if @existing_connections.nil? && params[:action] != /new|create/ %>

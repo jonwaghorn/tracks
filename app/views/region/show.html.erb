@@ -4,7 +4,7 @@
 <p><%= replace_for_view(h(@region.description)) %></p>
 
 <% if @region.zoom != 0 %>
-<h2>Areas</h2><h3>&nbsp;</h3>
+<%= heading "Areas" %>
 <div id="map"></div><p><input type="button" value="Reset map view" onclick="resetMap();"/></p>
 <% end %>
 
@@ -12,7 +12,7 @@
 
 <%= render :partial => 'tracks_summary' %>
 
-<h2>Stay connected</h2><h3></h3>
+<%= heading "Stay connected" %>
 <p>
   <a href="/region/rss/<%= @region.id %>" title="Subscribe to track reports for <%= @region.name %>" rel="alternate" type="application/rss+xml"><img align="absbottom" src="/images/feed.png" alt=""/> RSS feed of <%= @region.name %> reports</a>
 </p>

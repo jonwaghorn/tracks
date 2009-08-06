@@ -1,5 +1,5 @@
 class TrackAka < ActiveRecord::Base
-  has_one :track
+  belongs_to :track
 
   validates_presence_of   :name
   validates_format_of     :name, :with => /^[\w ']+$/i, :message => 'can only contain letters and numbers (and spaces).'

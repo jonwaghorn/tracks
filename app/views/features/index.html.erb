@@ -8,13 +8,13 @@
 <p><% if logged_in? %>You get 3 votes that you can use. You can stack all your votes on one Feature/Problem or spread them around. Click the + to add a vote, - to remove. When a Feature/Problem gets closed your votes on it will become available for other voting.</p><p id="votes"><%= render :partial => 'votes' %><% else %>Log in to vote!<% end %></p>
 <% end %>
 
-<h2><%= params[:view] ? "Closed" : "Suggested" %> Features</h2><h3></h3>
+<%= heading "#{params[:view] ? "Closed" : "Suggested"} Features" %>
 
 <div id="features" class="features">
   <%= render :partial => 'features' %>
 </div>
 
-<h2><%= params[:view] ? "Closed" : "Reported" %> Problems</h2><h3></h3>
+<%= heading "#{params[:view] ? "Closed" : "Reported"} Problems" %>
 
 <div id="problems" class="features">
   <%= render :partial => 'problems' %>

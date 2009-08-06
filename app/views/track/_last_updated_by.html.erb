@@ -1,0 +1,1 @@
+<%= @track.updated_at.to_s(:tracks).gsub(/^0/, '') %> by <%= User.find(@track.updated_by).screen_name %>

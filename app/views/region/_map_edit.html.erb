@@ -1,7 +1,7 @@
 <%= render :partial => 'shared/map_head' %>
 <script type="text/javascript">
 //<![CDATA[
-function load(lt,ln,zm) {
+function onLoad(lt,ln,zm) {
   if (GBrowserIsCompatible()) {
     lt = <%= @region.zoom != 0 ? @region.latitude : @region.nation.zoom != 0 ? @region.nation.latitude : -40.913512 %>;
     ln = <%= @region.zoom != 0 ? @region.longitude : @region.nation.zoom != 0 ? @region.nation.longitude : 172.705078 %>;
@@ -15,6 +15,7 @@ function load(lt,ln,zm) {
     icon.iconAnchor = new GPoint(6, 20);
     icon.infoWindowAnchor = new GPoint(5, 1);
     var uiOptions = map.getDefaultUI();
+    uiOptions.zoom.scrollwheel = false; // Disable scroll wheel zoom
     map.setUI(uiOptions);
     GEvent.addListener(map, "moveend", function() {
       var center = map.getCenter();

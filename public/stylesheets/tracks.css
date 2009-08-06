@@ -360,24 +360,19 @@ div.clearboth {clear: both;}
   padding-left: 49px;
 }
 
-/*.nav #connect {
-  padding-left: 24px;
-}
-*/
 .nav h2 {
   float: left;
   background: #777 url('/images/nav_div.png') no-repeat right top;
   font: bold 12px 'Lucida Grande', Geneva, Arial, Verdana, sans-serif;
   color: white;
   height: 18px;
-  margin: 7px 1px 0 1px;
+  margin: 0;
   padding: 2px 32px 0 8px;
 }
 
 .nav h3 {
   border-top: #777 1px solid;
-  font-size: 12px;
-  margin: 7px 1px 0 1px;
+  margin: 0;
   padding-top: 2px;
 }
 
@@ -460,6 +455,10 @@ h1 {
   padding: 5px 9px;
 }
 
+.content p .spacer {
+  padding: 4px;
+}
+
 .content table {
   margin: 5px 0;
   padding: 0 9px;
@@ -483,18 +482,15 @@ h1 {
   background: #999 url('/images/content_div.png') no-repeat right top;
   color: white;
   height: 18px;
-  margin: 4px 0 0 0;
+  margin: 0;
   padding: 2px 32px 0 8px;
 }
 
 .content h3 {
   border-top: #999 1px solid;
-  font: italic 10px 'Lucida Grande', Geneva, Arial, Verdana, sans-serif;
   height: 18px;
-  margin: 4px 0 4px 0;
-  padding: 0 8px 0 0;
-  text-align: right;
-  color: #aaa;
+  margin: 0;
+  padding: 0;
 }
 
 .content h4 {
@@ -567,11 +563,11 @@ h1 {
 /*  text-decoration: none;*/
 /*  margin: 0;*/
 /*  padding: 0 0 0 5px;*/
-  background: transparent url('/images/bullet.png') no-repeat scroll 4px 2px;
+  background: transparent url('/images/bullet.png') no-repeat scroll 4px 0;
   color: #555555;
 /*  line-height: 14px;*/
   margin: 0;
-  padding: 2px 10px 2px 24px;
+  padding: 0 10px 6px 24px;
 /*  padding-bottom: 3px;*/
 /*  padding-left: 18px;*/
 }

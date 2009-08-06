@@ -8,6 +8,7 @@ function onLoad() {
     zm = <%= @track.zoom != 0 ? @track.zoom : @track.area.zoom != 0 ? @track.area.zoom : 5 %>;
     var map = new GMap2(document.getElementById("map"));
     var uiOptions = map.getDefaultUI();
+    uiOptions.zoom.scrollwheel = false; // Disable scroll wheel zoom
     map.setUI(uiOptions);
     GEvent.addListener(map, "moveend", function() {
       var center = map.getCenter();

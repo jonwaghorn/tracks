@@ -3,6 +3,9 @@ module TrackHelper
   def get_paths(track, path_type)
     return if track.g_map_tracks.empty?
 
+    # monkey the overview so it plays nicely with javascript
+    overview = replace_for_view(h(track.desc_overview)).gsub(/"/,'\"').gsub(/[\r\n\f]+/,' ')
+
     path = "prepareTrack();"
     track.g_map_tracks.each do |gmt|
       path += "trackData.push({" \
@@ -11,7 +14,7 @@ module TrackHelper
       "grade: '#{track.track_grade.name}'," \
       "length: '#{distance(track.length)}'," \
       "conditions: '#{track.condition.name}'," \
-      "description: \"#{replace_for_view(h(track.desc_overview)).gsub(/"/,'\"')}\"," \
+      "description: \"#{overview}\"," \
       "segmentType: '#{path_type}'," \
       "points: \"#{gmt.points}\"," \
       "levels: \"#{gmt.levels}\"," \

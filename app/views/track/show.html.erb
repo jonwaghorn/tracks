@@ -76,13 +76,13 @@
 <% end %>
 
 <div class="left"><p>Last modified</p></div>
-<div class="right"><p><%= @track.updated_at.to_s(:tracks).gsub(/^0/, '') %> by <%= User.find(@track.updated_by).screen_name %></p></div>
+<div class="right"><p id="last_updated_by"><%= render :partial => 'last_updated_by' %></p></div>
 
 <div class="left"><p>Created by</p></div>
 <div class="right"><p><%= User.find(@track.created_by).screen_name %></p></div>
 
 <% if @track.zoom != 0 %>
-<h2>Google goodness</h2><h3>&nbsp;</h3>
+<%= heading "Google goodness" %>
 <div id="labelContainer">
   <div id="currTrackSelection"></div>
 </div>
@@ -97,7 +97,7 @@
 
 <% if admin? || @track.medias.length > 0 %>
 <%# if creator? || @track.medias.length > 0 %>
-<h2>Media</h2><h3>&nbsp;</h3>
+<%= heading "Media" %>
 <% @track.medias.each do |media| %>
 <p><%= media.gimme %></p>
 <%= '<hr/>' if media != @track.medias.last %>

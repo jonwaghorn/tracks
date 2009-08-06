@@ -45,8 +45,9 @@ function setup()
 {  // Setup the map
   mapContainer = document.getElementById("map");
   map = new GMap2(mapContainer);
-  var uiOptions = map.getDefaultUI();
-  map.setUI(uiOptions); // new style controls, see http://googlegeodevelopers.blogspot.com/2009/02/posted-by-jez-fletcher-maps-api-team.html
+  var uiOptions = map.getDefaultUI(); // Get default options
+  uiOptions.zoom.scrollwheel = false; // Disable scroll wheel zoom
+  map.setUI(uiOptions); // Set the map's interface
   map.setCenter(maplatlng, mapZoom);
   map.addMapType(G_SATELLITE_3D_MAP);
   G_SATELLITE_3D_MAP.getName = function() {return "Earth 3D"}  // Rename Google Earth map type button

@@ -1,4 +1,4 @@
-<% if !@recent_track_reports.empty? %><h2><%= title %></h2><h3>&nbsp;</h3><% end %>
+<%= heading(title) if !@recent_track_reports.empty? %>
 
 <% for track_report in @recent_track_reports do %>
 <div id="<%= dom_id(track_report) %>">

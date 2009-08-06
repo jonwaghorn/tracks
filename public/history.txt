@@ -1,3 +1,14 @@
+39 2009-08-06 Squashing little bugs
+  - [bug fix] #0060 fixed broken map edit views
+  - [bug fix] #0044 show track paths in IE7
+  - [bug fix] #0050 better tag nesting
+  - [bug fix] #0059 disabled scroll-wheel zoom
+  - [bug fix] #0053 fixed newline in overview problem
+  - [bug fix] #0051 update track 'last modified by' for adjacent tracks and akas
+  - [bug fix] #0057 fixed broken rss feeds
+  - [bug fix] fixed bad layout for new feature/problem
+  - [bug fix] fixed css on a funky heading
+
 38 2009-08-05 It's only a damn bullet, how much mess could I make?!?
   - [feature] Add "map reset" button to Region and Area pages
   - [bug fix] #0049 fix mess made by #0014, much work for a little feature fix...

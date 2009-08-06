@@ -1,11 +1,10 @@
 <h1>Home</h1>
 <% if flash[:notice] %><p class="notice"><%= flash[:notice] %></p><% end -%>
 
-<%= replace_for_view(h(@special.content)) %>
-
+<%= replace_for_view(h(@special.content)) -%>
 <%= render :partial => 'track_report/summary', :locals => {:title => 'All Recent Track Reports'} %>
 
-<h2>Stay connected</h2><h3></h3>
+<%= heading "Stay connected" %>
 <p>
   <a href="/index/rss" title="Subscribe to all track reports" rel="alternate" type="application/rss+xml"><img align="absbottom" src="/images/feed.png" alt=""/> RSS feed of all reports</a> (RSS feeds are also available per-region on each region page)
 </p>

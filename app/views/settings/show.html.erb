@@ -8,9 +8,7 @@
   <%= render :partial => 'show_prefs' %>
 </div>
 
-<h2>Feature Votes</h2><h3></h3>
-
-
+<%= heading "Feature Votes" %>
 
 <div class="features">
 <% if @setting.user.has_active_votes? %>

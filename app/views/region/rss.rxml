@@ -10,7 +10,7 @@ xml.rss(:version=>"2.0"){
       xml.item do
         xml.title(report.track.name)
         xml.description(replace_for_view(report.description))
-        xml.pubDate(report.date.to_s(:track))
+        xml.pubDate(report.created_at.to_s(:track))
         xml.author(User.find(report.user_id, :select => 'screen_name').screen_name)
         xml.link("http://#{URL_BASE}/track/show/" + report.track_id.to_s)
         xml.guid("http://#{URL_BASE}/track/show/" + report.track_id.to_s)
