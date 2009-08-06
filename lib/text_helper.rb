@@ -5,19 +5,21 @@ module TextHelper
     # puts 'LINE = ' + line
     # general replacements
     line = line.gsub(/\[\[br\]\]/, '<br/>') # [[br]] => html break
-    line = line.gsub(/\[\[para\]\]/, '<br/><br/>') # [[para]] => html break * 2
+    line = line.gsub(/\[\[para\]\]/, '</p><p>') # [[para]] => new paragraph
     line = line.gsub(/\[\[h1:(.*?)\]\]/, '</p><h2>\1</h2><h3>&nbsp;</h3><p>') # [[h1:Heading]] => heading 1
     line = line.gsub(/\[\[h2:(.*?)\]\]/, '</p><p><b>\1</b></p><p>') # [[h2:Heading]] => heading 2
     line = line.gsub(/\[\[bold:(.*?)\]\]/, '<b>\1</b>') # [[bold:text]] => bold text
     line = line.gsub(/\[\[italic:(.*?)\]\]/, '<em>\1</em>') # [[italic:text]] => italic text
-    line = line.gsub(/\[\[bullet:(.*?)\]\]/, '</p><ul><li>\1</ul><p>') # [[bullet:text]] => bullet text
-    line = line.gsub(/<\/ul><p>\s*<\/p><ul>/, '') # tidy adjacent bullets, kinda hacky
+    line = line.gsub(/\[\[bullet:(.*?)\]\]/, '</p><p class="bullet">\1</p><p>') # [[bullet:text]] => bullet text
+    # line = line.gsub(/<\/ul><p>\s*<\/p><ul>/, '') # tidy adjacent bullets, kinda hacky
     line = line.gsub(/\[\[image:(http):(.*?):(.*?):(.*?):(.*?)\]\]/, '<img src="\1:\2" alt="\3" width="\4" height="\5"/>') # [[img:ref:width:height]]
     line = line.gsub(/\[\[link:tracks.org.nz(.*?)\]\]/, '[[link:http://tracks.org.nz\1]]')
     line = line.gsub(/\[\[link:www.tracks.org.nz(.*?)\]\]/, '[[link:http://tracks.org.nz\1]]')
     line = line.gsub(/\[\[link:http:\/\/www.tracks.org.nz(.*?)\]\]/, '[[link:http://tracks.org.nz\1]]')
     line = line.gsub(/\[\[link:(http:\/\/tracks.org.nz.*?) (.*?)\]\]/, '<a href="\1" title="\1" rel="nofollow">\2</a>') # [[link:ref Name]] => href
     line = line.gsub(/\[\[link:(.*?) (.*?)\]\]/, '<a href="\1" class="external" title="\1" rel="nofollow">\2</a>') # [[link:ref Name]] => href
+
+    line = generic_view_tidy(line)
 
     # special id => name replacements
     items = find_id_replacements(line)
@@ -123,6 +125,10 @@ module TextHelper
     end
 
     return line
+  end
+
+  def generic_view_tidy(line)
+    line.gsub(/<p>\s*<\/p>/, '') # tidy empty paras
   end
 
   # Change funky "smart" quotes into regular jobbies

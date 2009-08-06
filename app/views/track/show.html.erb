@@ -1,13 +1,16 @@
 <h1><%= @track.name %></h1>
-<% if :notice %><p class="notice"><%= flash[:notice] %></p><% end %>
+<% if flash[:notice] %><p class="notice"><%= flash[:notice] %></p><% end -%>
 
-<p class="left">Name</p><p class="right"><%= @track.name %></p>
+<div class="left"><p>Name</p></div>
+<div class="right"><p><%= @track.name %></p></div>
 
-<p class="left">Location</p><p class="right"><%= @track.area.name %>, <%= @track.area.region.name %>, <%= @track.area.region.nation.name %></p>
+<div class="left"><p>Location</p></div>
+<div class="right"><p><%= @track.area.name %>, <%= @track.area.region.name %>, <%= @track.area.region.nation.name %></p></div>
 
 <% akas = TrackAka.find(:all, :conditions => ["track_id = ?", @track.id]) %>
 <% if akas.size > 0 %>
-<p class="left">Also known as</p><p class="right">
+<div class="left"><p>Also known as</p></div>
+<div class="right"><p>
 <% if akas.size > 0 %>
 <% aka_formatted = '' %>
 <% if akas.size > 1 %>
@@ -17,53 +20,66 @@
 <%= aka_formatted %>
 <% end %>
 </p>
+</div>
 <% end %>
 
 <% if ! @track.desc_overview.empty? && ! @track.desc_overview.blank? %>
-<p class="left">Overview</p><p class="right"><%= replace_for_view(h(@track.desc_overview)) %></p>
+<div class="left"><p>Overview</p></div>
+<div class="right"><p><%= replace_for_view(h(@track.desc_overview)) %></p></div>
 <% end %>
 
 <% if @track.track_grade %>
-<p class="left">Grade</p><p class="right"><%= @track.track_grade.name + h(@track.grade_note) %></p>
+<div class="left"><p>Grade</p></div>
+<div class="right"><p><%= @track.track_grade.name + h(@track.grade_note) %></p></div>
 <% end %>
 
 <% if @track.track_access %>
-<p class="left">Access</p><p class="right"><%= @track.track_access.name + h(@track.access_note) %></p>
+<div class="left"><p>Access</p></div>
+<div class="right"><p><%= @track.track_access.name + h(@track.access_note) %></p></div>
 <% end %>
 
 <% if ! @track.desc_full.empty? %>
-<p class="left">Description</p><p class="right"><%= replace_for_view(h(@track.desc_full)) %></p>
+<div class="left"><p>Description</p></div>
+<div class="right"><p><%= replace_for_view(h(@track.desc_full)) %></p></div>
 <% end %>
 
 <% if ! @track.desc_where.empty? %>
-<p class="left">Getting there</p><p class="right"><%= replace_for_view(h(@track.desc_where)) %></p>
+<div class="left"><p>Getting there</p></div>
+<div class="right"><p><%= replace_for_view(h(@track.desc_where)) %></p></div>
 <% end %>
 
 <% if ! @track.desc_note.empty? %>
-<p class="left">Other notes</p><p class="right"><%= replace_for_view(h(@track.desc_note)) %></p>
+<div class="left"><p>Other notes</p></div>
+<div class="right"><p><%= replace_for_view(h(@track.desc_note)) %></p></div>
 <% end %>
 
 <% if @track.length != 0 %>
-<p class="left">Length</p><p class="right"><%= @track.length %>km</p>
+<div class="left"><p>Length</p></div>
+<div class="right"><p><%= @track.length %>km</p></div>
 <% end %>
 
 <% if @track.condition_id != nil %>
-<p class="left">Conditions</p><p class="right"><%= @track.condition.name %></p>
+<div class="left"><p>Conditions</p></div>
+<div class="right"><p><%= @track.condition.name %></p></div>
 <% end %>
 
 <% if ! @track.alt_gain.nil? || ! @track.alt_loss.nil? || ! @track.alt_begin.nil? || ! @track.alt_end.nil? %>
-<p class="left">Altitude</p><p class="right">
+<div class="left"><p>Altitude</p></div>
+<div class="right"><p>
 <% if ! @track.alt_gain.nil? %><img src="/images/alt_gain.png" alt="gain" title="Altitude gain"/><%= @track.alt_gain %>m<% end %>
 <% if ! @track.alt_loss.nil? %><img src="/images/alt_loss.png" alt="loss" title="Altitude loss"/><%= @track.alt_loss %>m<% end %>
 <% if ! @track.alt_begin.nil? %><img src="/images/alt_begin.png" alt="begin" title="Altitude begin"/><%= @track.alt_begin %>m<% end %>
 <% if ! @track.alt_end.nil? %><img src="/images/alt_end.png" alt="end" title="Altitude end"/><%= @track.alt_end %>m<% end %>
 <% if ! @track.alt_note.empty? %><%= h @track.alt_note %><% end %>
 </p>
+</div>
 <% end %>
 
-<p class="left">Last modified</p><p class="right"><%= @track.updated_at.to_s(:tracks).gsub(/^0/, '') %> by <%= User.find(@track.updated_by).screen_name %></p>
+<div class="left"><p>Last modified</p></div>
+<div class="right"><p><%= @track.updated_at.to_s(:tracks).gsub(/^0/, '') %> by <%= User.find(@track.updated_by).screen_name %></p></div>
 
-<p class="left">Created by</p><p class="right"><%= User.find(@track.created_by).screen_name %></p>
+<div class="left"><p>Created by</p></div>
+<div class="right"><p><%= User.find(@track.created_by).screen_name %></p></div>
 
 <% if @track.zoom != 0 %>
 <h2>Google goodness</h2><h3>&nbsp;</h3>

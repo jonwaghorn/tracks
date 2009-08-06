@@ -1,37 +1,37 @@
 <h1><%= @feature.kind.humanize %>: <%=h @feature.title[0..60] %></h1>
 
-<div class="left">Title</div>
-<div class="right"><%=h @feature.title %></div>
+<div class="left"><p>Title</p></div>
+<div class="right"><p><%=h @feature.title %></p></div>
 
-<div class="left">Id</div>
-<div class="right"><%= @feature.humanized_id %></div>
+<div class="left"><p>Id</p></div>
+<div class="right"><p><%= @feature.humanized_id %></p></div>
 
-<div class="left"><%= @feature.kind == 'feature' ? "Requestor" : "Reporter" %></div>
-<div class="right"><%=h @feature.user.screen_name %></div>
+<div class="left"><p><%= @feature.kind == 'feature' ? "Requestor" : "Reporter" %></p></div>
+<div class="right"><p><%=h @feature.user.screen_name %></p></div>
 
-<div class="left">Status</div>
-<div class="right"><%=h @feature.status.humanize %><% if @feature.closed? %>, <%= fmt_datetime @feature.updated_at %><% end %></div>
+<div class="left"><p>Status</p></div>
+<div class="right"><p><%=h @feature.status.humanize %><% if @feature.closed? %>, <%= fmt_datetime @feature.updated_at %><% end %></p></div>
 
-<div class="left">Progress</div>
-<div class="right"><%= progress @feature.progress %></div>
+<div class="left"><p>Progress</p></div>
+<div class="right"><p><%= progress @feature.progress %></p></div>
 
-<div class="left">Description</div>
-<div class="right"><%= replace_for_view(h(@feature.description)) %></div>
+<div class="left"><p>Description</p></div>
+<div class="right"><p><%= replace_for_view(h(@feature.description)) %></p></div>
 
 <div id="comments">
 <%= render :partial => 'feature_comments/list' %>
 </div>
 
 <% if @feature.open? %>
-<div class="left">Votes</div>
-<div class="right"><%= @feature.votes.length %></div>
+<div class="left"><p>Votes</p></div>
+<div class="right"><p><%= @feature.votes.length %></p></div>
 <% end %>
 
-<div class="left">Created</div>
-<div class="right"><%= fmt_datetime @feature.created_at %></div>
+<div class="left"><p>Created</p></div>
+<div class="right"><p><%= fmt_datetime @feature.created_at %></p></div>
 
-<div class="left">Updated</div>
-<div class="right"><%= fmt_datetime @feature.updated_at %></div>
+<div class="left"><p>Updated</p></div>
+<div class="right"><p><%= fmt_datetime @feature.updated_at %></p></div>
 
 <hr/>
 

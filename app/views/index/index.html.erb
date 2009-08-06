@@ -1,6 +1,7 @@
 <h1>Home</h1>
-<% if :notice %><p class="notice"><%= flash[:notice] %></p><% end %>
-<p><%= replace_for_view(h(@special.content)) %></p>
+<% if flash[:notice] %><p class="notice"><%= flash[:notice] %></p><% end -%>
+
+<%= replace_for_view(h(@special.content)) %>
 
 <%= render :partial => 'track_report/summary', :locals => {:title => 'All Recent Track Reports'} %>
 

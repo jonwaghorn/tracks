@@ -1,34 +1,13 @@
 <%= render :partial => 'shared/map_head' %>
+<script type="text/javascript" src="/javascripts/mapMain.js"></script>
+
 <script type="text/javascript">
 //<![CDATA[
-function load(lt,ln,zm) {
-  if (GBrowserIsCompatible()) {
-    if (!zm) {lt = -41.284514; ln = 174.774627; zm = 11;}
-    var map = new GMap2(document.getElementById("map"));
-    var icon = new GIcon();
-    icon.image = "http://<%= URL_BASE %>/images/mm_20_orange.png";
-    icon.shadow = "http://<%= URL_BASE %>/images/mm_20_shadow.png";
-    icon.iconSize = new GSize(12, 20);
-    icon.shadowSize = new GSize(22, 20);
-    icon.iconAnchor = new GPoint(6, 20);
-    icon.infoWindowAnchor = new GPoint(5, 1);
-    var uiOptions = map.getDefaultUI();
-    map.setUI(uiOptions);
-    map.addMapType(G_SATELLITE_3D_MAP);
-    // ovMap = new GOverviewMapControl(new GSize(100,80));
-    // map.addControl(ovMap);
-    // ovMap.hide(true);
-    function createMarker(point,opts,url) {
-      var marker = new GMarker(point,opts);
-      GEvent.addListener(marker,"click",function(){window.open(url, "_top");});
-      return marker;
-    }
-    map.setCenter(new GLatLng(lt, ln), zm, G_SATELLITE_MAP);
-    <% Area.get_markers(@region.id).each do |area| %>
-    map.addOverlay(createMarker(new GLatLng(<%=area[0].to_s%>,<%=area[1].to_s%>),{title:"<%=area[2]%>",icon:icon},"/area/show/<%=area[3].to_s%>"))
-    <% end %>
-    map.setMapType(<%= user_map_style %>);
-  } else { document.getElementById("map").innerHTML="This website uses Google Maps, which appear not to work with your browser. See the FAQ."; }
-}
+<% @markers.each do |marker| -%>
+markers.push({lat:<%=marker[0].to_s%>, lng:<%=marker[1].to_s%>, name:"<%=marker[2]%>", id:<%=marker[3].to_s%>});
+<%- end %>
 //]]>
 </script>
+
+<script type="text/javascript">var maplatlng = new GLatLng(<%= @region.latitude %>,<%= @region.longitude %>);var mapZoom = <%= @region.zoom %>;var mapType = <%= user_map_style %>;</script>
+

@@ -1,12 +1,11 @@
-<div class="left">Comments</div>
+<div class="left"><p>Comments</p></div>
 <div class="right">
   <% if @comments.length > 0 %>
-  <% @comments.each do |@feature_comment| %>
-  <%= render :partial => 'feature_comments/show' %>
-  <%= '<hr/>' if @feature_comment != @comments.last %>
-  <% end %>
+    <% @comments.each do |@feature_comment| %>
+      <%= render :partial => 'feature_comments/show' %>
+    <% end %>
   <% else %>
-  None<span id="delete_link"></span>
+    <p>None<span id="delete_link"></span></p>
   <% end %>
   <div id="new_comment"></div>
 </div>

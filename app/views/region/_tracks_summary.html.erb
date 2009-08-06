@@ -1,3 +1,4 @@
+<% if @region.tracks_summary.length > 0 %>
 <h2>Track type/distance summary</h2><h3>&nbsp;</h3>
 
 <div class="track_summary">
@@ -9,3 +10,4 @@
 </div>
 
 <p>Total number of tracks for <%= @region.name %>: <%= x = 0; @region.areas.each {|area| x += area.tracks.size }; x %></p>
+<% end %>

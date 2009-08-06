@@ -42,6 +42,7 @@ hr {
   border: 0 none;
   color: #ccc;
   height: 1px;
+  margin: 0;
 }
 
 .bg {
@@ -455,8 +456,8 @@ h1 {
 
 .content p {
   font: 12px 'Lucida Grande', Geneva, Arial, Verdana, sans-serif;
-  margin: 5px 0;
-  padding: 0 9px;
+  margin: 0;
+  padding: 5px 9px;
 }
 
 .content table {
@@ -482,7 +483,7 @@ h1 {
   background: #999 url('/images/content_div.png') no-repeat right top;
   color: white;
   height: 18px;
-  margin: 0;
+  margin: 4px 0 0 0;
   padding: 2px 32px 0 8px;
 }
 
@@ -490,8 +491,8 @@ h1 {
   border-top: #999 1px solid;
   font: italic 10px 'Lucida Grande', Geneva, Arial, Verdana, sans-serif;
   height: 18px;
-  margin: 0;
-  padding: 0 8px 2px 0;
+  margin: 4px 0 4px 0;
+  padding: 0 8px 0 0;
   text-align: right;
   color: #aaa;
 }
@@ -508,16 +509,6 @@ h1 {
   padding: 0 9px;
 }
 
-.content .left {
-  float: left;
-  color: #aaa;
-  width: 90px;
-  text-align: right;
-  margin: 0;
-  padding: 4px 0;
-  border: 0;
-}
-
 .content label {
   color: #999;
 }
@@ -532,10 +523,20 @@ h1 {
   padding: 0;
 }
 
+.content .left {
+  float: left;
+  color: #aaa;
+  width: 105px;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
 .content .right {
   color: black;
-  margin: 0 0 0 90px;
-  padding: 4px 10px;
+  margin: 0 0 0 105px;
+  padding: 0;
   border: 0;
 }
 
@@ -559,22 +560,20 @@ h1 {
   font-weight: bold;
 }
 
-.content ul {
+.content p.bullet {
   font-size: 12px;
-  list-style-type: none;
-  text-align: left;
-  text-decoration: none;
-  margin: 0;
-  padding: 0 0 0 5px;
-}
-
-.content ul li {
-  background: transparent url('/images/bullet.png') no-repeat scroll 0 0;
+/*  list-style-type: none;*/
+/*  text-align: left;*/
+/*  text-decoration: none;*/
+/*  margin: 0;*/
+/*  padding: 0 0 0 5px;*/
+  background: transparent url('/images/bullet.png') no-repeat scroll 4px 2px;
   color: #555555;
-  line-height: 14px;
-  margin: 1px 10px 0 0;
-  padding-bottom: 3px;
-  padding-left: 18px;
+/*  line-height: 14px;*/
+  margin: 0;
+  padding: 2px 10px 2px 24px;
+/*  padding-bottom: 3px;*/
+/*  padding-left: 18px;*/
 }
 
 .track_summary {

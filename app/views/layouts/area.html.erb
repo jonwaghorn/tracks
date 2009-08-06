@@ -18,7 +18,7 @@
 <% end %>
 <%= render :partial => 'shared/analytics' %>
 </head>
-<body onload="load(<%= @area.latitude %>,<%= @area.longitude %>,<%= @area.zoom %>)" onunload="GUnload()">
+<body id="body" onload="onLoad('area');" onunload="GUnload();">
 <%= ck_fu %>
 <table class="bg" cellspacing="0">
 <tr>

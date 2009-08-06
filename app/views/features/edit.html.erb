@@ -4,27 +4,27 @@
   <%= error_messages_for 'feature', :header_tag => 'h4' %>
 
   <% if admin? || @feature.user == current_user %>
-    <div class="left"><%= f.label :kind %></div>
+    <div class="left"><p><%= f.label :kind %></p></div>
     <% if @feature.open? %>
-    <div class="right"><%= f.select :kind, Feature::KINDS.collect {|k| [k.humanize, k]} %></div>
+    <div class="right"><p><%= f.select :kind, Feature::KINDS.collect {|k| [k.humanize, k]} %></p></div>
     <% else %>
-    <div class="right"><%= @feature.kind.humanize %></div>
+    <div class="right"><p><%= @feature.kind.humanize %></p></div>
     <% end %>
   <% end %>
 
-  <div class="left"><%= f.label :title %></div>
-  <div class="right"><% if @feature.open? %><%= f.text_field :title %><% else %><%= f.hidden_field :title %><%= h @feature.title %><% end %></div>
+  <div class="left"><p><%= f.label :title %></p></div>
+  <div class="right"><p><% if @feature.open? %><%= f.text_field :title %><% else %><%= f.hidden_field :title %><%= h @feature.title %><% end %></p></div>
 
-  <div class="left"><%= f.label :description %></div>
-  <div class="right"><% if @feature.open? %><%= f.text_area :description %><% else %><%= f.hidden_field :description %><%= replace_for_view(h(@feature.description)) %><% end %></div>
+  <div class="left"><p><%= f.label :description %></p></div>
+  <div class="right"><p><% if @feature.open? %><%= f.text_area :description %><% else %><%= f.hidden_field :description %><%= replace_for_view(h(@feature.description)) %><% end %></p></div>
 
   <% if admin? %>
-    <div class="left"><%= f.label :progress %></div>
-    <div class="right"><% if @feature.open? %><%= f.select :progress, Feature::PROGRESS.collect {|k| [k.humanize, k]} %><% else %><%= f.hidden_field :progress %><%= progress @feature.progress %><% end %></div>
+    <div class="left"><p><%= f.label :progress %></p></div>
+    <div class="right"><p><% if @feature.open? %><%= f.select :progress, Feature::PROGRESS.collect {|k| [k.humanize, k]} %><% else %><%= f.hidden_field :progress %><%= progress @feature.progress %><% end %></p></div>
   <% end %>
 
-  <div class="left"><%= f.label :status %></div>
-  <div class="right"><%= f.select :status, Feature::STATUSES.collect {|k| [k.humanize, k]} %></div>
+  <div class="left"><p><%= f.label :status %></p></div>
+  <div class="right"><p><%= f.select :status, Feature::STATUSES.collect {|k| [k.humanize, k]} %></p></div>
 
   <p class="edit">
     <%= f.submit "Save changes" %> or <%= link_to 'Cancel', @feature %>

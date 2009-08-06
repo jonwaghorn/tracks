@@ -12,6 +12,7 @@ class AreaController < ApplicationController
 
   def show
     @area = Area.find(params[:id])
+    @markers = Track.get_markers(@area.id)
   end
 
   def new

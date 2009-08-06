@@ -14,6 +14,7 @@ class RegionController < ApplicationController
   def show
     @region = Region.find(params[:id])
     @recent_track_reports = TrackReport.find_recent_by_region(params[:id])
+    @markers = Area.get_markers(@region.id)
   end
 
   def new

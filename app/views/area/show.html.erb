@@ -1,10 +1,10 @@
 <h1><%= @area.name %></h1>
-<% if :notice %><p class="notice"><%= flash[:notice] %></p><% end %>
+<% if flash[:notice] %><p class="notice"><%= flash[:notice] %></p><% end -%>
 <p><%= replace_for_view(h(@area.description)) %></p>
 
 <% if @area.zoom != 0 %>
 <h2>Tracks</h2><h3>&nbsp;</h3>
-<div id="map"></div>
+<div id="map"></div><p><input type="button" value="Reset map view" onclick="resetMap();"/></p>
 <% end %>
 
 <h2>Track type/distance summary</h2><h3>&nbsp;</h3>

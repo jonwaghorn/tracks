@@ -1,3 +1,8 @@
+38 2009-08-05 It's only a damn bullet, how much mess could I make?!?
+  - [feature] Add "map reset" button to Region and Area pages
+  - [bug fix] #0049 fix mess made by #0014, much work for a little feature fix...
+  - [bug fix] Hide track sumary on region page if there are no tracks
+
 37 2009-06-13
   - [feature] #0014 added simple bullet list formattting option
   - [bug fix] #0048 fixed map info window width

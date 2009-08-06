@@ -1,11 +1,11 @@
 <h1><%= @region.name %></h1>
-<% if :notice %><p class="notice"><%= flash[:notice] %></p><% end %>
+<% if flash[:notice] %><p class="notice"><%= flash[:notice] %></p><% end -%>
 
 <p><%= replace_for_view(h(@region.description)) %></p>
 
 <% if @region.zoom != 0 %>
 <h2>Areas</h2><h3>&nbsp;</h3>
-<div id="map"></div>
+<div id="map"></div><p><input type="button" value="Reset map view" onclick="resetMap();"/></p>
 <% end %>
 
 <%= render :partial => 'track_report/summary', :locals => {:title => 'Recent Track Reports'} %>

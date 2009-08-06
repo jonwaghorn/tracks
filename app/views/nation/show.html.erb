@@ -1,5 +1,5 @@
 <h1><%= @nation.name %></h1>
-<% if :notice %><p class="notice"><%= flash[:notice] %></p><% end %>
+<% if flash[:notice] %><p class="notice"><%= flash[:notice] %></p><% end -%>
 
 <p><%= replace_for_view(h(@nation.description)) %></p>
 
