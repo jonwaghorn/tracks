@@ -25,7 +25,7 @@ class Area < ActiveRecord::Base
 
   def tracks_summary
     summary = []
-    tracks.group_by(&:condition_id).each { |a| summary << [Condition.find(a[0]).name.to_s, a[1].collect(&:length).sum] unless a[0].nil? }
+    tracks.group_by(&:condition_id).each { |a| summary << [Condition.find(a[0]).name.to_s, a[1].collect(&:adjusted_length).sum] unless a[0].nil? }
     summary.sort_by {|a| a[1]}.reverse
   end
 

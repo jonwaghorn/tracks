@@ -55,7 +55,7 @@
 
 <% if @track.length != 0 %>
 <div class="left"><p>Length</p></div>
-<div class="right"><p><%= @track.length %>km</p></div>
+<div class="right"><p><%= distance @track.adjusted_length %></p></div>
 <% end %>
 
 <% if @track.condition_id != nil %>

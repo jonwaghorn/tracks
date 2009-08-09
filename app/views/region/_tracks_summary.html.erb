@@ -1,12 +1,13 @@
-<% if @region.tracks_summary.length > 0 %>
+<% tracks_summary = @region.tracks_summary %>
+<% if tracks_summary.length > 0 %>
 <%= heading "Track type/distance summary" %>
 
 <div class="track_summary">
-<% @region.tracks_summary.each do |summary| %>
+<% tracks_summary.each do |summary| %>
 <p class="left"><%= summary[0] %></p><p class="right"><%= distance(summary[1])%><p/>
 <% end %>
 <hr/>
-<p class="left">Total distance</p><p class="right"><%= distance((@region.tracks_summary.collect {|a| a[1]}).sum) %></p>
+<p class="left">Total distance</p><p class="right"><%= distance((tracks_summary.collect {|a| a[1]}).sum) %></p>
 </div>
 
 <p>Total number of tracks for <%= @region.name %>: <%= x = 0; @region.areas.each {|area| x += area.tracks.size }; x %></p>

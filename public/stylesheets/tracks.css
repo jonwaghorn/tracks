@@ -659,3 +659,8 @@ p.form_buttons {
   padding: 4px 0;
   border: 1px solid #ccc;
 }
+
+.note {
+  font-style: italic;
+  color: #555;
+}

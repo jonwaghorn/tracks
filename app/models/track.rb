@@ -4,6 +4,7 @@ class Track < ActiveRecord::Base
   require 'hpricot'
   include TwitterHelper
   include TextHelper
+  include Coords
 
   belongs_to :area
   has_many :track_akas, :order => 'name'
@@ -24,9 +25,17 @@ class Track < ActiveRecord::Base
 
   RECENT_TRACK_COUNT = 5
   RECENT_HISTORY_OFFSET = Time.now - 1.week
+  Track::LENGTH_SOURCE_CALC = 'calc'
+  Track::LENGTH_SOURCE_USER = 'user'
 
   def medias
     Media.find(:all, :conditions => ["ref_type = ? AND ref_id = ?", 'track', id])
+  end
+
+  # Apply % adjustment for calculated lengths
+  def adjusted_length
+    return length if length_source == LENGTH_SOURCE_USER
+    (length * (100 + length_adjust_percent)) / 100
   end
 
   def self.find_recent(offset = RECENT_HISTORY_OFFSET)
@@ -80,6 +89,7 @@ class Track < ActiveRecord::Base
     GMapTrack.delete(g_map_tracks)
     main_name = doc.search('name').first
     main_name = main_name.nil? ? name : main_name.inner_html
+    len = 0.0
 
     # Go through each 'placemark', get name and then process the coordinates
     doc.search("placemark").each_with_index do |placemark, i|
@@ -92,18 +102,25 @@ class Track < ActiveRecord::Base
           coord.strip!
           next if coord.empty?
           lng,lat,alt = coord.split(",")
-          # puts "#{lat}, #{lng}"
+          # puts "#{lat}, #{lng}, #{alt}"
           data << [lat.to_f,lng.to_f]
         end
 
         encoder = GMapPolylineEncoder.new()
         result = encoder.encode(data)
 
+        len += calculate_path_length(data)/1000
+
         # sub_name = name if sub_name.nil?
 
         GMapTrack.new(:track_id => id, :points => result[:points], :levels => result[:levels], :num_levels => result[:numLevels], :zoom => result[:zoomFactor], :sequence => i, :name => sub_name).save!
       end
     end
+
+    self.length = len
+    self.length_source = LENGTH_SOURCE_CALC
+    self.length_adjust_percent = 5
+    self.save!
   end
 
   # Track connections in array of [connecting_track_name,connection_id,track_id]
@@ -124,7 +141,7 @@ class Track < ActiveRecord::Base
     area_ids.each do |area_id|
       find(:all, :conditions => ["area_id = ?", area_id], :select => 'condition_id, length').each do |track|
         if track.length > 0 and track.condition_id != nil
-          summary[track.condition_id] = summary.has_key?(track.condition_id) ? summary[track.condition_id] + track.length : track.length
+          summary[track.condition_id] = summary.has_key?(track.condition_id) ? summary[track.condition_id] + track.adjusted_length : track.adjusted_length
         end
       end
     end

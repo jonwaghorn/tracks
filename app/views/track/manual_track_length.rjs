@@ -1,0 +1,1 @@
+page.replace_html("track_length_manual_auto", :partial => "form_length_user")

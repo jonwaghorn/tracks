@@ -70,6 +70,10 @@ class TrackController < ApplicationController
     @track = Track.find(params[:id])
   end
 
+  def manual_track_length
+    @track = Track.find(params[:id])
+  end
+
   def save_path
     @track = Track.find(params[:id])
     begin

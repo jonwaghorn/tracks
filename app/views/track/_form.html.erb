@@ -55,8 +55,23 @@
 <p><label for="track_desc_note">Other notes</label><br/>
 <%= text_area 'track', 'desc_note', "cols" =>70, "rows" => 5 %></p>
 
+
+
+
 <p><label for="track_length">Length (km)</label><br/>
-<%= text_field 'track', 'length', "size" => 8 %></p>
+  <span id="track_length_manual_auto">
+<% if @track.length_source == Track::LENGTH_SOURCE_CALC %>
+<%= hidden_field 'length_source', Track::LENGTH_SOURCE_CALC %>
+<%= text_field 'track', 'length', "size" => 8, :disabled => 'disabled' %>
+<%= select 'track', 'length_adjust_percent', (0..9) %> percentage adjustment (<span class="note">typically +5% allows for hills, corner cutting etc</span>)
+<br/><span class="note">Note: calculated from supplied GPS data, you can <%= link_to_remote 'manually', :url => {:action => 'manual_track_length', :id => @track} %> set the length.</span>
+<% else %>
+<%= render :partial => 'form_length_user' %>
+<% end %>
+</span>
+</p>
+
+
 
 <p><label for="track_condition_id">Conditions</label><br/>
 <%= select 'track', 'condition_id', Condition.find(:all).collect {|c| [c.name, c.id] } %></p>

@@ -12,7 +12,7 @@ module TrackHelper
       "name: \"#{gmt.name.nil? ? track.name : gmt.name}\"," \
       "page: '/track/show/#{track.id}'," \
       "grade: '#{track.track_grade.name}'," \
-      "length: '#{distance(track.length)}'," \
+      "length: '#{distance(track.adjusted_length)}'," \
       "conditions: '#{track.condition.name}'," \
       "description: \"#{overview}\"," \
       "segmentType: '#{path_type}'," \

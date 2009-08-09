@@ -1,3 +1,6 @@
+40 2009-08-07
+  - [feature] #0054 automatically calculate track length from GPS file
+
 39 2009-08-06 Squashing little bugs
   - [bug fix] #0060 fixed broken map edit views
   - [bug fix] #0044 show track paths in IE7
