@@ -1,3 +1,6 @@
+41 2009-08-09
+  - [feature] #0012 allow youtube and vorb videos to be embedded in text areas
+
 40 2009-08-07
   - [feature] #0054 automatically calculate track length from GPS file
 

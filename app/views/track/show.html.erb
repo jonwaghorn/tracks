@@ -95,16 +95,6 @@
 <% if creator? %><div id="upload_path_file"><%= render :partial => 'upload_link' %></div><% end %>
 <% end %>
 
-<% if admin? || @track.medias.length > 0 %>
-<%# if creator? || @track.medias.length > 0 %>
-<%= heading "Media" %>
-<% @track.medias.each do |media| %>
-<p><%= media.gimme %></p>
-<%= '<hr/>' if media != @track.medias.last %>
-<% end %>
-<% if creator? %><div id="add_media_link"><%= render :partial => 'add_media_link' %></div><% end %>
-<% end %>
-
 <hr/>
 
 <p class="edit"><%= link_to 'Edit', :action => 'edit', :id => @track %>
