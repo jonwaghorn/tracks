@@ -2,7 +2,7 @@
 <% if flash[:notice] %><p class="notice"><%= flash[:notice] %></p><% end -%>
 
 <%= replace_for_view(h(@special.content)) -%>
-<%= render :partial => 'track_report/summary', :locals => {:title => 'All Recent Track Reports'} %>
+<%#= render :partial => 'track_report/summary', :locals => {:title => 'All Recent Track Reports'} %>
 
 <%= heading "Stay connected" %>
 <p>
@@ -12,10 +12,15 @@
   <a href="http://twitter.com/tracks_org_nz" title="Follow updates on Twitter"><img align="absbottom" src="/images/twitter.png" alt=""/> Follow all updates on Twitter</a>
 </p>
 
-<% if admin? %>
+<% if creator? %>
 <hr/>
-<p class="edit"><%= link_to 'Edit', :action => 'edit', :id => @special %>
-|
-<%= link_to 'Add region', :controller => 'region', :action => 'new', :nation_id => @nation.id %>
+<p class="edit">
+<% if admin? %>
+<%= link_to 'Edit', :action => 'edit', :id => @special %>
+| <% end %>
+<% if creator? %>
+<%= link_to 'Add region', :controller => 'region', :action => 'new', :nation_id => @nation.id %> |
+<%= link_to 'Edit region order', :controller => 'nation', :action => 'edit_regions', :id => @nation.id %>
+<% end %>
 </p>
 <% end %>

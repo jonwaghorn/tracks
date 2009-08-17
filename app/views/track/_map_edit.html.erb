@@ -1,7 +1,7 @@
 <%= render :partial => 'shared/map_head' %>
 <script type="text/javascript">
 //<![CDATA[
-function onLoad() {
+function initialize() {
   if (GBrowserIsCompatible()) {
     lt = <%= @track.zoom != 0 ? @track.latitude : @track.area.zoom != 0 ? @track.area.latitude : -40.913512 %>;
     ln = <%= @track.zoom != 0 ? @track.longitude : @track.area.zoom != 0 ? @track.area.longitude : 172.705078 %>;

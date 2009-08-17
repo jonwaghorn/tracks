@@ -1,6 +1,6 @@
 class NationController < ApplicationController
 
-  before_filter :login_required, :only => [ :edit, :update, :new ]
+  before_filter :login_required, :only => [ :edit, :update, :edit_regions, :region_up, :region_down ]
 
   def index
     redirect_to :action => 'show', :id => Nation.find(:first)
@@ -12,21 +12,6 @@ class NationController < ApplicationController
 
   def show
     @nation = Nation.find(params[:id])
-  end
-
-  def new
-    @nation = Nation.new
-  end
-
-  def create
-    @nation = Nation.new(params[:nation])
-    if @nation.save
-      update_user_edit_stats
-      flash[:notice] = @nation.name + ' was successfully created.'
-      redirect_to :action => 'list'
-    else
-      render :action => 'new'
-    end
   end
 
   def edit
@@ -46,8 +31,19 @@ class NationController < ApplicationController
     end
   end
 
-  def destroy
-    Nation.find(params[:id]).destroy
-    redirect_to :action => 'list'
+  def edit_regions
+    @nation = Nation.find(params[:id])
+  end
+
+  def region_up
+    @nation = Nation.find(params[:id])
+    @nation.region_up(params[:posn].to_i)
+    @nation = Nation.find(params[:id]) # reload
+  end
+
+  def region_down
+    @nation = Nation.find(params[:id])
+    @nation.region_down(params[:posn].to_i)
+    @nation = Nation.find(params[:id]) # reload
   end
 end

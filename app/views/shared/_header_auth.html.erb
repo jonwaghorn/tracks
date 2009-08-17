@@ -1,9 +1,9 @@
 <p>
 <% if logged_in? %>
  &nbsp;<%= link_to @current_user.nil? ? current_user.screen_name : @current_user.screen_name, :controller => '/settings' %>
-| <%= link_to 'Log out', :controller => '/account', :action => 'logout' %>
+| <%= link_to 'Sign out', :controller => '/account', :action => 'logout' %>
 <% else %>
-<% if params[:action] == 'login' %>Log in<% else %><%= link_to 'Log in', :controller => '/account', :action => 'login' %><% end %>
+<% if params[:action] == 'login' %>Sign in<% else %><%= link_to 'Sign in', :controller => '/account', :action => 'login' %><% end %>
 |
 <% if params[:action] == 'signup' %>Sign up<% else %><%= link_to 'Sign up', :controller => '/account', :action => 'signup' %><% end %>
 <% end %>

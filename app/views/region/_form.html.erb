@@ -19,7 +19,18 @@
 
 <p><label>Map</label>
 <div id="map"></div></p>
-<p><label>Latitude </label><%= text_field 'region', 'latitude', :id => "region_latitude", :size => 15 %>
-<label>Longitude </label><%= text_field 'region', 'longitude', :id => "region_longitude", :size => 15 %>
-<label>Zoom </label><%= text_field 'region', 'zoom', :id => "region_zoom", :size => 4 %></p>
+<p><button type="button" onclick="startShape()" id="add_region" style="display:none;">Add region shape</button>
+<button type="button" onclick="editShape()" id="edit_region" style="display:none;">Edit region shape</button>
+<button type="button" onclick="fit()" id="fit_region">Auto-fit region</button>
 
+<% Region::COLOURS.each_with_index do |colour,i| %>
+<input id="region_colour_<%=i%>" type="radio" name="region[colour]" value="<%=i%>" <%= "checked" if @region.colour == i %> disabled="true" onClick="polygon.setStrokeStyle({color: '<%= colour %>'});polygon.setFillStyle({color: '<%= colour %>'});"><span style="background-color:<%= colour %>;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<% end %>
+
+<br/>
+<span id="edit_region_info">Region shapes are displayed on the front page map.</span><p>
+
+<input id="points" name="coords" value="<%#= @region.coords %>" type="hidden">
+<%= hidden_field 'region', 'latitude', :id => "region_latitude" %>
+<%= hidden_field 'region', 'longitude', :id => "region_longitude" %>
+<%= hidden_field 'region', 'zoom', :id => "region_zoom" %>

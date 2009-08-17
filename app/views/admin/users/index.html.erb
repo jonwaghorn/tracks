@@ -3,24 +3,32 @@
 
 <p>System time: <%= Time.now.to_s(:full) %></p>
 
-<table>
+<p class="edit">
+<%= link_to_unless @filter == 'all', 'All', :filter => 'all' %> |
+<%= link_to_unless @filter == 'creator', 'Creators', :filter => 'creator' %> |
+<%= link_to_unless @filter == 'admin', 'Admins', :filter => 'admin' %>
+</p>
 
+<div class="tableau">
+<table cellspacing="0" cellpadding="2">
   <tr>
-    <th>Name</th>
+    <th>Name (login)</th>
     <th>Edits</th>
     <th>Reports</th>
     <th>Last edit</th>
-    <th>Signup</th>
   </tr>
 
   <% @users.each do |user| %>
-  <tr>
-    <td><%= link_to user.screen_name, :action => 'show', :id => user %></td>
+  <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+    <td><%= link_to user.screen_name, :action => 'show', :id => user %> (<%= user.login %>)</td>
     <td><%= user.edits if user.edits > 0 %></td>
     <td><%= user.reports if user.reports > 0 %></td>
     <td><%= user.last_track_edit_at.to_s(:full) if !user.last_track_edit_at.nil? %></td>
-    <td><%= user.created_at.to_s(:full) %></td>
   </tr>
   <% end %>
 
 </table>
+
+<p><%= will_paginate @users %></p>
+
+</div>

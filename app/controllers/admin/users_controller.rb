@@ -6,7 +6,9 @@ class Admin::UsersController < ApplicationController
   before_filter :set_title
 
   def index
-    @users = User.find(:all, :order => 'last_track_edit_at DESC, created_at DESC')
+    @filter = params[:filter].nil? ? 'all' : params[:filter]
+    s = @filter == 'all' ? %w(viewer creator admin) : @filter == 'creator' ? %w(creator admin) : @filter
+    @users = User.paginate :page => params[:page], :conditions => ['privilege in (?)', s.to_a], :order => 'last_track_edit_at DESC, created_at DESC'
   end
 
   def show
@@ -34,7 +36,7 @@ class Admin::UsersController < ApplicationController
   def update_password
     @user = User.find(params[:id])
     params[:user][:password_confirmation] = params[:user][:password]
-    puts params[:user].inspect
+    # puts params[:user].inspect
     if @user.update_attributes(params[:user])
       flash[:notice] = @user.screen_name + ' password set.'
       redirect_to :action => 'show', :id => @user

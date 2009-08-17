@@ -1,11 +1,15 @@
 <div class="nav_outer"><div class="nav"><h1>Navigator</h1>
 <ul>
-<% current_title = %w(edit new).member?(params[:action]) ? ' (edit)' : '' %>
+<% current_title = %w(edit new edit_regions).member?(params[:action]) ? ' (edit)' : '' %>
 
-<% if params[:controller] == 'index' %>
+<% if params[:controller] =~ /index/ %>
 <%= render :partial => 'shared/nav_current', :locals => { :nav_level => 'main', :current => 'Home' + current_title } %>
 <% else %>
 <%= render :partial => 'shared/nav_home' %>
+<% end %>
+
+<% if params[:controller] =~ /nation/ %>
+<%= render :partial => 'shared/nav_current', :locals => { :nav_level => 'region', :current => 'Region order' + current_title } %>
 <% end %>
 
 <% if params[:controller] =~ /(index|region|area|track|track_aka)/ %>

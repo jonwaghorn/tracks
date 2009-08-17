@@ -1,1 +1,1 @@
-<li class="current"><div class="current_c"><div class="current_t"><div class="current_b"><span class="<%= nav_level %>"><a href="<%= link if defined? link %>"><%= current %></a></span></div></div></div></li>
+<li class="current"><div class="current_c"><div class="current_t"><div class="current_b"><span class="<%= nav_level %>"><%= link_to_unless (params[:action] =~ /(new|edit)/), current, (link if defined? link) %></span></div></div></div></li>

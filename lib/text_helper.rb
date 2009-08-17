@@ -21,12 +21,18 @@ module TextHelper
             name = Region.find(value, :select => 'name').name
           when 'nation'
             name = Nation.find(value, :select => 'name').name
+          when 'feature'
+            name = Feature.find(value, :select => 'title').title
           end
         rescue ActiveRecord::RecordNotFound
         end
         if name != nil
           if !unlinked
-            line = line.gsub(Regexp.new('\\[\\[' + key + ':' + value.to_s + '\\]\\]'), '<a href="/' + key + '/show/' + value.to_s + '">' + name + '</a>')
+            if (key == 'feature')
+              line = line.gsub(Regexp.new('\\[\\[' + key + ':' + value.to_s + '\\]\\]'), '<a href="/features/' + value.to_i.to_s + '" title="' + name + '">' + sprintf('%04i', value.to_i) + '</a>') # this is ugly...
+            else
+              line = line.gsub(Regexp.new('\\[\\[' + key + ':' + value.to_s + '\\]\\]'), '<a href="/' + key + '/show/' + value.to_s + '">' + name + '</a>')
+            end
           else
             line = line.gsub(Regexp.new('\\[\\[' + key + ':' + value.to_s + '\\]\\]'), name)
           end
@@ -37,6 +43,7 @@ module TextHelper
     # general replacements
     line = line.gsub(/\[\[br\]\]/, '<br/>') # [[br]] => html break
     line = line.gsub(/\[\[para\]\]/, '</p><p>') # [[para]] => new paragraph
+    line = line.gsub(/\[\[map\]\]/, '<div id="map"></div>')
     line = line.gsub(/\[\[link:tracks.org.nz(.*?)\]\]/, '[[link:http://tracks.org.nz\1]]')
     line = line.gsub(/\[\[link:www.tracks.org.nz(.*?)\]\]/, '[[link:http://tracks.org.nz\1]]')
     line = line.gsub(/\[\[link:http:\/\/www.tracks.org.nz(.*?)\]\]/, '[[link:http://tracks.org.nz\1]]')
@@ -48,8 +55,8 @@ module TextHelper
     line = line.gsub(/\[\[italic:(.*?)\]\]/, '<em>\1</em>') # [[italic:text]] => italic text
     line = line.gsub(/\[\[image:(http):(.*?):(.*?):(.*?):(.*?)\]\]/, '<img src="\1:\2" alt="\3" width="\4" height="\5"/>') # [[img:ref:width:height]]
     line = line.gsub(/\[\[bullet:(.*?)\]\]/, '</p><p class="bullet">\1</p><p>') # [[bullet:text]] => bullet text
-    line = line.gsub(/\[\[media:youtube:(.*?)\]\]/ , youtube_player('\1'))
-    line = line.gsub(/\[\[media:vorb:(.*?)\]\]/ , vorb_player('\1'))
+    line = line.gsub(/\[\[media:youtube:(.*?)\]\]/, youtube_player('\1'))
+    line = line.gsub(/\[\[media:vorb:(.*?)\]\]/, vorb_player('\1'))
 
     line = generic_view_tidy(line)
 
@@ -144,7 +151,7 @@ module TextHelper
   private
 
   def find_id_replacements(line)
-    find_replacements(line, /\[\[(nation|region|area|track):[0-9].*?\]\]/)
+    find_replacements(line, /\[\[(nation|region|area|track|feature):[0-9].*?\]\]/)
   end
 
   def find_name_replacements(line)

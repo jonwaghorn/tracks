@@ -16,7 +16,7 @@
 <script language="Javascript" type="text/javascript">
 //<![CDATA[
 google.load("search", "1");
-function OnLoad() {
+function initialize() {
   var siteSearch = new google.search.WebSearch();
   siteSearch.setUserDefinedClassSuffix("siteSearch");
   siteSearch.setSiteRestriction("tracks.org.nz");
@@ -29,7 +29,7 @@ function OnLoad() {
   searchControl.draw(document.getElementById("searchcontrol"));
   searchControl.execute("<%= @term %>");
 }
-google.setOnLoadCallback(OnLoad);
+google.setOnLoadCallback(initialize);
 //]]>
 </script>
 </head>

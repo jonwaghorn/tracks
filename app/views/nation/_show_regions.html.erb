@@ -1,0 +1,5 @@
+<table>
+<% @nation.regions.each_with_index do |region, i| -%>
+<tr id=""><td><%= link_to_remote(image_tag('/images/arrow_up.png'), :url => {:action => 'region_up', :id => @nation, :posn => i}, :html => {:title => 'move region up'}) if region != @nation.regions.first %></td><td><%= link_to_remote(image_tag('/images/arrow_down.png'), :url => {:action => 'region_down', :id => @nation, :posn => i}, :html => {:title => 'move region down'}) if region != @nation.regions.last %></td><td>&nbsp;<%= region.name %></td></tr>
+<%- end %>
+</table>

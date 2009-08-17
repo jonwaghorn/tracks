@@ -1,0 +1,12 @@
+<h1>Change region order for <%= @nation.name %></h1>
+<% if flash[:notice] %><p class="notice"><%= flash[:notice] %></p><% end -%>
+
+<p>This list shows the order the regions will be displayed in the main menu.<br/>Use the arrows to change the order.</p>
+
+<div id="region_list">
+<%= render :partial => 'show_regions' %>
+</div>
+
+<% if creator? %>
+<p class="edit"><%= link_to 'Done', :controller => 'index' %>
+<% end %>

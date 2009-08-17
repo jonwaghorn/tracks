@@ -23,4 +23,4 @@
 <% if creator? %>
  | <%= link_to 'Add area', :controller => 'area', :action => 'new', :region_id => @region.id %>
 <% end %>
-<% if ! logged_in? %> (requires login)<% end %></p>
+<% if ! logged_in? %> (requires sign-in)<% end %></p>

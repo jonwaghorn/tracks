@@ -28,4 +28,4 @@
 <% if logged_in? && creator? %>
  | <%= link_to 'Add track', :controller => 'track', :action => 'new', :area_id => @area.id, :area_name => @area.name %>
 <% end %>
-<% if ! logged_in? %> (requires login)<% end %></p>
+<% if ! logged_in? %> (requires sign-in)<% end %></p>

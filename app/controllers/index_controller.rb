@@ -1,13 +1,13 @@
 class IndexController < ApplicationController
 
   before_filter :login_required, :only => [ :edit, :update ]
-  layout 'shared', :except => [:rss]
-  before_filter :set_title
+  layout 'index', :except => [:rss]
 
   def index
     @special = Special.find(:first, :conditions => ["name = ?", 'index'])
     @recent_track_reports = TrackReport.find_recent[0,10]
     set_nation
+    @regions_with_points = Region.find(:all, :conditions => ["nation_id = ? AND points IS NOT NULL", @nation.id])
   end
 
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
@@ -38,10 +38,6 @@ class IndexController < ApplicationController
       format.html
       format.rss  { render :layout => false }
     end
-  end
-
-  def set_title
-    @title = 'Home'
   end
 
   private

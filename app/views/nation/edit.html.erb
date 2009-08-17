@@ -1,9 +1,5 @@
 <h1><%= @nation.name %> (edit)</h1>
 <% form_tag :action => 'update', :id => @nation do %>
   <%= render :partial => 'form' %>
-  <p><%= submit_tag 'Save changes' %></p>
+  <p class="form_buttons"><%= submit_tag 'Save changes' %> or <%= link_to 'Cancel', :action => 'show', :id => @nation %></p>
 <% end %>
-
-<hr/>
-
-<p><%= link_to 'Back', :action => 'show', :id => @nation %></p>

@@ -5,21 +5,21 @@
 <% else %>
 <p>The following lists are provided by users and will hopefully help focus our small (!) development team to make <b>Tracks</b> a better experience.</p>
 
-<p><% if logged_in? %>You get 3 votes that you can use. You can stack all your votes on one Feature/Problem or spread them around. Click the + to add a vote, - to remove. When a Feature/Problem gets closed your votes on it will become available for other voting.</p><p id="votes"><%= render :partial => 'votes' %><% else %>Log in to vote!<% end %></p>
+<p><% if logged_in? %>You get 3 votes that you can use. You can stack all your votes on one Feature/Problem or spread them around. Click the + to add a vote, - to remove. When a Feature/Problem gets closed your votes on it will become available for other voting.</p><p id="votes"><%= render :partial => 'votes' %><% else %>Sign in to vote!<% end %></p>
 <% end %>
 
 <%= heading "#{params[:view] ? "Closed" : "Suggested"} Features" %>
 
-<div id="features" class="features">
+<div id="features" class="tableau">
   <%= render :partial => 'features' %>
 </div>
 
 <%= heading "#{params[:view] ? "Closed" : "Reported"} Problems" %>
 
-<div id="problems" class="features">
+<div id="problems" class="tableau">
   <%= render :partial => 'problems' %>
 </div>
 
 <hr />
 
-<p class="edit"><%= link_to 'Suggest a feature', :action => 'new', :kind => 'feature' %><% if !logged_in? %>*<% end %> | <%= link_to 'Report a problem', :action => 'new', :kind => 'problem' %><% if !logged_in? %>*<% end %> | <% if params[:view] %><%= link_to "Show all open", features_path %><% else %><%= link_to "Show all closed", :action => 'index', :view => 'closed' %><% end %><% if !logged_in? %> (* requires login)<% end %></p>
+<p class="edit"><%= link_to 'Suggest a feature', :action => 'new', :kind => 'feature' %><% if !logged_in? %>*<% end %> | <%= link_to 'Report a problem', :action => 'new', :kind => 'problem' %><% if !logged_in? %>*<% end %> | <% if params[:view] %><%= link_to "Show all open", features_path %><% else %><%= link_to "Show all closed", :action => 'index', :view => 'closed' %><% end %><% if !logged_in? %> (* requires sign-in)<% end %></p>

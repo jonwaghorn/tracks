@@ -38,11 +38,13 @@ class RegionController < ApplicationController
   def edit
     @region = Region.find(params[:id])
     @region.description = replace_for_edit(@region.description)
+    @other_regions_with_points = Region.find(:all, :conditions => ["nation_id = ? AND points IS NOT NULL AND id != ?", @region.nation_id, @region.id])
   end
 
   def update
     @region = Region.find(params[:id])
     params[:region][:description] = replace_for_update(params[:region][:description])
+    @region.encode_region_area(params[:coords])
     if @region.update_attributes(params[:region])
       update_user_edit_stats
       flash[:notice] = @region.name + ' was successfully updated.'

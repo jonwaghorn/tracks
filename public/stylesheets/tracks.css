@@ -214,15 +214,15 @@ hr {
   background: #ccc;
 }
 
-.features {
+.tableau {
   margin: 10px;
 }
 
-.features table {
+.tableau table {
   border-collapse: collapse;
 }
 
-.features th {
+.tableau th {
   background: #dadada;
   padding: 8px;
   font-size: 80%;
@@ -230,7 +230,7 @@ hr {
   color: #000000;
 }
 
-.features td {
+.tableau td {
   border-bottom: 1px solid #dadada;
   padding: 8px;
   font-size: 80%;
@@ -522,7 +522,7 @@ h1 {
 .content .left {
   float: left;
   color: #aaa;
-  width: 105px;
+  width: 100px;
   text-align: right;
   margin: 0;
   padding: 0;
@@ -531,7 +531,7 @@ h1 {
 
 .content .right {
   color: black;
-  margin: 0 0 0 105px;
+  margin: 0 0 0 90px;
   padding: 0;
   border: 0;
 }

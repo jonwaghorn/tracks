@@ -1,3 +1,12 @@
+42 2009-08-17
+  - [feature] #0052 new nation-level map with clickable regions
+  - [feature] regions are now ordered. And the order can be set via the slightly clunky interface from home page
+  - [feature] changed 'log in', 'log out', 'sign up' to 'sign in', 'sign out' and 'sign up'. This seems to be the latest "way" to do this, a-la Google et-al
+  - [feature] allow 'creator' users to add regions
+  - [feature] convert [[feature:n]] into link to feature n
+  - [bug fix] #0062 re-tweak main content column width
+  - [bug fix] #0063 set last-changed-by user on track path file upload
+
 41 2009-08-09
   - [feature] #0012 allow youtube and vorb videos to be embedded in text areas
 

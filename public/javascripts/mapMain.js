@@ -18,7 +18,7 @@ var icon = getIcon();                  // Google icon to use for non-track views
 // Shared
 // ######
 
-function onLoad(pageType)
+function initialize(pageType)
 {  // Entry point from HTML
   if (GBrowserIsCompatible())
   {
