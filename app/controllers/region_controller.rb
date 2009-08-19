@@ -20,6 +20,9 @@ class RegionController < ApplicationController
   def new
     @region = Region.new
     @region.nation_id = params[:nation_id]
+    @region.latitude = @region.nation.latitude
+    @region.longitude = @region.nation.longitude
+    @region.zoom = @region.nation.zoom
   end
 
   def create

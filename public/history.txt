@@ -1,3 +1,7 @@
+43 2009-08-19
+  - [bug fix] resolved some issues with the changes for #0052
+  - [bug fix] #0063 fix for adjacent track 'last modifieds'
+
 42 2009-08-17
   - [feature] #0052 new nation-level map with clickable regions
   - [feature] regions are now ordered. And the order can be set via the slightly clunky interface from home page

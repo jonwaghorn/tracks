@@ -4,7 +4,12 @@ var regionPolys = [];
 function initialize() {
   if (GBrowserIsCompatible()) {
     map = new GMap2(document.getElementById("map"));
+    var uiOptions = map.getDefaultUI();
+    uiOptions.zoom.scrollwheel = false; // Disable scroll wheel zoom
+    map.setUI(uiOptions);
     map.setCenter(maplatlng, mapZoom);
+    map.addMapType(G_SATELLITE_3D_MAP);
+    map.setMapType(mapType);
     map.clearOverlays();
     map.setMapType(mapType);
     addRegions();
@@ -24,7 +29,7 @@ function addRegion(poly, ref) {
   GEvent.addListener(poly,'click',function(para){window.open("/region/show/" + ref, "_top");});
   GEvent.addListener(poly, 'mouseover', function() {
     map.getDragObject().setDraggableCursor("pointer");
-    this.setStrokeStyle({weight:4});
+    this.setStrokeStyle({weight:3});
   });
   GEvent.addListener(poly, 'mouseout', function() {
     map.getDragObject().setDraggableCursor("url(http://maps.google.com/intl/en_us/mapfiles/openhand.cur),default");
