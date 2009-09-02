@@ -2,26 +2,13 @@
 <% if flash[:notice] %><p class="notice"><%= flash[:notice] %></p><% end -%>
 
 <div class="left"><p>Name</p></div>
-<div class="right"><p><%= @track.name %></p></div>
+<div class="right"><p><%= @track.name %>
+<% akas = TrackAka.find(:all, :conditions => ["track_id = ?", @track.id]) %>
+<%= '<span style="color:#777777;">(' + akas.collect(&:name).sort.join(', ') + ')</span>' if akas.size > 0 %>
+</p></div>
 
 <div class="left"><p>Location</p></div>
 <div class="right"><p><%= @track.area.name %>, <%= @track.area.region.name %>, <%= @track.area.region.nation.name %></p></div>
-
-<% akas = TrackAka.find(:all, :conditions => ["track_id = ?", @track.id]) %>
-<% if akas.size > 0 %>
-<div class="left"><p>Also known as</p></div>
-<div class="right"><p>
-<% if akas.size > 0 %>
-<% aka_formatted = '' %>
-<% if akas.size > 1 %>
-<% akas[0...akas.size-1].collect do |a| aka_formatted += a.name + ', ' %><% end %>
-<% end %>
-<% aka_formatted += akas[-1].name %>
-<%= aka_formatted %>
-<% end %>
-</p>
-</div>
-<% end %>
 
 <% if ! @track.desc_overview.empty? && ! @track.desc_overview.blank? %>
 <div class="left"><p>Overview</p></div>
@@ -80,6 +67,8 @@
 
 <div class="left"><p>Created by</p></div>
 <div class="right"><p><%= User.find(@track.created_by).screen_name %></p></div>
+
+<!--p id='chart_div'></p-->
 
 <% if @track.zoom != 0 %>
 <%= heading "Google goodness" %>

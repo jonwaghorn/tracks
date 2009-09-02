@@ -1,3 +1,4 @@
+<% if params[:action] !~ /new|create/ %>
 <div class="nav_outer"><div class="nav"><h1>Latest Updated Tracks</h1>
 <% for track in Track.find_recent_by_region(@region.id) do %>
 <p><%= link_to track.name, { :controller => 'track', :action => 'show', :id => track.id} %><span class="date"> (<%= track.updated_at.to_s(:tracks).gsub(/^0/, '') %>)</span></p>
@@ -17,5 +18,6 @@
 <% end %>
 </tbody></table>
 </div></div>
+<% end %>
 <% end %>
 <% end %>

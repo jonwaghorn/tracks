@@ -1,5 +1,3 @@
-<%= render :partial => 'shared/map_head' %>
-<script type="text/javascript" src="/javascripts/mapMain.js"></script>
 
 <script type="text/javascript">
 //<![CDATA[
@@ -9,6 +7,9 @@ var mapType = <%= user_map_style %>;
 var regionColour = "<%= @region.colour %>";
 <% @markers.each do |marker| -%>
 markers.push({lat:<%=marker[0].to_s%>, lng:<%=marker[1].to_s%>, name:"<%=marker[2]%>", id:<%=marker[3].to_s%>});
-<%- end %>
+<%- end -%>
+<%- if !@region.points.nil? -%>
+regionPolys.push({<%= @region.get_encoded_region %>, fill: true, color: "<%= @region.get_colour %>", opacity: 0.2, outline: true});
+<%- end -%>
 //]]>
 </script>

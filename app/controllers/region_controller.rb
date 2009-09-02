@@ -23,18 +23,21 @@ class RegionController < ApplicationController
     @region.latitude = @region.nation.latitude
     @region.longitude = @region.nation.longitude
     @region.zoom = @region.nation.zoom
+    @other_regions_with_points = Region.find(:all, :conditions => ["nation_id = ? AND points IS NOT NULL", @region.nation_id])
   end
 
   def create
     @region = Region.new(params[:region])
     @region.nation_id = params[:nation_id]
+    @region.encode_region_area(params[:coords])
+    @other_regions_with_points = Region.find(:all, :conditions => ["nation_id = ? AND points IS NOT NULL", @region.nation_id])
     if @region.save
       update_user_edit_stats
       @region.tweet_new
       flash[:notice] = @region.name + ' was successfully created.'
-      redirect_to :controller => 'index'
+      redirect_to :action => 'show', :id => @region
     else
-      render :action => 'new'
+      render :action => 'new'#, :coords => params[:coords]
     end
   end
 
@@ -48,6 +51,7 @@ class RegionController < ApplicationController
     @region = Region.find(params[:id])
     params[:region][:description] = replace_for_update(params[:region][:description])
     @region.encode_region_area(params[:coords])
+    @other_regions_with_points = Region.find(:all, :conditions => ["nation_id = ? AND points IS NOT NULL AND id != ?", @region.nation_id, @region.id])
     if @region.update_attributes(params[:region])
       update_user_edit_stats
       flash[:notice] = @region.name + ' was successfully updated.'

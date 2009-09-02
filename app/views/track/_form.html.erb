@@ -4,14 +4,6 @@
 <p><label for="track_name">Name</label><br/>
 <%= text_field 'track', 'name'  %></p>
 
-<p><label for="track_area_id">Area</label><br/>
-<% if params[:action] == 'new' %>
-  <%= text_field 'track', 'area_id', :value => params[:area_name], :disabled => true %>
-<% else %>
-  <%= select 'track', 'area_id', Area.find(:all).collect {|c| [c.name, c.id] } %>
-<% end %>
-</p>
-
 <% if params[:action] !~ /new|create/ %>
 <p><label for="track_area_id">Also known as</label><br/>
 <% aka_names = TrackAka.find(:all, :conditions => ["track_id = ?", @track.id], :select => 'name').collect {|a| a.name} %>
@@ -20,6 +12,14 @@
 (<%= link_to 'Edit', :controller => 'track_aka', :action => 'list', :track_id => @track.id, :track_name => @track.name %>|<% else %>(<% end %><%= link_to 'New', :controller => 'track_aka', :action => 'new', :track_id => @track.id, :track_name => @track.name %>)
 </p>
 <% end %>
+
+<p><label for="track_area_id">Area</label><br/>
+<% if params[:action] == 'new' %>
+  <%= text_field 'track', 'area_id', :value => params[:area_name], :disabled => true %>
+<% else %>
+  <%= select 'track', 'area_id', Area.find(:all).collect {|c| [c.name, c.id] } %>
+<% end %>
+</p>
 
 <p><label for="track_desc_overview">Overview</label><br/>
 <%= text_area 'track', 'desc_overview', "cols" =>70, "rows" => 5 %></p>

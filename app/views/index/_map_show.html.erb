@@ -6,7 +6,7 @@ var maplatlng = new GLatLng(<%= @nation.latitude %>,<%= @nation.longitude %>);
 var mapZoom = <%= @nation.zoom %>;
 var mapType = <%= user_map_style %>;
 <%- @regions_with_points.each do |region| -%>
-regionPolys.push([{<%= region.get_encoded_region %>, fill: true, color: "<%= region.get_colour %>", opacity: 0.2, outline: true}, <%= region.id %>]);
+regionPolys.push([{<%= region.get_encoded_region %>, fill: true, color: "<%= region.get_colour %>", opacity: 0.2, outline: true}, "<%= region.id %>", "<%= region.name %>"]);
 <%- end -%>
 //]]>
 </script>

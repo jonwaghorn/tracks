@@ -20,11 +20,11 @@ function initialize() {
 
 function addRegions() {
   for (var i = 0; i < regionPolys.length; i++) {
-    addRegion(new GPolygon.fromEncoded(regionPolys[i][0]), regionPolys[i][1]);
+    addRegion(new GPolygon.fromEncoded(regionPolys[i][0], {mouseOutTolerance:1}), regionPolys[i][1], regionPolys[i][2]);
   }
 }
 
-function addRegion(poly, ref) {
+function addRegion(poly, ref, tooltip) {
   map.addOverlay(poly);
   GEvent.addListener(poly,'click',function(para){window.open("/region/show/" + ref, "_top");});
   GEvent.addListener(poly, 'mouseover', function() {
@@ -36,4 +36,3 @@ function addRegion(poly, ref) {
     this.setStrokeStyle({weight:2});
   });
 }
-

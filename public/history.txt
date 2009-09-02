@@ -1,3 +1,10 @@
+44 2009-09-02
+  - [feature] #0052 show other regions when adding a new region
+  - [feature] tidied up viewing of Track AKAs, still needs fix up for editing tho...
+  - [bug fix] began tidying the various maps javascript files
+  - [bug fix] #0052 tweaked the region mouse-out-tolerance for a more 'snappy' feel hovering over regions
+  - [bug fix] fix error with validation failure on region create
+
 43 2009-08-19
   - [bug fix] resolved some issues with the changes for #0052
   - [bug fix] #0063 fix for adjacent track 'last modifieds'

@@ -1,42 +1,68 @@
 var map;
 var polygon = 0;
-var icon = getIcon();
-var regionPolys = [];
+var markers = new Array();             // Non-track map markers
+var icon = getIcon();                  // Google icon to use for non-track views
+var regionPolys = [];                  // Raw region polygon data
+var regionPoly;                        // Region GPolygon
+var regionShowHide = false;            // Toggle for showing/hiding region
 
 // document.getElementById("area").innerHTML = (Math.round(polygon.getArea() / 10000) / 100) + "km<sup>2</sup>";
 
-function initialize() {
+function initialize(action) {
   if (GBrowserIsCompatible()) {
-    map = new GMap2(document.getElementById("map"));
-    var uiOptions = map.getDefaultUI();
-    uiOptions.zoom.scrollwheel = false; // Disable scroll wheel zoom
-    map.setUI(uiOptions);
-    map.setCenter(maplatlng, mapZoom);
-    map.addMapType(G_SATELLITE_3D_MAP);
-    map.setMapType(mapType);
-    map.clearOverlays();
-    addAreas();
-    addRegions();
-    GEvent.addListener(map, "moveend", function() {
-      var center = map.getCenter();
-      document.getElementById("region_latitude").value = center.lat();
-      document.getElementById("region_longitude").value = center.lng();
-      document.getElementById("region_zoom").value = map.getZoom();
-    });
-    if (polygon) {
-      map.addOverlay(polygon);
-      updatePolyPoints(polygon);
-      document.getElementById("edit_region").style.display = 'inline';
-      document.getElementById("add_region").style.display = 'none';
-      document.getElementById("fit_region").disabled = false;
-      enableColourOptions();
-    } else {
-      document.getElementById("edit_region").style.display = 'none';
-      document.getElementById("add_region").style.display = 'inline';
-      document.getElementById("fit_region").disabled = true;
+    setupMap();
+    switch(action) {
+      case 'show':
+        setupMapForShow();
+        break;    
+      default:
+        setupMapForEdit();
     }
   } else {
     document.getElementById("map").innerHTML="This website uses Google Maps, which appear not to work with your browser. See the FAQ.";
+  }
+}
+
+function setupMap() {
+  map = new GMap2(document.getElementById("map"));
+  var uiOptions = map.getDefaultUI(); // Get default options
+  uiOptions.zoom.scrollwheel = false; // Disable scroll wheel zoom
+  map.setUI(uiOptions); // Set the map's interface
+  map.setCenter(maplatlng, mapZoom);
+  map.addMapType(G_SATELLITE_3D_MAP);
+  G_SATELLITE_3D_MAP.getName = function() {return "Earth 3D"}  // Rename Google Earth map type button
+  map.setMapType(mapType);
+  // *** GOverviewMapControl currently broken for minimized ***
+  // ovMap = new GOverviewMapControl(new GSize(100,80));
+  // map.addControl(ovMap);
+  // ovMap.hide(true);
+}
+
+function setupMapForShow() {
+  addMarkers('area');  // markers for a Region are Area markers
+  addRegionForShow();
+}
+
+function setupMapForEdit() {
+  addAreas();
+  addRegions();
+  GEvent.addListener(map, "moveend", function() {
+    var center = map.getCenter();
+    document.getElementById("region_latitude").value = center.lat();
+    document.getElementById("region_longitude").value = center.lng();
+    document.getElementById("region_zoom").value = map.getZoom();
+  });
+  if (polygon) {
+    map.addOverlay(polygon);
+    updatePolyPoints(polygon);
+    document.getElementById("edit_region").style.display = 'inline';
+    document.getElementById("add_region").style.display = 'none';
+    document.getElementById("fit_region").disabled = false;
+    enableColourOptions();
+  } else {
+    document.getElementById("edit_region").style.display = 'none';
+    document.getElementById("add_region").style.display = 'inline';
+    document.getElementById("fit_region").disabled = true;
   }
 }
 
@@ -130,4 +156,37 @@ function addRegions() {
   for (var i = 0; i < regionPolys.length; i++) {
     map.addOverlay(new GPolygon.fromEncoded(regionPolys[i]));
   }
+}
+
+function addRegionForShow() {
+  if (regionPolys.length == 1) { // expects 0 or 1 regions
+    regionPoly = new GPolygon.fromEncoded(regionPolys[0]);
+    map.addOverlay(regionPoly);
+    showHideRegion();
+  }
+}
+
+function showHideRegion() {
+  if (regionShowHide) {
+    regionPoly.show();
+  }
+  else {
+    regionPoly.hide()
+  }
+  regionShowHide = !regionShowHide;
+}
+
+function addMarkers(pageType)
+{  // all the markers for a page using pre-setup markers var
+  for (var i = 0; i <= markers.length - 1; i++)
+  {
+    map.addOverlay(createMarker(new GLatLng(markers[i].lat, markers[i].lng), {title:markers[i].name, icon:icon}, "/" + pageType + "/show/" + markers[i].id))
+  }
+}
+
+function createMarker(point,opts,url)
+{  // a single icon marker
+  var marker = new GMarker(point,opts);
+  GEvent.addListener(marker,"click",function(){window.open(url, "_top");});
+  return marker;
 }

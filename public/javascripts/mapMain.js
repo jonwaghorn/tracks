@@ -2,7 +2,6 @@
 // Polylines don't display in Earth map type.
 
 var map;                               // Reference to the map object
-var mapContainer;                      // Name of the DIV that will contain the map
 var tracks = new Array();              // 2D list of tracks.  Allows for possibility that first dimension represents tracks and second dimension is segments of each track
 var trackData = new Array();           // Detailed data for each track, including encoded polyline
 var numSegments = 0;                   // Number of segments in the current track
@@ -22,11 +21,12 @@ function initialize(pageType)
 {  // Entry point from HTML
   if (GBrowserIsCompatible())
   {
-    setup();
+    setupMap();
     switch(pageType)
     {
       case 'region':
         addMarkers('area');  // markers for a Region are Area markers
+        addRegion();
         break;    
       case 'area':
         addMarkers('track');  // markers for an Area are Track markers
@@ -41,10 +41,13 @@ function initialize(pageType)
   }
 }
 
-function setup()
-{  // Setup the map
-  mapContainer = document.getElementById("map");
-  map = new GMap2(mapContainer);
+// google.load("visualization", "1", {packages:["areachart"]});
+function initElevationChart() {
+  // drawElevationChart();
+}
+
+function setupMap() {
+  map = new GMap2(document.getElementById("map"));
   var uiOptions = map.getDefaultUI(); // Get default options
   uiOptions.zoom.scrollwheel = false; // Disable scroll wheel zoom
   map.setUI(uiOptions); // Set the map's interface
@@ -58,8 +61,7 @@ function setup()
   // ovMap.hide(true);
 }
 
-function resetMap()
-{  // Restore the map to the default settings.
+function resetMap() { // Restore the map to the default settings.
   map.closeInfoWindow();
   map.setCenter(maplatlng, mapZoom, mapType);
 }
@@ -173,6 +175,24 @@ function handleLineInteraction(line)
     }
   );
   return line;
+}
+
+function drawElevationChart() {
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Distance');
+  data.addColumn('number', 'Altitude');
+  data.addRows(4);
+  data.setValue(0, 0, '0');
+  data.setValue(0, 1, 1000);
+  data.setValue(1, 0, '');
+  data.setValue(1, 1, 1170);
+  data.setValue(2, 0, '');
+  data.setValue(2, 1, 660);
+  data.setValue(3, 0, '400');
+  data.setValue(3, 1, 1030);
+
+  var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+  chart.draw(data, {width: 400, height: 240, min: 0, legend: 'none', enableTooltip: 'false', pointSize: 0, colors: ['orange']});
 }
 
 // ###############
