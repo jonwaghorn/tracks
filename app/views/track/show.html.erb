@@ -68,7 +68,28 @@
 <div class="left"><p>Created by</p></div>
 <div class="right"><p><%= User.find(@track.created_by).screen_name %></p></div>
 
-<!--p id='chart_div'></p-->
+
+<% visualization "my_chart", "MotionChart", :width => 600, :height => 400, :html => {:class => "graph_chart"} do |chart| 
+%>
+  <% chart.string "Fruit" %>
+  <% chart.date "Date" %>
+  <% chart.number "Sales" %>
+  <% chart.number "Expenses" %>
+  <% chart.string "Location" %>
+  
+  <% chart.add_rows([
+      ["Apples", Date.new(1998,1,1), 1000,300,'East'],
+      ["Oranges", Date.new(1998,1,1), 950,200,'West'],
+      ["Bananas", Date.new(1998,1,1), 300,250,'West'],
+      ["Apples", Date.new(1998,2,1), 1200,400,'East'],
+      ["Oranges", Date.new(1998,2,1), 950,150,'West'],
+      ["Bananas", Date.new(1998,2,1), 788,617,'West']
+    ]) %>
+<% end %>
+
+
+
+<div id="my_chart"></div>
 
 <% if @track.zoom != 0 %>
 <%= heading "Google goodness" %>

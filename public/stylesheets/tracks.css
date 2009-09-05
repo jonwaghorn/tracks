@@ -664,3 +664,22 @@ p.form_buttons {
   font-style: italic;
   color: #555;
 }
+
+#regions_list ul {
+/*  border:1px solid;*/
+  padding-left:0;
+}
+
+#regions_list li {
+  list-style: none;
+  cursor: -moz-grab;
+  margin: 5px 20px;
+/*  padding:2px 0;*/
+  width:inherit;
+  white-space:nowrap;
+/*  background-color:red;*/
+  background-image:url(/images/arrow_up_down.png);
+  background-repeat:no-repeat;
+  background-position:0 0;
+  padding-left:30px;
+}

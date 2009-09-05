@@ -7,33 +7,13 @@ class Nation < ActiveRecord::Base
   validates_uniqueness_of :name
   validates_presence_of   :description
 
-  def region_up(i)
-    return if i <= 0
-    reset_region_order
-    regions[i - 1].sequence += 1
-    regions[i].sequence -= 1
-    regions[i-1].save!
-    regions[i].save!
-  end
-
-  def region_down(i)
-    return if (i+1) >= regions.length
-    reset_region_order
-    regions[i + 1].sequence -= 1
-    regions[i].sequence += 1
-    regions[i+1].save!
-    regions[i].save!
-  end
-  
-  protected
-  
-  # These things can get out of whack, edge case and infrequently used
-  # Doesn't matter about inefficiency...
-  def reset_region_order
-    # get the default order and re-apply the sequence
-    regions.each_with_index do |r,i|
-      r.sequence = i
-      r.save!
+  # Update the region sequence based on the region ids in new_order
+  def save_region_order(new_order)
+    new_order.each_with_index do |region_id, i|
+      region = Region.find(region_id)
+      region.sequence = i+1
+      region.save!
     end
   end
+
 end

@@ -1,0 +1,1 @@
+page << "document.getElementById('region_order_list').value = '#{@new_order}';"

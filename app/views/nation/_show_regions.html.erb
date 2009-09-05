@@ -1,5 +1,7 @@
-<table>
-<% @nation.regions.each_with_index do |region, i| -%>
-<tr id=""><td><%= link_to_remote(image_tag('/images/arrow_up.png'), :url => {:action => 'region_up', :id => @nation, :posn => i}, :html => {:title => 'move region up'}) if region != @nation.regions.first %></td><td><%= link_to_remote(image_tag('/images/arrow_down.png'), :url => {:action => 'region_down', :id => @nation, :posn => i}, :html => {:title => 'move region down'}) if region != @nation.regions.last %></td><td>&nbsp;<%= region.name %></td></tr>
-<%- end %>
-</table>
+<ul id="regions_edit_list">
+  <% @nation.regions.each do |region| %>
+    <% domid = "region_#{region.id}" %>
+    <li class="region_item" id="<%= domid %>"><%= region.name %></li>
+  <% end %>
+</ul>
+<%= sortable_element 'regions_edit_list', :url => {:action => 'update_region_order'} %>

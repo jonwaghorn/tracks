@@ -1,3 +1,7 @@
+45 2009-09-05
+  - [feature] Jazzed up the edit region order page. Uses whizzy drag and drop, and has Cancel option.
+  - [infrastructure] Updated Rails to version 2.3.4
+
 44 2009-09-02
   - [feature] #0052 show other regions when adding a new region
   - [feature] tidied up viewing of Track AKAs, still needs fix up for editing tho...

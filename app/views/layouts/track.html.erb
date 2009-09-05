@@ -12,7 +12,8 @@
 <%= javascript_include_tag :defaults %>
 <%= render :partial => 'shared/ie' %>
 <% if params[:action] == 'show' %>
-<!--script type='text/javascript' src='http://www.google.com/jsapi'></script-->
+<%= include_visualization_api %>
+<%= render_visualizations %>
 <%= render :partial => 'map_show' %>
 <% else %>
 <%= render :partial => 'map_edit' %>

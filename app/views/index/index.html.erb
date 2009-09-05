@@ -20,7 +20,7 @@
 | <% end %>
 <% if creator? %>
 <%= link_to 'Add region', :controller => 'region', :action => 'new', :nation_id => @nation.id %> |
-<%= link_to 'Edit region order', :controller => 'nation', :action => 'edit_regions', :id => @nation.id %>
+<%= link_to 'Edit region order', :controller => 'nation', :action => 'edit_region_order', :id => @nation.id %>
 <% end %>
 </p>
 <% end %>

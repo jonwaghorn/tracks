@@ -1,1 +1,0 @@
-page.replace_html('region_list', :partial => 'show_regions')

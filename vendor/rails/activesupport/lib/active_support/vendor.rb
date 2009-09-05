@@ -6,21 +6,23 @@ begin
 rescue Gem::LoadError
   $:.unshift "#{File.dirname(__FILE__)}/vendor/builder-2.1.2"
 end
+require 'builder'
 
 begin
-  gem 'xml-simple', '~> 1.0.11'
+  gem 'memcache-client', '>= 1.7.4'
 rescue Gem::LoadError
-  $:.unshift "#{File.dirname(__FILE__)}/vendor/xml-simple-1.0.11"
+  $:.unshift "#{File.dirname(__FILE__)}/vendor/memcache-client-1.7.4"
 end
 
 begin
-  gem 'memcache-client', '~> 1.5.0'
+  gem 'tzinfo', '~> 0.3.12'
 rescue Gem::LoadError
-  $:.unshift "#{File.dirname(__FILE__)}/vendor/memcache-client-1.5.0"
+  $:.unshift "#{File.dirname(__FILE__)}/vendor/tzinfo-0.3.12"
 end
 
 begin
-  gem 'tzinfo', '~> 0.3.11'
+  gem 'i18n', '~> 0.1.3'
 rescue Gem::LoadError
-  $:.unshift "#{File.dirname(__FILE__)}/vendor/tzinfo-0.3.11"
+  $:.unshift "#{File.dirname(__FILE__)}/vendor/i18n-0.1.3/lib"
+  require 'i18n'
 end

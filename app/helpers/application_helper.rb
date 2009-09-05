@@ -1,7 +1,7 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   include TextHelper
-  # include GoogleVisualization
+  include GoogleVisualization
 
   SILLY_SALUTATIONS = [
     'sweet', 'sweet as', 'sweet as bro',

@@ -1,0 +1,19 @@
+<h1>Change region order for <%= @nation.name %></h1>
+<% if flash[:notice] %><p class="notice"><%= flash[:notice] %></p><% end -%>
+
+<p>This is the order the regions will be displayed in the main menu. Drag them around to change the order.</p>
+
+<% form_tag :action => 'save_region_order', :id => @nation do %>
+
+  <input id="region_order_list" name="new_region_order" value="<%#= @region.coords %>" type="hidden">
+
+  <div id="regions_list">
+  <%= render :partial => 'show_regions' %>
+  </div>
+
+  <p class="form_buttons"><%= submit_tag 'Save changes' %> or <%= link_to 'Cancel', :controller => 'index' %></p>
+<% end %>
+
+
+
+

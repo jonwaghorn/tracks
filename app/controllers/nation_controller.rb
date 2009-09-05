@@ -8,7 +8,7 @@ class NationController < ApplicationController
 
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
   verify :method => :post, :only => [ :destroy, :create, :update ],
-         :redirect_to => { :action => :index }
+  :redirect_to => { :action => :index }
 
   def show
     @nation = Nation.find(params[:id])
@@ -31,19 +31,21 @@ class NationController < ApplicationController
     end
   end
 
-  def edit_regions
+  def edit_region_order
     @nation = Nation.find(params[:id])
   end
 
-  def region_up
-    @nation = Nation.find(params[:id])
-    @nation.region_up(params[:posn].to_i)
-    @nation = Nation.find(params[:id]) # reload
+  def update_region_order
+    @new_order = params[:regions_edit_list].join(',')
   end
 
-  def region_down
+  def save_region_order
     @nation = Nation.find(params[:id])
-    @nation.region_down(params[:posn].to_i)
-    @nation = Nation.find(params[:id]) # reload
+    if !params[:new_region_order].empty?
+      @nation.save_region_order(params[:new_region_order].split(','))
+      update_user_edit_stats
+      flash[:notice] = "Region order for #{@nation.name} successfully updated."
+    end
+    redirect_to :controller => 'index'
   end
 end
