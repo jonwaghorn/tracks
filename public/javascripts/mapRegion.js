@@ -190,3 +190,12 @@ function createMarker(point,opts,url)
   GEvent.addListener(marker,"click",function(){window.open(url, "_top");});
   return marker;
 }
+
+// ###############################
+// Common, move to shared place...
+// ###############################
+
+function resetMap() { // Restore the map to the default settings.
+  map.closeInfoWindow();
+  map.setCenter(maplatlng, mapZoom, mapType);
+}

@@ -12,8 +12,8 @@
 <%= javascript_include_tag :defaults %>
 <%= render :partial => 'shared/ie' %>
 <% if params[:action] == 'show' %>
-<%= include_visualization_api %>
-<%= render_visualizations %>
+<%#= include_visualization_api %>
+<%#= render_visualizations %>
 <%= render :partial => 'map_show' %>
 <% else %>
 <%= render :partial => 'map_edit' %>
