@@ -161,7 +161,7 @@ class Track < ActiveRecord::Base
   end
 
   def overview_is_not_empty
-    errors.add(nil, "Overview cannot be empty.") if desc_overview.empty?
+    errors.add_to_base("Overview cannot be empty.") if desc_overview.blank?
   end
 
   def fix_name

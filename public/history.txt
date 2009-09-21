@@ -1,3 +1,7 @@
+47 2009-09-21 Two little bugs...
+  - [bug fix] Fix validation crash when track Overview is not supplied.
+  - [bug fix] Fix region polygon editing when it is not added on the initial region create.
+
 46 2009-09-06
   - [bug fix] #0065 Fix region reset map feature
   - [bug fix] Removed experimental chart, added previously by mistake

@@ -12,6 +12,7 @@ class TrackController < ApplicationController
 
   def show
     @track = Track.find(params[:id])
+    @track_akas = TrackAka.find(:all, :conditions => ["track_id = ?", @track.id])
     @existing_connections = @track.get_connections
     @ref_id = @track.id
   end

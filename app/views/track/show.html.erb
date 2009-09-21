@@ -3,8 +3,7 @@
 
 <div class="left"><p>Name</p></div>
 <div class="right"><p><%= @track.name %>
-<% akas = TrackAka.find(:all, :conditions => ["track_id = ?", @track.id]) %>
-<%= '<span style="color:#777777;">(' + akas.collect(&:name).sort.join(', ') + ')</span>' if akas.size > 0 %>
+<%= '<span style="color:#777777;">(' + @track_akas.collect(&:name).sort.join(', ') + ')</span>' if @track_akas.size > 0 %>
 </p></div>
 
 <div class="left"><p>Location</p></div>

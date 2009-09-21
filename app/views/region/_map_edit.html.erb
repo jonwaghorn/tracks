@@ -5,7 +5,7 @@ var mapZoom = <%= @region.zoom %>;
 var mapType = <%= user_map_style %>;
 var regionColour = "<%= @region.get_colour %>";
 var regionColourCount = <%= Region::COLOURS.length %>;
-<%- if !@region.points.nil? %>polygon = new GPolygon.fromEncoded({<%= @region.get_encoded_region %>, fill: true, color: "<%= @region.get_colour %>", opacity: 0.2, outline: true});<% end %>
+<%- if !@region.points.blank? %>polygon = new GPolygon.fromEncoded({<%= @region.get_encoded_region %>, fill: true, color: "<%= @region.get_colour %>", opacity: 0.2, outline: true});<% end %>
 function addAreas() {
 <%- Area.get_markers(@region.id).each do |area| -%>
 map.addOverlay(new GMarker(new GLatLng(<%=area[0].to_s%>,<%=area[1].to_s%>),{title:"<%=area[2]%>",icon:icon}))
