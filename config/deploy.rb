@@ -41,7 +41,7 @@ namespace :deploy do
   end
 
   task :restart, :roles => :app do
-    run "#{current_path}/script/process/reaper --dispatcher=dispatch.fcgi"
+    run "pkill -9 -u cheekym dispatch.fcgi"
   end
 
 end
