@@ -3,21 +3,21 @@ set :user, 'cheekym'
 task :production do
   set :application, 'tracks'
   set :domain, 'tracks.org.nz'
-set :repository, "#{user}@#{domain}:/home/#{user}/git/#{application}"
-set :deploy_to, "/home/#{user}/apps/#{application}"
-role :app, domain
-role :web, domain
-role :db, domain, :primary => true
+  set :repository, "#{user}@#{domain}:/home/#{user}/git/#{application}"
+  set :deploy_to, "/home/#{user}/apps/#{application}"
+  role :app, domain
+  role :web, domain
+  role :db, domain, :primary => true
 end
 
 task :stage do
   set :application, 'stage'
   set :domain, 'stage.tracks.org.nz'
-set :repository, "#{user}@#{domain}:/home/#{user}/git/#{application}"
-set :deploy_to, "/home/#{user}/apps/#{application}"
-role :app, domain
-role :web, domain
-role :db, domain, :primary => true
+  set :repository, "#{user}@#{domain}:/home/#{user}/git/#{application}"
+  set :deploy_to, "/home/#{user}/apps/#{application}"
+  role :app, domain
+  role :web, domain
+  role :db, domain, :primary => true
 end
 
 set :scm, :git

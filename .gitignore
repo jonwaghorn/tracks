@@ -2,6 +2,7 @@
 log/*.log
 tmp/**/*
 config/database.yml
+config/environment.rb
 db/schema.rb
 public/images/simple_captcha
 public/paths
