@@ -11,7 +11,7 @@ task :production do
 end
 
 task :stage do
-  set :application, 'stage'
+  set :application, 'tracks.stage'
   set :domain, 'stage.tracks.org.nz'
   set :repository, "#{user}@#{domain}:/home/#{user}/git/tracks"
   set :deploy_to, "/home/#{user}/apps/#{application}"
@@ -52,6 +52,7 @@ namespace :deploy do
   task :finishing_touches, :roles => :app do
     run "cp -pf #{deploy_to}/to_copy/environment.rb #{current_path}/config/environment.rb"
     run "cp -pf #{deploy_to}/to_copy/database.yml #{current_path}/config/database.yml"
+    run "cp -pf #{deploy_to}/to_copy/.htaccess #{current_path}/public/.htaccess"
     run "ln -s #{deploy_to}/shared/paths #{current_path}/public/paths"
   end
 end
