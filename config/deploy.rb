@@ -1,21 +1,51 @@
-set :application, "tracks"
-set :repository,  "/Users/Jonny/svnroot"
+set :user, 'cheekym'
 
-# If you aren't deploying to /u/apps/#{application} on the target
-# servers (which is the default), you can specify the actual location
-# via the :deploy_to variable:
-# set :deploy_to, "/var/www/#{application}"
-
-# If you aren't using Subversion to manage your source code, specify
-# your SCM below:
-# set :scm, :subversion
-
-role :app, URL_BASE
-role :web, URL_BASE
-role :db,  URL_BASE, :primary => true
-
-task :restart_web_server, :roles => :web do
-  # restart your web server here
+task :production do
+  set :application, 'tracks'
+  set :domain, 'tracks.org.nz'
 end
 
-after "deploy:start", :restart_web_server
+task :stage do
+  set :application, 'stage'
+  set :domain, 'stage.tracks.org.nz'
+end
+
+set :repository, "#{user}@#{domain}:/home/#{user}/git/#{application}"
+set :scm, :git
+set :scm_username, user
+set :runner, user
+#set :scm_verbose, true
+set :use_sudo, false
+set :branch, "master"
+set :deploy_via, :checkout
+set :git_shallow_clone, 1
+
+set :deploy_to, "/home/#{user}/apps/#{application}"
+set :chmod755, "app config db lib public vendor script script/* public/disp*"
+
+set :group_writable, false
+default_run_options[:pty] = true
+role :app, domain
+role :web, domain
+role :db, domain, :primary => true
+
+namespace :deploy do
+
+  task :start, :roles => :app do
+    run "rm -rf /home/#{user}/public_html/#{domain};ln -s #{current_path}/public /home/#{user}/public_html/#{domain}"
+  end
+
+  task :restart, :roles => :app do
+    run "#{current_path}/script/process/reaper --dispatcher=dispatch.fcgi"
+  end
+
+end
+
+after 'deploy:symlink', 'deploy:finishing_touches'
+
+namespace :deploy do
+  task :finishing_touches, :roles => :app do
+    run "cp -pf #{deploy_to}/to_copy/environment.rb #{current_path}/config/environment.rb"
+    run "cp -pf #{deploy_to}/to_copy/database.yml #{current_path}/config/database.yml"
+  end
+end
