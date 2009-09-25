@@ -3,14 +3,23 @@ set :user, 'cheekym'
 task :production do
   set :application, 'tracks'
   set :domain, 'tracks.org.nz'
+set :repository, "#{user}@#{domain}:/home/#{user}/git/#{application}"
+set :deploy_to, "/home/#{user}/apps/#{application}"
+role :app, domain
+role :web, domain
+role :db, domain, :primary => true
 end
 
 task :stage do
   set :application, 'stage'
   set :domain, 'stage.tracks.org.nz'
+set :repository, "#{user}@#{domain}:/home/#{user}/git/#{application}"
+set :deploy_to, "/home/#{user}/apps/#{application}"
+role :app, domain
+role :web, domain
+role :db, domain, :primary => true
 end
 
-set :repository, "#{user}@#{domain}:/home/#{user}/git/#{application}"
 set :scm, :git
 set :scm_username, user
 set :runner, user
@@ -20,19 +29,15 @@ set :branch, "master"
 set :deploy_via, :checkout
 set :git_shallow_clone, 1
 
-set :deploy_to, "/home/#{user}/apps/#{application}"
 set :chmod755, "app config db lib public vendor script script/* public/disp*"
 
 set :group_writable, false
 default_run_options[:pty] = true
-role :app, domain
-role :web, domain
-role :db, domain, :primary => true
 
 namespace :deploy do
 
   task :start, :roles => :app do
-    run "rm -rf /home/#{user}/public_html/#{domain};ln -s #{current_path}/public /home/#{user}/public_html/#{domain}"
+#    run "rm -rf /home/#{user}/public_html/#{domain};ln -s #{current_path}/public /home/#{user}/public_html/#{domain}"
   end
 
   task :restart, :roles => :app do

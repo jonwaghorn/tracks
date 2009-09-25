@@ -26,6 +26,10 @@ RewriteEngine On
 #   Alias /myrailsapp /path/to/myrailsapp/public
 #   RewriteBase /myrailsapp
 
+
+RewriteCond %{REQUEST_URI} ^/stage.*
+#RewriteRule .* - [L]
+
 RewriteRule ^$ index.html [QSA]
 RewriteRule ^([^.]+)$ $1.html [QSA]
 RewriteCond %{REQUEST_FILENAME} !-f
