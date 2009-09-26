@@ -3,11 +3,14 @@
 <div class="two_cols">
 
 <div id='preferences_body'>
+  <div class="col_one">Home region</div>
+  <div class="col_two"><%= @setting.region.name %></div>
+
   <div class="col_one">Map style</div>
   <div class="col_two"><%= @setting.map_type.name.titlecase %></div>
 
-  <div class="col_one">Home region</div>
-  <div class="col_two"><%= @setting.region.name %></div>
+  <div class="col_one">Video viewer size</div>
+  <div class="col_two"><%= Setting::VIDEO_VIEWER_SIZES.invert[@setting.video_width] %></div>
 </div>
 
   <hr/>

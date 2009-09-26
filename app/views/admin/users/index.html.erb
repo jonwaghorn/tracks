@@ -4,9 +4,7 @@
 <p>System time: <%= Time.now.to_s(:full) %></p>
 
 <p class="edit">
-<%= link_to_unless @filter == 'all', 'All', :filter => 'all' %> |
-<%= link_to_unless @filter == 'creator', 'Creators', :filter => 'creator' %> |
-<%= link_to_unless @filter == 'admin', 'Admins', :filter => 'admin' %>
+  <%= render :partial => 'nav' %>
 </p>
 
 <div class="tableau">
@@ -26,7 +24,6 @@
     <td><%= user.last_track_edit_at.to_s(:full) if !user.last_track_edit_at.nil? %></td>
   </tr>
   <% end %>
-
 </table>
 
 <p><%= will_paginate @users %></p>

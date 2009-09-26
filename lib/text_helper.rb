@@ -57,6 +57,7 @@ module TextHelper
     line = line.gsub(/\[\[bullet:(.*?)\]\]/, '</p><p class="bullet">\1</p><p>') # [[bullet:text]] => bullet text
     line = line.gsub(/\[\[media:youtube:(.*?)\]\]/, youtube_player('\1'))
     line = line.gsub(/\[\[media:vorb:(.*?)\]\]/, vorb_player('\1'))
+    line = line.gsub(/\[\[media:vimeo:(.*?)\]\]/, vimeo_player('\1'))
 
     line = generic_view_tidy(line)
 
@@ -181,15 +182,25 @@ module TextHelper
     level == 1 ? "</p><p class=\"spacer\"/><h2>#{heading}</h2><h3>&nbsp;</h3>" : "<p><b>#{heading}</b></p>"
   end
 
-  def youtube_player(reference)
-    width = "320"
+  def youtube_player(ref)
+    width = get_video_player_width
     height = (width.to_i / 1.3333333).to_i.to_s # 4:3
-    '<object width="' + width + '" height="' + height + '"><param name="movie" value="http://www.youtube.com/v/' + reference + '&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/' + reference + '&hl=en&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="' + width + '" height="' + height + '"></embed></object>'
+    '<object width="' + width + '" height="' + height + '"><param name="movie" value="http://www.youtube.com/v/' + ref + '&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/' + ref + '&hl=en&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="' + width + '" height="' + height + '"></embed></object>'
   end
 
-  def vorb_player(reference)
-    width = "320"
+  def vorb_player(ref)
+    width = get_video_player_width
     height = (width.to_i / 1.3333333).to_i.to_s # 4:3
-    '<embed src="http://www.vorb.org.nz/video/FlowPlayerDark.swf?config=%7Bembedded%3Atrue%2CbaseURL%3A%27http%3A%2F%2Fwww%2Evorb%2Eorg%2Enz%2Fvideo%27%2CplayList%3A%5B%7Burl%3A%27http%3A%2F%2Fwww%2Evorb%2Eorg%2Enz%2Fvideo%2Fplay%2Ejpg%27%7D%2C%7Burl%3A%27http%3A%2F%2Fwww%2Evorb%2Eorg%2Enz%2Fflvideo%2D' + reference + '%2Eflv%27%7D%2C%7Burl%3A%27http%3A%2F%2Fwww%2Evorb%2Eorg%2Enz%2Fvideo%2Fnatcoll%2D' + width + 'x' + height + '%2Eswf%27%7D%5D%2CshowPlayListButtons%3Afalse%2CshowLoopButton%3Atrue%2CinitialScale%3A%27scale%27%2Cloop%3Afalse%2CautoPlay%3Atrue%7D" width="' + width + '" height="' + height + '" scale="noscale" bgcolor="111111" type="application/x-shockwave-flash" allowFullScreen="true" allowScriptAccess="always" allowNetworking="all" pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>'
+    '<embed src="http://www.vorb.org.nz/video/FlowPlayerDark.swf?config=%7Bembedded%3Atrue%2CbaseURL%3A%27http%3A%2F%2Fwww%2Evorb%2Eorg%2Enz%2Fvideo%27%2CplayList%3A%5B%7Burl%3A%27http%3A%2F%2Fwww%2Evorb%2Eorg%2Enz%2Fvideo%2Fplay%2Ejpg%27%7D%2C%7Burl%3A%27http%3A%2F%2Fwww%2Evorb%2Eorg%2Enz%2Fflvideo%2D' + ref + '%2Eflv%27%7D%2C%7Burl%3A%27http%3A%2F%2Fwww%2Evorb%2Eorg%2Enz%2Fvideo%2Fnatcoll%2D' + width + 'x' + height + '%2Eswf%27%7D%5D%2CshowPlayListButtons%3Afalse%2CshowLoopButton%3Atrue%2CinitialScale%3A%27scale%27%2Cloop%3Afalse%2CautoPlay%3Atrue%7D" width="' + width + '" height="' + height + '" scale="noscale" bgcolor="111111" type="application/x-shockwave-flash" allowFullScreen="true" allowScriptAccess="always" allowNetworking="all" pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>'
+  end
+  
+  def vimeo_player(ref)
+    width = get_video_player_width
+    height = (width.to_i / 1.7777777).to_i.to_s # 16:9
+    '<object width="' + width + '" height="' + height + '"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=' + ref + '&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=' + ref + '&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="' + width + '" height="' + height + '"></embed></object>'
+  end
+
+  def get_video_player_width
+    (logged_in? ? current_user.setting.video_width : Setting::DEFAULT_VIDEO_VIEWER_SIZE).to_s
   end
 end

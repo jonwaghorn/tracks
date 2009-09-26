@@ -6,11 +6,14 @@
 
 <div class="two_cols">
 
+  <div class="col_one"><label for="setting_region_id">Home region</label></div>
+  <div class="col_two"><%= select :setting, :region_id, Region.find(:all, :order => 'name').collect {|s| [s.name, s.id] } %></div>
+
   <div class="col_one"><label for="setting_map_type_id">Map style</label></div>
   <div class="col_two"><%= select :setting, :map_type_id, MapType.find(:all, :order => 'name').collect { |mt| [mt.name, mt.id] } %></div>
 
-  <div class="col_one"><label for="setting_region_id">Home region</label></div>
-  <div class="col_two"><%= select :setting, :region_id, Region.find(:all, :order => 'name').collect {|s| [s.name, s.id] } %></div>
+  <div class="col_one"><label for="setting_video_width">Video viewer size</label></div>
+  <div class="col_two"><%= select :setting, :video_width, Setting::VIDEO_VIEWER_SIZES.sort.reverse %></div>
 
 </div>
 

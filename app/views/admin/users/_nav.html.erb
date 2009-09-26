@@ -1,0 +1,4 @@
+<%= link_to_unless @filter == 'all', 'All', :action => 'index', :filter => 'all' %> |
+<%= link_to_unless @filter == 'creator', 'Creators', :action => 'index', :filter => 'creator' %> |
+<%= link_to_unless @filter == 'admin', 'Admins', :action => 'index', :filter => 'admin' %> |
+<%= link_to_unless params[:action] == 'show_signups', 'Signups', :action => 'show_signups' %>

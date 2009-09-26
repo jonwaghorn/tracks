@@ -1,3 +1,8 @@
+48 2009-09-26
+  - [feature] #0069 Made the default video size larger. Also added user default setting.
+  - [feature] #0070 Add Vimeo media option, [[media:vimeo:ref]]
+  - [infrastructure] Sorted out proper deploy using Capistrano
+
 47 2009-09-21 Two little bugs...
   - [bug fix] Fix validation crash when track Overview is not supplied.
   - [bug fix] Fix region polygon editing when it is not added on the initial region create.

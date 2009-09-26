@@ -214,15 +214,12 @@ hr {
   background: #ccc;
 }
 
-.tableau {
+.tableau, .tableau_horiz  {
   margin: 10px;
-}
-
-.tableau table {
   border-collapse: collapse;
 }
 
-.tableau th {
+.tableau th, .tableau_horiz th {
   background: #dadada;
   padding: 8px;
   font-size: 80%;
@@ -238,6 +235,15 @@ hr {
 
 tr.list-line-odd    {background-color: #f6f6f6;}
 tr.list-line-even   {background-color: #efefef;}
+
+.tableau_horiz td {
+  border-right: 1px solid #dadada;
+  padding: 8px;
+  font-size: 80%;
+}
+
+td.list-line-odd    {background-color: #f6f6f6;}
+td.list-line-even   {background-color: #efefef;}
 
 div.clearboth {clear: both;}
 

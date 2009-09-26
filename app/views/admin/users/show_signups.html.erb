@@ -1,0 +1,44 @@
+<h1>Admin: user signups</h1>
+<% if flash[:notice] %><p class="notice"><%= flash[:notice] %></p><% end -%>
+
+<p>System time: <%= Time.now.to_s(:full) %></p>
+
+<p class="edit">
+  <%= render :partial => 'nav' %>
+</p>
+
+<div class="tableau_horiz">
+<table cellspacing="0" cellpadding="2">
+  <tr>
+    <th>Month</th>
+    <% @signup_months.keys.each do |a| %>
+    <td class="<%= cycle('list-line-odd', 'list-line-even') %>"><%= a.strftime("%b") %></td>
+    <% end %>
+  </tr>
+  <% cycle('list-line-odd', 'list-line-even') %>
+  <tr>
+    <th>Signups</th>
+    <% @signup_months.keys.each do |a| %>
+    <td class="<%= cycle('list-line-odd', 'list-line-even') %>"><%= @signup_months[a].count %></td>
+    <% end %>
+  </tr>
+</table>
+</div>
+
+<div class="tableau">
+<table cellspacing="0" cellpadding="2">
+  <tr>
+    <th>Name (login)</th>
+    <th>Signed up</th>
+  </tr>
+  <% @users.each do |user| %>
+  <tr class="<%= cycle('list-line-odd', 'list-line-even') %>">
+    <td><%= link_to user.screen_name, :action => 'show', :id => user %> (<%= user.login %>)</td>
+    <td><%= user.created_at.to_s(:full) %></td>
+  </tr>
+  <% end %>
+</table>
+
+<p><%= will_paginate @users %></p>
+
+</div>
