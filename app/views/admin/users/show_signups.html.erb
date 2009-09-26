@@ -19,7 +19,7 @@
   <tr>
     <th>Signups</th>
     <% @signup_months.keys.each do |a| %>
-    <td class="<%= cycle('list-line-odd', 'list-line-even') %>"><%= @signup_months[a].count %></td>
+    <td class="<%= cycle('list-line-odd', 'list-line-even') %>"><%= @signup_months[a].length %></td>
     <% end %>
   </tr>
 </table>

@@ -56,3 +56,16 @@ namespace :deploy do
     run "ln -s #{deploy_to}/shared/paths #{current_path}/public/paths"
   end
 end
+
+
+namespace :backup do
+  task :default do
+    db
+  end
+
+  desc "Initiate a backup of the production database"
+  task :db, :roles => :db do
+    run "cd tmp; ./mybackupit.sh"
+  end
+end
+
