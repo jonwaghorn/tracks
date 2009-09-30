@@ -31,7 +31,7 @@ class TrackReport < ActiveRecord::Base
   def format_for_twitter
     url = shorten_url "http://#{URL_BASE}/track/show/#{track.id}"
     non_message_len = track.name.length + 2 + 1 + url.length
-    message = replace_for_view(description, unlinked = true).chomp.strip
+      message = replace_for_view(description, unlinked = true).chomp.strip
     track.name + ': ' + message[0, 140 - non_message_len] + ' ' + url
   end
 end

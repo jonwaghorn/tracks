@@ -1,3 +1,6 @@
+49 2009-09-30
+  - [bug fix] #0071 Rolled-back the user settable video size as it was causing problems, videos are still larger though
+
 48 2009-09-26
   - [feature] #0069 Made the default video size larger. Also added user default setting.
   - [feature] #0070 Add Vimeo media option, [[media:vimeo:ref]]

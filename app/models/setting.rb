@@ -5,8 +5,7 @@ class Setting < ActiveRecord::Base
   
   before_validation_on_create :set_default_map_type
 
-  VIDEO_VIEWER_SIZES = {"Small" => 160, "Medium" => 320, "Large" => 480};
-  DEFAULT_VIDEO_VIEWER_SIZE = Setting::VIDEO_VIEWER_SIZES.values.max
+  DEFAULT_VIDEO_VIEWER_WIDTH = 480
 
   private
   

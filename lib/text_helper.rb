@@ -201,6 +201,6 @@ module TextHelper
   end
 
   def get_video_player_width
-    (logged_in? ? current_user.setting.video_width : Setting::DEFAULT_VIDEO_VIEWER_SIZE).to_s
+    Setting::DEFAULT_VIDEO_VIEWER_WIDTH.to_s
   end
 end
