@@ -1,13 +1,14 @@
 set :user, 'cheekym'
 
 task :production do
-  set :application, 'tracks'
-  set :domain, 'tracks.org.nz'
+  #set :application, 'tracks'
+  #set :domain, 'tracks.org.nz'
+  setup_production_access
   set :repository, "#{user}@#{domain}:/home/#{user}/git/#{application}"
   set :deploy_to, "/home/#{user}/apps/#{application}"
-  role :app, domain
-  role :web, domain
-  role :db, domain, :primary => true
+  #role :app, domain
+  #role :web, domain
+  #role :db, domain, :primary => true
 end
 
 task :stage do
@@ -59,6 +60,7 @@ end
 
 
 namespace :backup do
+  before 'backup:db', 'setup_production_access'
   task :default do
     db
   end
@@ -69,3 +71,11 @@ namespace :backup do
   end
 end
 
+
+task :setup_production_access do
+  set :application, 'tracks'
+  set :domain, 'tracks.org.nz'
+  role :app, domain
+  role :web, domain
+  role :db, domain, :primary => true
+end

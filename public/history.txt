@@ -1,3 +1,6 @@
+50 2009-10-07
+  - [bug fix] Tricky map bug squashed. Caused home page maps and all region view/edit maps to break.
+
 49 2009-09-30
   - [bug fix] #0071 Rolled-back the user settable video size as it was causing problems, videos are still larger though
 

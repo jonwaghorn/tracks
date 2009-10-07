@@ -7,7 +7,7 @@ class IndexController < ApplicationController
     @special = Special.find(:first, :conditions => ["name = ?", 'index'])
     @recent_track_reports = TrackReport.find_recent[0,10]
     set_nation
-    @regions_with_points = Region.find(:all, :conditions => ["nation_id = ? AND points IS NOT NULL", @nation.id])
+    @regions_with_points = Region.find(:all, :conditions => ["nation_id = ? AND points IS NOT NULL AND points != ?", @nation.id, ""])
   end
 
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)

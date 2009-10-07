@@ -23,14 +23,14 @@ class RegionController < ApplicationController
     @region.latitude = @region.nation.latitude
     @region.longitude = @region.nation.longitude
     @region.zoom = @region.nation.zoom
-    @other_regions_with_points = Region.find(:all, :conditions => ["nation_id = ? AND points IS NOT NULL", @region.nation_id])
+    @other_regions_with_points = Region.find(:all, :conditions => ["nation_id = ? AND points IS NOT NULL AND points != ?", @region.nation_id, ""])
   end
 
   def create
     @region = Region.new(params[:region])
     @region.nation_id = params[:nation_id]
     @region.encode_region_area(params[:coords])
-    @other_regions_with_points = Region.find(:all, :conditions => ["nation_id = ? AND points IS NOT NULL", @region.nation_id])
+    @other_regions_with_points = Region.find(:all, :conditions => ["nation_id = ? AND points IS NOT NULL AND points != ?", @region.nation_id, ""])
     if @region.save
       update_user_edit_stats
       @region.tweet_new
@@ -44,14 +44,14 @@ class RegionController < ApplicationController
   def edit
     @region = Region.find(params[:id])
     @region.description = replace_for_edit(@region.description)
-    @other_regions_with_points = Region.find(:all, :conditions => ["nation_id = ? AND points IS NOT NULL AND id != ?", @region.nation_id, @region.id])
+    @other_regions_with_points = Region.find(:all, :conditions => ["nation_id = ? AND points IS NOT NULL AND id != ? AND points != ?", @region.nation_id, @region.id, ""])
   end
 
   def update
     @region = Region.find(params[:id])
     params[:region][:description] = replace_for_update(params[:region][:description])
     @region.encode_region_area(params[:coords])
-    @other_regions_with_points = Region.find(:all, :conditions => ["nation_id = ? AND points IS NOT NULL AND id != ?", @region.nation_id, @region.id])
+    @other_regions_with_points = Region.find(:all, :conditions => ["nation_id = ? AND points IS NOT NULL AND id != ? AND points != ?", @region.nation_id, @region.id, ""])
     if @region.update_attributes(params[:region])
       update_user_edit_stats
       flash[:notice] = @region.name + ' was successfully updated.'
