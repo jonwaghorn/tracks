@@ -25,6 +25,7 @@ function initialize() {
   options.setExpandMode(google.search.SearchControl.EXPAND_MODE_OPEN);
 
   var searchControl = new google.search.SearchControl();
+  searchControl.setLinkTarget(google.search.Search.LINK_TARGET_SELF);
   searchControl.addSearcher(siteSearch, options);
   searchControl.draw(document.getElementById("searchcontrol"));
   searchControl.execute("<%= @term %>");

@@ -49,15 +49,27 @@ module TextHelper
     line = line.gsub(/\[\[link:http:\/\/www.tracks.org.nz(.*?)\]\]/, '[[link:http://tracks.org.nz\1]]')
     line = line.gsub(/\[\[link:(http:\/\/tracks.org.nz.*?) (.*?)\]\]/, '<a href="\1" title="\1" rel="nofollow">\2</a>') # [[link:ref Name]] => href
     line = line.gsub(/\[\[link:(.*?) (.*?)\]\]/, '<a href="\1" class="external" title="\1" rel="nofollow">\2</a>') # [[link:ref Name]] => href
-    line = line.gsub(/\[\[h1:(.*?)\]\]/, '</p>' + heading('\1') + '<p>') # [[h1:Heading]] => heading 1
-    line = line.gsub(/\[\[h2:(.*?)\]\]/, '</p>' + heading('\1', 2) + '<p>') # [[h2:Heading]] => heading 2
+    if unlinked
+      line = line.gsub(/\[\[h1:(.*?)\]\]/, '</p><h2>\1</h2><p>') # [[h1:Heading]] => heading 1
+      line = line.gsub(/\[\[h2:(.*?)\]\]/, '</p><h3>\1</h3><p>') # [[h2:Heading]] => heading 2
+    else
+      line = line.gsub(/\[\[h1:(.*?)\]\]/, '</p>' + heading('\1') + '<p>') # [[h1:Heading]] => heading 1
+      line = line.gsub(/\[\[h2:(.*?)\]\]/, '</p>' + heading('\1', 2) + '<p>') # [[h2:Heading]] => heading 2
+    end
     line = line.gsub(/\[\[bold:(.*?)\]\]/, '<b>\1</b>') # [[bold:text]] => bold text
     line = line.gsub(/\[\[italic:(.*?)\]\]/, '<em>\1</em>') # [[italic:text]] => italic text
-    line = line.gsub(/\[\[image:(http):(.*?):(.*?):(.*?):(.*?)\]\]/, '<img src="\1:\2" alt="\3" width="\4" height="\5"/>') # [[img:ref:width:height]]
     line = line.gsub(/\[\[bullet:(.*?)\]\]/, '</p><p class="bullet">\1</p><p>') # [[bullet:text]] => bullet text
-    line = line.gsub(/\[\[media:youtube:(.*?)\]\]/, youtube_player('\1'))
-    line = line.gsub(/\[\[media:vorb:(.*?)\]\]/, vorb_player('\1'))
-    line = line.gsub(/\[\[media:vimeo:(.*?)\]\]/, vimeo_player('\1'))
+    if unlinked
+      line = line.gsub(/\[\[image:(http):(.*?):(.*?):(.*?):(.*?)\]\]/, '<br/><img src="\1:\2" alt="\3" width="\4" height="\5"/>') # [[img:ref:width:height]]
+      line = line.gsub(/\[\[media:youtube:(.*?)\]\]/, '[video]')
+      line = line.gsub(/\[\[media:vorb:(.*?)\]\]/, '[video]')
+      line = line.gsub(/\[\[media:vimeo:(.*?)\]\]/, '[video]')
+    else
+      line = line.gsub(/\[\[image:(http):(.*?):(.*?):(.*?):(.*?)\]\]/, '<img src="\1:\2" alt="\3" width="\4" height="\5"/>') # [[img:ref:width:height]]
+      line = line.gsub(/\[\[media:youtube:(.*?)\]\]/, youtube_player('\1'))
+      line = line.gsub(/\[\[media:vorb:(.*?)\]\]/, vorb_player('\1'))
+      line = line.gsub(/\[\[media:vimeo:(.*?)\]\]/, vimeo_player('\1'))
+    end
 
     line = generic_view_tidy(line)
 

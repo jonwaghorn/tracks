@@ -88,6 +88,11 @@ class TrackController < ApplicationController
     end
     redirect_to :action => 'show', :id => @track.id
   end
+  
+  def print
+    show
+    render(:layout => "layouts/print")
+  end
 
   def destroy
     track = Track.find(params[:id]).destroy

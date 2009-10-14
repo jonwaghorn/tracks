@@ -1,3 +1,7 @@
+51 2009-10-13
+  - [feature] #0036 New simple printer-friendly track pages
+  - [bug fix] #0034 Search result links now open in same window
+
 50 2009-10-07
   - [bug fix] Tricky map bug squashed. Caused home page maps and all region view/edit maps to break.
 

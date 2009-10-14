@@ -1,0 +1,64 @@
+<h1>Tracks.org.nz</h1>
+
+<h2><%= @track.name %></h2>
+
+<p><b>Ref</b>: http://tracks.org.nz/track/show/<%= @track.id %></p>
+
+<p><b>Print date</b>: <%= Time.now.to_s(:full) %></p>
+
+<% if @track_akas.size > 0 %>
+<p><b>Also known as</b>: <%= @track_akas.collect(&:name).sort.join(', ') %></p>
+<% end %>
+
+<p><b>Location</b>: <%= @track.area.name %>, <%= @track.area.region.name %>, <%= @track.area.region.nation.name %></p>
+
+<% if ! @track.desc_overview.blank? %>
+<p><b>Overview</b>:<br/><%= replace_for_view(h(@track.desc_overview), unlinked = true) %></p>
+<% end %>
+
+<% if @track.track_grade %>
+<p><b>Grade</b>: <%= @track.track_grade.name + h(@track.grade_note) %></p>
+<% end %>
+
+<% if @track.track_access %>
+<p><b>Access</b>: <%= @track.track_access.name + h(@track.access_note) %></p>
+<% end %>
+
+<% if ! @track.desc_full.blank? %>
+<p><b>Description</b>:<br/><%= replace_for_view(h(@track.desc_full), unlinked = true) %></p>
+<% end %>
+
+<% if ! @track.desc_where.blank? %>
+<p><b>Getting there</b>:<br/><%= replace_for_view(h(@track.desc_where), unlinked = true) %></p>
+<% end %>
+
+<% if ! @track.desc_note.blank? %>
+<p><b>Other notes</b>:<br/><%= replace_for_view(h(@track.desc_note), unlinked = true) %></p>
+<% end %>
+
+<% if @track.length != 0 %>
+<p><b>Length</b>: <%= distance @track.adjusted_length %></p>
+<% end %>
+
+<% if @track.condition_id != nil %>
+<p><b>Conditions</b>: <%= @track.condition.name %></p>
+<% end %>
+
+<% if ! @track.alt_gain.nil? || ! @track.alt_loss.nil? || ! @track.alt_begin.nil? || ! @track.alt_end.nil? %>
+<p><b>Altitude</b>:<br/>
+<% if ! @track.alt_gain.nil? %><img src="/images/alt_gain.png" alt="gain" title="Altitude gain"/><%= @track.alt_gain %>m<% end %>
+<% if ! @track.alt_loss.nil? %><img src="/images/alt_loss.png" alt="loss" title="Altitude loss"/><%= @track.alt_loss %>m<% end %>
+<% if ! @track.alt_begin.nil? %><img src="/images/alt_begin.png" alt="begin" title="Altitude begin"/><%= @track.alt_begin %>m<% end %>
+<% if ! @track.alt_end.nil? %><img src="/images/alt_end.png" alt="end" title="Altitude end"/><%= @track.alt_end %>m<% end %>
+<% if ! @track.alt_note.blank? %><%= h @track.alt_note %><% end %>
+</p>
+<% end %>
+
+<p><b>Last modified</b>: <%= render :partial => 'last_updated_by' %></p>
+
+<p><b>Created by</b>: <%= User.find(@track.created_by).screen_name %></p>
+
+<% if @track.zoom != 0 %>
+<h3>Google goodness</h3>
+<div id="map"></div>
+<% end %>

@@ -542,6 +542,17 @@ h1 {
   border: 0;
 }
 
+.content .print_link {
+  float: right;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.content .print_link a:hover {
+  background: none;
+}
+
 .content .two_cols {
   margin: 10px;
 }

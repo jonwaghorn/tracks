@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<title><%= @track.name %> | Tracks.org.nz</title>
+<link href="/favicon.png" rel="shortcut icon" type="image/x-icon"/>
+<%= javascript_include_tag :defaults %>
+<%= render :partial => 'shared/ie' %>
+<%= render :partial => 'map_show' %>
+<%= render :partial => 'shared/analytics' -%>
+
+<style type="text/css">
+#map{width:582px;height:466px;border:1px solid black;}
+a{text-decoration:none;}
+</style>
+
+</head>
+<body id="body" onload="initialize('track');initElevationChart();" onunload="GUnload();">
+<%= ck_fu %>
+<%= yield %>
+</body>
+</html>
