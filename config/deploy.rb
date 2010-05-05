@@ -13,7 +13,8 @@ end
 
 task :stage do
   set :application, 'tracks.stage'
-  set :domain, 'stage.tracks.org.nz'
+  set :domain, '68.233.10.148'
+  #set :domain, 'stage.tracks.org.nz'
   set :repository, "#{user}@#{domain}:/home/#{user}/git/tracks.git"
   set :deploy_to, "/home/#{user}/apps/#{application}"
   role :app, domain
