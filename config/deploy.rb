@@ -1,10 +1,10 @@
-set :user, 'cheekym'
+set :user, 'cheekymo'
 
 task :production do
   #set :application, 'tracks'
   #set :domain, 'tracks.org.nz'
   setup_production_access
-  set :repository, "#{user}@#{domain}:/home/#{user}/git/#{application}"
+  set :repository, "#{user}@#{domain}:/home/#{user}/git/#{application}.git"
   set :deploy_to, "/home/#{user}/apps/#{application}"
   #role :app, domain
   #role :web, domain
@@ -14,7 +14,7 @@ end
 task :stage do
   set :application, 'tracks.stage'
   set :domain, 'stage.tracks.org.nz'
-  set :repository, "#{user}@#{domain}:/home/#{user}/git/tracks"
+  set :repository, "#{user}@#{domain}:/home/#{user}/git/tracks.git"
   set :deploy_to, "/home/#{user}/apps/#{application}"
   role :app, domain
   role :web, domain
@@ -42,7 +42,7 @@ namespace :deploy do
   end
 
   task :restart, :roles => :app do
-    run "pkill -9 -u cheekym dispatch.fcgi"
+    run "pkill -9 -u #{user} dispatch.fcgi"
   end
 
 end
@@ -74,7 +74,8 @@ end
 
 task :setup_production_access do
   set :application, 'tracks'
-  set :domain, 'tracks.org.nz'
+  set :domain, '68.233.10.148'
+  #set :domain, 'tracks.org.nz'
   role :app, domain
   role :web, domain
   role :db, domain, :primary => true
