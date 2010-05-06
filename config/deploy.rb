@@ -1,21 +1,16 @@
 set :user, 'cheekymo'
+set :repository, "git@github.com:cmonkey/tracks.git"
 
 task :production do
-  #set :application, 'tracks'
-  #set :domain, 'tracks.org.nz'
   setup_production_access
-  set :repository, "#{user}@#{domain}:/home/#{user}/git/#{application}.git"
+  #set :repository, "#{user}@#{domain}:/home/#{user}/git/#{application}.git"
   set :deploy_to, "/home/#{user}/apps/#{application}"
-  #role :app, domain
-  #role :web, domain
-  #role :db, domain, :primary => true
 end
 
 task :stage do
   set :application, 'tracks.stage'
-  set :domain, '68.233.10.148'
-  #set :domain, 'stage.tracks.org.nz'
-  set :repository, "#{user}@#{domain}:/home/#{user}/git/tracks.git"
+  set :domain, 'stage.tracks.org.nz'
+  #set :repository, "#{user}@#{domain}:/home/#{user}/git/tracks.git"
   set :deploy_to, "/home/#{user}/apps/#{application}"
   role :app, domain
   role :web, domain
@@ -75,8 +70,7 @@ end
 
 task :setup_production_access do
   set :application, 'tracks'
-  set :domain, '68.233.10.148'
-  #set :domain, 'tracks.org.nz'
+  set :domain, 'tracks.org.nz'
   role :app, domain
   role :web, domain
   role :db, domain, :primary => true
