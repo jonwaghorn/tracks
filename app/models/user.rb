@@ -71,6 +71,40 @@ class User < ActiveRecord::Base
     votes.length < Vote::MAX_VOTES_PER_USER
   end
 
+  def self.anonymize
+    find(:all).each do |user|
+      user.screen_name = "user_#{user.id}"
+      user.login = "#{user.screen_name}@tracks.org.nz"
+      user.edits = 0
+      user.reports = 0
+      user.save!
+    end
+
+    editor = User.new
+    editor.screen_name = "Editor"
+    editor.login = "editor"
+    editor.password = "editor"
+    editor.password_confirmation = editor.password
+    editor.privilege = "viewer"
+    editor.save!
+
+    creator = User.new
+    creator.screen_name = "Creator"
+    creator.login = "creator"
+    creator.password = "creator"
+    creator.password_confirmation = creator.password
+    creator.privilege = "creator"
+    creator.save!
+
+    admin = User.new
+    admin.screen_name = "Admin"
+    admin.login = "admin"
+    admin.password = "admin"
+    admin.password_confirmation = admin.password
+    admin.privilege = "admin"
+    admin.save!
+  end
+
   protected
     # before filter 
     def encrypt_password
