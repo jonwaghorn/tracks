@@ -16,3 +16,18 @@ The code here is a Ruby on Rails application that you can download and install o
   (Install base kml paths from Downloads, eg: http://github.com/downloads/cmonkey/tracks/paths.tgz)
   gzcat paths.tgz | tar xf -
 
+* Anonymized data *
+
+The anonymized data contains 3 pre-configured users with the 3 different access levels:
+
+Editor - regular registered user
+login/email: editor
+password: editor
+
+Creator - user can also create new tracks/areas etc
+login/email: creator
+password: creator
+
+Admin - above access plus a limited admin menu (look for "Admin" in nav menu)
+login/email: admin
+password: admin
