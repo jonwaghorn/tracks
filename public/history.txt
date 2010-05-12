@@ -1,3 +1,9 @@
+** 2010-05-07
+  - [infrastructure] Released the website code to github ==> Tracks.
+
+** 2010-05-05
+  - [infrastructure] Changed hosting company after 2 weeks of instability. New servers are zipping along.
+
 51 2009-10-13
   - [feature] #0036 New simple printer-friendly track pages
   - [bug fix] #0034 Search result links now open in same window
