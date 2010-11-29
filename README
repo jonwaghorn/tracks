@@ -11,6 +11,8 @@ The code here is a Ruby on Rails application that you can download and install o
   (Install anonymized database from Downloads, eg: http://github.com/downloads/jonwaghorn/tracks/tracks_anonymized_100510.sql.gz)
   mysql -u root < tracks_anonymized_100510.sql
 
+  bundle install
+
   rake db:migrate
 
   (Install base kml paths from Downloads, eg: http://github.com/downloads/jonwaghorn/tracks/paths.tgz)
