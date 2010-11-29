@@ -1,0 +1,56 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    actionmailer (2.3.10)
+      actionpack (= 2.3.10)
+    actionpack (2.3.10)
+      activesupport (= 2.3.10)
+      rack (~> 1.1.0)
+    activerecord (2.3.10)
+      activesupport (= 2.3.10)
+    activeresource (2.3.10)
+      activesupport (= 2.3.10)
+    activesupport (2.3.10)
+    addressable (2.2.2)
+    faraday (0.5.3)
+      addressable (~> 2.2.2)
+      multipart-post (~> 1.0.1)
+      rack (>= 1.1.0, < 2)
+    faraday_middleware (0.3.0)
+      faraday (~> 0.5.3)
+    hashie (0.4.0)
+    hpricot (0.8.3)
+    multi_json (0.0.5)
+    multi_xml (0.2.0)
+    multipart-post (1.0.1)
+    mysql (2.8.1)
+    rack (1.1.0)
+    rails (2.3.10)
+      actionmailer (= 2.3.10)
+      actionpack (= 2.3.10)
+      activerecord (= 2.3.10)
+      activeresource (= 2.3.10)
+      activesupport (= 2.3.10)
+      rake (>= 0.8.3)
+    rake (0.8.7)
+    rmagick (2.13.1)
+    shorturl (0.8.8)
+    simple_oauth (0.1.2)
+    twitter (1.0.0)
+      faraday (~> 0.5.3)
+      faraday_middleware (~> 0.3.0)
+      hashie (~> 0.4.0)
+      multi_json (~> 0.0.5)
+      multi_xml (~> 0.2.0)
+      simple_oauth (~> 0.1.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  hpricot
+  mysql
+  rails (~> 2.3.4)
+  rmagick
+  shorturl (~> 0.8.4)
+  twitter

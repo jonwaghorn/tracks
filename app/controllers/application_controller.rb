@@ -4,7 +4,7 @@
 class ApplicationController < ActionController::Base
   before_filter :check_uri
 
-  helper :all # include all helpers, all the time
+  # helper :all # include all helpers, all the time
   include AuthenticatedSystem
   include UserStats
   include TextHelper
