@@ -6,14 +6,14 @@ The code here is a Ruby on Rails application that you can download and install o
 
 * Getting started *
 
-  git clone git@github.com:cmonkey/tracks.git
+  git clone git@github.com:jonwaghorn/tracks.git
 
-  (Install anonymized database from Downloads, eg: http://github.com/downloads/cmonkey/tracks/tracks_anonymized_100510.sql.gz)
+  (Install anonymized database from Downloads, eg: http://github.com/downloads/jonwaghorn/tracks/tracks_anonymized_100510.sql.gz)
   mysql -u root < tracks_anonymized_100510.sql
 
   rake db:migrate
 
-  (Install base kml paths from Downloads, eg: http://github.com/downloads/cmonkey/tracks/paths.tgz)
+  (Install base kml paths from Downloads, eg: http://github.com/downloads/jonwaghorn/tracks/paths.tgz)
   gzcat paths.tgz | tar xf -
 
 * Anonymized data *

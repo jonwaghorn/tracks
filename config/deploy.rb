@@ -1,5 +1,5 @@
 set :user, 'cheekymo'
-set :repository, "git@github.com:cmonkey/tracks.git"
+set :repository, "git@github.com:jonwaghorn/tracks.git"
 
 task :production do
   setup_production_access
