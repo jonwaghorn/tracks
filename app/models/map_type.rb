@@ -1,3 +1,13 @@
+# == Schema Information
+# Schema version: 20090930170613
+#
+# Table name: map_types
+#
+#  id              :integer(4)      not null, primary key
+#  name            :string(255)
+#  google_map_type :string(255)
+#
+
 class MapType < ActiveRecord::Base
   # has_many :settings
 

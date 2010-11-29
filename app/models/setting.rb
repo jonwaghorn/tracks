@@ -1,3 +1,16 @@
+# == Schema Information
+# Schema version: 20090930170613
+#
+# Table name: settings
+#
+#  id          :integer(4)      not null, primary key
+#  user_id     :integer(4)      not null
+#  map_type_id :integer(4)
+#  created_at  :datetime
+#  updated_at  :datetime
+#  region_id   :integer(4)      default(1)
+#
+
 class Setting < ActiveRecord::Base
   belongs_to :user
   belongs_to :map_type

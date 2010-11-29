@@ -1,3 +1,26 @@
+# == Schema Information
+# Schema version: 20090930170613
+#
+# Table name: regions
+#
+#  id            :integer(4)      not null, primary key
+#  name          :string(30)      default(""), not null
+#  nation_id     :integer(4)
+#  created_at    :datetime
+#  description   :text
+#  rain_readings :integer(4)      default(0)
+#  latitude      :decimal(9, 6)   default(0.0)
+#  longitude     :decimal(9, 6)   default(0.0)
+#  zoom          :integer(4)      default(0)
+#  updated_at    :datetime
+#  sequence      :integer(4)      default(-1)
+#  points        :text
+#  levels        :text
+#  num_levels    :integer(4)
+#  zoom_factor   :integer(4)
+#  colour        :integer(4)      default(0)
+#
+
 class Region < ActiveRecord::Base
   
   require 'gmap_polyline_encoder'

@@ -10,6 +10,7 @@ gem "hpricot"
 
 group :development do
   # bundler requires these gems in development
+  gem 'annotate-models'
 end
 
 group :test do

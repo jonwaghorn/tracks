@@ -1,3 +1,23 @@
+# == Schema Information
+# Schema version: 20090930170613
+#
+# Table name: users
+#
+#  id                        :integer(4)      not null, primary key
+#  screen_name               :string(255)
+#  login                     :string(255)
+#  crypted_password          :string(40)
+#  salt                      :string(40)
+#  created_at                :datetime
+#  updated_at                :datetime
+#  remember_token            :string(255)
+#  remember_token_expires_at :datetime
+#  privilege                 :string(20)      default("viewer")
+#  edits                     :integer(4)      default(0)
+#  reports                   :integer(4)      default(0)
+#  last_track_edit_at        :datetime
+#
+
 require 'digest/sha1'
 class User < ActiveRecord::Base
   # Virtual attribute for the unencrypted password

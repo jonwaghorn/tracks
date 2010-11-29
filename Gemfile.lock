@@ -12,6 +12,7 @@ GEM
       activesupport (= 2.3.10)
     activesupport (2.3.10)
     addressable (2.2.2)
+    annotate-models (1.0.4)
     faraday (0.5.3)
       addressable (~> 2.2.2)
       multipart-post (~> 1.0.1)
@@ -48,6 +49,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate-models
   hpricot
   mysql
   rails (~> 2.3.4)

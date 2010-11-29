@@ -1,3 +1,20 @@
+# == Schema Information
+# Schema version: 20090930170613
+#
+# Table name: medias
+#
+#  id         :integer(4)      not null, primary key
+#  ref_type   :string(255)
+#  ref_id     :integer(4)
+#  kind       :string(255)
+#  reference  :string(255)
+#  user_id    :integer(4)
+#  title      :string(255)
+#  note       :text
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Media < ActiveRecord::Base
   belongs_to :user
 

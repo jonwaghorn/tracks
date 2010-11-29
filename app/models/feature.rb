@@ -1,3 +1,19 @@
+# == Schema Information
+# Schema version: 20090930170613
+#
+# Table name: features
+#
+#  id          :integer(4)      not null, primary key
+#  kind        :string(255)
+#  title       :string(255)
+#  description :text
+#  user_id     :integer(4)
+#  status      :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#  progress    :string(255)
+#
+
 class Feature < ActiveRecord::Base
 
   belongs_to :user

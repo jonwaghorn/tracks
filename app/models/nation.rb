@@ -1,3 +1,18 @@
+# == Schema Information
+# Schema version: 20090930170613
+#
+# Table name: nations
+#
+#  id          :integer(4)      not null, primary key
+#  name        :string(30)      default(""), not null
+#  description :text
+#  created_at  :datetime
+#  latitude    :decimal(9, 6)   default(0.0)
+#  longitude   :decimal(9, 6)   default(0.0)
+#  zoom        :integer(4)      default(0)
+#  updated_at  :datetime
+#
+
 class Nation < ActiveRecord::Base
   has_many :regions, :order => 'sequence, name'
 
