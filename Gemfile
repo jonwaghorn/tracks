@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 # bundler requires these gems in all environments
-gem "rails", "~> 2.3.4"
+gem "rails", "2.3.4"
 gem "mysql"
 gem "shorturl", "~> 0.8.4"
 gem "rmagick"
