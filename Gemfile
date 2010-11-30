@@ -7,6 +7,7 @@ gem "shorturl", "~> 0.8.4"
 gem "rmagick"
 gem "twitter"
 gem "hpricot"
+gem 'capistrano-ext'
 
 group :development do
   # bundler requires these gems in development
