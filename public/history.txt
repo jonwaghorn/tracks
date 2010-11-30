@@ -1,3 +1,8 @@
+52
+  - [bug fix] #0073 Fix track AKA crash as sugested by Ian
+  - [infrastructure] Included bundler for managing dependencies.
+  - [infrastructure] Tidied up capistrano deployment
+
 ** 2010-05-07
   - [infrastructure] Released the website code to github ==> Tracks.
 
