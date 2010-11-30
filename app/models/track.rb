@@ -136,7 +136,6 @@ class Track < ActiveRecord::Base
           coord.strip!
           next if coord.empty?
           lng,lat,alt = coord.split(",")
-          # puts "#{lat}, #{lng}, #{alt}"
           data << [lat.to_f,lng.to_f]
         end
 

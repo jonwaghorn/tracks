@@ -7,7 +7,6 @@
 
 <% if @region.rain_readings > 0 %>
 <% rr = RainReading.find(:all, :conditions => ["region_id = ?", @region.id], :limit => @region.rain_readings, :order => 'date DESC') %>
-<%= puts rr.inspect %>
 <% if rr.size > 0 %>
 <div class="nav_outer"><div class="nav"><h1>Recent Rainfall</h1>
 <p>Rainfall in mm for previous <%= @region.rain_readings %> days, most recent last. Current to 9am <%= rr[0].date.to_s(:tracks).gsub(/^0/, '') %>.</p>

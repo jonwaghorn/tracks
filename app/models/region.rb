@@ -61,12 +61,10 @@ class Region < ActiveRecord::Base
     coords.split(';').each do |latlng|
       lat,lng = latlng.split(',')
       data << [lat.to_f,lng.to_f]
-      # puts "#{data.inspect}"
     end
 
     encoder = GMapPolylineEncoder.new()
     result = encoder.encode(data)
-# puts result.inspect
 
     self.points = result[:points]
     self.levels = result[:levels]

@@ -42,7 +42,6 @@ class Admin::UsersController < ApplicationController
   def update_password
     @user = User.find(params[:id])
     params[:user][:password_confirmation] = params[:user][:password]
-    # puts params[:user].inspect
     if @user.update_attributes(params[:user])
       flash[:notice] = @user.screen_name + ' password set.'
       redirect_to :action => 'show', :id => @user
