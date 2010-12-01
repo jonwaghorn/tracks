@@ -57,7 +57,7 @@ Rails::Initializer.run do |config|
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
 
-  config.gem "shorturl"
+  config.gem "rmagick"
 
   URL_BASE = 'tracks.org.nz'
 
