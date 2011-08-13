@@ -45,6 +45,7 @@ GEM
       activesupport (= 2.3.4)
       rake (>= 0.8.3)
     rake (0.8.7)
+    rmagick (2.13.1)
     shorturl (0.8.8)
     twitter (0.9.12)
       hashie (~> 0.4.0)
@@ -61,5 +62,6 @@ DEPENDENCIES
   hpricot
   mysql
   rails (= 2.3.4)
+  rmagick
   shorturl (~> 0.8.4)
   twitter
