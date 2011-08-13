@@ -27,8 +27,7 @@ class AccountController < ApplicationController
   def signup
     @user = User.new(params[:user])
     return unless request.post?
-    if @user.valid_with_captcha?
-      @user.save!
+    if @user.save!
       self.current_user = @user
       flash[:notice] = "Thanks for signing up!"
       redirect_back_or_default(:controller => '/index', :action => 'index')

@@ -39,7 +39,6 @@ class User < ActiveRecord::Base
   validates_length_of       :login,    :within => 3..100
   validates_length_of       :screen_name, :within => 3..40
   validates_uniqueness_of   :login, :screen_name, :case_sensitive => false
-  apply_simple_captcha      :message => 'Text from image does not match'
   before_save :encrypt_password
 
   # def email

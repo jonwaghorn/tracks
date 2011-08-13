@@ -4,7 +4,7 @@ source 'http://rubygems.org'
 gem "rails", "2.3.4"
 gem "mysql"
 gem "shorturl", "~> 0.8.4"
-gem "rmagick"
+# gem "RMagick"
 gem "twitter"
 gem "hpricot"
 gem 'capistrano-ext'
