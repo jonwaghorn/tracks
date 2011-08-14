@@ -1,17 +1,17 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    actionmailer (2.3.4)
-      actionpack (= 2.3.4)
-    actionpack (2.3.4)
-      activesupport (= 2.3.4)
-      rack (~> 1.0.0)
-    activerecord (2.3.4)
-      activesupport (= 2.3.4)
-    activeresource (2.3.4)
-      activesupport (= 2.3.4)
-    activesupport (2.3.4)
-    annotate-models (1.0.4)
+    actionmailer (2.3.12)
+      actionpack (= 2.3.12)
+    actionpack (2.3.12)
+      activesupport (= 2.3.12)
+      rack (~> 1.1.0)
+    activerecord (2.3.12)
+      activesupport (= 2.3.12)
+    activeresource (2.3.12)
+      activesupport (= 2.3.12)
+    activesupport (2.3.12)
+    annotate (2.4.0)
     capistrano (2.5.19)
       highline
       net-scp (>= 1.0.0)
@@ -36,15 +36,15 @@ GEM
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
     oauth (0.4.4)
-    rack (1.0.1)
-    rails (2.3.4)
-      actionmailer (= 2.3.4)
-      actionpack (= 2.3.4)
-      activerecord (= 2.3.4)
-      activeresource (= 2.3.4)
-      activesupport (= 2.3.4)
+    rack (1.1.2)
+    rails (2.3.12)
+      actionmailer (= 2.3.12)
+      actionpack (= 2.3.12)
+      activerecord (= 2.3.12)
+      activeresource (= 2.3.12)
+      activesupport (= 2.3.12)
       rake (>= 0.8.3)
-    rake (0.8.7)
+    rake (0.9.2)
     shorturl (0.8.8)
     twitter (0.9.12)
       hashie (~> 0.4.0)
@@ -56,10 +56,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  annotate-models
+  annotate
   capistrano-ext
   hpricot
   mysql
-  rails (= 2.3.4)
+  rails (= 2.3.12)
   shorturl (~> 0.8.4)
   twitter
