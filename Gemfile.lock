@@ -28,7 +28,6 @@ GEM
       rack (< 2, >= 1.1.0)
     faraday_middleware (0.7.0)
       faraday (~> 0.7.3)
-    fcgi (0.8.8)
     hashie (1.1.0)
     hpricot (0.8.4)
     multi_json (1.0.3)
@@ -61,7 +60,6 @@ PLATFORMS
 DEPENDENCIES
   annotate!
   capistrano-ext
-  fcgi
   hpricot
   mysql
   rails (= 2.3.12)
