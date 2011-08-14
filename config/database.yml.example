@@ -20,9 +20,10 @@ development:
   reconnect: false
   database: tracks_development
   pool: 5
-  username: root
+  username: tracks
   password:
-  socket: /opt/local/var/run/mysql5/mysqld.sock
+  socket: /tmp/mysql.sock
+  #socket: /opt/local/var/run/mysql5/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -33,9 +34,9 @@ test:
   reconnect: false
   database: tracks_test
   pool: 5
-  username: root
+  username: tracks
   password:
-  socket: /opt/local/var/run/mysql5/mysqld.sock
+  socket: /tmp/mysql.sock
 
 production:
   adapter: mysql
@@ -43,6 +44,6 @@ production:
   reconnect: false
   database: tracks_production
   pool: 5
-  username: root
+  username: tracks
   password: 
-  socket: /opt/local/var/run/mysql5/mysqld.sock
+  socket: /tmp/mysql.sock

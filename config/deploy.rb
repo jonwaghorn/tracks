@@ -47,7 +47,7 @@ end
 
 
 namespace :backup do
-  before 'backup:db', 'setup_production_access'
+#  before 'backup:db', 'setup_production_access'
   task :default do
     db
   end
