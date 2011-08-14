@@ -8,10 +8,7 @@ gem "twitter"
 gem "hpricot"
 gem "capistrano-ext"
 #gem "will-paginate", "2.3.16"
-
-group :stage, :production do
-  gem "fcgi"
-end
+gem "fcgi"
 
 group :development do
   # bundler requires these gems in development
