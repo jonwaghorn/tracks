@@ -7,3 +7,5 @@ role :web, "tracks.org.nz"
 role :db,  "tracks.org.nz", :primary => true
 
 set :use_sudo, false
+
+set :branch, "master"

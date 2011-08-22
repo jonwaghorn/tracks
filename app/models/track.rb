@@ -104,7 +104,7 @@ class Track < ActiveRecord::Base
   end
   
   def full_filename
-    "paths/" + filename
+    "public/paths/" + filename
   end
 
   def gps_file_exists?

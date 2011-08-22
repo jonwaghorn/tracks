@@ -1,3 +1,10 @@
+54 2011-08-22
+  - [infrastructure] Upgrade Rails to 2.3.14 (security update)
+  - [bug fix] Fix broken file downloads
+
+53 2011-08-13
+  - [infrastructure] Upgrade Rails to 2.3.12, move to Passenger on prod, other updates to support 2.3.12.
+
 52
   - [bug fix] #0073 Fix track AKA crash as sugested by Ian
   - [infrastructure] Included bundler for managing dependencies.

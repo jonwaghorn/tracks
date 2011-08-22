@@ -13,7 +13,6 @@ set :copy_strategy, :export
 set :runner, user
 #set :scm_verbose, true
 # set :use_sudo, false
-set :branch, "master"
 # set :deploy_via, :checkout
 # set :git_shallow_clone, 1
 
