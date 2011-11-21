@@ -52,7 +52,7 @@ class Track < ActiveRecord::Base
 
   before_validation       :fix_name
   validates_presence_of   :name
-  validates_format_of     :name, :with => /^[\w ']+$/i, :message => 'can only contain letters and numbers (and spaces).'
+  validates_format_of     :name, :with => /^[\w \-']+$/i, :message => 'can only contain letters and numbers (and spaces).'
   validates_length_of     :name, :maximum => 40, :message => 'Track name too long, maximum is 40 characters.'
   validate                :name_is_unique_for_region
   validate                :overview_is_not_empty
