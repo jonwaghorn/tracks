@@ -36,6 +36,7 @@ GEM
     faraday_middleware (0.7.0)
       faraday (~> 0.7.3)
     hashie (1.1.0)
+    highline (1.6.11)
     hpricot (0.8.4)
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
@@ -86,6 +87,7 @@ DEPENDENCIES
   annotate!
   capistrano
   capistrano-ext
+  highline
   hpricot
   mysql
   net-scp

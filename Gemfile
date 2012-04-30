@@ -6,6 +6,7 @@ gem "mysql"
 gem "shorturl", '0.8.8', :path => 'vendor/gems/shorturl-0.8.8'
 gem "twitter"
 gem "hpricot"
+gem "highline"
 
 group :development do
   # bundler requires these gems in development
