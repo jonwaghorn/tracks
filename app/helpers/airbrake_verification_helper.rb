@@ -1,0 +1,2 @@
+module AirbrakeVerificationHelper
+end
