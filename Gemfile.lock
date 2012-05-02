@@ -24,7 +24,11 @@ GEM
       activesupport (= 2.3.14)
     activesupport (2.3.14)
     addressable (2.2.6)
+    airbrake (3.0.9)
+      activesupport
+      builder
     archive-tar-minitar (0.5.2)
+    builder (3.0.0)
     capistrano (2.8.0)
     capistrano-ext (1.2.1)
       capistrano (>= 1.0.0)
@@ -84,6 +88,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airbrake
   annotate!
   capistrano
   capistrano-ext

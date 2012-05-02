@@ -1,24 +1,29 @@
-set :application, 'tracks'
-set :repository, "git@github.com:jonwaghorn/tracks.git"
-set :scm, :git
+require 'capistrano/ext/multistage'
+require 'bundler/capistrano'
 
+set :application, 'tracks'
 set :user, 'cheekymo'
 
 set :stages, %w(staging production)
 set :default_stage, 'staging'
+
+set :repository, "git@github.com:jonwaghorn/tracks.git"
+set :scm, :git
+
 set :deploy_via, :copy
-set :copy_strategy, :export
+set :copy_cache, true
+set :copy_exclude, [".git"]
 
-set :runner, user
+set :use_sudo, false
 
-require 'capistrano/ext/multistage'
-require 'bundler/capistrano'
+# set :runner, user
 
 set :chmod755, "app config db lib public vendor script script/* public/disp*"
 
 set :group_writable, false
 default_run_options[:pty] = true
 
+set :keep_releases, 3
 after "deploy:symlink", "init:copy_shared"
 
 namespace :init do
@@ -28,15 +33,13 @@ namespace :init do
     run "cp -pf #{deploy_to}/to_copy/.htaccess #{current_path}/public/.htaccess"
     run "ln -s #{deploy_to}/shared/paths #{current_path}/public/paths"
   end
-
-  task :restart, :roles => :app do
-    sudo "touch #{latest_release}/tmp/restart.txt"
-  end
 end
 
-
-
-
+namespace :deploy do
+  task :restart, :roles => :app do
+    run "touch #{latest_release}/tmp/restart.txt"
+  end
+end
 
 namespace :backup do
 #  before 'backup:db', 'setup_production_access'
@@ -49,3 +52,10 @@ namespace :backup do
     run "cd tmp; ./mybackupit.sh"
   end
 end
+
+
+Dir[File.join(File.dirname(__FILE__), '..', 'vendor', 'gems', 'airbrake-*')].each do |vendored_notifier|
+  $: << File.join(vendored_notifier, 'lib')
+end
+
+require 'airbrake/capistrano'
