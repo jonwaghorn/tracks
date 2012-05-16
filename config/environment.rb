@@ -3,6 +3,9 @@
 # Specifies gem version of Rails to use when vendor/rails is not present
 #RAILS_GEM_VERSION = '2.3.12' unless defined? RAILS_GEM_VERSION
 
+# from http://developer.uservoice.com/entries/how-to-upgrade-a-rails-2.3.14-app-to-ruby-1.9.3/
+Encoding.default_external = Encoding.default_internal = Encoding::UTF_8
+
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
