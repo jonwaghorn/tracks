@@ -1,13 +1,13 @@
 source 'http://rubygems.org'
 
 # bundler requires these gems in all environments
-gem "rails", "2.3.14"
+gem "rails", "2.3.18"
 gem "mysql2", "0.2.18"
 gem "shorturl", '0.8.8', :path => 'vendor/gems/shorturl-0.8.8'
 gem "twitter"
 gem "hpricot"
 gem "highline"
-gem "airbrake"
+gem "airbrake", "3.1.6"
 
 group :development do
   # bundler requires these gems in development
