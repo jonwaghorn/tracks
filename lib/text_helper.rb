@@ -150,7 +150,7 @@ module TextHelper
   end
 
   def generic_view_tidy(line)
-    line.gsub(/<p>\s*<\/p>/, '') # tidy empty paras
+    line.encode("UTF-8", :invalid => :replace, :replace => "?").gsub(/<p>\s*<\/p>/, '') # tidy empty paras
   end
 
   # Change funky "smart" quotes into regular jobbies
@@ -205,7 +205,7 @@ module TextHelper
     height = (width.to_i / 1.3333333).to_i.to_s # 4:3
     '<embed src="http://www.vorb.org.nz/video/FlowPlayerDark.swf?config=%7Bembedded%3Atrue%2CbaseURL%3A%27http%3A%2F%2Fwww%2Evorb%2Eorg%2Enz%2Fvideo%27%2CplayList%3A%5B%7Burl%3A%27http%3A%2F%2Fwww%2Evorb%2Eorg%2Enz%2Fvideo%2Fplay%2Ejpg%27%7D%2C%7Burl%3A%27http%3A%2F%2Fwww%2Evorb%2Eorg%2Enz%2Fflvideo%2D' + ref + '%2Eflv%27%7D%2C%7Burl%3A%27http%3A%2F%2Fwww%2Evorb%2Eorg%2Enz%2Fvideo%2Fnatcoll%2D' + width + 'x' + height + '%2Eswf%27%7D%5D%2CshowPlayListButtons%3Afalse%2CshowLoopButton%3Atrue%2CinitialScale%3A%27scale%27%2Cloop%3Afalse%2CautoPlay%3Atrue%7D" width="' + width + '" height="' + height + '" scale="noscale" bgcolor="111111" type="application/x-shockwave-flash" allowFullScreen="true" allowScriptAccess="always" allowNetworking="all" pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>'
   end
-  
+
   def vimeo_player(ref)
     width = get_video_player_width
     height = (width.to_i / 1.7777777).to_i.to_s # 16:9

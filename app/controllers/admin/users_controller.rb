@@ -8,7 +8,7 @@ class Admin::UsersController < ApplicationController
   def index
     @filter = params[:filter].nil? ? 'all' : params[:filter]
     s = @filter == 'all' ? %w(viewer creator admin) : @filter == 'creator' ? %w(creator admin) : @filter
-    @users = User.paginate :page => params[:page], :conditions => ['privilege in (?)', s.to_a], :order => 'last_track_edit_at DESC, created_at DESC'
+    @users = User.paginate :page => params[:page], :conditions => ['privilege in (?)', [s]], :order => 'last_track_edit_at DESC, created_at DESC'
   end
 
   def show
