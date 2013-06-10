@@ -2,7 +2,8 @@ source 'http://rubygems.org'
 
 # bundler requires these gems in all environments
 gem "rails", "2.3.18"
-gem "mysql2", "0.2.18"
+gem "mysql2", "0.3.11"
+gem "activerecord-mysql2-adapter", "0.0.3"
 gem "shorturl", '0.8.8', :path => 'vendor/gems/shorturl-0.8.8'
 gem "twitter"
 gem "hpricot"
